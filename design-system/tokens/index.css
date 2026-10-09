@@ -1,10 +1,12 @@
 /*
  * Design-system entry stylesheet. Import once, from the root layout.
  */
+@import "./reset.css";
 @import "./tokens.css";
 @import "./swatches.css";
 @import "./bamboo.css";
 @import "./neon.css";
 @import "./fonts.css";
 @import "./base.css";
+@import "../typography/typography.css";
 @import "../hanzi/scope.css";

@@ -41,3 +41,27 @@ export const THEME_COLORS: Record<Theme, string> = {
   neon: "#1c1c1c",
   bamboo: "#f5f2ee",
 };
+
+/*
+ * Default annotation layers, set on <html> as data-default-pinyin,
+ * data-default-zhuyin, and data-default-english (hanzi/scope.css). They apply
+ * wherever no AnnotationScope sets that layer. Click isn't offered: a page
+ * that wants click-to-reveal says so with its own scope.
+ */
+export const DEFAULT_LAYERS = ["pinyin", "zhuyin", "english"] as const;
+export const DEFAULT_LAYER_MODES = ["shown", "hover", "collapsed"] as const;
+
+export type DefaultLayer = (typeof DEFAULT_LAYERS)[number];
+export type DefaultLayerMode = (typeof DEFAULT_LAYER_MODES)[number];
+
+export const DEFAULT_LAYER_LABELS: Record<DefaultLayer, string> = {
+  pinyin: "Pinyin",
+  zhuyin: "Zhuyin",
+  english: "English",
+};
+
+export const DEFAULT_LAYER_MODE_LABELS: Record<DefaultLayerMode, string> = {
+  shown: "Show",
+  hover: "Hover",
+  collapsed: "Hide",
+};

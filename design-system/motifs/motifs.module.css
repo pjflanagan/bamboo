@@ -1,0 +1,86 @@
+/* sign --------------------------------------------------------------------- */
+
+/*
+ * One markup, two looks, chosen by theme tokens:
+ *   neon    --sign-border-width 3px, --sign-text-mix 100%, glow on
+ *   bamboo  no frame, plain text, --sign-stalk-height 6px underline
+ */
+.sign {
+  --sign-color: hsl(var(--sign-hue) var(--neon-sat) var(--neon-light));
+  --sign-glow:
+    hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.6 * var(--glow-strength))) 0 0
+      3px,
+    hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.4 * var(--glow-strength))) 0 0
+      8px,
+    hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.2 * var(--glow-strength))) 0 0
+      21px;
+  --sign-glow-inset:
+    inset hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.6 * var(--glow-strength)))
+      0 0 3px,
+    inset hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.4 * var(--glow-strength)))
+      0 0 8px,
+    inset hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.2 * var(--glow-strength)))
+      0 0 21px;
+  --sign-text: hsl(var(--sign-text-hue) var(--neon-sat) var(--neon-light));
+
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.15em 0.45em;
+  padding-bottom: calc(0.15em + var(--sign-stalk-height) * 1.5);
+  border: var(--sign-border-width) solid var(--sign-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--sign-glow), var(--sign-glow-inset);
+  color: color-mix(in oklab, var(--sign-text) var(--sign-text-mix), var(--text));
+  text-shadow:
+    hsl(var(--sign-text-hue) var(--neon-sat) var(--neon-light) / calc(0.6 * var(--glow-strength))) 0
+      0 3px,
+    hsl(var(--sign-text-hue) var(--neon-sat) var(--neon-light) / calc(0.4 * var(--glow-strength))) 0
+      0 8px,
+    hsl(var(--sign-text-hue) var(--neon-sat) var(--neon-light) / calc(0.2 * var(--glow-strength))) 0
+      0 21px;
+}
+
+/* Bamboo stalk underline: green halves with a darker node every 2.5em. */
+.sign::after {
+  content: "";
+  position: absolute;
+  left: 0.45em;
+  right: 0.45em;
+  bottom: 0;
+  height: var(--sign-stalk-height);
+  border-radius: 1px;
+  background:
+    repeating-linear-gradient(90deg, var(--stalk-dark) 0 2px, transparent 2px 2.5em),
+    linear-gradient(180deg, var(--stalk-light) 0 50%, var(--stalk-dark) 50% 100%);
+}
+
+/* double: outer frame around an inner frame, like study-mandarin's title */
+.sign[data-variant="double"] {
+  padding: 3px;
+  padding-bottom: calc(3px + var(--sign-stalk-height) * 1.5);
+  border-radius: var(--radius-xl);
+}
+
+.sign[data-variant="double"]::after {
+  left: 0;
+  right: 0;
+  height: calc(var(--sign-stalk-height) * 1.4);
+}
+
+.signInner {
+  display: block;
+  padding: 0.15em 0.4em 0.15em 0.55em;
+  border: var(--sign-border-width) solid var(--sign-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--sign-glow), var(--sign-glow-inset);
+  letter-spacing: 0.25em;
+}
+
+/* bamboo canvas -------------------------------------------------------------- */
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

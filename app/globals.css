@@ -1,43 +1,5 @@
 /*
- * Minimal reset. Theme colors and fonts come from the design-system tokens
- * (imported before this file in the root layout); typography and page layout
- * arrive in step 4.
+ * App-wide styles that aren't part of the design system. The design system
+ * (tokens, reset, typography, themes) is imported before this file in the
+ * root layout; prefer adding there unless a style is specific to this app.
  */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  min-height: 100dvh;
-  line-height: var(--leading-normal);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-main {
-  margin: 0 auto;
-  max-width: var(--page-width);
-  padding: var(--space-5);
-}
-
-img,
-svg,
-canvas {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}

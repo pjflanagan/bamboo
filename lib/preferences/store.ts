@@ -4,7 +4,7 @@
  * Components don't use it directly: providers/ wraps it in React context.
  */
 
-import { THEME_COLORS, type Theme } from "@/design-system/attributes";
+import { DEFAULT_LAYERS, THEME_COLORS, type Theme } from "@/design-system/attributes";
 import {
   DEFAULT_PREFERENCES,
   DEFAULT_THEME,
@@ -42,14 +42,17 @@ function resolve(prefs: Preferences): PreferencesState {
 
 /** Writes the current state onto <html> and the browser theme-color. */
 export function applyPreferences(): void {
-  const { resolvedTheme, font, script } = getPreferences();
+  const preferences = getPreferences();
   const root = document.documentElement;
-  root.setAttribute("data-theme", resolvedTheme);
-  root.setAttribute("data-hanzi-font", font);
-  root.setAttribute("data-script", script);
+  root.setAttribute("data-theme", preferences.resolvedTheme);
+  root.setAttribute("data-hanzi-font", preferences.font);
+  root.setAttribute("data-script", preferences.script);
+  for (const layer of DEFAULT_LAYERS) {
+    root.setAttribute(`data-default-${layer}`, preferences[layer]);
+  }
   document
     .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
-    .forEach((meta) => meta.setAttribute("content", THEME_COLORS[resolvedTheme]));
+    .forEach((meta) => meta.setAttribute("content", THEME_COLORS[preferences.resolvedTheme]));
 }
 
 function update(next: PreferencesState): void {
@@ -64,8 +67,8 @@ export function getPreferences(): PreferencesState {
 }
 
 export function setPreference<K extends keyof Preferences>(key: K, value: Preferences[K]): void {
-  const { theme, font, script } = getPreferences();
-  const next: Preferences = { theme, font, script, [key]: value };
+  const { theme, font, script, pinyin, zhuyin, english } = getPreferences();
+  const next: Preferences = { theme, font, script, pinyin, zhuyin, english, [key]: value };
   document.cookie = serializePreferencesCookie(next);
   update(resolve(next));
 }

@@ -1,13 +1,21 @@
 import Link from "next/link";
+import { PageHeader } from "@/components/PageHeader";
+import { Page } from "@/design-system/layout";
+import { Sign } from "@/design-system/motifs";
 
 export default function Home() {
   return (
-    <main>
-      <h1>方昕中文</h1>
-      <p>Scaffold. Pages get ported here once the design system is in place.</p>
-      <p>
-        <Link href="/design">Design system</Link>
-      </p>
-    </main>
+    <>
+      <PageHeader />
+      <Page>
+        <Sign as="h1" variant="double" seed="方昕中文">
+          方昕中文
+        </Sign>
+        <p>
+          你好, welcome to my Mandarin study guide. The study pages are being ported here; in the
+          meantime, see the <Link href="/design">design system</Link>.
+        </p>
+      </Page>
+    </>
   );
 }

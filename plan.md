@@ -373,7 +373,11 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
 1. ✅ **Scaffold:** Next app (in the repo you set up), folder layout, ESLint/Prettier, Vercel project on a preview URL, `vercel.json` ignore rule.
 2. ✅ **Tokens and themes:** semantic tokens, neon and bamboo, cookie-based preferences (theme, font, script), fonts.
 3. ✅ **Hanzi family:** data model, `tokenize`, `Character`/`Word`/`Phrase`, `AnnotationScope`, and the playground on `/design`. *Most of the effort goes here.*
-4. **Global typography, Header, Page, layout primitives, and motifs (`Sign`, `BambooCanvas`).**
+4. ✅ **Global typography, Header, Page, layout primitives, and motifs (`Sign`, `BambooCanvas`).** As built:
+    - **Sticky header, rendered by each page:** `<PageHeader title back actions>` wraps the design system's `HeaderBar`, so titles are in the static HTML with no portals. Being sticky rather than fixed, it needs no top offset.
+    - **Preferences menu:** the native `popover` attribute, which gives light-dismiss and Escape for free. It holds theme, script, hanzi font, and the **default annotation layers** (pinyin, zhuyin, English: Show / Hover / Hide). These are saved like the other preferences, applied to `<html>` before first paint, and overridden by any page's own `AnnotationScope`. On touch screens, `TouchReveal` turns taps into reveals for default hover layers.
+    - **Layout:** `Page` (default / wide / full), `Section`, `Stack` and `Cluster`. The reset and typography moved into the design system, and the typography uses zero-specificity `:where()` selectors.
+    - **Motifs:** `<Sign>` takes its neon hues from a hash of its text (border and text at least 80° apart). Bamboo renders a stalk underline instead, chosen purely by `--sign-*` theme tokens. `<BambooCanvas>` is a `requestAnimationFrame` port of the bamboo-web animation that respects reduced motion and draws glowing outlines in neon. `<ProgressBar>` was pulled forward from step 5.
 5. **Controls.**
 6. **Data layer:** loaders, local/remote switch, `/api/data`, revalidation webhook, GitHub Action for the manifest and dictionary JSON.
 7. **PWA:** Serwist, manifest, caching rules, offline page, update toast.

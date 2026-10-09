@@ -1,11 +1,3 @@
-.page {
-  max-width: var(--page-width-wide);
-}
-
-.panel {
-  margin-bottom: var(--space-6);
-}
-
 .previews {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -154,4 +146,14 @@
   flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--space-5);
+}
+
+/* motifs */
+
+.canvasFrame {
+  flex: 1 1 260px;
+  height: 220px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
 }

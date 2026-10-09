@@ -10,9 +10,12 @@
  */
 
 import {
+  DEFAULT_LAYERS,
+  DEFAULT_LAYER_MODES,
   HANZI_FONTS,
   SCRIPTS,
   THEMES,
+  type DefaultLayerMode,
   type HanziFont,
   type Script,
   type Theme,
@@ -26,12 +29,19 @@ export type Preferences = {
   theme: ThemePref;
   font: HanziFont;
   script: Script;
+  /** Default annotation layers, where no AnnotationScope sets them. */
+  pinyin: DefaultLayerMode;
+  zhuyin: DefaultLayerMode;
+  english: DefaultLayerMode;
 };
 
 export const DEFAULT_PREFERENCES: Preferences = {
   theme: "system",
   font: "sans",
   script: "trad",
+  pinyin: "shown",
+  zhuyin: "shown",
+  english: "shown",
 };
 
 /** Theme the static HTML is rendered with, before the inline script runs. */
@@ -56,6 +66,9 @@ export function parsePreferences(raw: string | undefined | null): Preferences {
     theme: pick(THEME_PREFS, data.theme, DEFAULT_PREFERENCES.theme),
     font: pick(HANZI_FONTS, data.font, DEFAULT_PREFERENCES.font),
     script: pick(SCRIPTS, data.script, DEFAULT_PREFERENCES.script),
+    pinyin: pick(DEFAULT_LAYER_MODES, data.pinyin, DEFAULT_PREFERENCES.pinyin),
+    zhuyin: pick(DEFAULT_LAYER_MODES, data.zhuyin, DEFAULT_PREFERENCES.zhuyin),
+    english: pick(DEFAULT_LAYER_MODES, data.english, DEFAULT_PREFERENCES.english),
   };
 }
 
@@ -76,4 +89,5 @@ var t=p.theme;if(${JSON.stringify(THEMES)}.indexOf(t)<0){t=matchMedia("(prefers-
 d.setAttribute("data-theme",t);
 if(${JSON.stringify(HANZI_FONTS)}.indexOf(p.font)>=0)d.setAttribute("data-hanzi-font",p.font);
 if(${JSON.stringify(SCRIPTS)}.indexOf(p.script)>=0)d.setAttribute("data-script",p.script);
+${JSON.stringify(DEFAULT_LAYERS)}.forEach(function(l){if(${JSON.stringify(DEFAULT_LAYER_MODES)}.indexOf(p[l])>=0)d.setAttribute("data-default-"+l,p[l])});
 }catch(e){}})()`.replace(/\n/g, "");

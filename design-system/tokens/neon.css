@@ -50,6 +50,16 @@
   --danger: hsl(0 80% 56%);
   --info: hsl(205 80% 56%);
 
+  /* links: white text, neon underline */
+  --link: var(--text);
+  --link-hover: var(--primary-hover);
+  --link-underline: var(--primary);
+
+  /* <Sign>: glowing frame, neon text, no stalk */
+  --sign-border-width: 3px;
+  --sign-text-mix: 100%;
+  --sign-stalk-height: 0px;
+
   /* states */
   --highlight: rgb(255 255 255 / 0.18);
   --highlight-strong: rgb(255 255 255 / 0.3);

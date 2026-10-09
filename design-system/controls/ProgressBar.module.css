@@ -1,0 +1,19 @@
+/* Registered so the fill width can transition. */
+@property --progress {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary) 0 var(--progress),
+    var(--highlight) var(--progress) 100%
+  );
+  box-shadow: 0 0 8px
+    hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / calc(0.5 * var(--glow-strength)));
+  transition: --progress var(--duration-normal) var(--ease);
+}

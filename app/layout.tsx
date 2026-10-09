@@ -33,6 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme={DEFAULT_THEME}
       data-hanzi-font={DEFAULT_PREFERENCES.font}
       data-script={DEFAULT_PREFERENCES.script}
+      data-default-pinyin={DEFAULT_PREFERENCES.pinyin}
+      data-default-zhuyin={DEFAULT_PREFERENCES.zhuyin}
+      data-default-english={DEFAULT_PREFERENCES.english}
       suppressHydrationWarning
     >
       <head>

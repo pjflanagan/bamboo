@@ -9,9 +9,9 @@ See [`plan.md`](./plan.md) for the full plan and build order.
 ```
 app/              Routes only: layouts, pages, route handlers. Page-private
                   pieces live next to the page in _components/ and _lib/.
-components/       App components built from the design system and app state
-                  (PreferenceControls; Header, flashcard views, etc. later).
-hooks/            App hooks: useTheme, useScript, useHanziFont.
+components/       App components built from the design system and app state:
+                  PageHeader, PreferencesMenu, preference controls.
+hooks/            App hooks: useTheme, useScript, useHanziFont, useAnnotationDefaults.
 providers/        App-level state. AppProviders wraps the app once in the root
                   layout; PreferencesScript applies saved preferences before
                   first paint.
@@ -21,9 +21,13 @@ lib/              Framework-free logic.
   data/           data loaders, read from GitHub at runtime (step 6)
 design-system/    Standalone UI library: no app state, no data access.
   attributes.ts   the data-theme / data-hanzi-font / data-script contract
-  tokens/         colors, themes, fonts, scales
-  hanzi/          Character, Word, Phrase, AnnotationScope
-  controls/       SegmentedControl (Button, Checkbox, ... in step 5)
+  tokens/         reset, colors, themes, fonts, scales
+  typography/     global h1–h6, p, a, lists, code (zero specificity)
+  layout/         Page, Section, Stack, Cluster, HeaderBar
+  hanzi/          Character, Word, Phrase, AnnotationScope, TouchReveal
+  motifs/         Sign, BambooCanvas
+  controls/       SegmentedControl, ProgressBar (Button, Checkbox, ... in step 5)
+  icons/          a few inline SVG icons
 data/             PUBLIC DATA: flashcards, songs, dictionary, manifests
 scripts/          Python pipeline that writes into data/
   source/         raw inputs used only by scripts/setup (not served)

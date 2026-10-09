@@ -10,5 +10,6 @@ export {
 export { AnnotationScope, useAnnotation, type AnnotationScopeHandle } from "./AnnotationScope";
 export { Character } from "./Character";
 export { Phrase } from "./Phrase";
+export { TouchReveal } from "./TouchReveal";
 export { Word } from "./Word";
 export * from "./types";

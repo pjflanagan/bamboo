@@ -47,6 +47,16 @@
   --danger: #d11e1e;
   --info: #2e7fb6;
 
+  /* links: bamboo green */
+  --link: var(--primary);
+  --link-hover: var(--primary-hover);
+  --link-underline: currentColor;
+
+  /* <Sign>: plain text over a bamboo-stalk underline, no frame */
+  --sign-border-width: 0px;
+  --sign-text-mix: 0%;
+  --sign-stalk-height: 6px;
+
   /* states */
   --highlight: #daeedd;
   --highlight-strong: #bbeac2;

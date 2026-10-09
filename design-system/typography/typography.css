@@ -1,0 +1,119 @@
+/*
+ * Global element styles. Wrapped in :where() so they carry zero specificity:
+ * any component class overrides them without a fight.
+ */
+
+:where(h1, h2, h3, h4, h5, h6) {
+  margin: var(--space-8) 0 var(--space-3);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--text);
+  text-wrap: balance;
+}
+
+:where(h1) {
+  margin-top: var(--space-6);
+  font-size: var(--text-3xl);
+}
+
+:where(h2) {
+  font-size: var(--text-2xl);
+}
+
+:where(h3) {
+  font-size: var(--text-xl);
+}
+
+:where(h4) {
+  font-size: var(--text-lg);
+}
+
+:where(h5, h6) {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+}
+
+/* Chinese headings read better without latin letter-spacing tricks. */
+:where(h1, h2, h3):lang(zh) {
+  letter-spacing: 0.08em;
+}
+
+:where(p) {
+  margin: 0 0 var(--space-4);
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+:where(a) {
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-color: var(--link-underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+:where(a:hover) {
+  color: var(--link-hover);
+}
+
+:where(ul, ol) {
+  margin: 0 0 var(--space-4);
+  padding-inline-start: var(--space-6);
+  color: var(--text-secondary);
+}
+
+:where(li) {
+  margin-bottom: var(--space-2);
+}
+
+:where(li)::marker {
+  color: var(--text-muted);
+}
+
+:where(hr) {
+  margin: var(--space-6) 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+:where(code, kbd, pre) {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+:where(code) {
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  background: var(--highlight);
+  color: var(--text);
+}
+
+:where(pre) {
+  overflow-x: auto;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+:where(pre code) {
+  padding: 0;
+  background: none;
+}
+
+:where(blockquote) {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-1) 0 var(--space-1) var(--space-4);
+  border-left: 3px solid var(--border-strong);
+  color: var(--text-secondary);
+}
+
+:where(strong, b) {
+  font-weight: var(--weight-bold);
+  color: var(--text);
+}
+
+:where(small) {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
