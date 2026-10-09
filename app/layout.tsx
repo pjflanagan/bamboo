@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { THEME_COLORS } from "@/design-system/attributes";
+import { THEME_COLORS, THEME_DEFAULT_FONTS } from "@/design-system/attributes";
 import { fontVariables } from "@/design-system/tokens/fonts";
 import { DEFAULT_PREFERENCES, DEFAULT_THEME } from "@/lib/preferences";
 import { AppProviders, PreferencesScript } from "@/providers";
@@ -31,11 +31,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={fontVariables}
       data-theme={DEFAULT_THEME}
-      data-hanzi-font={DEFAULT_PREFERENCES.font}
+      data-hanzi-font={THEME_DEFAULT_FONTS[DEFAULT_THEME]}
       data-script={DEFAULT_PREFERENCES.script}
-      data-default-pinyin={DEFAULT_PREFERENCES.pinyin}
-      data-default-zhuyin={DEFAULT_PREFERENCES.zhuyin}
-      data-default-english={DEFAULT_PREFERENCES.english}
       suppressHydrationWarning
     >
       <head>

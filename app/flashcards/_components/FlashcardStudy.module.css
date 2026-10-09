@@ -1,0 +1,56 @@
+.study {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+/*
+ * Set button and mode on one row; the set name truncates rather than wrap
+ * the row, so picking a set with a longer name never changes the layout.
+ * Phones always put the mode on its own row.
+ */
+.bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+@media (max-width: 559px) {
+  .bar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Same footprint as the deck's card, so loading doesn't shift the page. */
+.placeholder {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  height: clamp(14rem, 38dvh, 18rem);
+  text-align: center;
+}
+
+.placeholder p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.loading {
+  animation: pulse 1.2s var(--ease) infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading {
+    animation: none;
+  }
+}

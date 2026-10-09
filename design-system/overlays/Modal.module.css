@@ -1,0 +1,192 @@
+/*
+ * <dialog> in the top layer. The dialog box is the panel's frame (no
+ * padding), so a click whose target is the dialog itself landed on the
+ * backdrop.
+ *
+ * Opening and closing animate with @starting-style plus discrete transitions
+ * of display and overlay, so the exit plays before the dialog leaves the top
+ * layer. Durations are 0 under prefers-reduced-motion (tokens.css).
+ */
+
+.dialog {
+  --enter-transform: translateY(12px) scale(0.98);
+  width: calc(100% - 2 * var(--space-4));
+  max-width: 560px;
+  max-height: min(85dvh, 760px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow:
+    var(--shadow),
+    0 0 18px
+      hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / calc(0.35 * var(--glow-strength)));
+  opacity: 0;
+  transform: var(--enter-transform);
+  transition:
+    opacity var(--duration-normal) var(--ease),
+    transform var(--duration-normal) var(--ease),
+    overlay var(--duration-normal) allow-discrete,
+    display var(--duration-normal) allow-discrete;
+}
+
+.dialog[data-size="sm"] {
+  max-width: 400px;
+}
+
+.dialog[data-size="lg"] {
+  max-width: 760px;
+}
+
+.dialog[open] {
+  opacity: 1;
+  transform: none;
+}
+
+@starting-style {
+  .dialog[open] {
+    opacity: 0;
+    transform: var(--enter-transform);
+  }
+}
+
+.dialog::backdrop {
+  background: transparent;
+  backdrop-filter: blur(0);
+  transition:
+    background-color var(--duration-normal) var(--ease),
+    backdrop-filter var(--duration-normal) var(--ease),
+    overlay var(--duration-normal) allow-discrete,
+    display var(--duration-normal) allow-discrete;
+}
+
+.dialog[open]::backdrop {
+  background: var(--backdrop);
+  backdrop-filter: blur(2px);
+}
+
+@starting-style {
+  .dialog[open]::backdrop {
+    background: transparent;
+    backdrop-filter: blur(0);
+  }
+}
+
+/* The page behind doesn't scroll; the gutter stays so nothing shifts. */
+:global(html):has(.dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+/* Phones: a bottom sheet. */
+@media (max-width: 599px) {
+  .dialog,
+  .dialog[data-size] {
+    --enter-transform: translateY(100%);
+    width: 100%;
+    max-width: none;
+    max-height: 90dvh;
+    margin: auto 0 0;
+    border-width: 1px 0 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+}
+
+/* panel -------------------------------------------------------------------- */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-1);
+}
+
+.title {
+  margin: 0;
+  padding-top: 3px;
+  font-size: var(--text-md);
+  line-height: 1.25;
+}
+
+.close {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: 0 calc(-1 * var(--space-1)) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.close:hover {
+  background: var(--highlight);
+  color: var(--text);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.description {
+  margin: 0;
+  padding: 0 var(--space-4) var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.toolbar {
+  padding: 0 var(--space-4);
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+/* With no body, the footer follows the description without a divider. */
+.description + .footer,
+.header + .footer {
+  border-top: 0;
+}
+
+@media (max-width: 599px) {
+  .footer {
+    padding-bottom: max(var(--space-3), env(safe-area-inset-bottom));
+  }
+
+  /* Full-width actions are easier to hit on a phone. */
+  .footer > * {
+    flex: 1;
+  }
+}

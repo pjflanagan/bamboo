@@ -4,11 +4,12 @@
  * Components don't use it directly: providers/ wraps it in React context.
  */
 
-import { DEFAULT_LAYERS, THEME_COLORS, type Theme } from "@/design-system/attributes";
+import { THEME_COLORS, type HanziFont, type Theme } from "@/design-system/attributes";
 import {
   DEFAULT_PREFERENCES,
   DEFAULT_THEME,
   PREFERENCES_COOKIE,
+  ensureSignHue,
   parsePreferences,
   serializePreferencesCookie,
   type Preferences,
@@ -17,6 +18,8 @@ import {
 export type PreferencesState = Preferences & {
   /** The theme actually shown: "system" resolved against the OS setting. */
   resolvedTheme: Theme;
+  /** The hanzi font shown: the resolved theme's entry in `fonts`. */
+  font: HanziFont;
 };
 
 const DARK_QUERY = "(prefers-color-scheme: dark)";
@@ -24,6 +27,7 @@ const DARK_QUERY = "(prefers-color-scheme: dark)";
 export const SERVER_STATE: PreferencesState = {
   ...DEFAULT_PREFERENCES,
   resolvedTheme: DEFAULT_THEME,
+  font: DEFAULT_PREFERENCES.fonts[DEFAULT_THEME],
 };
 
 let state: PreferencesState | null = null;
@@ -37,7 +41,7 @@ function readCookie(): Preferences {
 function resolve(prefs: Preferences): PreferencesState {
   const resolvedTheme =
     prefs.theme === "system" ? (matchMedia(DARK_QUERY).matches ? "neon" : "bamboo") : prefs.theme;
-  return { ...prefs, resolvedTheme };
+  return { ...prefs, resolvedTheme, font: prefs.fonts[resolvedTheme] };
 }
 
 /** Writes the current state onto <html> and the browser theme-color. */
@@ -47,9 +51,7 @@ export function applyPreferences(): void {
   root.setAttribute("data-theme", preferences.resolvedTheme);
   root.setAttribute("data-hanzi-font", preferences.font);
   root.setAttribute("data-script", preferences.script);
-  for (const layer of DEFAULT_LAYERS) {
-    root.setAttribute(`data-default-${layer}`, preferences[layer]);
-  }
+  ensureSignHue(root);
   document
     .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
     .forEach((meta) => meta.setAttribute("content", THEME_COLORS[preferences.resolvedTheme]));
@@ -67,10 +69,16 @@ export function getPreferences(): PreferencesState {
 }
 
 export function setPreference<K extends keyof Preferences>(key: K, value: Preferences[K]): void {
-  const { theme, font, script, pinyin, zhuyin, english } = getPreferences();
-  const next: Preferences = { theme, font, script, pinyin, zhuyin, english, [key]: value };
+  const { theme, fonts, script } = getPreferences();
+  const next: Preferences = { theme, fonts, script, [key]: value };
   document.cookie = serializePreferencesCookie(next);
   update(resolve(next));
+}
+
+/** Sets the hanzi font for the theme currently shown. */
+export function setHanziFont(font: HanziFont): void {
+  const { fonts, resolvedTheme } = getPreferences();
+  setPreference("fonts", { ...fonts, [resolvedTheme]: font });
 }
 
 function onSystemThemeChange(): void {

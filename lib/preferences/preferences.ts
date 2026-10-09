@@ -10,12 +10,10 @@
  */
 
 import {
-  DEFAULT_LAYERS,
-  DEFAULT_LAYER_MODES,
   HANZI_FONTS,
   SCRIPTS,
   THEMES,
-  type DefaultLayerMode,
+  THEME_DEFAULT_FONTS,
   type HanziFont,
   type Script,
   type Theme,
@@ -27,21 +25,18 @@ export type ThemePref = (typeof THEME_PREFS)[number];
 
 export type Preferences = {
   theme: ThemePref;
-  font: HanziFont;
+  /**
+   * The hanzi font, remembered per theme: bamboo starts on WenKai and neon
+   * on Sans, and picking a font changes it only for the theme in use.
+   */
+  fonts: Record<Theme, HanziFont>;
   script: Script;
-  /** Default annotation layers, where no AnnotationScope sets them. */
-  pinyin: DefaultLayerMode;
-  zhuyin: DefaultLayerMode;
-  english: DefaultLayerMode;
 };
 
 export const DEFAULT_PREFERENCES: Preferences = {
   theme: "system",
-  font: "sans",
+  fonts: THEME_DEFAULT_FONTS,
   script: "trad",
-  pinyin: "shown",
-  zhuyin: "shown",
-  english: "shown",
 };
 
 /** Theme the static HTML is rendered with, before the inline script runs. */
@@ -62,19 +57,42 @@ export function parsePreferences(raw: string | undefined | null): Preferences {
   } catch {
     // malformed cookie: fall back to defaults
   }
+  const fonts = (data.fonts ?? {}) as Record<string, unknown>;
   return {
     theme: pick(THEME_PREFS, data.theme, DEFAULT_PREFERENCES.theme),
-    font: pick(HANZI_FONTS, data.font, DEFAULT_PREFERENCES.font),
+    fonts: {
+      neon: pick(HANZI_FONTS, fonts.neon, THEME_DEFAULT_FONTS.neon),
+      bamboo: pick(HANZI_FONTS, fonts.bamboo, THEME_DEFAULT_FONTS.bamboo),
+    },
     script: pick(SCRIPTS, data.script, DEFAULT_PREFERENCES.script),
-    pinyin: pick(DEFAULT_LAYER_MODES, data.pinyin, DEFAULT_PREFERENCES.pinyin),
-    zhuyin: pick(DEFAULT_LAYER_MODES, data.zhuyin, DEFAULT_PREFERENCES.zhuyin),
-    english: pick(DEFAULT_LAYER_MODES, data.english, DEFAULT_PREFERENCES.english),
   };
 }
 
 export function serializePreferencesCookie(prefs: Preferences): string {
   const value = encodeURIComponent(JSON.stringify(prefs));
   return `${PREFERENCES_COOKIE}=${value}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
+}
+
+/**
+ * A random base hue for the page's <Sign> headings, new on every load as in
+ * study-mandarin. Each sign offsets it by an amount derived from its text,
+ * so headings differ from each other and all change on reload. Nothing else
+ * uses it: the rest of neon keeps its fixed accent.
+ */
+export function randomSignHue(random: () => number = Math.random): number {
+  return Math.floor(random() * 360);
+}
+
+/** randomSignHue as ES5 for the inline script, applied to <html> (d). */
+const SIGN_HUE_JS = `d.style.setProperty("--random-hue",String(Math.floor(Math.random()*360)));`;
+
+/**
+ * Sets the random sign hue on <html> unless it's already set: the inline
+ * script runs first, and this covers a dev Strict Mode remount clearing it.
+ */
+export function ensureSignHue(root: HTMLElement): void {
+  if (root.style.getPropertyValue("--random-hue")) return;
+  root.style.setProperty("--random-hue", String(randomSignHue()));
 }
 
 /**
@@ -87,7 +105,8 @@ var d=document.documentElement,p={},m=document.cookie.match(/(?:^|; )${PREFERENC
 if(m){p=JSON.parse(decodeURIComponent(m[1]))||{}}
 var t=p.theme;if(${JSON.stringify(THEMES)}.indexOf(t)<0){t=matchMedia("(prefers-color-scheme: dark)").matches?"neon":"bamboo"}
 d.setAttribute("data-theme",t);
-if(${JSON.stringify(HANZI_FONTS)}.indexOf(p.font)>=0)d.setAttribute("data-hanzi-font",p.font);
+var f=p.fonts&&p.fonts[t];if(${JSON.stringify(HANZI_FONTS)}.indexOf(f)<0){f=${JSON.stringify(THEME_DEFAULT_FONTS)}[t]}
+d.setAttribute("data-hanzi-font",f);
 if(${JSON.stringify(SCRIPTS)}.indexOf(p.script)>=0)d.setAttribute("data-script",p.script);
-${JSON.stringify(DEFAULT_LAYERS)}.forEach(function(l){if(${JSON.stringify(DEFAULT_LAYER_MODES)}.indexOf(p[l])>=0)d.setAttribute("data-default-"+l,p[l])});
+${SIGN_HUE_JS}
 }catch(e){}})()`.replace(/\n/g, "");

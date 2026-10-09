@@ -1,0 +1,83 @@
+/*
+ * The track is drawn by each engine's track pseudo-element, filled up to
+ * --fill. The input itself is a transparent 24px hit area.
+ */
+
+.slider {
+  --track: 4px;
+  --thumb: 16px;
+  --track-bg: linear-gradient(
+    90deg,
+    var(--primary) 0 var(--fill),
+    var(--highlight-strong) var(--fill) 100%
+  );
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: var(--track);
+  border-radius: calc(var(--track) / 2);
+  background: var(--track-bg);
+  box-shadow: 0 0 6px
+    hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / calc(0.5 * var(--glow-strength)));
+}
+
+.slider::-moz-range-track {
+  height: var(--track);
+  border-radius: calc(var(--track) / 2);
+  background: var(--track-bg);
+  box-shadow: 0 0 6px
+    hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / calc(0.5 * var(--glow-strength)));
+}
+
+.slider::-webkit-slider-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-top: calc((var(--track) - var(--thumb)) / 2);
+  border: 2px solid var(--surface-raised);
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+  appearance: none;
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.slider::-moz-range-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  box-sizing: border-box;
+  border: 2px solid var(--surface-raised);
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.slider:hover::-webkit-slider-thumb,
+.slider:active::-webkit-slider-thumb {
+  transform: scale(1.3);
+}
+
+.slider:hover::-moz-range-thumb,
+.slider:active::-moz-range-thumb {
+  transform: scale(1.3);
+}
+
+.slider:focus-visible {
+  outline: none;
+}
+
+.slider:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.slider:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

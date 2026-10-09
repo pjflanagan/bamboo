@@ -1,0 +1,10 @@
+/* Long set names truncate instead of widening or wrapping the toolbar. */
+.button {
+  justify-self: start;
+  max-width: 100%;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

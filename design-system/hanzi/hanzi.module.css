@@ -204,6 +204,14 @@
   );
 }
 
+.phrase[data-align="center"] .words {
+  justify-content: center;
+}
+
+.phrase[data-align="center"] .phraseEnglish {
+  text-align: center;
+}
+
 /* clickable units ---------------------------------------------------------- */
 
 .char[role="button"],

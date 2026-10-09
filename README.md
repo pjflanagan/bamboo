@@ -10,23 +10,28 @@ See [`plan.md`](./plan.md) for the full plan and build order.
 app/              Routes only: layouts, pages, route handlers. Page-private
                   pieces live next to the page in _components/ and _lib/.
 components/       App components built from the design system and app state:
-                  PageHeader, PreferencesMenu, preference controls.
-hooks/            App hooks: useTheme, useScript, useHanziFont, useAnnotationDefaults.
+                  PageHeader, PreferencesMenu, preference controls, RichText,
+                  AppLink, flashcards/ (SetChooser, SetPicker).
+hooks/            App hooks: useTheme, useScript, useHanziFont, useProgress, useLocalStore.
 providers/        App-level state. AppProviders wraps the app once in the root
                   layout; PreferencesScript applies saved preferences before
                   first paint.
 lib/              Framework-free logic.
   hanzi/          pinyin, zhuyin, dictionary, tokenize (+ tests)
   preferences/    cookie format and the client store behind providers/
+  progress/       per-card progress (0-1) and weighted card choice
+  storage/        localStorage-backed stores for useSyncExternalStore
+  text/           [markdown](link) parsing for content files
   data/           data loaders, read from GitHub at runtime (step 6)
 design-system/    Standalone UI library: no app state, no data access.
   attributes.ts   the data-theme / data-hanzi-font / data-script contract
   tokens/         reset, colors, themes, fonts, scales
   typography/     global h1–h6, p, a, lists, code (zero specificity)
   layout/         Page, Section, Stack, Cluster, HeaderBar
-  hanzi/          Character, Word, Phrase, AnnotationScope, TouchReveal
+  hanzi/          Character, Word, Phrase, AnnotationScope
   motifs/         Sign, BambooCanvas
-  controls/       SegmentedControl, ProgressBar (Button, Checkbox, ... in step 5)
+  controls/       Button, Card, Checkbox, SegmentedControl, ProgressBar, Slider, Table, Tabs
+  overlays/       Modal (Tooltip, Toast later)
   icons/          a few inline SVG icons
 data/             PUBLIC DATA: flashcards, songs, dictionary, manifests
 scripts/          Python pipeline that writes into data/

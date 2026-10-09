@@ -1,0 +1,82 @@
+{
+  "title": "方昕中文",
+  "intro": "你好, welcome to my mandarin study guide. These are the daily tasks I do to help improve my skills.",
+  "tasks": {
+    "title": "每天任務",
+    "groups": [
+      {
+        "title": "做所有這些",
+        "items": [{ "id": "flashcards", "label": "Flashcards", "href": "/flashcards" }]
+      },
+      {
+        "title": "做一個的這些",
+        "items": [
+          { "id": "tv-show", "label": "看 YouTube", "href": "#videos" },
+          { "id": "podcast", "label": "聽 podcast", "href": "#podcasts" },
+          { "id": "make-flashcards", "label": "Make flashcards" },
+          {
+            "id": "duolingo",
+            "label": "Duolingo",
+            "app": { "web": "https://duolingo.com/", "ios": "duolingo://", "android": "duolingo://" }
+          }
+        ]
+      },
+      {
+        "title": "考慮這樣做",
+        "items": [
+          { "id": "song", "label": "Translate 唱歌" },
+          { "id": "read-book", "label": "讀書" },
+          { "id": "write-characters", "label": "寫字" }
+        ]
+      }
+    ]
+  },
+  "tools": {
+    "title": "學習工具",
+    "items": [
+      {
+        "name": "Flashcards",
+        "href": "/flashcards",
+        "description": "A collection of sets I've curated and a few I've found online from other students. Track how well you know each card on the [Sets](/sets) page. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/study-mandarin/tree/gh-pages/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf)."
+      },
+      {
+        "name": "Lists",
+        "href": "https://flanny.app/study-mandarin/page/lists/",
+        "description": "View any of the flashcard sets as one long list."
+      },
+      {
+        "name": "唱歌",
+        "href": "https://flanny.app/study-mandarin/page/karaoke/",
+        "description": "Follow along with song lyrics in Chinese with toggleable pinyin and hover-to-reveal English translations. See more on [Google Docs](https://drive.google.com/drive/folders/1axMQBMYX7Rk4quZHPtHFPWvlqEIqbFyj?usp=share_link) or listen to [the Spotify playlist](https://open.spotify.com/playlist/7636wPWQfSQ2UXZ6Lj9Mn9?si=56c81ab3fd9b4c6f)."
+      },
+      {
+        "name": "注音 Trainer",
+        "href": "https://flanny.app/study-mandarin/page/zhuyin-trainer/",
+        "description": "Randomly pick a character and display only the zhuyin to practice reading. You can also study up with the [zhuyin chart](https://flanny.app/study-mandarin/page/zhuyin-chart/)."
+      },
+      {
+        "name": "讀 Tool",
+        "href": "https://flanny.app/study-mandarin/page/read/",
+        "description": "Type or copy/paste text to see pinyin and zhuyin, reformats to traditional."
+      }
+    ]
+  },
+  "resourceTitles": {
+    "videos": "影片",
+    "podcasts": "Podcasts",
+    "apps": "Apps",
+    "other": "其他"
+  },
+  "about": {
+    "title": "我是",
+    "paragraphs": [
+      "Hi, I'm Peter and I've been studying mandarin for a few years now. Every now and again I find it helpful to build a little web tool to help me practice something. These tools are free for anyone to use."
+    ],
+    "disclaimer": "* These tools were built by a student, not a native speaker. There may be errors. Characters often default to the most common pronunciation which may not be correct in all contexts.",
+    "links": [
+      { "label": "More Apps", "href": "https://flanny.app" },
+      { "label": "About Me", "href": "https://pjflanagan.me" },
+      { "label": "Github Repository", "href": "https://github.com/pjflanagan/study-mandarin" }
+    ]
+  }
+}

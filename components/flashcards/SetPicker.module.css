@@ -1,0 +1,109 @@
+.groups {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.groupTitle {
+  margin: 0 0 var(--space-1);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sets,
+.topics {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sets {
+  display: grid;
+  gap: 2px;
+}
+
+/* A full-width row: title, with the description underneath. */
+.set {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: none;
+  font: inherit;
+  font-size: var(--text-sm);
+  line-height: 1.3;
+  text-align: start;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease);
+}
+
+.set:hover {
+  background: var(--highlight);
+}
+
+.set:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 0;
+}
+
+.set[aria-current] {
+  border-color: var(--control-selected-border);
+  background: var(--control-selected-bg);
+  box-shadow: var(--control-selected-glow);
+}
+
+.set[aria-current] .setTitle {
+  color: var(--control-selected-text);
+}
+
+.setTitle {
+  font-weight: 600;
+}
+
+.description {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.set[aria-current] .description {
+  color: color-mix(in oklab, var(--control-selected-text) 75%, transparent);
+}
+
+/* Class topics: "Basics  1 2 3" rows. */
+.topic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.topic:last-child {
+  border-bottom: 0;
+}
+
+.topicTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-1);
+}
+
+.number {
+  min-width: 26px;
+  min-height: 24px;
+  padding: 0 var(--space-1);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}

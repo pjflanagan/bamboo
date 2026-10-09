@@ -10,19 +10,22 @@ import styles from "./hanzi.module.css";
 type PhraseProps = {
   phrase: PhraseData;
   size?: HanziSize;
+  /** Center the words and the English line, for cards and titles. */
+  align?: "start" | "center";
 };
 
 /**
  * Words that wrap at word boundaries, never mid-word, with the phrase's
  * English line underneath.
  */
-export function Phrase({ phrase, size }: PhraseProps) {
+export function Phrase({ phrase, size, align = "start" }: PhraseProps) {
   const unitProps = useUnitProps("phrase");
 
   return (
     <div
       className={styles.phrase}
       data-unit="phrase"
+      data-align={align}
       lang="zh-Hant"
       style={sizeStyle(size)}
       {...unitProps}

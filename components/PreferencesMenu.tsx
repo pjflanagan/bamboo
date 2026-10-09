@@ -2,7 +2,6 @@
 
 import { useId } from "react";
 import { SlidersIcon } from "@/design-system/icons";
-import { AnnotationDefaultsControls } from "./AnnotationDefaultsControls";
 import { PreferenceControls } from "./PreferenceControls";
 import styles from "./PreferencesMenu.module.css";
 
@@ -24,11 +23,7 @@ export function PreferencesMenu() {
         <SlidersIcon />
       </button>
       <div id={id} popover="auto" className={styles.panel} aria-label="Display preferences">
-        <h2 className={styles.heading}>Display</h2>
         <PreferenceControls />
-        <h2 className={styles.heading}>Annotations</h2>
-        <p className={styles.hint}>Where a page doesn&apos;t choose for itself.</p>
-        <AnnotationDefaultsControls />
       </div>
     </>
   );

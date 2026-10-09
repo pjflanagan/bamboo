@@ -1,8 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { TouchReveal } from "@/design-system/hanzi";
-import { AnnotationDefaultsProvider } from "./AnnotationDefaultsProvider";
 import { HanziFontProvider } from "./HanziFontProvider";
 import { PreferencesSync } from "./PreferencesSync";
 import { ScriptProvider } from "./ScriptProvider";
@@ -18,11 +16,8 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <ThemeProvider>
       <ScriptProvider>
         <HanziFontProvider>
-          <AnnotationDefaultsProvider>
-            <PreferencesSync />
-            <TouchReveal />
-            {children}
-          </AnnotationDefaultsProvider>
+          <PreferencesSync />
+          {children}
         </HanziFontProvider>
       </ScriptProvider>
     </ThemeProvider>

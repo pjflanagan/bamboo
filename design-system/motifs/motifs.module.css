@@ -6,6 +6,12 @@
  *   bamboo  no frame, plain text, --sign-stalk-height 6px underline
  */
 .sign {
+  /*
+   * The page's random base hue (else the theme's), turned by this sign's
+   * own offsets (set inline from its text). A seeded sign sets both hues.
+   */
+  --sign-hue: calc(var(--random-hue, var(--neon-hue)) + var(--sign-offset, 0));
+  --sign-text-hue: calc(var(--sign-hue) + var(--sign-text-offset, 160));
   --sign-color: hsl(var(--sign-hue) var(--neon-sat) var(--neon-light));
   --sign-glow:
     hsl(var(--sign-hue) var(--neon-sat) var(--neon-light) / calc(0.6 * var(--glow-strength))) 0 0
@@ -53,6 +59,18 @@
   background:
     repeating-linear-gradient(90deg, var(--stalk-dark) 0 2px, transparent 2px 2.5em),
     linear-gradient(180deg, var(--stalk-light) 0 50%, var(--stalk-dark) 50% 100%);
+}
+
+/* text: the glowing text alone, for subheadings; plain text in bamboo. */
+.sign[data-variant="text"] {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sign[data-variant="text"]::after {
+  content: none;
 }
 
 /* double: outer frame around an inner frame, like study-mandarin's title */

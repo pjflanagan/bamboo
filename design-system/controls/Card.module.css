@@ -1,0 +1,17 @@
+.card {
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg, var(--surface-raised));
+  color: var(--card-fg, var(--text));
+  box-shadow: 0 11px 23px rgb(0 0 0 / 0.15);
+  transition: background-color var(--duration-normal) var(--ease);
+}
+
+/* Secondary text and hanzi annotations follow the card's text color. */
+.card[data-colored] {
+  --text-secondary: color-mix(in oklab, var(--card-fg) 80%, transparent);
+  --text-muted: color-mix(in oklab, var(--card-fg) 65%, transparent);
+  --annot-color: color-mix(in oklab, var(--card-fg) 72%, transparent);
+  border-color: transparent;
+}

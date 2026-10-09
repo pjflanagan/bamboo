@@ -375,7 +375,7 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
 3. ✅ **Hanzi family:** data model, `tokenize`, `Character`/`Word`/`Phrase`, `AnnotationScope`, and the playground on `/design`. *Most of the effort goes here.*
 4. ✅ **Global typography, Header, Page, layout primitives, and motifs (`Sign`, `BambooCanvas`).** As built:
     - **Sticky header, rendered by each page:** `<PageHeader title back actions>` wraps the design system's `HeaderBar`, so titles are in the static HTML with no portals. Being sticky rather than fixed, it needs no top offset.
-    - **Preferences menu:** the native `popover` attribute, which gives light-dismiss and Escape for free. It holds theme, script, hanzi font, and the **default annotation layers** (pinyin, zhuyin, English: Show / Hover / Hide). These are saved like the other preferences, applied to `<html>` before first paint, and overridden by any page's own `AnnotationScope`. On touch screens, `TouchReveal` turns taps into reveals for default hover layers.
+    - **Preferences menu:** the native `popover` attribute, which gives light-dismiss and Escape for free. It holds theme, script and hanzi font. The font is remembered per theme: Bamboo defaults to WenKai and Neon to Sans. (Default annotation layers were tried here and removed; pages set annotations through their own `AnnotationScope`.)
     - **Layout:** `Page` (default / wide / full), `Section`, `Stack` and `Cluster`. The reset and typography moved into the design system, and the typography uses zero-specificity `:where()` selectors.
     - **Motifs:** `<Sign>` takes its neon hues from a hash of its text (border and text at least 80° apart). Bamboo renders a stalk underline instead, chosen purely by `--sign-*` theme tokens. `<BambooCanvas>` is a `requestAnimationFrame` port of the bamboo-web animation that respects reduced motion and draws glowing outlines in neon. `<ProgressBar>` was pulled forward from step 5.
 5. **Controls.**
@@ -383,6 +383,31 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
 7. **PWA:** Serwist, manifest, caching rules, offline page, update toast.
 8. **AdSense:** apply for the domain early, at step 1, then build `AdSlot`, `ads.txt` and placement.
 9. **Port pages:** home, then flashcards, read, lists, karaoke, zhuyin chart and zhuyin trainer. This is a separate phase, with a plan per page once the design system has settled.
+    - **Flashcards, first pass (built ahead of steps 5 and 6):**
+        - **One page:** `/flashcards` is static. The chosen set is remembered in localStorage, and its cards load from `/api/flashcards/[set]`, static JSON prerendered for every set.
+        - **Set picker:** a `Modal` with Unit / Class `Tabs` in its fixed toolbar.
+        - **Modes:** 漢字 → English, 漢字 + 拼音 → English, English → 漢字. Each mode is just a scope config of which layers start hidden, and revealing a card is `revealed`.
+        - **Progress:**
+            - Each card has a value from 0 to 1, kept in localStorage (`lib/progress`) and keyed by the phrase, so a word shared by two sets shares its progress.
+            - Hidden: [←][Reveal][→]. Revealed: [←][−][Next][+][Known][→]. ± moves by 0.1 and Known sets 1; each then moves on. ← and → walk the cards already seen; going forward past the newest picks a new one.
+            - A `Slider` under the buttons shows the value and can set it anywhere.
+        - **Card order:** the next card is random, weighted by `0.05 + (1 − p)²`, so new cards come up about 20× as often as known ones. The current card never repeats.
+        - **Keys:** Space/Enter (reveal, then next), ← / →, and, once revealed, − / + / K.
+        - **`/sets`:** the chosen set as a `Table`, with each card's progress editable (−, slider, +), Pinyin / English checkboxes (unchecked hides that layer, and hovering peeks), Hide known, an order (set order, least known, most known), and Reset with a confirm `Modal`. Order and filter use progress as of the last option change, so rows don't jump while being edited. It shares the set picker and the remembered set with `/flashcards` (`components/flashcards`, `useChosenSet`, `useFlashcardSet`).
+    - **Home:**
+        - Everything study-mandarin's homepage had: the title sign, intro, the daily checklist (kept on the device, cleared each day), tools, videos, podcasts, apps (opening the iOS/Android app on phones), other resources, and the about section.
+        - **Content:** text comes from `data/home.json`, plus the existing `data/resources.json`. Text fields may contain `[markdown](links)`.
+        - **Unported tools:** their links point at the live study-mandarin pages until they're ported.
+        - **Sign colors:** every `<Sign>`, framed or text-only, turns one random hue per load by an offset from its own text, so headings differ from each other, as before.
+        - **Data:** `lib/data` reads `data/` from disk through `readDataFile()`. Step 6 swaps in the GitHub fetch behind that one function.
+        - **Set list:** non-class sets are listed in `lib/data/flashcards.ts` until the manifest covers them. The legacy "Reddit" link pointed at a file that doesn't exist; it now lists Reddit 1 and 2.
+        - **Pulled forward from step 5:** `Button` (+ `buttonClassName` for links), `Card` (takes a swatch name), `Tabs` and `Slider`.
+    - **`Modal` (pulled forward from step 5):**
+        - Built on native `<dialog>` + `showModal()`, which provides focus trap, inert page, Escape and focus return, so Radix isn't needed.
+        - Backdrop click closes it, and the page behind doesn't scroll.
+        - It's a centered panel on wide screens and a bottom sheet under 600px.
+        - Enter and exit animate with `@starting-style`.
+        - **Not yet:** "Known" cards wait on progress (step 11).
 10. **Cutover:** move `bamboo.flanny.app` DNS to Vercel, retire Netlify, add redirect stubs from the study-mandarin pages.
 11. **Later:**
     - **Progress and local user data:** known cards and study history, stored locally on the device.

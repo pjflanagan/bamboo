@@ -1,14 +1,13 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowLeftIcon } from "@/design-system/icons";
+import { HomeIcon } from "@/design-system/icons";
 import { HeaderBar } from "@/design-system/layout";
 import { PreferencesMenu } from "./PreferencesMenu";
 import styles from "./PageHeader.module.css";
 
 type PageHeaderProps = {
+  /** Without a title (the home page), the start slot is the 方昕中文 brand. */
   title?: ReactNode;
-  /** Where the back arrow goes. Without it, the start slot is the home link. */
-  back?: string;
   /** Page-specific controls, shown before the preferences menu. */
   actions?: ReactNode;
 };
@@ -17,10 +16,10 @@ type PageHeaderProps = {
  * The global header. Each page renders its own, so the title and actions are
  * in the static HTML: no layout-level state, no portals, no flash.
  */
-export function PageHeader({ title, back, actions }: PageHeaderProps) {
-  const start = back ? (
-    <Link href={back} className={styles.iconLink} aria-label="Back">
-      <ArrowLeftIcon />
+export function PageHeader({ title, actions }: PageHeaderProps) {
+  const start = title ? (
+    <Link href="/" className={styles.iconLink} aria-label="Home">
+      <HomeIcon />
     </Link>
   ) : (
     <Link href="/" className={styles.brand} lang="zh-Hant">

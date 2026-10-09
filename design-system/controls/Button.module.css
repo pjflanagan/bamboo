@@ -1,0 +1,80 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    box-shadow var(--duration-fast) var(--ease);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* sizes */
+
+.md {
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-md);
+}
+
+.sm {
+  min-height: 30px;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.iconOnly {
+  padding: 0;
+  aspect-ratio: 1;
+}
+
+/* variants */
+
+.primary {
+  background: var(--control-selected-bg);
+  border-color: var(--control-selected-border);
+  color: var(--control-selected-text);
+  box-shadow: var(--control-selected-glow);
+}
+
+.primary:hover:not(:disabled) {
+  background: color-mix(in oklab, var(--control-selected-bg), var(--primary-hover) 30%);
+  border-color: var(--primary-hover);
+}
+
+.secondary {
+  background: var(--control-bg);
+  border-color: var(--control-border);
+  color: var(--text);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.secondary:hover:not(:disabled),
+.ghost:hover:not(:disabled) {
+  background: var(--highlight);
+  color: var(--text);
+}

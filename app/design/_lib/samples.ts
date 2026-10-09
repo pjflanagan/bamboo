@@ -1,8 +1,7 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { cacheLife } from "next/cache";
 import type { PhraseData } from "@/design-system/hanzi";
-import { parseDictionary, tokenize } from "@/lib/hanzi";
+import { getDictionary } from "@/lib/data";
+import { tokenize } from "@/lib/hanzi";
 
 /** Real lines from data/, chosen to cover the layout's edge cases. */
 const SAMPLES = [
@@ -33,14 +32,12 @@ const SAMPLES = [
 ];
 
 /**
- * Tokenized sample phrases for the playground. Reads the dictionary from
- * disk once at build time; the real data layer replaces this in step 6.
+ * Tokenized sample phrases for the playground.
  */
 export async function getSamplePhrases(): Promise<PhraseData[]> {
   "use cache";
   cacheLife("max");
-  const csv = await readFile(join(process.cwd(), "data/dictionary.csv"), "utf-8");
-  const dictionary = parseDictionary(csv);
+  const dictionary = await getDictionary();
   return SAMPLES.map(({ text, pinyin, english }) =>
     tokenize(text, dictionary, { pinyin, english }),
   );

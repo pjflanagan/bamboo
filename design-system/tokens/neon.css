@@ -4,7 +4,8 @@
  *
  * Neon hues are parameters, not fixed colors: --neon-hue drives the primary
  * accent and --neon-hue-2 the secondary (kept >= 80deg apart, as in the
- * original). <Sign> sets its own hue locally, seeded from its text.
+ * original). <Sign> headings turn --random-hue (set by the app on every
+ * load) by an offset from their text, or use a seeded pair of their own.
  */
 
 [data-theme="neon"] {
@@ -28,6 +29,7 @@
   --surface: #242424;
   --surface-raised: #2c2c2c;
   --surface-overlay: rgb(12 12 12 / 0.88);
+  --backdrop: rgb(0 0 0 / 0.65);
   --overlay-blur: 12px;
   --shadow: 0 11px 23px #0004;
 

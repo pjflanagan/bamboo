@@ -20,11 +20,11 @@ const fontOptions = HANZI_FONTS.map((value) => ({ value, label: HANZI_FONT_LABEL
 const scriptOptions = SCRIPTS.map((value) => ({ value, label: SCRIPT_LABELS[value] }));
 
 /**
- * Theme, script, and hanzi font switchers. Used on /design now and in the
- * global header menu once it exists (step 4).
+ * Theme, script, and hanzi font switchers, shown in the header's preferences
+ * menu. The font belongs to the theme in use, so its label names the theme.
  */
 export function PreferenceControls() {
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
   const { script, setScript } = useScript();
   const { font, setFont } = useHanziFont();
 
@@ -37,7 +37,12 @@ export function PreferenceControls() {
         value={script}
         onChange={setScript}
       />
-      <SegmentedControl label="Hanzi font" options={fontOptions} value={font} onChange={setFont} />
+      <SegmentedControl
+        label={`Hanzi font · ${THEME_LABELS[resolvedTheme]}`}
+        options={fontOptions}
+        value={font}
+        onChange={setFont}
+      />
     </div>
   );
 }

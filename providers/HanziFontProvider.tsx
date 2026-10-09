@@ -2,7 +2,7 @@
 
 import { createContext, useMemo, type ReactNode } from "react";
 import type { HanziFont } from "@/design-system/attributes";
-import { setPreference } from "@/lib/preferences";
+import { setHanziFont } from "@/lib/preferences";
 import { usePreference } from "./usePreference";
 
 export type HanziFontContextValue = {
@@ -12,11 +12,12 @@ export type HanziFontContextValue = {
 
 export const HanziFontContext = createContext<HanziFontContextValue | null>(null);
 
-const setFont = (font: HanziFont) => setPreference("font", font);
-
-/** The hanzi font preference. Read it with useHanziFont(). */
+/**
+ * The hanzi font shown, which follows the theme (each theme remembers its
+ * own). setFont changes it for the current theme. Read it with useHanziFont().
+ */
 export function HanziFontProvider({ children }: { children: ReactNode }) {
   const font = usePreference("font");
-  const value = useMemo(() => ({ font, setFont }), [font]);
+  const value = useMemo(() => ({ font, setFont: setHanziFont }), [font]);
   return <HanziFontContext value={value}>{children}</HanziFontContext>;
 }

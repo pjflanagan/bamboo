@@ -1,0 +1,108 @@
+.deck {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.status {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.count {
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/*
+ * A fixed height, so the buttons below never move from card to card. Short
+ * phrases sit centered; a phrase taller than the card scrolls inside it
+ * (`safe` keeps its top reachable instead of centering it out of view).
+ */
+.card {
+  display: grid;
+  justify-items: center;
+  align-content: safe center;
+  height: clamp(14rem, 38dvh, 18rem);
+  padding: var(--space-6) var(--space-5);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*
+ * Hanzi size by phrase length, scaled down on narrow screens so short
+ * phrases still fit on one line. Long phrases wrap at word boundaries.
+ */
+.card[data-length="short"] {
+  --hanzi-size: clamp(2.5rem, 14vw, 5rem);
+}
+
+.card[data-length="medium"] {
+  --hanzi-size: clamp(2rem, 9vw, 3.5rem);
+}
+
+.card[data-length="long"] {
+  --hanzi-size: clamp(1.5rem, 6vw, 2.5rem);
+}
+
+.card[data-length="longer"] {
+  --hanzi-size: clamp(1.25rem, 4.5vw, 2rem);
+}
+
+/*
+ * Six columns in both states, so the row never changes size:
+ *   hidden    [<] [ Reveal (spans 4)        ] [>]
+ *   revealed  [<] [-] [ Next ] [+] [Known]    [>]
+ */
+.actions {
+  display: grid;
+  grid-template-columns: 44px 44px 1fr 44px auto 44px;
+  gap: var(--space-2);
+}
+
+.actions > * {
+  min-height: 48px;
+}
+
+.primary {
+  font-size: var(--text-lg);
+}
+
+.actions:not([data-revealed]) .primary {
+  grid-column: 2 / 6;
+}
+
+/* Phones: Known is just its check mark (it keeps its aria-label). */
+@media (max-width: 479px) {
+  .actions {
+    grid-template-columns: 40px 40px 1fr 40px 44px 40px;
+    gap: 6px;
+  }
+
+  .knownLabel {
+    display: none;
+  }
+}
+
+.progress {
+  display: grid;
+  grid-template-columns: 1fr 4ch;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.percent {
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+  color: var(--text-muted);
+}
+
+.translate {
+  align-self: center;
+}
