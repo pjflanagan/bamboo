@@ -1,7 +1,8 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import type { Syllable } from "@/design-system/hanzi";
 import { getDictionary } from "./dictionary";
 import { getFlashcardCatalog, getFlashcardSet } from "./flashcards";
+import { DATA_TAG } from "./files";
 
 /** The common CJK block: leaves out the rare extension characters. */
 const COMMON = /^[一-鿿]$/;
@@ -14,7 +15,8 @@ const COMMON = /^[一-鿿]$/;
  */
 export async function getZhuyinDrill(): Promise<Syllable[]> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   const [{ classTopics, collections }, dictionary] = await Promise.all([
     getFlashcardCatalog(),
     getDictionary(),

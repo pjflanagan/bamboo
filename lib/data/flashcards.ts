@@ -1,10 +1,10 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import Papa from "papaparse";
 import { isCardColor, type CardColor } from "@/design-system/controls";
 import type { PhraseData } from "@/design-system/hanzi";
 import { tokenize } from "@/lib/hanzi";
 import { getDictionary } from "./dictionary";
-import { readDataFile } from "./files";
+import { DATA_TAG, readDataFile } from "./files";
 
 /** One flashcard set: a CSV under data/flashcards. */
 export type FlashcardSetInfo = {
@@ -112,7 +112,8 @@ const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1
 /** Every set, grouped for the set picker. */
 export async function getFlashcardCatalog(): Promise<FlashcardCatalog> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   const counts = JSON.parse(await readDataFile("flashcard-sets.json")) as Record<string, number>;
   const classTopics = Object.entries(counts).map(([name, count]) => ({
     title: capitalize(name),
@@ -137,7 +138,8 @@ type Row = { phrase?: string; english?: string; pinyin?: string; color?: string 
 /** A set's cards, tokenized on the server. Rows without a phrase are skipped. */
 export async function getFlashcardSet(slug: string): Promise<FlashcardSet | undefined> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   const info = await getFlashcardSetInfo(slug);
   if (!info) return undefined;
 

@@ -1,6 +1,6 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import type { PhraseData } from "@/design-system/hanzi";
-import { getDictionary } from "@/lib/data";
+import { DATA_TAG, getDictionary } from "@/lib/data";
 import { tokenize } from "@/lib/hanzi";
 
 /** Real lines from data/, chosen to cover the layout's edge cases. */
@@ -36,7 +36,8 @@ const SAMPLES = [
  */
 export async function getSamplePhrases(): Promise<PhraseData[]> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   const dictionary = await getDictionary();
   return SAMPLES.map(({ text, pinyin, english }) =>
     tokenize(text, dictionary, { pinyin, english }),

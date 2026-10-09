@@ -307,9 +307,9 @@ A kitchen-sink route shows every component in both themes. It includes an intera
 ### Not triggering rebuilds
 In `vercel.json`:
 ```json
-{ "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)data'" }
+{ "ignoreCommand": "git diff --quiet ${VERCEL_GIT_PREVIOUS_SHA:-HEAD^} HEAD -- . ':(exclude)data'" }
 ```
-Vercel skips the build when this command exits 0, which happens when nothing outside `data/` changed. A commit that only touches `data/` therefore doesn't deploy, and a commit that touches code does.
+Vercel skips the build when this command exits 0, which happens when nothing outside `data/` changed since the last deployment (`VERCEL_GIT_PREVIOUS_SHA`), so a push of several commits is judged as a whole. A commit that only touches `data/` therefore doesn't deploy, and a commit that touches code does.
 
 ### Manifest automation
 This addresses `_todo/plan/data-management.md`.
@@ -405,7 +405,7 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
         - **Content:** text comes from `data/home.json`, plus the existing `data/resources.json`. Text fields may contain `[markdown](links)`.
         - **Unported tools:** only the zhuyin chart still links to the live study-mandarin page.
         - **Sign colors:** every `<Sign>`, framed or text-only, turns one random hue per load by an offset from its own text, so headings differ from each other, as before.
-        - **Data:** `lib/data` reads `data/` from disk through `readDataFile()`. Step 6 swaps in the GitHub fetch behind that one function.
+        - **Data (step 6, done in part):** `readDataFile()` fetches `raw.githubusercontent.com/${DATA_REPO}/refs/heads/${DATA_BRANCH}/data/…` (or reads disk with `DATA_SOURCE=local`). Every loader is `"use cache"` with `cacheLife("data")` (next.config.ts: revalidate 5 min, expire 30 days) and `cacheTag(DATA_TAG)`, so pages stay prerendered and pick up pushes to `data/` within minutes. Not yet: the revalidate webhook, `/api/data`, the manifest Action. raw.githubusercontent.com caches files for about 5 minutes itself, so a webhook alone wouldn't make updates instant.
         - **Set list:** non-class sets are listed in `lib/data/flashcards.ts` until the manifest covers them. The legacy "Reddit" link pointed at a file that doesn't exist; it now lists Reddit 1 and 2.
         - **Pulled forward from step 5:** `Button` (+ `buttonClassName` for links), `Card` (takes a swatch name), `Tabs` and `Slider`.
     - **`/read`** (Reading tool): a `TextArea` (new control) whose text is kept on the device (`/read?text=…` replaces it). Each line renders as an annotated `Phrase` in the reader's script, with Pinyin / Zhuyin checkboxes (unchecked peeks on hover or tap), a size switch and a Translate link. Typed text is tokenized in the browser with the dictionary from `/api/dictionary`: static JSON as `char -> [trad, simp, pinyin, tone, zhuyin]`, about 980 KB, or 310 KB gzipped, fetched once when the page opens.

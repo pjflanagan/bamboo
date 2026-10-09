@@ -1,5 +1,5 @@
-import { cacheLife } from "next/cache";
-import { readDataFile } from "./files";
+import { cacheLife, cacheTag } from "next/cache";
+import { DATA_TAG, readDataFile } from "./files";
 
 /*
  * The homepage's content: data/home.json (sections, tasks, tools, about) and
@@ -58,12 +58,14 @@ export type Resources = {
 
 export async function getHomeContent(): Promise<HomeContent> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   return JSON.parse(await readDataFile("home.json")) as HomeContent;
 }
 
 export async function getResources(): Promise<Resources> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   return JSON.parse(await readDataFile("resources.json")) as Resources;
 }

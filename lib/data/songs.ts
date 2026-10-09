@@ -1,10 +1,10 @@
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import Papa from "papaparse";
 import { isCardColor, type CardColor } from "@/design-system/controls";
 import type { PhraseData } from "@/design-system/hanzi";
 import { tokenize } from "@/lib/hanzi";
 import { getDictionary } from "./dictionary";
-import { readDataFile } from "./files";
+import { DATA_TAG, readDataFile } from "./files";
 
 /** One song: a CSV under data/songs, listed in data/songs/_songs.json. */
 export type SongInfo = {
@@ -49,7 +49,8 @@ async function listSongs(): Promise<{ info: SongInfo; file: string }[]> {
 /** Every song, in _songs.json order. */
 export async function getSongs(): Promise<SongInfo[]> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   return (await listSongs()).map((song) => song.info);
 }
 
@@ -58,7 +59,8 @@ type Row = { phrase?: string; english?: string; pinyin?: string; color?: string 
 /** A song's lyrics, tokenized on the server with each line's pinyin. */
 export async function getSong(slug: string): Promise<Song | undefined> {
   "use cache";
-  cacheLife("max");
+  cacheLife("data");
+  cacheTag(DATA_TAG);
   const song = (await listSongs()).find((s) => s.info.slug === slug);
   if (!song) return undefined;
 

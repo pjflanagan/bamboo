@@ -1,4 +1,6 @@
-export { getCompactDictionary, getDictionary } from "./dictionary";
+export { getCompactDictionary } from "./compact";
+export { getDictionary } from "./dictionary";
+export { DATA_TAG } from "./files";
 export {
   getFlashcardCatalog,
   getFlashcardSet,
