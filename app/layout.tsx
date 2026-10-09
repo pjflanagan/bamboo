@@ -1,12 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { THEME_COLORS } from "@/design-system/attributes";
 import { fontVariables } from "@/design-system/tokens/fonts";
-import {
-  DEFAULT_PREFERENCES,
-  DEFAULT_THEME,
-  PreferencesScript,
-  PreferencesSync,
-  THEME_COLORS,
-} from "@/design-system/preferences";
+import { DEFAULT_PREFERENCES, DEFAULT_THEME } from "@/lib/preferences";
+import { AppProviders, PreferencesScript } from "@/providers";
 import "@/design-system/tokens/index.css";
 import "./globals.css";
 
@@ -43,8 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <PreferencesScript />
       </head>
       <body>
-        <PreferencesSync />
-        {children}
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

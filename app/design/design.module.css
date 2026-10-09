@@ -3,9 +3,6 @@
 }
 
 .panel {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
   margin-bottom: var(--space-6);
 }
 

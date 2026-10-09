@@ -1,4 +1,4 @@
-import { PREFERENCES_SCRIPT } from "./preferences";
+import { PREFERENCES_SCRIPT } from "@/lib/preferences";
 
 /**
  * Render inside <head> in the root layout. Runs during HTML parsing, before

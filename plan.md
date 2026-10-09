@@ -66,30 +66,39 @@ Based on `prompt.md` and a read through `legacy/study-mandarin`, `legacy/bamboo`
 - Use `npm`. pnpm isn't installed on this machine, and npm avoids a global install.
 - **Scaffolded on Next 16.4 / React 19.3** with `cacheComponents` and `partialPrefetching` on by default. Reading cookies on the server would make every route dynamic, so preferences are applied client-side by an inline script instead (see §2.2).
 - You create and name the GitHub repo. It must be public, because the data folder is read from it (see §3). Nothing in the code hard-codes the repo name.
-- Proposed layout:
+- Repository layout (set up after step 2):
 
 ```
-/app                 Next routes
-  /(site)/...        real pages (ported later)
-  /design            design-system showcase / kitchen sink (dev reference)
-  /api/data/[...p]   JSON data endpoint (used by client + service worker, see §3/§4)
-  /api/revalidate    GitHub webhook → revalidateTag
-  manifest.ts        PWA web manifest
-  sw.ts              service worker source (Serwist)
-/design-system       the component library (no app logic)
-  /tokens            tokens.css, themes (neon.css, bamboo.css), fonts.ts
-  /hanzi             Character / Word / Phrase + annotation scope
-  /layout            Header, Page, Section, Stack
-  /controls          Button, Checkbox, Toggle, Slider, Select, SegmentedControl, ProgressBar
-  /typography        global h1–h6, p, a, lists
-  /motifs            Sign (neon sign / bamboo stalk), BambooCanvas
-  /ads               AdSlot
-/lib/data            data-fetching layer (see §3)
-/data                PUBLIC DATA — flashcards, songs, dictionary, manifests
-/scripts             existing Python pipeline (moved over, writes into /data)
-/public              icons, ads.txt
-/chrome              later
+app/              Routes only: layouts, pages, route handlers. Page-private
+                  pieces live next to the page in _components/ and _lib/.
+components/       App components built from the design system and app state
+                  (PreferenceControls; Header, flashcard views, etc. later).
+hooks/            App hooks: useTheme, useScript, useHanziFont.
+providers/        App-level state. AppProviders wraps the app once in the root
+                  layout; PreferencesScript applies saved preferences before
+                  first paint.
+lib/              Framework-free logic.
+  hanzi/          pinyin, zhuyin, dictionary, tokenize (+ tests)
+  preferences/    cookie format and the client store behind providers/
+  data/           data loaders, read from GitHub at runtime (step 6)
+design-system/    Standalone UI library: no app state, no data access.
+  attributes.ts   the data-theme / data-hanzi-font / data-script contract
+  tokens/         colors, themes, fonts, scales
+  hanzi/          Character, Word, Phrase, AnnotationScope
+  controls/       SegmentedControl (Button, Checkbox, ... in step 5)
+data/             PUBLIC DATA: flashcards, songs, dictionary, manifests
+scripts/          Python pipeline that writes into data/
+  source/         raw inputs used only by scripts/setup (not served)
+print/            printable flashcard PDFs
 ```
+
+Dependencies point one way, enforced by ESLint (`no-restricted-imports`):
+
+```text
+app → components → hooks / providers → lib → design-system
+```
+
+- **App state:** `ThemeProvider`, `ScriptProvider` and `HanziFontProvider` each expose one preference through context (`useTheme`, `useScript`, `useHanziFont`), so a component re-renders only when its preference changes. All three share the cookie store in `lib/preferences`. Rendering still never depends on them: the visual effect of every preference is CSS through `<html>` data attributes, which keeps routes static. The providers are for controls and for logic that must know the value (search, text-to-speech).
 
 - Copy over `scripts/`, `data/` (without `data/source`, see §3), `Makefile` and `requirements.txt` from study-mandarin so the Python pipeline keeps working against `/data`.
 

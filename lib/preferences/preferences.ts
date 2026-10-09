@@ -1,21 +1,26 @@
 /*
- * User display preferences. Shared by the server (defaults, inline script)
- * and the client (store). Pure: no DOM or Next APIs here.
+ * User display preferences and how they persist (a cookie). Shared by the
+ * server (defaults, inline script) and the client (store). Pure: no DOM or
+ * Next APIs here. The values themselves are the design system's attribute
+ * contract (design-system/attributes.ts).
  *
  * Every preference is applied as a data attribute on <html> and all of its
  * visual effects are CSS. Pages never read preferences to decide what to
  * render, which keeps every route statically prerenderable.
  */
 
-export const THEME_PREFS = ["system", "neon", "bamboo"] as const;
-export const THEMES = ["neon", "bamboo"] as const;
-export const HANZI_FONTS = ["sans", "serif", "wenkai", "iansui"] as const;
-export const SCRIPTS = ["trad", "simp"] as const;
+import {
+  HANZI_FONTS,
+  SCRIPTS,
+  THEMES,
+  type HanziFont,
+  type Script,
+  type Theme,
+} from "@/design-system/attributes";
 
+/** "system" follows the OS light/dark setting: dark -> neon, light -> bamboo. */
+export const THEME_PREFS = ["system", ...THEMES] as const;
 export type ThemePref = (typeof THEME_PREFS)[number];
-export type Theme = (typeof THEMES)[number];
-export type HanziFont = (typeof HANZI_FONTS)[number];
-export type Script = (typeof SCRIPTS)[number];
 
 export type Preferences = {
   theme: ThemePref;
@@ -34,19 +39,6 @@ export const DEFAULT_THEME: Theme = "bamboo";
 
 export const PREFERENCES_COOKIE = "bamboo-prefs";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
-
-export const HANZI_FONT_LABELS: Record<HanziFont, string> = {
-  sans: "Sans",
-  serif: "Serif",
-  wenkai: "WenKai",
-  iansui: "Iansui",
-};
-
-/** Background color per theme, for the browser UI (<meta name="theme-color">). */
-export const THEME_COLORS: Record<Theme, string> = {
-  neon: "#1c1c1c",
-  bamboo: "#f5f2ee",
-};
 
 function pick<T extends string>(allowed: readonly T[], value: unknown, fallback: T): T {
   return allowed.includes(value as T) ? (value as T) : fallback;

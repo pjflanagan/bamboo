@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PreferencesPanel } from "./_components/PreferencesPanel";
+import { PreferenceControls } from "@/components/PreferenceControls";
 import { TokenPreview } from "./_components/TokenPreview";
 import styles from "./design.module.css";
 
@@ -12,7 +12,9 @@ export default function DesignPage() {
   return (
     <main className={styles.page}>
       <h1>Design system</h1>
-      <PreferencesPanel />
+      <div className={styles.panel}>
+        <PreferenceControls />
+      </div>
       <div className={styles.previews}>
         <TokenPreview theme="neon" />
         <TokenPreview theme="bamboo" />

@@ -1,17 +1,17 @@
 /*
  * Client-side preferences store. The cookie is the source of truth; this
  * module caches it, writes it, and mirrors it onto <html> attributes.
+ * Components don't use it directly: providers/ wraps it in React context.
  */
 
+import { THEME_COLORS, type Theme } from "@/design-system/attributes";
 import {
   DEFAULT_PREFERENCES,
   DEFAULT_THEME,
   PREFERENCES_COOKIE,
-  THEME_COLORS,
   parsePreferences,
   serializePreferencesCookie,
   type Preferences,
-  type Theme,
 } from "./preferences";
 
 export type PreferencesState = Preferences & {

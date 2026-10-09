@@ -8,6 +8,58 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Turn off rules that conflict with Prettier formatting.
   prettier,
+  // Layer boundaries. Dependencies point one way:
+  //   app -> components -> hooks/providers -> lib -> design-system
+  // The design system is a standalone UI library; it knows nothing of the app.
+  {
+    files: ["design-system/**"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@/app/*", "@/components/*", "@/hooks/*", "@/providers/*", "@/lib/*"],
+              message: "design-system must not depend on app code.",
+            },
+            {
+              group: ["@/hooks", "@/providers"],
+              message: "design-system must not depend on app code.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["lib/**"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@/app/*", "@/components/*", "@/hooks/*", "@/providers/*"],
+              message: "lib is framework-free logic; it must not depend on React app layers.",
+            },
+            {
+              group: ["@/hooks", "@/providers"],
+              message: "lib must not depend on React app layers.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["components/**", "hooks/**", "providers/**"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        { patterns: [{ group: ["@/app/*"], message: "Shared code must not import from routes." }] },
+      ],
+    },
+  },
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",

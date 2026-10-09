@@ -1,4 +1,4 @@
-import { HANZI_FONTS, HANZI_FONT_LABELS, type Theme } from "@/design-system/preferences";
+import { HANZI_FONTS, HANZI_FONT_LABELS, type Theme } from "@/design-system/attributes";
 import styles from "../design.module.css";
 
 const SEMANTIC = [

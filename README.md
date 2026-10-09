@@ -7,15 +7,31 @@ See [`plan.md`](./plan.md) for the full plan and build order.
 ## Layout
 
 ```
-app/              Next.js routes (App Router)
-  design/         design-system kitchen sink
-design-system/    component library: tokens, hanzi, layout, controls, motifs (step 2+)
-lib/data/         data loaders, read from GitHub at runtime (step 6)
+app/              Routes only: layouts, pages, route handlers. Page-private
+                  pieces live next to the page in _components/ and _lib/.
+components/       App components built from the design system and app state
+                  (PreferenceControls; Header, flashcard views, etc. later).
+hooks/            App hooks: useTheme, useScript, useHanziFont.
+providers/        App-level state. AppProviders wraps the app once in the root
+                  layout; PreferencesScript applies saved preferences before
+                  first paint.
+lib/              Framework-free logic.
+  preferences/    cookie format and the client store behind providers/
+  data/           data loaders, read from GitHub at runtime (step 6)
+design-system/    Standalone UI library: no app state, no data access.
+  attributes.ts   the data-theme / data-hanzi-font / data-script contract
+  tokens/         colors, themes, fonts, scales
+  controls/       SegmentedControl (Button, Checkbox, ... in step 5)
 data/             PUBLIC DATA: flashcards, songs, dictionary, manifests
 scripts/          Python pipeline that writes into data/
   source/         raw inputs used only by scripts/setup (not served)
 print/            printable flashcard PDFs
-legacy/           old study-mandarin, bamboo, and bamboo-web code, for reference
+```
+
+Dependencies point one way, enforced by ESLint (`no-restricted-imports`):
+
+```
+app → components → hooks / providers → lib → design-system
 ```
 
 ## Develop
