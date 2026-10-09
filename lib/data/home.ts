@@ -1,4 +1,5 @@
 import { cacheLife, cacheTag } from "next/cache";
+import { getDictionary } from "./dictionary";
 import { DATA_TAG, readDataFile } from "./files";
 
 /*
@@ -11,7 +12,12 @@ import { DATA_TAG, readDataFile } from "./files";
 export type AppTarget = { web: string; ios?: string; android?: string };
 
 /** What a piece of Chinese on the page means, shown in a tooltip. */
-export type Gloss = { pinyin: string; english: string };
+export type Gloss = {
+  pinyin: string;
+  english: string;
+  /** The term in simplified characters, when that differs (added by the loader). */
+  simp?: string;
+};
 export type Glossary = Readonly<Record<string, Gloss>>;
 
 export type Task = { id: string; label: string; href?: string; app?: AppTarget };
@@ -65,7 +71,16 @@ export async function getHomeContent(): Promise<HomeContent> {
   "use cache";
   cacheLife("data");
   cacheTag(DATA_TAG);
-  return JSON.parse(await readDataFile("home.json")) as HomeContent;
+  const [json, dictionary] = await Promise.all([readDataFile("home.json"), getDictionary()]);
+  const home = JSON.parse(json) as HomeContent;
+  // Each term's simplified form, so the page can follow the 繁/简 preference.
+  const glossary = Object.fromEntries(
+    Object.entries(home.glossary).map(([term, gloss]) => {
+      const simp = [...term].map((char) => dictionary.get(char)?.simp ?? char).join("");
+      return [term, simp === term ? gloss : { ...gloss, simp }];
+    }),
+  );
+  return { ...home, glossary };
 }
 
 export async function getResources(): Promise<Resources> {

@@ -10,3 +10,12 @@
 .english {
   color: var(--text-secondary);
 }
+
+/* The script preference sets these on <html> (design-system/hanzi/scope.css). */
+.trad {
+  display: var(--script-trad, inline);
+}
+
+.simp {
+  display: var(--script-simp, none);
+}

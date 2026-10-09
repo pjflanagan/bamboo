@@ -12,7 +12,8 @@ type GlossedProps = {
 
 /**
  * Text with every glossary term in it wrapped in a tooltip: hover or tap
- * 每天任務 to see "měitiān rènwù · daily tasks".
+ * 每天任務 to see "měitiān rènwù · daily tasks". Terms follow the 繁/简
+ * preference (both forms are rendered; CSS shows one, like Character).
  */
 export function Glossed({ text, glossary, focusable = true }: GlossedProps) {
   return splitGlossary(text, Object.keys(glossary)).map(({ text, term }, i) => {
@@ -29,7 +30,14 @@ export function Glossed({ text, glossary, focusable = true }: GlossedProps) {
           </>
         }
       >
-        {text}
+        {gloss.simp ? (
+          <>
+            <span className={styles.trad}>{text}</span>
+            <span className={styles.simp}>{gloss.simp}</span>
+          </>
+        ) : (
+          text
+        )}
       </Tooltip>
     );
   });
