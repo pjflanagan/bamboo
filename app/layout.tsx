@@ -7,12 +7,21 @@ import "@/design-system/tokens/index.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  // Makes the share card (opengraph-image.png, twitter-image.png) an absolute URL.
+  metadataBase: new URL("https://bamboo.flanny.app"),
   title: {
     default: "方昕中文",
     template: "方昕中文: %s",
   },
   description:
     "A personal Traditional Chinese study site with flashcards, a text reader, zhuyin drills, and song lyrics.",
+  openGraph: {
+    type: "website",
+    siteName: "方昕中文",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export const viewport: Viewport = {
