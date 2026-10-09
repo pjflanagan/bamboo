@@ -8,6 +8,11 @@ type SignProps = {
   /** For in-page links (#videos). */
   id?: string;
   /**
+   * The sign's text, when children aren't a plain string (e.g. wrapped in
+   * tooltips). Its colors are derived from this.
+   */
+  text?: string;
+  /**
    * single: one glowing frame. double: the outer-and-inner frame of
    * study-mandarin's page title. text: glowing text without a frame, for
    * subheadings (plain text in bamboo).
@@ -33,9 +38,10 @@ export function Sign({
   variant = "single",
   seed,
   id,
+  text: label,
   className,
 }: SignProps) {
-  const text = typeof children === "string" ? children : "sign";
+  const text = label ?? (typeof children === "string" ? children : "sign");
   const { hue, textHue } = seededHues(seed ?? text);
   const vars: Record<string, number> =
     seed !== undefined

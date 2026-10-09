@@ -6,27 +6,60 @@
     "groups": [
       {
         "title": "做所有這些",
-        "items": [{ "id": "flashcards", "label": "Flashcards", "href": "/flashcards" }]
+        "require": "all",
+        "items": [
+          {
+            "id": "flashcards",
+            "label": "Flashcards",
+            "href": "/flashcards"
+          }
+        ]
       },
       {
         "title": "做一個的這些",
+        "require": "one",
         "items": [
-          { "id": "tv-show", "label": "看 YouTube", "href": "#videos" },
-          { "id": "podcast", "label": "聽 podcast", "href": "#podcasts" },
-          { "id": "make-flashcards", "label": "Make flashcards" },
+          {
+            "id": "tv-show",
+            "label": "看 YouTube",
+            "href": "#videos"
+          },
+          {
+            "id": "podcast",
+            "label": "聽 podcast",
+            "href": "#podcasts"
+          },
+          {
+            "id": "make-flashcards",
+            "label": "Make flashcards"
+          },
           {
             "id": "duolingo",
             "label": "Duolingo",
-            "app": { "web": "https://duolingo.com/", "ios": "duolingo://", "android": "duolingo://" }
+            "app": {
+              "web": "https://duolingo.com/",
+              "ios": "duolingo://",
+              "android": "duolingo://"
+            }
           }
         ]
       },
       {
         "title": "考慮這樣做",
+        "require": "none",
         "items": [
-          { "id": "song", "label": "Translate 唱歌" },
-          { "id": "read-book", "label": "讀書" },
-          { "id": "write-characters", "label": "寫字" }
+          {
+            "id": "song",
+            "label": "Translate 唱歌"
+          },
+          {
+            "id": "read-book",
+            "label": "讀書"
+          },
+          {
+            "id": "write-characters",
+            "label": "寫字"
+          }
         ]
       }
     ]
@@ -35,26 +68,31 @@
     "title": "學習工具",
     "items": [
       {
+        "glyph": "卡",
         "name": "Flashcards",
         "href": "/flashcards",
-        "description": "A collection of sets I've curated and a few I've found online from other students. Track how well you know each card on the [Sets](/sets) page. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/study-mandarin/tree/gh-pages/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf)."
+        "description": "A collection of sets I've curated and a few I've found online from other students. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/study-mandarin/tree/gh-pages/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf)."
       },
       {
+        "glyph": "列",
         "name": "Lists",
-        "href": "https://flanny.app/study-mandarin/page/lists/",
-        "description": "View any of the flashcard sets as one long list."
+        "href": "/lists",
+        "description": "Every card in a set as one long list: see how well you know each one and adjust it."
       },
       {
+        "glyph": "唱",
         "name": "唱歌",
         "href": "https://flanny.app/study-mandarin/page/karaoke/",
         "description": "Follow along with song lyrics in Chinese with toggleable pinyin and hover-to-reveal English translations. See more on [Google Docs](https://drive.google.com/drive/folders/1axMQBMYX7Rk4quZHPtHFPWvlqEIqbFyj?usp=share_link) or listen to [the Spotify playlist](https://open.spotify.com/playlist/7636wPWQfSQ2UXZ6Lj9Mn9?si=56c81ab3fd9b4c6f)."
       },
       {
+        "glyph": "注",
         "name": "注音 Trainer",
         "href": "https://flanny.app/study-mandarin/page/zhuyin-trainer/",
         "description": "Randomly pick a character and display only the zhuyin to practice reading. You can also study up with the [zhuyin chart](https://flanny.app/study-mandarin/page/zhuyin-chart/)."
       },
       {
+        "glyph": "讀",
         "name": "讀 Tool",
         "href": "https://flanny.app/study-mandarin/page/read/",
         "description": "Type or copy/paste text to see pinyin and zhuyin, reformats to traditional."
@@ -67,6 +105,100 @@
     "apps": "Apps",
     "other": "其他"
   },
+  "glossary": {
+    "方昕中文": {
+      "pinyin": "Fāng Xīn Zhōngwén",
+      "english": "Fang Xin's Chinese"
+    },
+    "你好": {
+      "pinyin": "nǐ hǎo",
+      "english": "hello"
+    },
+    "每天任務": {
+      "pinyin": "měitiān rènwù",
+      "english": "daily tasks"
+    },
+    "做所有這些": {
+      "pinyin": "zuò suǒyǒu zhèxiē",
+      "english": "do all of these"
+    },
+    "做一個的這些": {
+      "pinyin": "zuò yí ge de zhèxiē",
+      "english": "do one of these"
+    },
+    "考慮這樣做": {
+      "pinyin": "kǎolǜ zhèyàng zuò",
+      "english": "consider doing these"
+    },
+    "看": {
+      "pinyin": "kàn",
+      "english": "watch"
+    },
+    "聽": {
+      "pinyin": "tīng",
+      "english": "listen to"
+    },
+    "唱歌": {
+      "pinyin": "chàng gē",
+      "english": "sing songs"
+    },
+    "讀書": {
+      "pinyin": "dú shū",
+      "english": "read a book"
+    },
+    "寫字": {
+      "pinyin": "xiě zì",
+      "english": "write characters"
+    },
+    "學習工具": {
+      "pinyin": "xuéxí gōngjù",
+      "english": "study tools"
+    },
+    "注音": {
+      "pinyin": "zhùyīn",
+      "english": "zhuyin (bopomofo), Taiwan's phonetic alphabet"
+    },
+    "讀": {
+      "pinyin": "dú",
+      "english": "read"
+    },
+    "卡": {
+      "pinyin": "kǎ",
+      "english": "card"
+    },
+    "列": {
+      "pinyin": "liè",
+      "english": "list"
+    },
+    "唱": {
+      "pinyin": "chàng",
+      "english": "sing"
+    },
+    "注": {
+      "pinyin": "zhù",
+      "english": "annotate (as in 注音)"
+    },
+    "影片": {
+      "pinyin": "yǐngpiàn",
+      "english": "videos"
+    },
+    "老師": {
+      "pinyin": "lǎoshī",
+      "english": "teachers"
+    },
+    "故事": {
+      "pinyin": "gùshì",
+      "english": "stories"
+    },
+    "其他": {
+      "pinyin": "qítā",
+      "english": "other"
+    },
+    "我是": {
+      "pinyin": "wǒ shì",
+      "english": "I am (about me)"
+    }
+  },
   "about": {
     "title": "我是",
     "paragraphs": [
@@ -74,9 +206,18 @@
     ],
     "disclaimer": "* These tools were built by a student, not a native speaker. There may be errors. Characters often default to the most common pronunciation which may not be correct in all contexts.",
     "links": [
-      { "label": "More Apps", "href": "https://flanny.app" },
-      { "label": "About Me", "href": "https://pjflanagan.me" },
-      { "label": "Github Repository", "href": "https://github.com/pjflanagan/study-mandarin" }
+      {
+        "label": "More Apps",
+        "href": "https://flanny.app"
+      },
+      {
+        "label": "About Me",
+        "href": "https://pjflanagan.me"
+      },
+      {
+        "label": "Github Repository",
+        "href": "https://github.com/pjflanagan/study-mandarin"
+      }
     ]
   }
 }

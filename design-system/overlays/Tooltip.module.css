@@ -1,0 +1,56 @@
+/*
+ * The trigger is inline and positioned, so the bubble centers above it. The
+ * bubble stays in the DOM (it's the trigger's description) and only becomes
+ * visible when open. It sits above stretched links (z-index), and inherits
+ * nothing from headings it may be inside.
+ */
+.trigger {
+  position: relative;
+  z-index: 1;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  z-index: var(--z-overlay);
+  width: max-content;
+  max-width: min(16rem, 80vw);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow);
+  font-family: var(--font-text);
+  font-size: var(--text-xs);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  color: var(--text);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease),
+    visibility var(--duration-fast) allow-discrete;
+}
+
+.trigger[data-open] > .bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}

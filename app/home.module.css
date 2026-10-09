@@ -1,22 +1,158 @@
+/* background --------------------------------------------------------------- */
+
+/*
+ * Fixed behind everything. 100lvh (the largest viewport) keeps the canvas
+ * the same size while a phone's address bar shows and hides, so the stalks
+ * don't regrow on every scroll.
+ */
+.background {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: 100lvh;
+  pointer-events: none;
+}
+
+.bamboo {
+  opacity: 0.9;
+}
+
+/* Neon: study-mandarin's dark homepage gradient instead of the stalks. */
+:global([data-theme="neon"]) .background {
+  background: linear-gradient(180deg, #080808 0%, var(--bg) 70%);
+}
+
+:global([data-theme="neon"]) .bamboo {
+  display: none;
+}
+
+/* layout ------------------------------------------------------------------- */
+
+.home {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/*
+ * Glossy glass: the cards are partly see-through over the background, blurred
+ * and saturated behind, with a bright top edge. The rim is brighter in bamboo
+ * (glow 0) than in neon (glow 1).
+ */
+.home :is(.tasks, .feature, .resource, .about) {
+  border-color: rgb(255 255 255 / calc(0.14 + 0.26 * (1 - var(--glow-strength))));
+  background: linear-gradient(
+    150deg,
+    color-mix(in oklab, var(--surface-raised) 72%, transparent),
+    color-mix(in oklab, var(--surface-raised) 52%, transparent)
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / calc(0.1 + 0.4 * (1 - var(--glow-strength)))),
+    0 10px 30px rgb(0 0 0 / 0.16);
+  backdrop-filter: blur(14px) saturate(1.5);
+}
+
+.cardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.cardTitle {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xl);
+}
+
+.cardHeader .cardTitle {
+  margin: 0;
+}
+
+.sectionTitle {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-xl);
+}
+
+/* hero --------------------------------------------------------------------- */
+
+/* Straight on the background; a soft halo of the page color keeps it legible. */
+.hero {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  padding-block: var(--space-6) var(--space-2);
+}
+
 .title {
-  margin-block: var(--space-4) var(--space-6);
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3rem);
 }
 
-.subheading {
-  margin: var(--space-6) 0 var(--space-2);
+.intro {
+  max-width: 40rem;
+  margin: 0;
   font-size: var(--text-lg);
+  font-weight: 500;
+  text-shadow:
+    0 0 8px var(--bg),
+    0 0 16px var(--bg);
 }
 
-.category {
-  margin: var(--space-2) 0 var(--space-1);
+/* daily tasks -------------------------------------------------------------- */
+
+.tally[data-met] {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.tally {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.taskColumns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.groupHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.groupTitle {
+  margin: 0;
   font-size: var(--text-md);
 }
 
-/* Side-by-side groups (task lists, video categories) that wrap on phones. */
-.columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: 0 var(--space-6);
+/* A small pill saying what the group asks for; it turns green once met. */
+.requirement {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px var(--space-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.requirement[data-met] {
+  border-color: var(--control-selected-border);
+  background: var(--control-selected-bg);
+  color: var(--control-selected-text);
+  box-shadow: var(--control-selected-glow);
 }
 
 .checklist {
@@ -27,26 +163,156 @@
   list-style: none;
 }
 
+/* features ----------------------------------------------------------------- */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  transition:
+    transform var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    box-shadow var(--duration-fast) var(--ease);
+}
+
+.feature:hover {
+  transform: translateY(-2px);
+  border-color: var(--control-selected-border);
+  box-shadow:
+    0 14px 28px rgb(0 0 0 / 0.18),
+    var(--control-selected-glow);
+}
+
+.feature:has(.featureLink:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* One character in a rounded tile, in the theme's accent. */
+.glyph {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--control-selected-border);
+  border-radius: var(--radius-lg);
+  background: var(--control-selected-bg);
+  box-shadow: var(--control-selected-glow);
+  font-family: var(--font-hanzi);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--control-selected-text);
+}
+
+.featureLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  color: inherit;
+  text-decoration: none;
+}
+
+.featureLink:focus-visible {
+  outline: none;
+}
+
+/* The whole card is the link's hit area; tooltips (z-index 1) sit above it. */
+.featureLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.featureName {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+.featureDescription {
+  flex: 1;
+  margin: 0;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Links inside the description stay clickable above the stretched link. */
+.featureDescription a {
+  position: relative;
+  z-index: 1;
+}
+
+.featureFooter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--link);
+}
+
+/* resources ---------------------------------------------------------------- */
+
+.resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  align-items: start;
+  gap: var(--space-4);
+}
+
+/* #videos and #podcasts (linked from the tasks) land below the sticky header. */
+.resource .cardTitle {
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+
+.category {
+  margin: var(--space-3) 0 var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .list {
   display: grid;
   gap: var(--space-2);
   margin: 0;
-  padding-inline-start: var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  flex-direction: column;
 }
 
 .description {
+  font-size: var(--text-xs);
   color: var(--text-muted);
 }
 
-.struck {
+.struck > :first-child {
   color: var(--text-muted);
   text-decoration: line-through;
 }
 
-.about {
-  margin-top: var(--space-12);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--border-strong);
+/* about -------------------------------------------------------------------- */
+
+.about p {
+  max-width: 44rem;
 }
 
 .disclaimer {
@@ -56,8 +322,8 @@
 }
 
 .links {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-1);
-  padding-inline-start: var(--space-5);
-  font-size: var(--text-sm);
+  margin-left: calc(-1 * var(--space-3));
 }

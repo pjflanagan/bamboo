@@ -7,16 +7,16 @@ import { getFlashcardCatalog } from "@/lib/data";
 import { SetEditor } from "./_components/SetEditor";
 
 export const metadata: Metadata = {
-  title: "Sets",
+  title: "Lists",
 };
 
-export default async function SetsPage() {
+export default async function ListsPage() {
   const catalog = await getFlashcardCatalog();
 
   return (
     <>
       <PageHeader
-        title="Sets"
+        title="Lists"
 
         actions={
           <Link href="/flashcards" className={buttonClassName({ variant: "ghost", size: "sm" })}>

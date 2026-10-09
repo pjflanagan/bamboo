@@ -11,7 +11,7 @@ app/              Routes only: layouts, pages, route handlers. Page-private
                   pieces live next to the page in _components/ and _lib/.
 components/       App components built from the design system and app state:
                   PageHeader, PreferencesMenu, preference controls, RichText,
-                  AppLink, flashcards/ (SetChooser, SetPicker).
+                  Glossed, AppLink, flashcards/ (SetChooser, SetPicker).
 hooks/            App hooks: useTheme, useScript, useHanziFont, useProgress, useLocalStore.
 providers/        App-level state. AppProviders wraps the app once in the root
                   layout; PreferencesScript applies saved preferences before
@@ -21,7 +21,7 @@ lib/              Framework-free logic.
   preferences/    cookie format and the client store behind providers/
   progress/       per-card progress (0-1) and weighted card choice
   storage/        localStorage-backed stores for useSyncExternalStore
-  text/           [markdown](link) parsing for content files
+  text/           [markdown](link) parsing and glossary matching for content
   data/           data loaders, read from GitHub at runtime (step 6)
 design-system/    Standalone UI library: no app state, no data access.
   attributes.ts   the data-theme / data-hanzi-font / data-script contract
@@ -31,7 +31,7 @@ design-system/    Standalone UI library: no app state, no data access.
   hanzi/          Character, Word, Phrase, AnnotationScope
   motifs/         Sign, BambooCanvas
   controls/       Button, Card, Checkbox, SegmentedControl, ProgressBar, Slider, Table, Tabs
-  overlays/       Modal (Tooltip, Toast later)
+  overlays/       Modal, Tooltip (Toast later)
   icons/          a few inline SVG icons
 data/             PUBLIC DATA: flashcards, songs, dictionary, manifests
 scripts/          Python pipeline that writes into data/

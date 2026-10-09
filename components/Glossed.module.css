@@ -1,0 +1,12 @@
+.pinyin,
+.english {
+  display: block;
+}
+
+.pinyin {
+  font-weight: 600;
+}
+
+.english {
+  color: var(--text-secondary);
+}

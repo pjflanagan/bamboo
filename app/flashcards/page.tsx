@@ -19,8 +19,8 @@ export default async function FlashcardsPage() {
         title="Flashcards"
 
         actions={
-          <Link href="/sets" className={buttonClassName({ variant: "ghost", size: "sm" })}>
-            Sets
+          <Link href="/lists" className={buttonClassName({ variant: "ghost", size: "sm" })}>
+            Lists
           </Link>
         }
       />

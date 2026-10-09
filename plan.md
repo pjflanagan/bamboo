@@ -393,8 +393,14 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
             - A `Slider` under the buttons shows the value and can set it anywhere.
         - **Card order:** the next card is random, weighted by `0.05 + (1 − p)²`, so new cards come up about 20× as often as known ones. The current card never repeats.
         - **Keys:** Space/Enter (reveal, then next), ← / →, and, once revealed, − / + / K.
-        - **`/sets`:** the chosen set as a `Table`, with each card's progress editable (−, slider, +), Pinyin / English checkboxes (unchecked hides that layer, and hovering peeks), Hide known, an order (set order, least known, most known), and Reset with a confirm `Modal`. Order and filter use progress as of the last option change, so rows don't jump while being edited. It shares the set picker and the remembered set with `/flashcards` (`components/flashcards`, `useChosenSet`, `useFlashcardSet`).
+        - **`/lists`** (study-mandarin's Lists page, reworked): the chosen set as a `Table`, with each card's progress editable (−, slider, +), Pinyin / English checkboxes (unchecked hides that layer, and hovering peeks), Hide known, an order (set order, least known, most known), and Reset with a confirm `Modal`. Order and filter use progress as of the last option change, so rows don't jump while being edited. It shares the set picker and the remembered set with `/flashcards` (`components/flashcards`, `useChosenSet`, `useFlashcardSet`).
     - **Home:**
+        - **Layout:** the title and intro sit straight on a fixed background. In bamboo that's `BambooCanvas`; in neon it's study-mandarin's dark gradient. Below them are glossy glass cards (see-through, blurred, with a bright top edge):
+            - the daily tasks, with a done-today count. Each group has a `require` of `all`, `one` or `none` (optional), shown as a pill that lights up when met. The count covers only required checks and reads "Done for today" once they're all met (`lib/tasks`).
+            - a grid of feature cards (each with a `glyph`, and clickable as a whole while its inline links still work);
+            - one card per resource type;
+            - an about card.
+        - **Tooltips on Chinese:** every piece of Chinese on the page shows its pinyin and English on hover or tap, with no underline or help cursor. This uses the new `Tooltip` (design-system/overlays), driven by the `glossary` in `data/home.json` and matched longest first, so 唱歌 is one term rather than 唱 + 歌.
         - Everything study-mandarin's homepage had: the title sign, intro, the daily checklist (kept on the device, cleared each day), tools, videos, podcasts, apps (opening the iOS/Android app on phones), other resources, and the about section.
         - **Content:** text comes from `data/home.json`, plus the existing `data/resources.json`. Text fields may contain `[markdown](links)`.
         - **Unported tools:** their links point at the live study-mandarin pages until they're ported.

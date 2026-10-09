@@ -14,7 +14,11 @@ export {
   getHomeContent,
   getResources,
   type AppTarget,
+  type Gloss,
+  type Glossary,
   type HomeContent,
   type Resources,
   type Task,
+  type TaskGroup,
+  type TaskRequirement,
 } from "./home";
