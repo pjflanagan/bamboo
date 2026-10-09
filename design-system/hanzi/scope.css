@@ -1,0 +1,59 @@
+/*
+ * Global half of the annotation system (the slots live in hanzi.module.css).
+ * These rules flip the "-on" custom properties that slot visibility reads.
+ * They are attribute selectors on purpose: units carry data-unit, scopes
+ * carry data-script, and both may come from anywhere in the tree.
+ */
+
+/* Hover reveals, only on devices that can hover (touch uses taps instead). */
+@media (hover: hover) {
+  [data-unit="character"]:hover {
+    --hc-hanzi-on: var(--hc-hanzi);
+    --hc-pinyin-on: var(--hc-pinyin);
+    --hc-zhuyin-on: var(--hc-zhuyin);
+    --hc-english-on: var(--hc-english);
+  }
+
+  [data-unit="word"]:hover {
+    --hw-hanzi-on: var(--hw-hanzi);
+    --hw-pinyin-on: var(--hw-pinyin);
+    --hw-zhuyin-on: var(--hw-zhuyin);
+    --hw-english-on: var(--hw-english);
+  }
+
+  [data-unit="phrase"]:hover {
+    --hp-hanzi-on: var(--hp-hanzi);
+    --hp-pinyin-on: var(--hp-pinyin);
+    --hp-zhuyin-on: var(--hp-zhuyin);
+    --hp-english-on: var(--hp-english);
+  }
+}
+
+/* Click reveals: the scope's listener toggles data-revealed on the unit. */
+[data-unit][data-revealed] {
+  --k-hanzi-on: var(--k-hanzi);
+  --k-pinyin-on: var(--k-pinyin);
+  --k-zhuyin-on: var(--k-zhuyin);
+  --k-english-on: var(--k-english);
+}
+
+/* On touch screens a tap also reveals hover layers. */
+@media (hover: none) {
+  [data-unit][data-revealed] {
+    --k-hanzi-on: var(--kt-hanzi);
+    --k-pinyin-on: var(--kt-pinyin);
+    --k-zhuyin-on: var(--kt-zhuyin);
+    --k-english-on: var(--kt-english);
+  }
+}
+
+/* Script preference: <html> carries the user's choice, a scope may override. */
+[data-script="trad"] {
+  --script-trad: inline;
+  --script-simp: none;
+}
+
+[data-script="simp"] {
+  --script-trad: none;
+  --script-simp: inline;
+}

@@ -16,11 +16,13 @@ providers/        App-level state. AppProviders wraps the app once in the root
                   layout; PreferencesScript applies saved preferences before
                   first paint.
 lib/              Framework-free logic.
+  hanzi/          pinyin, zhuyin, dictionary, tokenize (+ tests)
   preferences/    cookie format and the client store behind providers/
   data/           data loaders, read from GitHub at runtime (step 6)
 design-system/    Standalone UI library: no app state, no data access.
   attributes.ts   the data-theme / data-hanzi-font / data-script contract
   tokens/         colors, themes, fonts, scales
+  hanzi/          Character, Word, Phrase, AnnotationScope
   controls/       SegmentedControl (Button, Checkbox, ... in step 5)
 data/             PUBLIC DATA: flashcards, songs, dictionary, manifests
 scripts/          Python pipeline that writes into data/
@@ -42,7 +44,7 @@ cp .env.example .env.local
 npm run dev            # or: make dev
 ```
 
-Other scripts: `npm run lint`, `npm run typecheck`, `npm run format`.
+Other scripts: `npm run lint`, `npm run typecheck`, `npm test`, `npm run format`.
 
 ## Data
 

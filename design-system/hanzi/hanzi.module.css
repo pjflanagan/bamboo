@@ -1,0 +1,226 @@
+/*
+ * Annotated hanzi. Every unit is a grid whose tracks always exist, so hiding
+ * an annotation never changes a unit's size; only `collapsed` removes a track.
+ * All dimensions are in em of --hanzi-size: one variable scales everything.
+ *
+ * Visibility for each layer is a var() fallback chain, resolved from the
+ * custom properties AnnotationScope sets and scope.css toggles on hover and
+ * click (see annotation.ts for what each property means):
+ *
+ *   hovered character > hovered word > hovered phrase > clicked unit
+ *     > revealed by parent > the layer's resting mode > visible
+ */
+
+.char,
+.word,
+.phrase {
+  font-size: var(--hanzi-size, 2.5rem);
+}
+
+/* character ---------------------------------------------------------------- */
+
+.char {
+  --unit-tone: currentColor;
+  display: inline-grid;
+  grid-template-columns: minmax(1em, auto) var(--track-zhuyin, 0.46em);
+  grid-template-rows: var(--track-pinyin, 0.36em) 1em;
+  grid-template-areas:
+    "pinyin zhuyin"
+    "hanzi  zhuyin";
+  line-height: 1;
+  vertical-align: top;
+  border-radius: 0.08em;
+}
+
+.char[data-tone="1"] {
+  --unit-tone: var(--tone-1);
+}
+.char[data-tone="2"] {
+  --unit-tone: var(--tone-2);
+}
+.char[data-tone="3"] {
+  --unit-tone: var(--tone-3);
+}
+.char[data-tone="4"] {
+  --unit-tone: var(--tone-4);
+}
+.char[data-tone="5"] {
+  --unit-tone: var(--tone-5);
+}
+
+.char[data-selected] {
+  background: var(--highlight);
+}
+
+.pinyin {
+  grid-area: pinyin;
+  align-self: end;
+  justify-self: center;
+  padding-bottom: 0.04em;
+  font-family: var(--font-latin), sans-serif;
+  font-size: 0.26em;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: color-mix(in oklab, var(--unit-tone) var(--tone-mix, 0%), var(--annot-color));
+  overflow-x: visible;
+  overflow-y: clip;
+  visibility: var(
+    --hc-pinyin-on,
+    var(
+      --hw-pinyin-on,
+      var(--hp-pinyin-on, var(--k-pinyin-on, var(--rev-pinyin, var(--base-pinyin, visible))))
+    )
+  );
+}
+
+.hanzi {
+  grid-area: hanzi;
+  height: 1em;
+  text-align: center;
+  font-family: var(--font-hanzi);
+  white-space: nowrap;
+  color: color-mix(in oklab, var(--unit-tone) var(--tone-mix, 0%), currentColor);
+  visibility: var(
+    --hc-hanzi-on,
+    var(
+      --hw-hanzi-on,
+      var(--hp-hanzi-on, var(--k-hanzi-on, var(--rev-hanzi, var(--base-hanzi, visible))))
+    )
+  );
+}
+
+.trad {
+  display: var(--script-trad, inline);
+}
+
+.simp {
+  display: var(--script-simp, none);
+}
+
+/* Zhuyin: symbols stacked vertically, tone mark beside the last symbol. */
+.zhuyin {
+  grid-area: zhuyin;
+  align-self: center;
+  display: flex;
+  padding-left: 0.04em;
+  font-family: var(--font-hanzi);
+  font-size: 0.3em;
+  line-height: 1;
+  color: color-mix(in oklab, var(--unit-tone) var(--tone-mix, 0%), var(--annot-color));
+  overflow-x: clip;
+  overflow-y: visible;
+  visibility: var(
+    --hc-zhuyin-on,
+    var(
+      --hw-zhuyin-on,
+      var(--hp-zhuyin-on, var(--k-zhuyin-on, var(--rev-zhuyin, var(--base-zhuyin, visible))))
+    )
+  );
+}
+
+.zhuyinSymbols {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.toneMark {
+  align-self: flex-end;
+  height: 1em;
+  font-size: 0.9em;
+}
+
+/* Punctuation and latin: the character box without annotations or zhuyin column. */
+.text {
+  grid-template-columns: auto 0;
+}
+
+.text .hanzi {
+  font-family: var(--font-text);
+  color: inherit;
+  visibility: inherit;
+}
+
+/* word --------------------------------------------------------------------- */
+
+.word {
+  display: inline-grid;
+  grid-template-rows: auto var(--track-english, auto);
+  vertical-align: top;
+  border-radius: 0.08em;
+}
+
+.chars {
+  display: flex;
+}
+
+/* Wraps within the word's width instead of widening it. */
+.english {
+  width: 0;
+  min-width: 100%;
+  padding-top: 0.1em;
+  font-family: var(--font-latin), sans-serif;
+  font-size: max(0.24em, var(--text-xs));
+  line-height: 1.25;
+  text-align: center;
+  color: var(--text-secondary);
+  overflow-y: clip;
+  visibility: var(
+    --hc-english-on,
+    var(
+      --hw-english-on,
+      var(--hp-english-on, var(--k-english-on, var(--rev-english, var(--base-english, visible))))
+    )
+  );
+}
+
+/* phrase ------------------------------------------------------------------- */
+
+.phrase {
+  display: grid;
+  grid-template-rows: auto var(--track-english, auto);
+  border-radius: 0.08em;
+}
+
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.25em 0.3em;
+}
+
+.phraseEnglish {
+  padding-top: 0.25em;
+  font-family: var(--font-latin), sans-serif;
+  font-size: max(0.32em, var(--text-sm));
+  line-height: 1.35;
+  color: var(--text-secondary);
+  overflow-y: clip;
+  visibility: var(
+    --hc-english-on,
+    var(
+      --hw-english-on,
+      var(--hp-english-on, var(--k-english-on, var(--rev-english, var(--base-english, visible))))
+    )
+  );
+}
+
+/* clickable units ---------------------------------------------------------- */
+
+.char[role="button"],
+.word[role="button"],
+.phrase[role="button"] {
+  cursor: pointer;
+}
+
+.char[role="button"]:hover,
+.word[role="button"]:hover,
+.phrase[role="button"]:hover {
+  background: var(--highlight);
+}
+
+.char[role="button"]:focus-visible,
+.word[role="button"]:focus-visible,
+.phrase[role="button"]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 0.04em;
+}

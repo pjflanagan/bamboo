@@ -103,3 +103,55 @@
   margin: 0;
   font-size: var(--text-xl);
 }
+
+/* annotation playground */
+
+.playground {
+  margin-bottom: var(--space-10);
+}
+
+.playground h3 {
+  margin: var(--space-8) 0 var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3) var(--space-5);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.measure,
+.note {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.measured {
+  width: fit-content;
+  outline: 1px dashed var(--border-strong);
+  outline-offset: 4px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-5);
+}

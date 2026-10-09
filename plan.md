@@ -183,6 +183,19 @@ This approach has several benefits:
 
 So `Character`, `Word` and `Phrase` take almost no visual props. They take **data**, plus an optional `size`. Everything else comes from the nearest scope.
 
+#### As built (step 3)
+
+The design held up, with these refinements:
+
+- **One mode per layer instead of separate visibility and trigger.** Each layer is `shown | hidden | hover | click | collapsed`, so you can say "pinyin on hover, english on click" in one scope: `<AnnotationScope pinyin="hover" english="click">`. `revealUnit` picks character, word (the default) or phrase.
+- **Custom properties, not attribute selectors.** A selector like `[data-annot-pinyin="hidden"] .slot` matches *any* ancestor, so nested scopes couldn't override an outer one. Instead the scope writes custom properties (`--base-pinyin`, `--hw-pinyin`, `--k-pinyin`, `--rev-pinyin`…), and each slot reads a `var()` fallback chain: hovered character > hovered word > hovered phrase > clicked unit > revealed by parent > resting mode. Custom properties inherit, so the nearest scope always wins.
+- **Touch screens:** hover reveals only apply under `(hover: hover)`. On devices that can't hover, a tap reveals hover layers instead.
+- **Keyboard:** in click mode, units become `role="button"` with `tabIndex=0`, and Enter or Space toggles them. `aria-pressed` is managed by the scope's listener, so React re-renders don't reset it.
+- **The tokenizer uses the CSV's pinyin**, not just the dictionary: its spaces become word boundaries, and polyphones get their reading from context (知了 = zhīliǎo, where the dictionary says 了 = le). Across all 3653 flashcard and song rows, 99.7% line up; the rest fall back to the dictionary, one word per character.
+  - Latin text inside the pinyin (Wi-Fi, 3D) is skipped when lining up.
+  - Closing punctuation attaches to the word before it and opening punctuation to the word after, so a line never starts with "，".
+- **Not done in step 3:** user default layers ("never show zhuyin") move to step 4 with the header menu. They'll set the same `--base-*` properties on `<html>`, under any scope.
+
 #### Other options on the same scope
 - `toneColors: boolean`: the scope sets `data-tone-colors`, and each syllable carries `data-tone="3"`. This is all CSS, with a palette for each theme.
 - `script: 'trad' | 'simp'`, **defaulting to `trad`**. Each Syllable carries both forms, and the scope chooses which to render with `data-script`, so switching never refetches. The `FORCE_SIMPLIFIED` exceptions (了, 出, 回…) are already handled in the data.
@@ -359,7 +372,7 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
 
 1. ✅ **Scaffold:** Next app (in the repo you set up), folder layout, ESLint/Prettier, Vercel project on a preview URL, `vercel.json` ignore rule.
 2. ✅ **Tokens and themes:** semantic tokens, neon and bamboo, cookie-based preferences (theme, font, script), fonts.
-3. **Hanzi family:** data model, `tokenize`, `Character`/`Word`/`Phrase`, `AnnotationScope`, and the playground on `/design`. *Most of the effort goes here.*
+3. ✅ **Hanzi family:** data model, `tokenize`, `Character`/`Word`/`Phrase`, `AnnotationScope`, and the playground on `/design`. *Most of the effort goes here.*
 4. **Global typography, Header, Page, layout primitives, and motifs (`Sign`, `BambooCanvas`).**
 5. **Controls.**
 6. **Data layer:** loaders, local/remote switch, `/api/data`, revalidation webhook, GitHub Action for the manifest and dictionary JSON.
