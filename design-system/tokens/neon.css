@@ -1,0 +1,124 @@
+/*
+ * Neon: the dark theme, from study-mandarin.
+ * Near-black background, glowing hsl(h 72% 48%) borders and text.
+ *
+ * Neon hues are parameters, not fixed colors: --neon-hue drives the primary
+ * accent and --neon-hue-2 the secondary (kept >= 80deg apart, as in the
+ * original). <Sign> sets its own hue locally, seeded from its text.
+ */
+
+[data-theme="neon"] {
+  color-scheme: dark;
+
+  --neon-hue: 190;
+  --neon-hue-2: 320;
+  --neon-sat: 72%;
+  --neon-light: 48%;
+  /* 1 = glow on, 0 = off. Motifs multiply their glow alphas by this. */
+  --glow-strength: 1;
+
+  /* bamboo stalk motif, drawn as glowing outlines in neon */
+  --stalk-light: hsl(var(--neon-hue) var(--neon-sat) 58%);
+  --stalk-dark: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light));
+  --stalk-stroke: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.4);
+
+  /* surfaces */
+  --bg: #1c1c1c;
+  --bg-image: linear-gradient(180deg, #080808 0%, #1c1c1c 100%);
+  --surface: #242424;
+  --surface-raised: #2c2c2c;
+  --surface-overlay: rgb(12 12 12 / 0.88);
+  --overlay-blur: 12px;
+  --shadow: 0 11px 23px #0004;
+
+  /* text */
+  --text: #fff;
+  --text-secondary: #ccc;
+  --text-muted: #999;
+
+  /* lines */
+  --border: rgb(255 255 255 / 0.1);
+  --border-strong: rgb(255 255 255 / 0.2);
+
+  /* actions */
+  --primary: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light));
+  --primary-hover: hsl(var(--neon-hue) var(--neon-sat) 58%);
+  --on-primary: #000;
+  --secondary: hsl(var(--neon-hue-2) var(--neon-sat) var(--neon-light));
+  --secondary-hover: hsl(var(--neon-hue-2) var(--neon-sat) 58%);
+  --on-secondary: #000;
+  --danger: hsl(0 80% 56%);
+  --info: hsl(205 80% 56%);
+
+  /* states */
+  --highlight: rgb(255 255 255 / 0.18);
+  --highlight-strong: rgb(255 255 255 / 0.3);
+  --focus-ring: hsl(var(--neon-hue) 90% 62%);
+
+  /* controls: selected state is an outlined, glowing segment */
+  --control-bg: rgb(255 255 255 / 0.04);
+  --control-border: var(--border-strong);
+  --control-selected-bg: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.12);
+  --control-selected-border: var(--primary);
+  --control-selected-text: var(--primary-hover);
+  --control-selected-glow:
+    0 0 3px hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.6),
+    0 0 8px hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.3);
+
+  /* hanzi annotations (pinyin, zhuyin) */
+  --annot-color: #999;
+
+  /* tone colors: 1 red, 2 green, 3 blue, 4 purple, 5 neutral */
+  --tone-1: #ff6b6b;
+  --tone-2: #5fd37a;
+  --tone-3: #5eaaff;
+  --tone-4: #c385ff;
+  --tone-5: #999;
+
+  /* fonts */
+  --font-latin: var(--font-noto-sans);
+
+  /* cards: the original saturated swatches */
+  --card-red: var(--swatch-red);
+  --card-red-text: #fff;
+  --card-dark-red: var(--swatch-dark-red);
+  --card-dark-red-text: #fff;
+  --card-brown: var(--swatch-brown);
+  --card-brown-text: #fff;
+  --card-tan: var(--swatch-tan);
+  --card-tan-text: #000;
+  --card-orange: var(--swatch-orange);
+  --card-orange-text: #fff;
+  --card-yellow: var(--swatch-yellow);
+  --card-yellow-text: #000;
+  --card-lime: var(--swatch-lime);
+  --card-lime-text: #fff;
+  --card-green: var(--swatch-green);
+  --card-green-text: #fff;
+  --card-teal: var(--swatch-teal);
+  --card-teal-text: #fff;
+  --card-cyan: var(--swatch-cyan);
+  --card-cyan-text: #fff;
+  --card-light-blue: var(--swatch-light-blue);
+  --card-light-blue-text: #fff;
+  --card-blue: var(--swatch-blue);
+  --card-blue-text: #fff;
+  --card-dark-blue: var(--swatch-dark-blue);
+  --card-dark-blue-text: #fff;
+  --card-purple: var(--swatch-purple);
+  --card-purple-text: #fff;
+  --card-pink: var(--swatch-pink);
+  --card-pink-text: #fff;
+  --card-hot-pink: var(--swatch-hot-pink);
+  --card-hot-pink-text: #fff;
+  --card-white: var(--swatch-white);
+  --card-white-text: #000;
+  --card-light-grey: var(--swatch-light-grey);
+  --card-light-grey-text: #000;
+  --card-grey: var(--swatch-grey);
+  --card-grey-text: #fff;
+  --card-dark-grey: var(--swatch-dark-grey);
+  --card-dark-grey-text: #fff;
+  --card-black: var(--swatch-black);
+  --card-black-text: #fff;
+}

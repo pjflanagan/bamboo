@@ -1,0 +1,32 @@
+/*
+ * The 21 named card colors from study-mandarin's colors.css. Flashcard CSVs
+ * refer to these by name in their `color` column.
+ *
+ * Swatches are raw palette values. Each theme decides how to apply them:
+ *   --card-<name>       background for a card of that color
+ *   --card-<name>-text  text color that reads on it
+ */
+
+:root {
+  --swatch-red: #8e0202;
+  --swatch-dark-red: #5a0101;
+  --swatch-brown: #701f04;
+  --swatch-tan: #cea553;
+  --swatch-orange: #cf5c05;
+  --swatch-yellow: #d7c03e;
+  --swatch-lime: #619a0c;
+  --swatch-green: #228b06;
+  --swatch-teal: #29aa65;
+  --swatch-cyan: #1fa77e;
+  --swatch-light-blue: #0d99a9;
+  --swatch-blue: #096498;
+  --swatch-dark-blue: #163595;
+  --swatch-purple: #451695;
+  --swatch-pink: #b60144;
+  --swatch-hot-pink: #b60192;
+  --swatch-white: #ededed;
+  --swatch-light-grey: #b3b3b3;
+  --swatch-grey: #7f7f7f;
+  --swatch-dark-grey: #434343;
+  --swatch-black: #252525;
+}

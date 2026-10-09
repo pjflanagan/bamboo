@@ -1,0 +1,83 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.track {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-md);
+  background: var(--control-bg);
+}
+
+.segment {
+  position: relative;
+  display: flex;
+}
+
+/* Visually hidden but still focusable and announced. */
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    box-shadow var(--duration-fast) var(--ease);
+}
+
+[data-size="sm"] .text {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+}
+
+.segment:hover .text {
+  background: var(--highlight);
+  color: var(--text);
+}
+
+.input:checked + .text {
+  background: var(--control-selected-bg);
+  border-color: var(--control-selected-border);
+  color: var(--control-selected-text);
+  box-shadow: var(--control-selected-glow);
+}
+
+.input:focus-visible + .text {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

@@ -1,0 +1,72 @@
+/*
+ * Theme-independent tokens: scales for space, type, radius, motion, layering.
+ * Colors live in the theme files (neon.css, bamboo.css) as semantic tokens;
+ * components only ever reference semantic tokens, never raw values.
+ */
+
+:root {
+  /* space: 4px base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* type scale (latin text) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  /* radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 14px;
+
+  /* layout */
+  --page-width: 720px;
+  --page-width-wide: 1040px;
+  --header-height: 48px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+
+  /* layering */
+  --z-header: 200;
+  --z-overlay: 300;
+  --z-toast: 400;
+
+  /*
+   * Fonts. The theme sets --font-latin; the hanzi font follows the user's
+   * preference via [data-hanzi-font] (see fonts.css), independent of theme.
+   * Running text lists latin first so pinyin/English render in the latin font
+   * and hanzi fall through to the hanzi font.
+   *
+   * --font-latin must not end in a generic family (system-ui, sans-serif):
+   * on macOS those cover CJK themselves, and hanzi would never reach the
+   * hanzi font. Text that is latin-only uses `var(--font-latin), sans-serif`.
+   */
+  --font-hanzi: var(--font-noto-sans-tc), "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-text: var(--font-latin), var(--font-hanzi);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
+}

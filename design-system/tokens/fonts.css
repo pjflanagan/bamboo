@@ -1,0 +1,30 @@
+/*
+ * Hanzi font selection. [data-hanzi-font] can go on <html> (the user's
+ * preference) or on any subtree (a per-card or per-page override).
+ *
+ * --font-text is redeclared here because custom properties resolve where
+ * they're declared: a subtree that changes --font-hanzi must also recompute
+ * anything built from it.
+ */
+
+[data-hanzi-font="sans"] {
+  --font-hanzi: var(--font-noto-sans-tc), "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+[data-hanzi-font="serif"] {
+  --font-hanzi: var(--font-noto-serif-tc), "Songti TC", "PMingLiU", serif;
+}
+
+[data-hanzi-font="wenkai"] {
+  --font-hanzi: var(--font-wenkai-tc), "Kaiti TC", "DFKai-SB", serif;
+}
+
+[data-hanzi-font="iansui"] {
+  --font-hanzi: var(--font-iansui), "Kaiti TC", "DFKai-SB", serif;
+}
+
+[data-theme],
+[data-hanzi-font] {
+  --font-text: var(--font-latin), var(--font-hanzi);
+  font-family: var(--font-text);
+}

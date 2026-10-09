@@ -1,0 +1,119 @@
+/*
+ * Bamboo: the light theme, from bamboo-web.
+ * Paper background, bamboo greens for primary actions, warm orange for
+ * secondary, and the segmented-stalk motif in place of neon glow.
+ */
+
+[data-theme="bamboo"] {
+  color-scheme: light;
+
+  /* the neon parameters still exist so shared formulas resolve; glow is off */
+  --neon-hue: 137;
+  --neon-hue-2: 32;
+  --neon-sat: 57%;
+  --neon-light: 33%;
+  --glow-strength: 0;
+
+  /* bamboo stalk motif (sidebar toggle, splash canvas, <Sign>) */
+  --stalk-light: #33a853;
+  --stalk-dark: #23833d;
+  --stalk-stroke: #23833d66;
+
+  /* surfaces */
+  --bg: #f5f2ee;
+  --bg-image: none;
+  --surface: #fbfaf8;
+  --surface-raised: #fff;
+  --surface-overlay: rgb(244 242 237 / 0.92);
+  --overlay-blur: 8px;
+  --shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+
+  /* text */
+  --text: #111;
+  --text-secondary: rgb(0 0 0 / 0.75);
+  --text-muted: rgb(0 0 0 / 0.55);
+
+  /* lines */
+  --border: rgb(0 0 0 / 0.08);
+  --border-strong: rgb(0 0 0 / 0.2);
+
+  /* actions */
+  --primary: #23833d;
+  --primary-hover: #33a853;
+  --on-primary: #fff;
+  --secondary: #ce995c;
+  --secondary-hover: #e7b172;
+  --on-secondary: #000;
+  --danger: #d11e1e;
+  --info: #2e7fb6;
+
+  /* states */
+  --highlight: #daeedd;
+  --highlight-strong: #bbeac2;
+  --focus-ring: #33a853;
+
+  /* controls: selected state is a solid bamboo-green segment */
+  --control-bg: var(--surface);
+  --control-border: var(--border-strong);
+  --control-selected-bg: var(--primary);
+  --control-selected-border: var(--primary);
+  --control-selected-text: var(--on-primary);
+  --control-selected-glow: none;
+
+  /* hanzi annotations (pinyin, zhuyin) */
+  --annot-color: rgb(0 0 0 / 0.6);
+
+  /* tone colors: 1 red, 2 green, 3 blue, 4 purple, 5 neutral */
+  --tone-1: #c62828;
+  --tone-2: #2e7d32;
+  --tone-3: #1565c0;
+  --tone-4: #7b1fa2;
+  --tone-5: #777;
+
+  /* fonts */
+  --font-latin: var(--font-source-sans);
+
+  /* cards: swatches mixed into the paper color, with dark text */
+  --card-red: color-mix(in oklab, var(--swatch-red) 50%, #f5f2ee);
+  --card-red-text: #000;
+  --card-dark-red: color-mix(in oklab, var(--swatch-dark-red) 50%, #f5f2ee);
+  --card-dark-red-text: #000;
+  --card-brown: color-mix(in oklab, var(--swatch-brown) 50%, #f5f2ee);
+  --card-brown-text: #000;
+  --card-tan: color-mix(in oklab, var(--swatch-tan) 50%, #f5f2ee);
+  --card-tan-text: #000;
+  --card-orange: color-mix(in oklab, var(--swatch-orange) 50%, #f5f2ee);
+  --card-orange-text: #000;
+  --card-yellow: color-mix(in oklab, var(--swatch-yellow) 50%, #f5f2ee);
+  --card-yellow-text: #000;
+  --card-lime: color-mix(in oklab, var(--swatch-lime) 50%, #f5f2ee);
+  --card-lime-text: #000;
+  --card-green: color-mix(in oklab, var(--swatch-green) 50%, #f5f2ee);
+  --card-green-text: #000;
+  --card-teal: color-mix(in oklab, var(--swatch-teal) 50%, #f5f2ee);
+  --card-teal-text: #000;
+  --card-cyan: color-mix(in oklab, var(--swatch-cyan) 50%, #f5f2ee);
+  --card-cyan-text: #000;
+  --card-light-blue: color-mix(in oklab, var(--swatch-light-blue) 50%, #f5f2ee);
+  --card-light-blue-text: #000;
+  --card-blue: color-mix(in oklab, var(--swatch-blue) 50%, #f5f2ee);
+  --card-blue-text: #000;
+  --card-dark-blue: color-mix(in oklab, var(--swatch-dark-blue) 50%, #f5f2ee);
+  --card-dark-blue-text: #000;
+  --card-purple: color-mix(in oklab, var(--swatch-purple) 50%, #f5f2ee);
+  --card-purple-text: #000;
+  --card-pink: color-mix(in oklab, var(--swatch-pink) 50%, #f5f2ee);
+  --card-pink-text: #000;
+  --card-hot-pink: color-mix(in oklab, var(--swatch-hot-pink) 50%, #f5f2ee);
+  --card-hot-pink-text: #000;
+  --card-white: color-mix(in oklab, var(--swatch-white) 50%, #f5f2ee);
+  --card-white-text: #000;
+  --card-light-grey: color-mix(in oklab, var(--swatch-light-grey) 50%, #f5f2ee);
+  --card-light-grey-text: #000;
+  --card-grey: color-mix(in oklab, var(--swatch-grey) 50%, #f5f2ee);
+  --card-grey-text: #000;
+  --card-dark-grey: color-mix(in oklab, var(--swatch-dark-grey) 50%, #f5f2ee);
+  --card-dark-grey-text: #000;
+  --card-black: color-mix(in oklab, var(--swatch-black) 50%, #f5f2ee);
+  --card-black-text: #000;
+}

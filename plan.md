@@ -64,7 +64,7 @@ Based on `prompt.md` and a read through `legacy/study-mandarin`, `legacy/bamboo`
 
 - `create-next-app` with the App Router, TypeScript and ESLint, using **no Tailwind**. The design system relies on CSS custom properties, attribute selectors and grid areas, which plain CSS Modules plus one global token file handle better than utility classes.
 - Use `npm`. pnpm isn't installed on this machine, and npm avoids a global install.
-- **Scaffolded on Next 16.4 / React 19.3** with `cacheComponents` and `partialPrefetching` on by default. Under Cache Components, reading the theme cookie in the root layout needs a `<Suspense>` boundary or `"use cache"` split, so step 2 has to account for it.
+- **Scaffolded on Next 16.4 / React 19.3** with `cacheComponents` and `partialPrefetching` on by default. Reading cookies on the server would make every route dynamic, so preferences are applied client-side by an inline script instead (see §2.2).
 - You create and name the GitHub repo. It must be public, because the data folder is read from it (see §3). Nothing in the code hard-codes the repo name.
 - Proposed layout:
 
@@ -180,8 +180,8 @@ So `Character`, `Word` and `Phrase` take almost no visual props. They take **dat
 - **Selection and highlight state** for the Read page cursor: `data-selected` on a unit, replacing the current `.highlight` div.
 
 #### Fonts
-- Load fonts with `next/font/google` as CSS variables: **Noto Sans TC**, **Noto Serif TC**, **LXGW WenKai TC** (handwriting style) and **Iansui** (kaishu style). Because next/font self-hosts them, they are precached by the service worker for offline use.
-- `data-hanzi-font="sans|serif|hand|kai"` on any element sets `--font-hanzi`. That means a global toggle in the header, a per-card override, or the "font toggle" on the Read page from `_todo/plan/web.md` all use the same mechanism.
+- Load fonts with `next/font/google` as CSS variables: **Noto Sans TC**, **Noto Serif TC**, **LXGW WenKai TC** and **Iansui** (both based on Klee One, a textbook handwriting style). They aren't preloaded: the browser downloads only the unicode-range slices for characters on the page. Because next/font self-hosts them, they are precached by the service worker for offline use.
+- `data-hanzi-font="sans|serif|wenkai|iansui"` on any element sets `--font-hanzi`. That means a global toggle in the header, a per-card override, or the "font toggle" on the Read page from `_todo/plan/web.md` all use the same mechanism.
 - Latin text (pinyin and English) uses a separate `--font-latin`, set by the theme: **Noto Sans** in neon and **Source Sans 3** in bamboo. The hanzi font is independent of the theme.
 
 ### 2.2 Theming: Neon (dark) and Bamboo (light)
@@ -191,7 +191,11 @@ So `Character`, `Word` and `Phrase` take almost no visual props. They take **dat
   - actions: `--primary`, `--primary-hover`, `--secondary`, `--secondary-hover`, `--danger`
   - other: `--focus-ring`, `--highlight`, `--annot-color`, `--tone-1..5`, `--font-latin`
 - `neon.css` and `bamboo.css` map those tokens to values under `[data-theme="neon"]` and `[data-theme="bamboo"]`.
-- The default follows `prefers-color-scheme` (dark → neon, light → bamboo). The user can override it in the header, and the choice is stored in a cookie. Because the root layout reads the cookie on the server, there's **no flash of the wrong theme**, and we avoid the `next-themes` dependency.
+- The default follows `prefers-color-scheme` (dark → neon, light → bamboo). The user can override it in the header, and the choice is stored in a cookie. **Done in step 2:**
+  - An inline `<head>` script reads the cookie and sets `data-theme`, `data-hanzi-font` and `data-script` on `<html>` before first paint. There's **no flash of the wrong theme**, and every route stays statically prerendered, which the PWA needs. This is the pattern from Next 16's "Preventing Flash" guide.
+  - `PreferencesSync` re-applies the attributes after React's dev remount and follows OS light/dark changes while the theme is "system".
+  - Every preference is pure CSS via those attributes. Pages never read preferences to decide what to render; only controls use `usePreferences()`.
+  - `--font-latin` must not end in a generic family. On macOS, `system-ui` covers CJK and would stop hanzi reaching the hanzi font.
 
 **How bamboo-web's colors map to the tokens:**
 
@@ -344,8 +348,8 @@ Use **Serwist** (`@serwist/next`), the maintained successor to `next-pwa`, which
 
 ## 6. Build order
 
-1. **Scaffold:** Next app (in the repo you set up), folder layout, ESLint/Prettier, Vercel project on a preview URL, `vercel.json` ignore rule.
-2. **Tokens and themes:** semantic tokens, neon and bamboo, cookie-based preferences (theme, font, script), fonts.
+1. ✅ **Scaffold:** Next app (in the repo you set up), folder layout, ESLint/Prettier, Vercel project on a preview URL, `vercel.json` ignore rule.
+2. ✅ **Tokens and themes:** semantic tokens, neon and bamboo, cookie-based preferences (theme, font, script), fonts.
 3. **Hanzi family:** data model, `tokenize`, `Character`/`Word`/`Phrase`, `AnnotationScope`, and the playground on `/design`. *Most of the effort goes here.*
 4. **Global typography, Header, Page, layout primitives, and motifs (`Sign`, `BambooCanvas`).**
 5. **Controls.**

@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { PreferencesPanel } from "./_components/PreferencesPanel";
+import { TokenPreview } from "./_components/TokenPreview";
+import styles from "./design.module.css";
 
 export const metadata: Metadata = {
   title: "Design system",
@@ -7,9 +10,13 @@ export const metadata: Metadata = {
 
 export default function DesignPage() {
   return (
-    <main>
+    <main className={styles.page}>
       <h1>Design system</h1>
-      <p>Kitchen sink for every component, in both themes. Filled in from step 2 onward.</p>
+      <PreferencesPanel />
+      <div className={styles.previews}>
+        <TokenPreview theme="neon" />
+        <TokenPreview theme="bamboo" />
+      </div>
     </main>
   );
 }

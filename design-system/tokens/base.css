@@ -1,0 +1,24 @@
+/*
+ * Any element carrying [data-theme] paints its own background and text, so a
+ * themed subtree (e.g. the side-by-side previews on /design) looks right even
+ * inside the other theme.
+ */
+
+[data-theme] {
+  background-color: var(--bg);
+  background-image: var(--bg-image);
+  color: var(--text);
+}
+
+html[data-theme] {
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--highlight-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
