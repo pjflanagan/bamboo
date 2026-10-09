@@ -1,0 +1,39 @@
+{
+  "videos": [
+    {
+      "category": "老師",
+      "items": [
+        { "name": "Everyday Chinese", "url": "https://www.youtube.com/@EverydayChinese" },
+        { "name": "Grace Mandarin Chinese", "url": "https://www.youtube.com/@GraceMandarinChinese" },
+        { "name": "Mandarin Corner", "url": "https://www.youtube.com/@MandarinCorner2" },
+        { "name": "Shuoshuo Chinese", "url": "https://www.youtube.com/@ShuoshuoChinese" },
+        { "name": "Lazy Chinese Stories", "url": "https://www.youtube.com/@lazychinese-stories" }
+      ]
+    },
+    {
+      "category": "故事",
+      "items": [
+        { "name": "Little Fox", "url": "https://www.youtube.com/@LittleFoxChinese" },
+        { "name": "Storytime in Chinese", "url": "https://www.youtube.com/@StorytimeinChinese" },
+        { "name": "Learning Chinese with Stories", "url": "https://www.youtube.com/@learningchinesewithstories" }
+      ]
+    }
+  ],
+  "podcasts": [
+    { "name": "Melnyks Chinese", "url": "https://open.spotify.com/show/6oPfmkjNYuORPUDNYYhi5f?si=a03a9fbbb5184028", "description": "Intermediate" },
+    { "name": "Learn in your Car", "url": "https://open.spotify.com/playlist/4PT18WrtpZuRpSz3kFPGAU?si=79422cf5cd694789", "description": "Easy" },
+    { "name": "Nursery Rhymes", "url": "https://open.spotify.com/playlist/7fWvtyy1o7WMEFmSddVU0D?si=44d364b30fef4291" }
+  ],
+  "apps": [
+    { "name": "Duolingo", "web": "https://duolingo.com/", "ios": "duolingo://", "android": "duolingo://", "description": "Good for grammar (free tier)" },
+    { "name": "HelloChinese", "description": "Good for a change of pace" },
+    { "name": "DuChinese", "web": "https://duchinese.net/", "ios": "duchinese://", "android": "duchinese://", "description": "Good for reading (subscription cancelled)", "strikethrough": true },
+    { "name": "Memrise", "description": "Good for basic phrases (subscription cancelled)", "strikethrough": true }
+  ],
+  "other": [
+    { "name": "More Flashcards", "url": "https://www.reddit.com/r/ChineseLanguage/comments/okonc2/the_ultimate_chinese_phrasebook_56000_phrases/" },
+    { "name": "Zhuyin Soundboard", "url": "https://www.mdnkids.com/BoPoMo/" },
+    { "name": "Danyo Pang", "url": "https://danyopang.substack.com", "description": "I've not subscribed to his paid content but I did buy his book on Taiwanese local phrases." },
+    { "name": "Chineasy", "url": "https://www.chineasy.com" }
+  ]
+}

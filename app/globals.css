@@ -1,0 +1,47 @@
+/*
+ * Minimal reset. Theme tokens (neon / bamboo), typography and fonts
+ * replace the placeholder colors below in step 2.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* placeholder until step 2: bamboo paper / neon background */
+  background: light-dark(#f5f2ee, #1c1c1c);
+  color: light-dark(#000, #fff);
+}
+
+main {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 20px;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

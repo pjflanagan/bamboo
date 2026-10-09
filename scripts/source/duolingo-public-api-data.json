@@ -1,0 +1,4322 @@
+[
+  {
+    "simplified": "你",
+    "english": "you, second person pronoun",
+    "pinyin": "nǐ"
+  },
+  {
+    "simplified": "好",
+    "english": "good, excellent, fine; well",
+    "pinyin": "hǎo"
+  },
+  {
+    "simplified": "再见",
+    "english": "again, twice, re- | see, observe, behold; perceive",
+    "pinyin": "zài jiàn"
+  },
+  {
+    "simplified": "再",
+    "english": "again, twice, re-",
+    "pinyin": "zài"
+  },
+  {
+    "simplified": "见",
+    "english": "see, observe, behold; perceive",
+    "pinyin": "jiàn"
+  },
+  {
+    "simplified": "三",
+    "english": "three",
+    "pinyin": "sān"
+  },
+  {
+    "simplified": "一",
+    "english": "one; a, an; alone",
+    "pinyin": "yī"
+  },
+  {
+    "simplified": "七",
+    "english": "seven",
+    "pinyin": "qī"
+  },
+  {
+    "simplified": "八",
+    "english": "eight; all around, all sides",
+    "pinyin": "bā"
+  },
+  {
+    "simplified": "十",
+    "english": "ten, tenth; complete; perfect",
+    "pinyin": "shí"
+  },
+  {
+    "simplified": "零",
+    "english": "zero; fragment, fraction",
+    "pinyin": "líng"
+  },
+  {
+    "simplified": "元",
+    "english": "first; dollar; origin; head",
+    "pinyin": "yuán"
+  },
+  {
+    "simplified": "五",
+    "english": "five; surname",
+    "pinyin": "wǔ"
+  },
+  {
+    "simplified": "九",
+    "english": "nine",
+    "pinyin": "jiǔ"
+  },
+  {
+    "simplified": "百",
+    "english": "one hundred; numerous, many",
+    "pinyin": "bǎi"
+  },
+  {
+    "simplified": "叫",
+    "english": "cry, shout; hail, greet, call",
+    "pinyin": "jiào"
+  },
+  {
+    "simplified": "我",
+    "english": "our, us, i, me, my, we",
+    "pinyin": "wǒ"
+  },
+  {
+    "simplified": "张",
+    "english": "stretch, extend, expand; sheet",
+    "pinyin": "zhāng"
+  },
+  {
+    "simplified": "李",
+    "english": "plum; judge; surname",
+    "pinyin": "lǐ"
+  },
+  {
+    "simplified": "华",
+    "english": "flowery; illustrious; Chinese",
+    "pinyin": "huá"
+  },
+  {
+    "simplified": "明",
+    "english": "bright, light, brilliant; clear",
+    "pinyin": "míng"
+  },
+  {
+    "simplified": "名字",
+    "english": "name, rank, title, position | letter, character, simplified",
+    "pinyin": "míng zì"
+  },
+  {
+    "simplified": "什么",
+    "english": "file of ten soldiers; mixed, miscellaneous | interrogative particle; repetition of a tune small; tender",
+    "pinyin": "shén me"
+  },
+  {
+    "simplified": "名",
+    "english": "name, rank, title, position",
+    "pinyin": "míng"
+  },
+  {
+    "simplified": "字",
+    "english": "letter, character, simplified",
+    "pinyin": "zì"
+  },
+  {
+    "simplified": "很",
+    "english": "very, quite, much",
+    "pinyin": "hěn"
+  },
+  {
+    "simplified": "高兴",
+    "english": "high, tall; lofty, elevated | thrive, prosper, flourish",
+    "pinyin": "gāo xìng"
+  },
+  {
+    "simplified": "高",
+    "english": "high, tall; lofty, elevated",
+    "pinyin": "gāo"
+  },
+  {
+    "simplified": "兴",
+    "english": "thrive, prosper, flourish",
+    "pinyin": "xìng"
+  },
+  {
+    "simplified": "认识",
+    "english": "recognize, know, understand | recognize, understand, know",
+    "pinyin": "rèn shì"
+  },
+  {
+    "simplified": "也",
+    "english": "also; classical final particle of strong affirmation or identity",
+    "pinyin": "yě"
+  },
+  {
+    "simplified": "认",
+    "english": "recognize, know, understand",
+    "pinyin": "rèn"
+  },
+  {
+    "simplified": "识",
+    "english": "recognize, understand, know",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "吃",
+    "english": "eat; drink; suffer, endure, bear",
+    "pinyin": "chī"
+  },
+  {
+    "simplified": "饭",
+    "english": "cooked rice; food, meal",
+    "pinyin": "fàn"
+  },
+  {
+    "simplified": "鱼",
+    "english": "fish; surname; KangXi radical 195",
+    "pinyin": "yú"
+  },
+  {
+    "simplified": "面",
+    "english": "face; surface; plane; side, dimension",
+    "pinyin": "miàn"
+  },
+  {
+    "simplified": "喝",
+    "english": "drink; shout, call out",
+    "pinyin": "hē"
+  },
+  {
+    "simplified": "水",
+    "english": "water, liquid, lotion, juice",
+    "pinyin": "shuǐ"
+  },
+  {
+    "simplified": "茶",
+    "english": "tea",
+    "pinyin": "chá"
+  },
+  {
+    "simplified": "不",
+    "english": "no, not; un-; negative prefix",
+    "pinyin": "bù"
+  },
+  {
+    "simplified": "是",
+    "english": "indeed, yes, right; to be; demonstrative pronoun, this, that",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "他",
+    "english": "other, another; he, she, it",
+    "pinyin": "tā"
+  },
+  {
+    "simplified": "学生",
+    "english": "learning, knowledge; school | life, living, lifetime; birth",
+    "pinyin": "xué shēng"
+  },
+  {
+    "simplified": "学",
+    "english": "learning, knowledge; school",
+    "pinyin": "xué"
+  },
+  {
+    "simplified": "生",
+    "english": "life, living, lifetime; birth",
+    "pinyin": "shēng"
+  },
+  {
+    "simplified": "吗",
+    "english": "final interrogative particle",
+    "pinyin": "ma"
+  },
+  {
+    "simplified": "她",
+    "english": "she, her",
+    "pinyin": "tā"
+  },
+  {
+    "simplified": "你们",
+    "english": "you, second person pronoun | adjunct pronoun indicate plural",
+    "pinyin": "nǐ men"
+  },
+  {
+    "simplified": "我们",
+    "english": "our, us, i, me, my, we | adjunct pronoun indicate plural",
+    "pinyin": "wǒ men"
+  },
+  {
+    "simplified": "他们",
+    "english": "other, another; he, she, it | adjunct pronoun indicate plural",
+    "pinyin": "tā men"
+  },
+  {
+    "simplified": "的",
+    "english": "possessive, adjectival suffix",
+    "pinyin": "de"
+  },
+  {
+    "simplified": "电话",
+    "english": "electricity; electric; lightning | speech, talk, language; dialect",
+    "pinyin": "diàn huà"
+  },
+  {
+    "simplified": "电",
+    "english": "electricity; electric; lightning",
+    "pinyin": "diàn"
+  },
+  {
+    "simplified": "话",
+    "english": "speech, talk, language; dialect",
+    "pinyin": "huà"
+  },
+  {
+    "simplified": "号码",
+    "english": "mark, sign; symbol; number | number, numerals; yard; symbol",
+    "pinyin": "hào mǎ"
+  },
+  {
+    "simplified": "多少",
+    "english": "much, many; more than, over | few, less, inadequate",
+    "pinyin": "duō shǎo"
+  },
+  {
+    "simplified": "多",
+    "english": "much, many; more than, over",
+    "pinyin": "duō"
+  },
+  {
+    "simplified": "少",
+    "english": "few, less, inadequate",
+    "pinyin": "shǎo"
+  },
+  {
+    "simplified": "号",
+    "english": "mark, sign; symbol; number",
+    "pinyin": "hào"
+  },
+  {
+    "simplified": "码",
+    "english": "number, numerals; yard; symbol",
+    "pinyin": "mǎ"
+  },
+  {
+    "simplified": "中国",
+    "english": "central; center, middle; in the midst of; hit (target); attain | nation, country, nation-state",
+    "pinyin": "zhōng guó"
+  },
+  {
+    "simplified": "人",
+    "english": "man; people; mankind; someone else",
+    "pinyin": "rén"
+  },
+  {
+    "simplified": "中",
+    "english": "central; center, middle; in the midst of; hit (target); attain",
+    "pinyin": "zhōng"
+  },
+  {
+    "simplified": "国",
+    "english": "nation, country, nation-state",
+    "pinyin": "guó"
+  },
+  {
+    "simplified": "哪",
+    "english": "which? where? how?",
+    "pinyin": "nǎ"
+  },
+  {
+    "simplified": "英国",
+    "english": "petal, flower, leaf; brave, a hero; England, English | nation, country, nation-state",
+    "pinyin": "yīng guó"
+  },
+  {
+    "simplified": "美国",
+    "english": "beautiful, pretty; pleasing | nation, country, nation-state",
+    "pinyin": "měi guó"
+  },
+  {
+    "simplified": "英",
+    "english": "petal, flower, leaf; brave, a hero; England, English",
+    "pinyin": "yīng"
+  },
+  {
+    "simplified": "美",
+    "english": "beautiful, pretty; pleasing",
+    "pinyin": "měi"
+  },
+  {
+    "simplified": "都",
+    "english": "metropolis, capital; all, the whole; elegant, refined",
+    "pinyin": "dōu dū"
+  },
+  {
+    "simplified": "忙",
+    "english": "busy, pressed for time; hustling",
+    "pinyin": "máng"
+  },
+  {
+    "simplified": "早上",
+    "english": "early; soon; morning | top; superior, highest; go up, send up",
+    "pinyin": "zǎo shàng"
+  },
+  {
+    "simplified": "早",
+    "english": "early; soon; morning",
+    "pinyin": "zǎo"
+  },
+  {
+    "simplified": "上",
+    "english": "top; superior, highest; go up, send up",
+    "pinyin": "shàng"
+  },
+  {
+    "simplified": "怎么样",
+    "english": "what? why? how? | interrogative particle; repetition of a tune small; tender | shape, form, pattern, style",
+    "pinyin": "zěn me yàng"
+  },
+  {
+    "simplified": "今天",
+    "english": "now, today, modern era | sky, heaven; god, celestial",
+    "pinyin": "jīn tiān"
+  },
+  {
+    "simplified": "怎",
+    "english": "what? why? how?",
+    "pinyin": "zěn"
+  },
+  {
+    "simplified": "样",
+    "english": "shape, form, pattern, style",
+    "pinyin": "yàng"
+  },
+  {
+    "simplified": "今",
+    "english": "now, today, modern era",
+    "pinyin": "jīn"
+  },
+  {
+    "simplified": "天",
+    "english": "sky, heaven; god, celestial",
+    "pinyin": "tiān"
+  },
+  {
+    "simplified": "家",
+    "english": "house, home, residence; family",
+    "pinyin": "jiā"
+  },
+  {
+    "simplified": "北京",
+    "english": "north; northern; northward | capital city",
+    "pinyin": "běi jīng"
+  },
+  {
+    "simplified": "在",
+    "english": "be at, in, on; consist in, rest",
+    "pinyin": "zài"
+  },
+  {
+    "simplified": "北",
+    "english": "north; northern; northward",
+    "pinyin": "běi"
+  },
+  {
+    "simplified": "京",
+    "english": "capital city",
+    "pinyin": "jīng"
+  },
+  {
+    "simplified": "哪儿",
+    "english": "which? where? how? | son, child; KangXi radical 10",
+    "pinyin": "nǎ ér"
+  },
+  {
+    "simplified": "纽约",
+    "english": "knot; button; handle, knob; tie | treaty, agreement, covenant",
+    "pinyin": "niǔ yuē"
+  },
+  {
+    "simplified": "香港",
+    "english": "fragrant, sweet smelling, incense | port, harbor; small stream; bay",
+    "pinyin": "xiāng gǎng"
+  },
+  {
+    "simplified": "儿",
+    "english": "son, child; KangXi radical 10",
+    "pinyin": "ér"
+  },
+  {
+    "simplified": "纽",
+    "english": "knot; button; handle, knob; tie",
+    "pinyin": "niǔ"
+  },
+  {
+    "simplified": "谢谢",
+    "english": "thank; decline | thank; decline",
+    "pinyin": "xiè xiè"
+  },
+  {
+    "simplified": "不客气",
+    "english": "no, not; un-; negative prefix | guest, traveller; customer | steam, vapor; KangXi radical 84",
+    "pinyin": "bù kè qì"
+  },
+  {
+    "simplified": "谢",
+    "english": "thank; decline",
+    "pinyin": "xiè"
+  },
+  {
+    "simplified": "客",
+    "english": "guest, traveller; customer",
+    "pinyin": "kè"
+  },
+  {
+    "simplified": "气",
+    "english": "steam, vapor; KangXi radical 84",
+    "pinyin": "qì"
+  },
+  {
+    "simplified": "对不起",
+    "english": "correct, right; facing, opposed | no, not; un-; negative prefix | rise, stand up; go up; begin",
+    "pinyin": "duì bù qǐ"
+  },
+  {
+    "simplified": "没关系",
+    "english": "not, have not, none; drown, sink | frontier pass; close; relation | system; line, link, connection",
+    "pinyin": "méi guān xì"
+  },
+  {
+    "simplified": "起",
+    "english": "rise, stand up; go up; begin",
+    "pinyin": "qǐ"
+  },
+  {
+    "simplified": "没",
+    "english": "not, have not, none; drown, sink",
+    "pinyin": "méi"
+  },
+  {
+    "simplified": "关",
+    "english": "frontier pass; close; relation",
+    "pinyin": "guān"
+  },
+  {
+    "simplified": "爸爸",
+    "english": "father, papa | father, papa",
+    "pinyin": "bà bà"
+  },
+  {
+    "simplified": "妈妈",
+    "english": "mother, mama | mother, mama",
+    "pinyin": "mā mā"
+  },
+  {
+    "simplified": "爱",
+    "english": "love, be fond of, like",
+    "pinyin": "ài"
+  },
+  {
+    "simplified": "家人",
+    "english": "house, home, residence; family | man; people; mankind; someone else",
+    "pinyin": "jiā rén"
+  },
+  {
+    "simplified": "爸",
+    "english": "father, papa",
+    "pinyin": "bà"
+  },
+  {
+    "simplified": "妈",
+    "english": "mother, mama",
+    "pinyin": "mā"
+  },
+  {
+    "simplified": "谁",
+    "english": "who? whom? whose? anyone?",
+    "pinyin": "shéi"
+  },
+  {
+    "simplified": "那",
+    "english": "that, that one, those",
+    "pinyin": "nà"
+  },
+  {
+    "simplified": "个",
+    "english": "numerary adjunct, piece; single",
+    "pinyin": "gè"
+  },
+  {
+    "simplified": "这",
+    "english": "this, the, here",
+    "pinyin": "zhè"
+  },
+  {
+    "simplified": "请问",
+    "english": "ask, request; invite; please | ask about, inquire after",
+    "pinyin": "qǐng wèn"
+  },
+  {
+    "simplified": "知道",
+    "english": "know, perceive, comprehend | path, road, street; method, way",
+    "pinyin": "zhī dào"
+  },
+  {
+    "simplified": "问",
+    "english": "ask about, inquire after",
+    "pinyin": "wèn"
+  },
+  {
+    "simplified": "请",
+    "english": "ask, request; invite; please",
+    "pinyin": "qǐng"
+  },
+  {
+    "simplified": "知",
+    "english": "know, perceive, comprehend",
+    "pinyin": "zhī"
+  },
+  {
+    "simplified": "道",
+    "english": "path, road, street; method, way",
+    "pinyin": "dào"
+  },
+  {
+    "simplified": "说",
+    "english": "speak, say, talk; scold, upbraid",
+    "pinyin": "shuō"
+  },
+  {
+    "simplified": "英语",
+    "english": "petal, flower, leaf; brave, a hero; England, English | language, simplifieds; saying, expression",
+    "pinyin": "yīng yǔ"
+  },
+  {
+    "simplified": "汉语",
+    "english": "Chinese people; Chinese language | language, simplifieds; saying, expression",
+    "pinyin": "hàn yǔ"
+  },
+  {
+    "simplified": "汉",
+    "english": "Chinese people; Chinese language",
+    "pinyin": "hàn"
+  },
+  {
+    "simplified": "早安",
+    "english": "early; soon; morning | peaceful, tranquil, quiet",
+    "pinyin": "zǎo ān"
+  },
+  {
+    "simplified": "晚安",
+    "english": "night, evening; late | peaceful, tranquil, quiet",
+    "pinyin": "wǎn ān"
+  },
+  {
+    "simplified": "一会儿",
+    "english": "one; a, an; alone | assemble, meet together; meeting | son, child; KangXi radical 10",
+    "pinyin": "yī huì ér"
+  },
+  {
+    "simplified": "见",
+    "english": "see, observe, behold; perceive",
+    "pinyin": "jiàn"
+  },
+  {
+    "simplified": "会",
+    "english": "assemble, meet together; meeting",
+    "pinyin": "huì"
+  },
+  {
+    "simplified": "安",
+    "english": "peaceful, tranquil, quiet",
+    "pinyin": "ān"
+  },
+  {
+    "simplified": "最近",
+    "english": "most, extremely, exceedingly | near, close; approach; intimate",
+    "pinyin": "zuì jìn"
+  },
+  {
+    "simplified": "好久不见",
+    "english": "good, excellent, fine; well | long time (ago); time passage, grow late | no, not; un-; negative prefix | see, observe, behold; perceive",
+    "pinyin": "hǎo jiǔ bù jiàn"
+  },
+  {
+    "simplified": "不错",
+    "english": "no, not; un-; negative prefix | error, blunder, mistake; wrong",
+    "pinyin": "bù cuò"
+  },
+  {
+    "simplified": "最",
+    "english": "most, extremely, exceedingly",
+    "pinyin": "zuì"
+  },
+  {
+    "simplified": "要",
+    "english": "necessary, essential; necessity",
+    "pinyin": "yào"
+  },
+  {
+    "simplified": "热",
+    "english": "hot; heat; fever; restless; zeal",
+    "pinyin": "rè"
+  },
+  {
+    "simplified": "冰",
+    "english": "ice; ice-cold",
+    "pinyin": "bīng"
+  },
+  {
+    "simplified": "牛奶",
+    "english": "cow, ox, bull; KangXi radical93 | milk; woman's breasts; nurse",
+    "pinyin": "niú nǎi"
+  },
+  {
+    "simplified": "咖啡",
+    "english": "coffee; a phonetic | morphine; coffee",
+    "pinyin": "kā fēi"
+  },
+  {
+    "simplified": "牛",
+    "english": "cow, ox, bull; KangXi radical93",
+    "pinyin": "niú"
+  },
+  {
+    "simplified": "奶",
+    "english": "milk; woman's breasts; nurse",
+    "pinyin": "nǎi"
+  },
+  {
+    "simplified": "咖",
+    "english": "coffee; a phonetic",
+    "pinyin": "kā"
+  },
+  {
+    "simplified": "啡",
+    "english": "morphine; coffee",
+    "pinyin": "fēi"
+  },
+  {
+    "simplified": "洗手间",
+    "english": "wash, rinse; clean, purify | hand | midpoint, space; place, locality",
+    "pinyin": "xǐ shǒu jiān"
+  },
+  {
+    "simplified": "医院",
+    "english": "cure, heal; doctor, medical | courtyard, yard, court; school",
+    "pinyin": "yī yuàn"
+  },
+  {
+    "simplified": "洗",
+    "english": "wash, rinse; clean, purify",
+    "pinyin": "xǐ"
+  },
+  {
+    "simplified": "手",
+    "english": "hand",
+    "pinyin": "shǒu"
+  },
+  {
+    "simplified": "间",
+    "english": "midpoint, space; place, locality",
+    "pinyin": "jiān"
+  },
+  {
+    "simplified": "院",
+    "english": "courtyard, yard, court; school",
+    "pinyin": "yuàn"
+  },
+  {
+    "simplified": "这儿",
+    "english": "this, the, here | son, child; KangXi radical 10",
+    "pinyin": "zhè ér"
+  },
+  {
+    "simplified": "那儿",
+    "english": "that, that one, those | son, child; KangXi radical 10",
+    "pinyin": "nà ér"
+  },
+  {
+    "simplified": "饭馆",
+    "english": "cooked rice; food, meal | public building",
+    "pinyin": "fàn guǎn"
+  },
+  {
+    "simplified": "馆",
+    "english": "public building",
+    "pinyin": "guǎn"
+  },
+  {
+    "simplified": "年",
+    "english": "year; new-years; person's age",
+    "pinyin": "nián"
+  },
+  {
+    "simplified": "月",
+    "english": "moon; month; KangXi radical 74",
+    "pinyin": "yuè"
+  },
+  {
+    "simplified": "号",
+    "english": "mark, sign; symbol; number",
+    "pinyin": "hào"
+  },
+  {
+    "simplified": "几",
+    "english": "small table",
+    "pinyin": "jǐ"
+  },
+  {
+    "simplified": "〇",
+    "english": "zero",
+    "pinyin": "líng"
+  },
+  {
+    "simplified": "星期",
+    "english": "a star, planet; any point of light | period of time; date; time limit",
+    "pinyin": "xīng qī"
+  },
+  {
+    "simplified": "明天",
+    "english": "bright, light, brilliant; clear | sky, heaven; god, celestial",
+    "pinyin": "míng tiān"
+  },
+  {
+    "simplified": "天",
+    "english": "sky, heaven; god, celestial",
+    "pinyin": "tiān"
+  },
+  {
+    "simplified": "日",
+    "english": "sun; day; daytime",
+    "pinyin": "rì"
+  },
+  {
+    "simplified": "星",
+    "english": "a star, planet; any point of light",
+    "pinyin": "xīng"
+  },
+  {
+    "simplified": "孩子",
+    "english": "baby, child; children | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "hái zi"
+  },
+  {
+    "simplified": "两",
+    "english": "two, both, pair, couple; ounce",
+    "pinyin": "liǎng"
+  },
+  {
+    "simplified": "孩",
+    "english": "baby, child; children",
+    "pinyin": "hái"
+  },
+  {
+    "simplified": "子",
+    "english": "offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "zi"
+  },
+  {
+    "simplified": "女儿",
+    "english": "woman, girl; feminine; rad. 38 | son, child; KangXi radical 10",
+    "pinyin": "nǚ ér"
+  },
+  {
+    "simplified": "儿子",
+    "english": "son, child; KangXi radical 10 | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "ér zi"
+  },
+  {
+    "simplified": "岁",
+    "english": "year; age; harvest",
+    "pinyin": "suì"
+  },
+  {
+    "simplified": "女",
+    "english": "woman, girl; feminine; rad. 38",
+    "pinyin": "nǚ"
+  },
+  {
+    "simplified": "儿",
+    "english": "son, child; KangXi radical 10",
+    "pinyin": "ér"
+  },
+  {
+    "simplified": "妻子",
+    "english": "wife | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "qī zi"
+  },
+  {
+    "simplified": "喂",
+    "english": "interjection to call attention",
+    "pinyin": "wèi"
+  },
+  {
+    "simplified": "慢",
+    "english": "slow(ly), leisurely, sluggish",
+    "pinyin": "màn"
+  },
+  {
+    "simplified": "一点儿",
+    "english": "one; a, an; alone | dot, speck, spot; point, degree | son, child; KangXi radical 10",
+    "pinyin": "yī diǎn ér"
+  },
+  {
+    "simplified": "快",
+    "english": "rapid, quick, speedy, fast; soon",
+    "pinyin": "kuài"
+  },
+  {
+    "simplified": "得",
+    "english": "obtain, get, gain, acquire",
+    "pinyin": "dé"
+  },
+  {
+    "simplified": "明白",
+    "english": "bright, light, brilliant; clear | white; pure, unblemished; bright",
+    "pinyin": "míng bái"
+  },
+  {
+    "simplified": "白",
+    "english": "white; pure, unblemished; bright",
+    "pinyin": "bái"
+  },
+  {
+    "simplified": "漂亮",
+    "english": "float, drift; tossed about | bright, brilliant, radiant, light",
+    "pinyin": "piào liàng"
+  },
+  {
+    "simplified": "高",
+    "english": "high, tall; lofty, elevated",
+    "pinyin": "gāo"
+  },
+  {
+    "simplified": "漂",
+    "english": "float, drift; tossed about",
+    "pinyin": "piào"
+  },
+  {
+    "simplified": "亮",
+    "english": "bright, brilliant, radiant, light",
+    "pinyin": "liàng"
+  },
+  {
+    "simplified": "朋友",
+    "english": "friend, pal, acquaintance | friend, companion; fraternity",
+    "pinyin": "péng yǒu"
+  },
+  {
+    "simplified": "男",
+    "english": "male, man; son; baron; surname",
+    "pinyin": "nán"
+  },
+  {
+    "simplified": "矮",
+    "english": "short, dwarf; low",
+    "pinyin": "ǎi"
+  },
+  {
+    "simplified": "朋",
+    "english": "friend, pal, acquaintance",
+    "pinyin": "péng"
+  },
+  {
+    "simplified": "友",
+    "english": "friend, companion; fraternity",
+    "pinyin": "yǒu"
+  },
+  {
+    "simplified": "女",
+    "english": "woman, girl; feminine; rad. 38",
+    "pinyin": "nǚ"
+  },
+  {
+    "simplified": "上午",
+    "english": "top; superior, highest; go up, send up | noon; 7th terrestrial branch",
+    "pinyin": "shàng wǔ"
+  },
+  {
+    "simplified": "分",
+    "english": "divide; small unit of time etc.",
+    "pinyin": "fēn"
+  },
+  {
+    "simplified": "下午",
+    "english": "under, underneath, below; down; inferior; bring down | noon; 7th terrestrial branch",
+    "pinyin": "xià wǔ"
+  },
+  {
+    "simplified": "晚上",
+    "english": "night, evening; late | top; superior, highest; go up, send up",
+    "pinyin": "wǎn shàng"
+  },
+  {
+    "simplified": "午",
+    "english": "noon; 7th terrestrial branch",
+    "pinyin": "wǔ"
+  },
+  {
+    "simplified": "晚",
+    "english": "night, evening; late",
+    "pinyin": "wǎn"
+  },
+  {
+    "simplified": "下",
+    "english": "under, underneath, below; down; inferior; bring down",
+    "pinyin": "xià"
+  },
+  {
+    "simplified": "每",
+    "english": "every, each",
+    "pinyin": "měi"
+  },
+  {
+    "simplified": "中午",
+    "english": "central; center, middle; in the midst of; hit (target); attain | noon; 7th terrestrial branch",
+    "pinyin": "zhōng wǔ"
+  },
+  {
+    "simplified": "周末",
+    "english": "Zhou dynasty; circumference | final, last, end; insignificant",
+    "pinyin": "zhōu mò"
+  },
+  {
+    "simplified": "旁边",
+    "english": "side; by side, close by, near | edge, margin, side, border",
+    "pinyin": "páng biān"
+  },
+  {
+    "simplified": "左边",
+    "english": "left; east; unorthodox, improper | edge, margin, side, border",
+    "pinyin": "zuǒ biān"
+  },
+  {
+    "simplified": "右边",
+    "english": "right; west; right-wing | edge, margin, side, border",
+    "pinyin": "yòu biān"
+  },
+  {
+    "simplified": "旁",
+    "english": "side; by side, close by, near",
+    "pinyin": "páng"
+  },
+  {
+    "simplified": "左",
+    "english": "left; east; unorthodox, improper",
+    "pinyin": "zuǒ"
+  },
+  {
+    "simplified": "右",
+    "english": "right; west; right-wing",
+    "pinyin": "yòu"
+  },
+  {
+    "simplified": "边",
+    "english": "edge, margin, side, border",
+    "pinyin": "biān"
+  },
+  {
+    "simplified": "前面",
+    "english": "in front, forward; preceding | face; surface; plane; side, dimension",
+    "pinyin": "qián miàn"
+  },
+  {
+    "simplified": "后面",
+    "english": "queen, empress, sovereign; (simp. for 後) behind, rear, after | face; surface; plane; side, dimension",
+    "pinyin": "hòu miàn"
+  },
+  {
+    "simplified": "学校",
+    "english": "learning, knowledge; school | school; military field officer",
+    "pinyin": "xué xiào"
+  },
+  {
+    "simplified": "喜欢",
+    "english": "like, love, enjoy; joyful thing | happy, pleased, glad; joy; enjoy",
+    "pinyin": "xǐ huān"
+  },
+  {
+    "simplified": "看",
+    "english": "look, see; examine, scrutinize",
+    "pinyin": "kàn"
+  },
+  {
+    "simplified": "书",
+    "english": "book, letter, document; writings",
+    "pinyin": "shū"
+  },
+  {
+    "simplified": "在",
+    "english": "be at, in, on; consist in, rest",
+    "pinyin": "zài"
+  },
+  {
+    "simplified": "喜",
+    "english": "like, love, enjoy; joyful thing",
+    "pinyin": "xǐ"
+  },
+  {
+    "simplified": "欢",
+    "english": "happy, pleased, glad; joy; enjoy",
+    "pinyin": "huān"
+  },
+  {
+    "simplified": "玩",
+    "english": "play with, joke, enjoy",
+    "pinyin": "wán"
+  },
+  {
+    "simplified": "电脑",
+    "english": "electricity; electric; lightning | brain",
+    "pinyin": "diàn nǎo"
+  },
+  {
+    "simplified": "游戏",
+    "english": "to swim; float, drift; wander, roam | theatrical play, show",
+    "pinyin": "yóu xì"
+  },
+  {
+    "simplified": "最",
+    "english": "most, extremely, exceedingly",
+    "pinyin": "zuì"
+  },
+  {
+    "simplified": "起床",
+    "english": "rise, stand up; go up; begin | bed, couch; framework, chassis",
+    "pinyin": "qǐ chuáng"
+  },
+  {
+    "simplified": "上学",
+    "english": "top; superior, highest; go up, send up | learning, knowledge; school",
+    "pinyin": "shàng xué"
+  },
+  {
+    "simplified": "上班",
+    "english": "top; superior, highest; go up, send up | class, group, grade; squad; job",
+    "pinyin": "shàng bān"
+  },
+  {
+    "simplified": "早饭",
+    "english": "early; soon; morning | cooked rice; food, meal",
+    "pinyin": "zǎo fàn"
+  },
+  {
+    "simplified": "做",
+    "english": "work, make; act",
+    "pinyin": "zuò"
+  },
+  {
+    "simplified": "起",
+    "english": "rise, stand up; go up; begin",
+    "pinyin": "qǐ"
+  },
+  {
+    "simplified": "床",
+    "english": "bed, couch; framework, chassis",
+    "pinyin": "chuáng"
+  },
+  {
+    "simplified": "班",
+    "english": "class, group, grade; squad; job",
+    "pinyin": "bān"
+  },
+  {
+    "simplified": "从",
+    "english": "from, by, since, whence, through",
+    "pinyin": "cóng"
+  },
+  {
+    "simplified": "睡觉",
+    "english": "sleep, doze | to wake up from sleep; conscious",
+    "pinyin": "shuì jué"
+  },
+  {
+    "simplified": "钱",
+    "english": "money, currency, coins",
+    "pinyin": "qián"
+  },
+  {
+    "simplified": "块",
+    "english": "piece, lump; dollar",
+    "pinyin": "kuài"
+  },
+  {
+    "simplified": "只",
+    "english": "only, just, simply",
+    "pinyin": "zhǐ"
+  },
+  {
+    "simplified": "买",
+    "english": "buy, purchase; bribe, persuade",
+    "pinyin": "mǎi"
+  },
+  {
+    "simplified": "一共",
+    "english": "one; a, an; alone | together with, all, total; to share",
+    "pinyin": "yī gòng"
+  },
+  {
+    "simplified": "毛",
+    "english": "hair, fur, feathers; coarse",
+    "pinyin": "máo"
+  },
+  {
+    "simplified": "分",
+    "english": "divide; small unit of time etc.",
+    "pinyin": "fēn"
+  },
+  {
+    "simplified": "共",
+    "english": "together with, all, total; to share",
+    "pinyin": "gòng"
+  },
+  {
+    "simplified": "信用卡",
+    "english": "trust, believe; letter | use, employ, apply, operate; use | card, punch card; calorie",
+    "pinyin": "xìn yòng kǎ"
+  },
+  {
+    "simplified": "收",
+    "english": "gather together, collect; harvest",
+    "pinyin": "shōu"
+  },
+  {
+    "simplified": "想",
+    "english": "think, speculate, plan, consider",
+    "pinyin": "xiǎng"
+  },
+  {
+    "simplified": "干",
+    "english": "oppose, offend; invade; dried",
+    "pinyin": "gàn"
+  },
+  {
+    "simplified": "影",
+    "english": "shadow; image, reflection; photograph",
+    "pinyin": "yǐng"
+  },
+  {
+    "simplified": "视",
+    "english": "look at, inspect, observe, see",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "电视",
+    "english": "electricity; electric; lightning | look at, inspect, observe, see",
+    "pinyin": "diàn shì"
+  },
+  {
+    "simplified": "电影",
+    "english": "electricity; electric; lightning | shadow; image, reflection; photograph",
+    "pinyin": "diàn yǐng"
+  },
+  {
+    "simplified": "报纸",
+    "english": "report, tell, announce | paper",
+    "pinyin": "bào zhǐ"
+  },
+  {
+    "simplified": "上网",
+    "english": "top; superior, highest; go up, send up | net; network; KangXi radical 122",
+    "pinyin": "shàng wǎng"
+  },
+  {
+    "simplified": "报",
+    "english": "report, tell, announce",
+    "pinyin": "bào"
+  },
+  {
+    "simplified": "纸",
+    "english": "paper",
+    "pinyin": "zhǐ"
+  },
+  {
+    "simplified": "桌",
+    "english": "table, desk, stand",
+    "pinyin": "zhuō"
+  },
+  {
+    "simplified": "找",
+    "english": "search, seek, look for; find",
+    "pinyin": "zhǎo"
+  },
+  {
+    "simplified": "桌子",
+    "english": "table, desk, stand | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "zhuō zi"
+  },
+  {
+    "simplified": "上",
+    "english": "top; superior, highest; go up, send up",
+    "pinyin": "shàng"
+  },
+  {
+    "simplified": "椅子",
+    "english": "chair, seat | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "yǐ zi"
+  },
+  {
+    "simplified": "下",
+    "english": "under, underneath, below; down; inferior; bring down",
+    "pinyin": "xià"
+  },
+  {
+    "simplified": "见",
+    "english": "see, observe, behold; perceive",
+    "pinyin": "jiàn"
+  },
+  {
+    "simplified": "椅",
+    "english": "chair, seat",
+    "pinyin": "yǐ"
+  },
+  {
+    "simplified": "房间",
+    "english": "house, building; room | midpoint, space; place, locality",
+    "pinyin": "fáng jiān"
+  },
+  {
+    "simplified": "冰箱",
+    "english": "ice; ice-cold | case, box, chest, trunk",
+    "pinyin": "bīng xiāng"
+  },
+  {
+    "simplified": "位",
+    "english": "throne; position, post; rank, status; seat",
+    "pinyin": "wèi"
+  },
+  {
+    "simplified": "等",
+    "english": "rank, grade; wait; equal; 'etc.'",
+    "pinyin": "děng"
+  },
+  {
+    "simplified": "一下",
+    "english": "one; a, an; alone | under, underneath, below; down; inferior; bring down",
+    "pinyin": "yī xià"
+  },
+  {
+    "simplified": "进",
+    "english": "advance, make progress, enter",
+    "pinyin": "jìn"
+  },
+  {
+    "simplified": "坐",
+    "english": "sit; seat; ride, travel by",
+    "pinyin": "zuò"
+  },
+  {
+    "simplified": "菜单",
+    "english": "vegetables; dish, order; food | single, individual, only; lone",
+    "pinyin": "cài dān"
+  },
+  {
+    "simplified": "英文",
+    "english": "petal, flower, leaf; brave, a hero; England, English | literature, culture, writing",
+    "pinyin": "yīng wén"
+  },
+  {
+    "simplified": "菜",
+    "english": "vegetables; dish, order; food",
+    "pinyin": "cài"
+  },
+  {
+    "simplified": "单",
+    "english": "single, individual, only; lone",
+    "pinyin": "dān"
+  },
+  {
+    "simplified": "英",
+    "english": "petal, flower, leaf; brave, a hero; England, English",
+    "pinyin": "yīng"
+  },
+  {
+    "simplified": "些",
+    "english": "little, few; rather, somewhat",
+    "pinyin": "xiē"
+  },
+  {
+    "simplified": "西",
+    "english": "west(ern); westward, occident",
+    "pinyin": "xī"
+  },
+  {
+    "simplified": "东",
+    "english": "east, eastern, eastward",
+    "pinyin": "dōng"
+  },
+  {
+    "simplified": "东西",
+    "english": "east, eastern, eastward | west(ern); westward, occident",
+    "pinyin": "dōng xī"
+  },
+  {
+    "simplified": "帮",
+    "english": "help, assist; defend; shoe upper",
+    "pinyin": "bāng"
+  },
+  {
+    "simplified": "超市",
+    "english": "jump over, leap over; surpass | market, fair; city, town; trade",
+    "pinyin": "chāo shì"
+  },
+  {
+    "simplified": "水果",
+    "english": "water, liquid, lotion, juice | fruit; result",
+    "pinyin": "shuǐ guǒ"
+  },
+  {
+    "simplified": "超",
+    "english": "jump over, leap over; surpass",
+    "pinyin": "chāo"
+  },
+  {
+    "simplified": "市",
+    "english": "market, fair; city, town; trade",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "果",
+    "english": "fruit; result",
+    "pinyin": "guǒ"
+  },
+  {
+    "simplified": "为",
+    "english": "do, handle, govern, act; be",
+    "pinyin": "wèi"
+  },
+  {
+    "simplified": "文",
+    "english": "literature, culture, writing",
+    "pinyin": "wén"
+  },
+  {
+    "simplified": "习",
+    "english": "practice; flapping wings",
+    "pinyin": "xí"
+  },
+  {
+    "simplified": "学习",
+    "english": "learning, knowledge; school | practice; flapping wings",
+    "pinyin": "xué xí"
+  },
+  {
+    "simplified": "中文",
+    "english": "central; center, middle; in the midst of; hit (target); attain | literature, culture, writing",
+    "pinyin": "zhōng wén"
+  },
+  {
+    "simplified": "为什么",
+    "english": "do, handle, govern, act; be | file of ten soldiers; mixed, miscellaneous | interrogative particle; repetition of a tune small; tender",
+    "pinyin": "wèi shén me"
+  },
+  {
+    "simplified": "去",
+    "english": "go away, leave, depart",
+    "pinyin": "qù"
+  },
+  {
+    "simplified": "因为",
+    "english": "cause, reason; by; because (of) | do, handle, govern, act; be",
+    "pinyin": "yīn wèi"
+  },
+  {
+    "simplified": "所以",
+    "english": "place, location; numerary adjunct | by means of; thereby, therefore; consider as; in order to",
+    "pinyin": "suǒ yǐ"
+  },
+  {
+    "simplified": "西班牙",
+    "english": "west(ern); westward, occident | class, group, grade; squad; job | tooth, molars, teeth; serrated",
+    "pinyin": "xī bān yá"
+  },
+  {
+    "simplified": "海",
+    "english": "sea, ocean; maritime",
+    "pinyin": "hǎi"
+  },
+  {
+    "simplified": "本",
+    "english": "root, origin, source; basis",
+    "pinyin": "běn"
+  },
+  {
+    "simplified": "还",
+    "english": "still, yet, also, besides",
+    "pinyin": "hái"
+  },
+  {
+    "simplified": "上海",
+    "english": "top; superior, highest; go up, send up | sea, ocean; maritime",
+    "pinyin": "shàng hǎi"
+  },
+  {
+    "simplified": "菜",
+    "english": "vegetables; dish, order; food",
+    "pinyin": "cài"
+  },
+  {
+    "simplified": "还是",
+    "english": "still, yet, also, besides | indeed, yes, right; to be; demonstrative pronoun, this, that",
+    "pinyin": "hái shì"
+  },
+  {
+    "simplified": "日本",
+    "english": "sun; day; daytime | root, origin, source; basis",
+    "pinyin": "rì běn"
+  },
+  {
+    "simplified": "肉",
+    "english": "flesh; meat; KangXi radical 130",
+    "pinyin": "ròu"
+  },
+  {
+    "simplified": "米饭",
+    "english": "hulled or husked uncooked rice | cooked rice; food, meal",
+    "pinyin": "mǐ fàn"
+  },
+  {
+    "simplified": "面条",
+    "english": "face; surface; plane; side, dimension | clause, condition; string, stripe",
+    "pinyin": "miàn tiáo"
+  },
+  {
+    "simplified": "作",
+    "english": "make; work; compose, write; act, perform",
+    "pinyin": "zuò"
+  },
+  {
+    "simplified": "得",
+    "english": "obtain, get, gain, acquire",
+    "pinyin": "dé"
+  },
+  {
+    "simplified": "觉",
+    "english": "to wake up from sleep; conscious",
+    "pinyin": "jué"
+  },
+  {
+    "simplified": "工",
+    "english": "labor, work; worker, laborer",
+    "pinyin": "gōng"
+  },
+  {
+    "simplified": "累",
+    "english": "tired; implicate, involve; bother",
+    "pinyin": "lèi"
+  },
+  {
+    "simplified": "工作",
+    "english": "labor, work; worker, laborer | make; work; compose, write; act, perform",
+    "pinyin": "gōng zuò"
+  },
+  {
+    "simplified": "觉得",
+    "english": "to wake up from sleep; conscious | obtain, get, gain, acquire",
+    "pinyin": "jué dé"
+  },
+  {
+    "simplified": "有点儿",
+    "english": "have, own, possess; exist | dot, speck, spot; point, degree | son, child; KangXi radical 10",
+    "pinyin": "yǒu diǎn ér"
+  },
+  {
+    "simplified": "胖",
+    "english": "fat, obese; fatty",
+    "pinyin": "pàng"
+  },
+  {
+    "simplified": "健康",
+    "english": "strong, robust, healthy; strength | peaceful, quiet; happy, healthy",
+    "pinyin": "jiàn kāng"
+  },
+  {
+    "simplified": "铁",
+    "english": "iron; strong, solid, firm",
+    "pinyin": "tiě"
+  },
+  {
+    "simplified": "店",
+    "english": "shop, store; inn, hotel",
+    "pinyin": "diàn"
+  },
+  {
+    "simplified": "地",
+    "english": "earth; soil, ground; region",
+    "pinyin": "de dì"
+  },
+  {
+    "simplified": "酒",
+    "english": "wine, spirits, liquor, alcoholic beverage",
+    "pinyin": "jiǔ"
+  },
+  {
+    "simplified": "酒店",
+    "english": "wine, spirits, liquor, alcoholic beverage | shop, store; inn, hotel",
+    "pinyin": "jiǔ diàn"
+  },
+  {
+    "simplified": "地铁",
+    "english": "earth; soil, ground; region | iron; strong, solid, firm",
+    "pinyin": "de dì tiě"
+  },
+  {
+    "simplified": "坐",
+    "english": "sit; seat; ride, travel by",
+    "pinyin": "zuò"
+  },
+  {
+    "simplified": "不准",
+    "english": "no, not; un-; negative prefix | approve, allow, permit; in accord",
+    "pinyin": "bù zhǔn"
+  },
+  {
+    "simplified": "准",
+    "english": "approve, allow, permit; in accord",
+    "pinyin": "zhǔn"
+  },
+  {
+    "simplified": "出租车",
+    "english": "go out, send out; stand; produce | rent, lease; rental; tax | cart, vehicle; carry in cart",
+    "pinyin": "chū zū chē"
+  },
+  {
+    "simplified": "件",
+    "english": "numerary adjunct for article; matter",
+    "pinyin": "jiàn"
+  },
+  {
+    "simplified": "衣",
+    "english": "clothes, clothing; cover, skin",
+    "pinyin": "yī"
+  },
+  {
+    "simplified": "商",
+    "english": "commerce, business, trade",
+    "pinyin": "shāng"
+  },
+  {
+    "simplified": "商店",
+    "english": "commerce, business, trade | shop, store; inn, hotel",
+    "pinyin": "shāng diàn"
+  },
+  {
+    "simplified": "衣服",
+    "english": "clothes, clothing; cover, skin | clothes; wear, dress",
+    "pinyin": "yī fú"
+  },
+  {
+    "simplified": "开",
+    "english": "open; initiate, begin, start",
+    "pinyin": "kāi"
+  },
+  {
+    "simplified": "关",
+    "english": "frontier pass; close; relation",
+    "pinyin": "guān"
+  },
+  {
+    "simplified": "门",
+    "english": "gate, door, entrance, opening",
+    "pinyin": "mén"
+  },
+  {
+    "simplified": "欢迎",
+    "english": "happy, pleased, glad; joy; enjoy | receive, welcome, greet",
+    "pinyin": "huān yíng"
+  },
+  {
+    "simplified": "迎",
+    "english": "receive, welcome, greet",
+    "pinyin": "yíng"
+  },
+  {
+    "simplified": "字",
+    "english": "letter, character, simplified",
+    "pinyin": "zì"
+  },
+  {
+    "simplified": "读",
+    "english": "read, study; pronounce",
+    "pinyin": "dú"
+  },
+  {
+    "simplified": "一点儿",
+    "english": "one; a, an; alone | dot, speck, spot; point, degree | son, child; KangXi radical 10",
+    "pinyin": "yī diǎn ér"
+  },
+  {
+    "simplified": "意思",
+    "english": "thought, idea, opinion; think | think, consider, ponder; final particle",
+    "pinyin": "yì sī"
+  },
+  {
+    "simplified": "写",
+    "english": "write; draw, sketch; compose",
+    "pinyin": "xiě"
+  },
+  {
+    "simplified": "错",
+    "english": "error, blunder, mistake; wrong",
+    "pinyin": "cuò"
+  },
+  {
+    "simplified": "难",
+    "english": "difficult, arduous, hard; unable",
+    "pinyin": "nán"
+  },
+  {
+    "simplified": "思",
+    "english": "think, consider, ponder; final particle",
+    "pinyin": "sī"
+  },
+  {
+    "simplified": "秒",
+    "english": "beard of grain or corn; a second",
+    "pinyin": "miǎo"
+  },
+  {
+    "simplified": "刻",
+    "english": "carve, engrave; quarter hour",
+    "pinyin": "kè"
+  },
+  {
+    "simplified": "差",
+    "english": "to differ; different, wrong; nearly, almost; an officer",
+    "pinyin": "chà chā"
+  },
+  {
+    "simplified": "小时",
+    "english": "small, tiny, insignificant | time, season; era, age, period",
+    "pinyin": "xiǎo shí"
+  },
+  {
+    "simplified": "分钟",
+    "english": "divide; small unit of time etc. | clock; bell",
+    "pinyin": "fēn zhōng"
+  },
+  {
+    "simplified": "小",
+    "english": "small, tiny, insignificant",
+    "pinyin": "xiǎo"
+  },
+  {
+    "simplified": "时",
+    "english": "time, season; era, age, period",
+    "pinyin": "shí"
+  },
+  {
+    "simplified": "钟",
+    "english": "clock; bell",
+    "pinyin": "zhōng"
+  },
+  {
+    "simplified": "整",
+    "english": "orderly, neat, tidy; whole",
+    "pinyin": "zhěng"
+  },
+  {
+    "simplified": "早",
+    "english": "early; soon; morning",
+    "pinyin": "zǎo"
+  },
+  {
+    "simplified": "杯",
+    "english": "cup, glass",
+    "pinyin": "bēi"
+  },
+  {
+    "simplified": "啤",
+    "english": "beer",
+    "pinyin": "pí"
+  },
+  {
+    "simplified": "德",
+    "english": "ethics, morality, virtue",
+    "pinyin": "dé"
+  },
+  {
+    "simplified": "德国",
+    "english": "ethics, morality, virtue | nation, country, nation-state",
+    "pinyin": "dé guó"
+  },
+  {
+    "simplified": "啤酒",
+    "english": "beer | wine, spirits, liquor, alcoholic beverage",
+    "pinyin": "pí jiǔ"
+  },
+  {
+    "simplified": "果汁",
+    "english": "fruit; result | juice, liquor, fluid, sap, gravy, sauce",
+    "pinyin": "guǒ zhī"
+  },
+  {
+    "simplified": "汁",
+    "english": "juice, liquor, fluid, sap, gravy, sauce",
+    "pinyin": "zhī"
+  },
+  {
+    "simplified": "香蕉",
+    "english": "fragrant, sweet smelling, incense | banana; plantain",
+    "pinyin": "xiāng jiāo"
+  },
+  {
+    "simplified": "蛋糕",
+    "english": "eggs; term of abuse | cakes, pastry",
+    "pinyin": "dàn gāo"
+  },
+  {
+    "simplified": "块",
+    "english": "piece, lump; dollar",
+    "pinyin": "kuài"
+  },
+  {
+    "simplified": "室",
+    "english": "room, home, house, chamber",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "办",
+    "english": "manage, do, handle; deal with",
+    "pinyin": "bàn"
+  },
+  {
+    "simplified": "辆",
+    "english": "numerary adjunct for vehicles",
+    "pinyin": "liàng"
+  },
+  {
+    "simplified": "办公室",
+    "english": "manage, do, handle; deal with | fair, equitable; public; duke | room, home, house, chamber",
+    "pinyin": "bàn gōng shì"
+  },
+  {
+    "simplified": "本",
+    "english": "root, origin, source; basis",
+    "pinyin": "běn"
+  },
+  {
+    "simplified": "瓶子",
+    "english": "jug, pitcher, vase, jar, bottle | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "píng zi"
+  },
+  {
+    "simplified": "张",
+    "english": "stretch, extend, expand; sheet",
+    "pinyin": "zhāng"
+  },
+  {
+    "simplified": "照片",
+    "english": "shine, illumine, reflect | slice, splinter, strip; rad. 91",
+    "pinyin": "zhào piàn"
+  },
+  {
+    "simplified": "瓶",
+    "english": "jug, pitcher, vase, jar, bottle",
+    "pinyin": "píng"
+  },
+  {
+    "simplified": "片",
+    "english": "slice, splinter, strip; rad. 91",
+    "pinyin": "piàn"
+  },
+  {
+    "simplified": "步",
+    "english": "step, pace; walk, stroll",
+    "pinyin": "bù"
+  },
+  {
+    "simplified": "跑",
+    "english": "run, flee, leave in hurry",
+    "pinyin": "pǎo"
+  },
+  {
+    "simplified": "泳",
+    "english": "dive; swim",
+    "pinyin": "yǒng"
+  },
+  {
+    "simplified": "游",
+    "english": "to swim; float, drift; wander, roam",
+    "pinyin": "yóu"
+  },
+  {
+    "simplified": "游泳",
+    "english": "to swim; float, drift; wander, roam | dive; swim",
+    "pinyin": "yóu yǒng"
+  },
+  {
+    "simplified": "跑步",
+    "english": "run, flee, leave in hurry | step, pace; walk, stroll",
+    "pinyin": "pǎo bù"
+  },
+  {
+    "simplified": "踢",
+    "english": "kick",
+    "pinyin": "tī"
+  },
+  {
+    "simplified": "足球",
+    "english": "foot; attain, satisfy, enough | ball, sphere, globe; round",
+    "pinyin": "zú qiú"
+  },
+  {
+    "simplified": "打",
+    "english": "strike, hit, beat; fight; attack",
+    "pinyin": "dǎ"
+  },
+  {
+    "simplified": "篮球",
+    "english": "basket | ball, sphere, globe; round",
+    "pinyin": "lán qiú"
+  },
+  {
+    "simplified": "吧",
+    "english": "emphatic final particle",
+    "pinyin": "ba"
+  },
+  {
+    "simplified": "出去",
+    "english": "go out, send out; stand; produce | go away, leave, depart",
+    "pinyin": "chū qù"
+  },
+  {
+    "simplified": "时间",
+    "english": "time, season; era, age, period | midpoint, space; place, locality",
+    "pinyin": "shí jiān"
+  },
+  {
+    "simplified": "时候",
+    "english": "time, season; era, age, period | wait; expect; visit; greet",
+    "pinyin": "shí hòu"
+  },
+  {
+    "simplified": "空",
+    "english": "empty, hollow, bare, deserted",
+    "pinyin": "kōng"
+  },
+  {
+    "simplified": "请",
+    "english": "ask, request; invite; please",
+    "pinyin": "qǐng"
+  },
+  {
+    "simplified": "来",
+    "english": "come, coming; return, returning",
+    "pinyin": "lái"
+  },
+  {
+    "simplified": "候",
+    "english": "wait; expect; visit; greet",
+    "pinyin": "hòu"
+  },
+  {
+    "simplified": "过",
+    "english": "pass, pass through, go across",
+    "pinyin": "guò"
+  },
+  {
+    "simplified": "一起",
+    "english": "one; a, an; alone | rise, stand up; go up; begin",
+    "pinyin": "yī qǐ"
+  },
+  {
+    "simplified": "该",
+    "english": "should, ought to, need to",
+    "pinyin": "gāi"
+  },
+  {
+    "simplified": "病",
+    "english": "illness, sickness, disease",
+    "pinyin": "bìng"
+  },
+  {
+    "simplified": "舒",
+    "english": "open up, unfold, stretch out; comfortable, easy",
+    "pinyin": "shū"
+  },
+  {
+    "simplified": "应",
+    "english": "should, ought to, must",
+    "pinyin": "yīng"
+  },
+  {
+    "simplified": "生病",
+    "english": "life, living, lifetime; birth | illness, sickness, disease",
+    "pinyin": "shēng bìng"
+  },
+  {
+    "simplified": "应该",
+    "english": "should, ought to, must | should, ought to, need to",
+    "pinyin": "yīng gāi"
+  },
+  {
+    "simplified": "舒服",
+    "english": "open up, unfold, stretch out; comfortable, easy | clothes; wear, dress",
+    "pinyin": "shū fú"
+  },
+  {
+    "simplified": "了",
+    "english": "to finish; particle of completed action",
+    "pinyin": "le"
+  },
+  {
+    "simplified": "疼",
+    "english": "aches, pains; be fond of; love",
+    "pinyin": "téng"
+  },
+  {
+    "simplified": "头",
+    "english": "head; top; chief, first; boss",
+    "pinyin": "tóu"
+  },
+  {
+    "simplified": "派",
+    "english": "school of thought, sect, branch",
+    "pinyin": "pài"
+  },
+  {
+    "simplified": "能",
+    "english": "to be able; can, permitted to; ability",
+    "pinyin": "néng"
+  },
+  {
+    "simplified": "生日",
+    "english": "life, living, lifetime; birth | sun; day; daytime",
+    "pinyin": "shēng rì"
+  },
+  {
+    "simplified": "派对",
+    "english": "school of thought, sect, branch | correct, right; facing, opposed",
+    "pinyin": "pài duì"
+  },
+  {
+    "simplified": "打扮",
+    "english": "strike, hit, beat; fight; attack | dress up; dress up as",
+    "pinyin": "dǎ bàn"
+  },
+  {
+    "simplified": "扮",
+    "english": "dress up; dress up as",
+    "pinyin": "bàn"
+  },
+  {
+    "simplified": "希望",
+    "english": "rare; hope, expect, strive for | to look at, look forward; to hope, expect",
+    "pinyin": "xī wàng"
+  },
+  {
+    "simplified": "跟",
+    "english": "heel; to follow, accompany; with",
+    "pinyin": "gēn"
+  },
+  {
+    "simplified": "希",
+    "english": "rare; hope, expect, strive for",
+    "pinyin": "xī"
+  },
+  {
+    "simplified": "望",
+    "english": "to look at, look forward; to hope, expect",
+    "pinyin": "wàng"
+  },
+  {
+    "simplified": "费",
+    "english": "expenses, expenditures, fee",
+    "pinyin": "fèi"
+  },
+  {
+    "simplified": "完",
+    "english": "complete, finish, settle; whole",
+    "pinyin": "wán"
+  },
+  {
+    "simplified": "经",
+    "english": "classic works; pass through",
+    "pinyin": "jīng"
+  },
+  {
+    "simplified": "已",
+    "english": "already; finished; stop",
+    "pinyin": "yǐ"
+  },
+  {
+    "simplified": "已经",
+    "english": "already; finished; stop | classic works; pass through",
+    "pinyin": "yǐ jīng"
+  },
+  {
+    "simplified": "请",
+    "english": "ask, request; invite; please",
+    "pinyin": "qǐng"
+  },
+  {
+    "simplified": "小费",
+    "english": "small, tiny, insignificant | expenses, expenditures, fee",
+    "pinyin": "xiǎo fèi"
+  },
+  {
+    "simplified": "饱",
+    "english": "eat heartily; eat one's fill",
+    "pinyin": "bǎo"
+  },
+  {
+    "simplified": "好吃",
+    "english": "good, excellent, fine; well | eat; drink; suffer, endure, bear",
+    "pinyin": "hǎo chī"
+  },
+  {
+    "simplified": "真",
+    "english": "real, actual, true, genuine",
+    "pinyin": "zhēn"
+  },
+  {
+    "simplified": "试",
+    "english": "test, try, experiment",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "蓝",
+    "english": "blue; indigo plant; surname",
+    "pinyin": "lán"
+  },
+  {
+    "simplified": "条",
+    "english": "clause, condition; string, stripe",
+    "pinyin": "tiáo"
+  },
+  {
+    "simplified": "裙",
+    "english": "skirt, apron, petticoat",
+    "pinyin": "qún"
+  },
+  {
+    "simplified": "裙子",
+    "english": "skirt, apron, petticoat | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "qún zi"
+  },
+  {
+    "simplified": "双",
+    "english": "set of two, pair, couple; both",
+    "pinyin": "shuāng"
+  },
+  {
+    "simplified": "还",
+    "english": "still, yet, also, besides",
+    "pinyin": "hái"
+  },
+  {
+    "simplified": "鞋子",
+    "english": "shoes, footwear in general | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "xié zi"
+  },
+  {
+    "simplified": "意大利",
+    "english": "thought, idea, opinion; think | big, great, vast, large, high | gains, advantage, profit, merit",
+    "pinyin": "yì dà lì"
+  },
+  {
+    "simplified": "色",
+    "english": "color, tint, hue, shade; form, body; beauty, desire for beauty",
+    "pinyin": "sè"
+  },
+  {
+    "simplified": "朵",
+    "english": "cluster of flowers; earlobe",
+    "pinyin": "duǒ"
+  },
+  {
+    "simplified": "睛",
+    "english": "eyeball; pupil of eye",
+    "pinyin": "jīng"
+  },
+  {
+    "simplified": "绿",
+    "english": "green; chlorine",
+    "pinyin": "lǜ"
+  },
+  {
+    "simplified": "耳",
+    "english": "ear; merely, only; handle",
+    "pinyin": "ěr"
+  },
+  {
+    "simplified": "眼",
+    "english": "eye; eyelet, hole, opening",
+    "pinyin": "yǎn"
+  },
+  {
+    "simplified": "耳朵",
+    "english": "ear; merely, only; handle | cluster of flowers; earlobe",
+    "pinyin": "ěr duǒ"
+  },
+  {
+    "simplified": "眼睛",
+    "english": "eye; eyelet, hole, opening | eyeball; pupil of eye",
+    "pinyin": "yǎn jīng"
+  },
+  {
+    "simplified": "头发",
+    "english": "head; top; chief, first; boss | issue, dispatch, send out; hair",
+    "pinyin": "tóu fā"
+  },
+  {
+    "simplified": "脸",
+    "english": "face; cheek; reputation",
+    "pinyin": "liǎn"
+  },
+  {
+    "simplified": "又",
+    "english": "and, also, again, in addition",
+    "pinyin": "yòu"
+  },
+  {
+    "simplified": "远",
+    "english": "distant, remote, far; profound",
+    "pinyin": "yuǎn"
+  },
+  {
+    "simplified": "离",
+    "english": "rare beast; strange; elegant",
+    "pinyin": "lí"
+  },
+  {
+    "simplified": "路",
+    "english": "road, path, street; journey",
+    "pinyin": "lù"
+  },
+  {
+    "simplified": "走路",
+    "english": "walk, go on foot; run; leave | road, path, street; journey",
+    "pinyin": "zǒu lù"
+  },
+  {
+    "simplified": "近",
+    "english": "near, close; approach; intimate",
+    "pinyin": "jìn"
+  },
+  {
+    "simplified": "开车",
+    "english": "open; initiate, begin, start | cart, vehicle; carry in cart",
+    "pinyin": "kāi chē"
+  },
+  {
+    "simplified": "飞机",
+    "english": "fly; go quickly; dart; high | desk; machine; moment",
+    "pinyin": "fēi jī"
+  },
+  {
+    "simplified": "机场",
+    "english": "desk; machine; moment | open space, field, market",
+    "pinyin": "jī chǎng"
+  },
+  {
+    "simplified": "飞",
+    "english": "fly; go quickly; dart; high",
+    "pinyin": "fēi"
+  },
+  {
+    "simplified": "场",
+    "english": "open space, field, market",
+    "pinyin": "chǎng"
+  },
+  {
+    "simplified": "冷",
+    "english": "cold, cool; lonely",
+    "pinyin": "lěng"
+  },
+  {
+    "simplified": "晴",
+    "english": "clear weather, fine weather",
+    "pinyin": "qíng"
+  },
+  {
+    "simplified": "天气",
+    "english": "sky, heaven; god, celestial | steam, vapor; KangXi radical 84",
+    "pinyin": "tiān qì"
+  },
+  {
+    "simplified": "雨",
+    "english": "rain; rainy; KangXi radical 173",
+    "pinyin": "yǔ"
+  },
+  {
+    "simplified": "雪",
+    "english": "snow; wipe away shame, avenge",
+    "pinyin": "xuě"
+  },
+  {
+    "simplified": "阴",
+    "english": "'female' principle; dark; secret",
+    "pinyin": "yīn"
+  },
+  {
+    "simplified": "下",
+    "english": "under, underneath, below; down; inferior; bring down",
+    "pinyin": "xià"
+  },
+  {
+    "simplified": "着",
+    "english": "make move, take action",
+    "pinyin": "zhe"
+  },
+  {
+    "simplified": "伞",
+    "english": "umbrella, parasol, parachute",
+    "pinyin": "sǎn"
+  },
+  {
+    "simplified": "带",
+    "english": "belt, girdle, band, strap, zone",
+    "pinyin": "dài"
+  },
+  {
+    "simplified": "然",
+    "english": "yes, certainly; pledge, promise",
+    "pinyin": "rán"
+  },
+  {
+    "simplified": "但",
+    "english": "only; but, however, yet, still",
+    "pinyin": "dàn"
+  },
+  {
+    "simplified": "虽",
+    "english": "although, even if",
+    "pinyin": "suī"
+  },
+  {
+    "simplified": "短",
+    "english": "short; brief; deficient, lacking",
+    "pinyin": "duǎn"
+  },
+  {
+    "simplified": "长",
+    "english": "long; length; excel in; leader",
+    "pinyin": "zhǎng"
+  },
+  {
+    "simplified": "虽然",
+    "english": "although, even if | yes, certainly; pledge, promise",
+    "pinyin": "suī rán"
+  },
+  {
+    "simplified": "但是",
+    "english": "only; but, however, yet, still | indeed, yes, right; to be; demonstrative pronoun, this, that",
+    "pinyin": "dàn shì"
+  },
+  {
+    "simplified": "红",
+    "english": "red, vermillion; blush, flush",
+    "pinyin": "hóng"
+  },
+  {
+    "simplified": "颜色",
+    "english": "face, facial appearance | color, tint, hue, shade; form, body; beauty, desire for beauty",
+    "pinyin": "yán sè"
+  },
+  {
+    "simplified": "穿",
+    "english": "penetrate, pierce, drill; wear",
+    "pinyin": "chuān"
+  },
+  {
+    "simplified": "绍",
+    "english": "continue, carry on; join",
+    "pinyin": "shào"
+  },
+  {
+    "simplified": "介",
+    "english": "forerunner, herald, harbinger; to lie between; sea shell; to wear armor",
+    "pinyin": "jiè"
+  },
+  {
+    "simplified": "介绍",
+    "english": "forerunner, herald, harbinger; to lie between; sea shell; to wear armor | continue, carry on; join",
+    "pinyin": "jiè shào"
+  },
+  {
+    "simplified": "帅",
+    "english": "commander, commander-in-chief",
+    "pinyin": "shuài"
+  },
+  {
+    "simplified": "笑",
+    "english": "smile, laugh, giggle; snicker",
+    "pinyin": "xiào"
+  },
+  {
+    "simplified": "说话",
+    "english": "speak, say, talk; scold, upbraid | speech, talk, language; dialect",
+    "pinyin": "shuō huà"
+  },
+  {
+    "simplified": "话",
+    "english": "speech, talk, language; dialect",
+    "pinyin": "huà"
+  },
+  {
+    "simplified": "聪明",
+    "english": "intelligent, clever, bright | bright, light, brilliant; clear",
+    "pinyin": "cōng míng"
+  },
+  {
+    "simplified": "别人",
+    "english": "separate, other; do not | man; people; mankind; someone else",
+    "pinyin": "bié rén"
+  },
+  {
+    "simplified": "不但",
+    "english": "no, not; un-; negative prefix | only; but, however, yet, still",
+    "pinyin": "bù dàn"
+  },
+  {
+    "simplified": "春",
+    "english": "spring; wanton",
+    "pinyin": "chūn"
+  },
+  {
+    "simplified": "乐",
+    "english": "happy, glad; enjoyable; music",
+    "pinyin": "lè"
+  },
+  {
+    "simplified": "快乐",
+    "english": "rapid, quick, speedy, fast; soon | happy, glad; enjoyable; music",
+    "pinyin": "kuài lè"
+  },
+  {
+    "simplified": "节日",
+    "english": "knot, node, joint; section | sun; day; daytime",
+    "pinyin": "jié rì"
+  },
+  {
+    "simplified": "春节",
+    "english": "spring; wanton | knot, node, joint; section",
+    "pinyin": "chūn jié"
+  },
+  {
+    "simplified": "礼物",
+    "english": "social custom; manners; courtesy | thing, substance, creature",
+    "pinyin": "lǐ wù"
+  },
+  {
+    "simplified": "送",
+    "english": "see off, send off; dispatch, give",
+    "pinyin": "sòng"
+  },
+  {
+    "simplified": "新年",
+    "english": "new, recent, fresh, modern | year; new-years; person's age",
+    "pinyin": "xīn nián"
+  },
+  {
+    "simplified": "瓶",
+    "english": "jug, pitcher, vase, jar, bottle",
+    "pinyin": "píng"
+  },
+  {
+    "simplified": "白酒",
+    "english": "white; pure, unblemished; bright | wine, spirits, liquor, alcoholic beverage",
+    "pinyin": "bái jiǔ"
+  },
+  {
+    "simplified": "赛",
+    "english": "compete, contend; contest, race",
+    "pinyin": "sài"
+  },
+  {
+    "simplified": "练",
+    "english": "to practice, drill, exercise, train",
+    "pinyin": "liàn"
+  },
+  {
+    "simplified": "练习",
+    "english": "to practice, drill, exercise, train | practice; flapping wings",
+    "pinyin": "liàn xí"
+  },
+  {
+    "simplified": "比赛",
+    "english": "to compare, liken; comparison; than | compete, contend; contest, race",
+    "pinyin": "bǐ sài"
+  },
+  {
+    "simplified": "好在",
+    "english": "good, excellent, fine; well | be at, in, on; consist in, rest",
+    "pinyin": "hǎo zài"
+  },
+  {
+    "simplified": "乒乓球",
+    "english": "used with pong for ping pong | used with ping for ping pong | ball, sphere, globe; round",
+    "pinyin": "pīng pāng qiú"
+  },
+  {
+    "simplified": "乒",
+    "english": "used with pong for ping pong",
+    "pinyin": "pīng"
+  },
+  {
+    "simplified": "乓",
+    "english": "used with ping for ping pong",
+    "pinyin": "pāng"
+  },
+  {
+    "simplified": "参加",
+    "english": "take part in, intervene; ginseng | add to, increase, augment",
+    "pinyin": "cān jiā"
+  },
+  {
+    "simplified": "第",
+    "english": "sequence, number; grade, degree",
+    "pinyin": "dì"
+  },
+  {
+    "simplified": "同",
+    "english": "same, similar; together with",
+    "pinyin": "tóng"
+  },
+  {
+    "simplified": "课",
+    "pinyin": "kè",
+    "english": "lesson, class; subject, course"
+  },
+  {
+    "simplified": "室",
+    "english": "room, home, house, chamber",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "教",
+    "english": "teach, class",
+    "pinyin": "jiào"
+  },
+  {
+    "simplified": "教室",
+    "english": "teach, class | room, home, house, chamber",
+    "pinyin": "jiào shì"
+  },
+  {
+    "simplified": "同学",
+    "english": "same, similar; together with | learning, knowledge; school",
+    "pinyin": "tóng xué"
+  },
+  {
+    "simplified": "地理",
+    "english": "earth; soil, ground; region | reason, logic; manage",
+    "pinyin": "de dì lǐ"
+  },
+  {
+    "simplified": "理",
+    "english": "reason, logic; manage",
+    "pinyin": "lǐ"
+  },
+  {
+    "simplified": "懂",
+    "english": "understand, comprehend",
+    "pinyin": "dǒng"
+  },
+  {
+    "simplified": "问题",
+    "english": "ask about, inquire after | forehead; title, headline; theme",
+    "pinyin": "wèn tí"
+  },
+  {
+    "simplified": "爷爷",
+    "english": "father, grandfather | father, grandfather",
+    "pinyin": "yé yé"
+  },
+  {
+    "simplified": "奶奶",
+    "english": "milk; woman's breasts; nurse | milk; woman's breasts; nurse",
+    "pinyin": "nǎi nǎi"
+  },
+  {
+    "simplified": "阿姨",
+    "english": "prefix for people's names; used in transliteration | mother/wife's sister; concubine",
+    "pinyin": "ā yí"
+  },
+  {
+    "simplified": "爷",
+    "english": "father, grandfather",
+    "pinyin": "yé"
+  },
+  {
+    "simplified": "阿",
+    "english": "prefix for people's names; used in transliteration",
+    "pinyin": "ā"
+  },
+  {
+    "simplified": "姨",
+    "english": "mother/wife's sister; concubine",
+    "pinyin": "yí"
+  },
+  {
+    "simplified": "兄弟姐妹",
+    "english": "elder brother | young brother; junior; i, me | elder sister, young lady | younger sister",
+    "pinyin": "xiōng dì jiě mèi"
+  },
+  {
+    "simplified": "关系",
+    "english": "frontier pass; close; relation | system; line, link, connection",
+    "pinyin": "guān xì"
+  },
+  {
+    "simplified": "叔叔",
+    "english": "father's younger brother | father's younger brother",
+    "pinyin": "shū shū"
+  },
+  {
+    "simplified": "父母",
+    "english": "father; KangXi radical 88 | mother; female elders; female",
+    "pinyin": "fù mǔ"
+  },
+  {
+    "simplified": "拉面",
+    "english": "pull, drag; seize, hold; lengthen | face; surface; plane; side, dimension",
+    "pinyin": "lā miàn"
+  },
+  {
+    "simplified": "点心",
+    "english": "dot, speck, spot; point, degree | heart; mind, intelligence; soul",
+    "pinyin": "diǎn xīn"
+  },
+  {
+    "simplified": "小笼包",
+    "english": "small, tiny, insignificant | cage; cage-like basket | wrap, pack, bundle; package",
+    "pinyin": "xiǎo lóng bāo"
+  },
+  {
+    "simplified": "拉",
+    "english": "pull, drag; seize, hold; lengthen",
+    "pinyin": "lā"
+  },
+  {
+    "simplified": "笼",
+    "english": "cage; cage-like basket",
+    "pinyin": "lóng"
+  },
+  {
+    "simplified": "粥",
+    "english": "rice gruel, congee",
+    "pinyin": "zhōu"
+  },
+  {
+    "simplified": "油条",
+    "english": "oil, fat, grease, lard; paints | clause, condition; string, stripe",
+    "pinyin": "yóu tiáo"
+  },
+  {
+    "simplified": "豆浆",
+    "english": "beans, peas; bean-shaped | any thick fluid; starch; broth",
+    "pinyin": "dòu jiāng"
+  },
+  {
+    "simplified": "油",
+    "english": "oil, fat, grease, lard; paints",
+    "pinyin": "yóu"
+  },
+  {
+    "simplified": "豆",
+    "english": "beans, peas; bean-shaped",
+    "pinyin": "dòu"
+  },
+  {
+    "simplified": "夏",
+    "english": "summer; great, grand, big",
+    "pinyin": "xià"
+  },
+  {
+    "simplified": "冬",
+    "english": "winter, 11th lunar month",
+    "pinyin": "dōng"
+  },
+  {
+    "simplified": "秋",
+    "english": "autumn, fall; year",
+    "pinyin": "qiū"
+  },
+  {
+    "simplified": "春",
+    "english": "spring; wanton",
+    "pinyin": "chūn"
+  },
+  {
+    "simplified": "后",
+    "english": "queen, empress, sovereign; (simp. for 後) behind, rear, after",
+    "pinyin": "hòu"
+  },
+  {
+    "simplified": "前",
+    "english": "in front, forward; preceding",
+    "pinyin": "qián"
+  },
+  {
+    "simplified": "季",
+    "english": "quarter of year; season; surname",
+    "pinyin": "jì"
+  },
+  {
+    "simplified": "澳",
+    "english": "inlet, bay; dock, bank",
+    "pinyin": "ào"
+  },
+  {
+    "simplified": "亚",
+    "english": "Asia; second",
+    "pinyin": "yà"
+  },
+  {
+    "simplified": "季节",
+    "english": "quarter of year; season; surname | knot, node, joint; section",
+    "pinyin": "jì jié"
+  },
+  {
+    "simplified": "城",
+    "english": "castle; city, town; municipality",
+    "pinyin": "chéng"
+  },
+  {
+    "simplified": "市",
+    "english": "market, fair; city, town; trade",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "附",
+    "english": "adhere to, append; rely on near to",
+    "pinyin": "fù"
+  },
+  {
+    "simplified": "园",
+    "english": "garden; park, orchard",
+    "pinyin": "yuán"
+  },
+  {
+    "simplified": "城市",
+    "english": "castle; city, town; municipality | market, fair; city, town; trade",
+    "pinyin": "chéng shì"
+  },
+  {
+    "simplified": "附近",
+    "english": "adhere to, append; rely on near to | near, close; approach; intimate",
+    "pinyin": "fù jìn"
+  },
+  {
+    "simplified": "公园",
+    "english": "fair, equitable; public; duke | garden; park, orchard",
+    "pinyin": "gōng yuán"
+  },
+  {
+    "simplified": "图",
+    "english": "diagram; chart, map, picture",
+    "pinyin": "tú"
+  },
+  {
+    "simplified": "馆",
+    "english": "public building",
+    "pinyin": "guǎn"
+  },
+  {
+    "simplified": "方",
+    "english": "a square, rectangle; a region; local",
+    "pinyin": "fāng"
+  },
+  {
+    "simplified": "折",
+    "english": "break off, snap; bend",
+    "pinyin": "zhé"
+  },
+  {
+    "simplified": "角",
+    "english": "horn; angle, corner; point",
+    "pinyin": "jiǎo"
+  },
+  {
+    "simplified": "花",
+    "english": "flower; blossoms",
+    "pinyin": "huā"
+  },
+  {
+    "simplified": "打折",
+    "english": "strike, hit, beat; fight; attack | break off, snap; bend",
+    "pinyin": "dǎ zhé"
+  },
+  {
+    "simplified": "旧",
+    "english": "old, ancient; former, past",
+    "pinyin": "jiù"
+  },
+  {
+    "simplified": "皮",
+    "english": "skin, hide, fur, feather; outer",
+    "pinyin": "pí"
+  },
+  {
+    "simplified": "换",
+    "english": "change",
+    "pinyin": "huàn"
+  },
+  {
+    "simplified": "经",
+    "english": "classic works; pass through",
+    "pinyin": "jīng"
+  },
+  {
+    "simplified": "皮鞋",
+    "english": "skin, hide, fur, feather; outer | shoes, footwear in general",
+    "pinyin": "pí xié"
+  },
+  {
+    "simplified": "经过",
+    "english": "classic works; pass through | pass, pass through, go across",
+    "pinyin": "jīng guò"
+  },
+  {
+    "simplified": "惯",
+    "english": "habit, custom; habitually, usual",
+    "pinyin": "guàn"
+  },
+  {
+    "simplified": "刷",
+    "english": "brush; clean with brush, scrub",
+    "pinyin": "shuā"
+  },
+  {
+    "simplified": "牙",
+    "english": "tooth, molars, teeth; serrated",
+    "pinyin": "yá"
+  },
+  {
+    "simplified": "习惯",
+    "english": "practice; flapping wings | habit, custom; habitually, usual",
+    "pinyin": "xí guàn"
+  },
+  {
+    "simplified": "刷牙",
+    "english": "brush; clean with brush, scrub | tooth, molars, teeth; serrated",
+    "pinyin": "shuā yá"
+  },
+  {
+    "simplified": "马上",
+    "english": "horse; surname; KangXi radical 187 | top; superior, highest; go up, send up",
+    "pinyin": "mǎ shàng"
+  },
+  {
+    "simplified": "以后",
+    "english": "by means of; thereby, therefore; consider as; in order to | queen, empress, sovereign; (simp. for 後) behind, rear, after",
+    "pinyin": "yǐ hòu"
+  },
+  {
+    "simplified": "澡",
+    "english": "wash, bathe",
+    "pinyin": "zǎo"
+  },
+  {
+    "simplified": "总",
+    "english": "collect; overall, altogether",
+    "pinyin": "zǒng"
+  },
+  {
+    "simplified": "洗澡",
+    "english": "wash, rinse; clean, purify | wash, bathe",
+    "pinyin": "xǐ zǎo"
+  },
+  {
+    "simplified": "除",
+    "english": "eliminate, remove, except",
+    "pinyin": "chú"
+  },
+  {
+    "simplified": "其",
+    "english": "his, her, its, their; that",
+    "pinyin": "qí"
+  },
+  {
+    "simplified": "饺",
+    "english": "stuffed dumplings",
+    "pinyin": "jiǎo"
+  },
+  {
+    "simplified": "北方",
+    "english": "north; northern; northward | a square, rectangle; a region; local",
+    "pinyin": "běi fāng"
+  },
+  {
+    "simplified": "除了",
+    "english": "eliminate, remove, except | to finish; particle of completed action",
+    "pinyin": "chú le"
+  },
+  {
+    "simplified": "其他",
+    "english": "his, her, its, their; that | other, another; he, she, it",
+    "pinyin": "qí tā"
+  },
+  {
+    "simplified": "饺子",
+    "english": "stuffed dumplings | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "jiǎo zi"
+  },
+  {
+    "simplified": "辣",
+    "english": "peppery, pungent, hot; cruel",
+    "pinyin": "là"
+  },
+  {
+    "simplified": "极",
+    "english": "extreme, utmost, furthest, final",
+    "pinyin": "jí"
+  },
+  {
+    "simplified": "苦",
+    "english": "bitter; hardship, suffering",
+    "pinyin": "kǔ"
+  },
+  {
+    "simplified": "长",
+    "english": "long; length; excel in; leader",
+    "pinyin": "zhǎng"
+  },
+  {
+    "simplified": "级",
+    "english": "level, rank, class; grade",
+    "pinyin": "jí"
+  },
+  {
+    "simplified": "个子",
+    "english": "numerary adjunct, piece; single | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "gè zi"
+  },
+  {
+    "simplified": "年级",
+    "english": "year; new-years; person's age | level, rank, class; grade",
+    "pinyin": "nián jí"
+  },
+  {
+    "simplified": "小学",
+    "english": "small, tiny, insignificant | learning, knowledge; school",
+    "pinyin": "xiǎo xué"
+  },
+  {
+    "simplified": "初中",
+    "english": "beginning, initial, primary | central; center, middle; in the midst of; hit (target); attain",
+    "pinyin": "chū zhōng"
+  },
+  {
+    "simplified": "初",
+    "english": "beginning, initial, primary",
+    "pinyin": "chū"
+  },
+  {
+    "simplified": "轻",
+    "english": "light; easy, simple; gentle",
+    "pinyin": "qīng"
+  },
+  {
+    "simplified": "较",
+    "english": "compare; comparatively, more",
+    "pinyin": "jiào"
+  },
+  {
+    "simplified": "年轻",
+    "english": "year; new-years; person's age | light; easy, simple; gentle",
+    "pinyin": "nián qīng"
+  },
+  {
+    "simplified": "先",
+    "english": "first, former, previous",
+    "pinyin": "xiān"
+  },
+  {
+    "simplified": "然后",
+    "english": "yes, certainly; pledge, promise | queen, empress, sovereign; (simp. for 後) behind, rear, after",
+    "pinyin": "rán hòu"
+  },
+  {
+    "simplified": "西边",
+    "english": "west(ern); westward, occident | edge, margin, side, border",
+    "pinyin": "xī biān"
+  },
+  {
+    "simplified": "东边",
+    "english": "east, eastern, eastward | edge, margin, side, border",
+    "pinyin": "dōng biān"
+  },
+  {
+    "simplified": "前",
+    "english": "in front, forward; preceding",
+    "pinyin": "qián"
+  },
+  {
+    "simplified": "左",
+    "english": "left; east; unorthodox, improper",
+    "pinyin": "zuǒ"
+  },
+  {
+    "simplified": "北边",
+    "english": "north; northern; northward | edge, margin, side, border",
+    "pinyin": "běi biān"
+  },
+  {
+    "simplified": "一直",
+    "english": "one; a, an; alone | straight, erect, vertical",
+    "pinyin": "yī zhí"
+  },
+  {
+    "simplified": "最后",
+    "english": "most, extremely, exceedingly | queen, empress, sovereign; (simp. for 後) behind, rear, after",
+    "pinyin": "zuì hòu"
+  },
+  {
+    "simplified": "南边",
+    "english": "south; southern part; southward | edge, margin, side, border",
+    "pinyin": "nán biān"
+  },
+  {
+    "simplified": "般",
+    "english": "sort, manner, kind, category",
+    "pinyin": "bān"
+  },
+  {
+    "simplified": "聊",
+    "english": "somewhat, slightly, at least",
+    "pinyin": "liáo"
+  },
+  {
+    "simplified": "聊天",
+    "english": "somewhat, slightly, at least | sky, heaven; god, celestial",
+    "pinyin": "liáo tiān"
+  },
+  {
+    "simplified": "一般",
+    "english": "one; a, an; alone | sort, manner, kind, category",
+    "pinyin": "yī bān"
+  },
+  {
+    "simplified": "见面",
+    "english": "see, observe, behold; perceive | face; surface; plane; side, dimension",
+    "pinyin": "jiàn miàn"
+  },
+  {
+    "simplified": "自己",
+    "english": "self, private, personal; from | self, oneself; personal, private; 6th heavenly stem",
+    "pinyin": "zì jǐ"
+  },
+  {
+    "simplified": "一个人",
+    "english": "one; a, an; alone | numerary adjunct, piece; single | man; people; mankind; someone else",
+    "pinyin": "yī gè rén"
+  },
+  {
+    "simplified": "自",
+    "english": "self, private, personal; from",
+    "pinyin": "zì"
+  },
+  {
+    "simplified": "己",
+    "english": "self, oneself; personal, private; 6th heavenly stem",
+    "pinyin": "jǐ"
+  },
+  {
+    "simplified": "证",
+    "english": "prove, confirm, verify; proof",
+    "pinyin": "zhèng"
+  },
+  {
+    "simplified": "签",
+    "english": "sign, endorse; slip of paper",
+    "pinyin": "qiān"
+  },
+  {
+    "simplified": "照",
+    "english": "shine, illumine, reflect",
+    "pinyin": "zhào"
+  },
+  {
+    "simplified": "护",
+    "english": "protect, guard, defend, shelter",
+    "pinyin": "hù"
+  },
+  {
+    "simplified": "护照",
+    "english": "protect, guard, defend, shelter | shine, illumine, reflect",
+    "pinyin": "hù zhào"
+  },
+  {
+    "simplified": "签证",
+    "english": "sign, endorse; slip of paper | prove, confirm, verify; proof",
+    "pinyin": "qiān zhèng"
+  },
+  {
+    "simplified": "发现",
+    "english": "issue, dispatch, send out; hair | appear, manifest, become visible",
+    "pinyin": "fā xiàn"
+  },
+  {
+    "simplified": "起飞",
+    "english": "rise, stand up; go up; begin | fly; go quickly; dart; high",
+    "pinyin": "qǐ fēi"
+  },
+  {
+    "simplified": "离开",
+    "english": "rare beast; strange; elegant | open; initiate, begin, start",
+    "pinyin": "lí kāi"
+  },
+  {
+    "simplified": "发",
+    "english": "issue, dispatch, send out; hair",
+    "pinyin": "fā"
+  },
+  {
+    "simplified": "言",
+    "english": "simplifieds, speech; speak, say",
+    "pinyin": "yán"
+  },
+  {
+    "simplified": "易",
+    "english": "change; easy",
+    "pinyin": "yì"
+  },
+  {
+    "simplified": "容",
+    "english": "looks, appearance; figure, form",
+    "pinyin": "róng"
+  },
+  {
+    "simplified": "种",
+    "english": "seed; race, breed; to plant",
+    "pinyin": "zhǒng"
+  },
+  {
+    "simplified": "容易",
+    "english": "looks, appearance; figure, form | change; easy",
+    "pinyin": "róng yì"
+  },
+  {
+    "simplified": "久",
+    "english": "long time (ago); time passage, grow late",
+    "pinyin": "jiǔ"
+  },
+  {
+    "simplified": "语言",
+    "english": "language, simplifieds; saying, expression | simplifieds, speech; speak, say",
+    "pinyin": "yǔ yán"
+  },
+  {
+    "simplified": "学",
+    "english": "learning, knowledge; school",
+    "pinyin": "xué"
+  },
+  {
+    "simplified": "更",
+    "english": "more, still further, much more",
+    "pinyin": "gèng"
+  },
+  {
+    "simplified": "努力",
+    "english": "to exert, strive, make an effort; to pout | power, capability, influence",
+    "pinyin": "nǔ lì"
+  },
+  {
+    "simplified": "看起来",
+    "english": "look, see; examine, scrutinize | rise, stand up; go up; begin | come, coming; return, returning",
+    "pinyin": "kàn qǐ lái"
+  },
+  {
+    "simplified": "奇怪",
+    "english": "strange, unusual, uncanny, occult | strange, unusual, peculiar",
+    "pinyin": "qí guài"
+  },
+  {
+    "simplified": "生气",
+    "english": "life, living, lifetime; birth | steam, vapor; KangXi radical 84",
+    "pinyin": "shēng qì"
+  },
+  {
+    "simplified": "紧张",
+    "english": "tense, tight, taut; firm, secure | stretch, extend, expand; sheet",
+    "pinyin": "jǐn zhāng"
+  },
+  {
+    "simplified": "奇",
+    "english": "strange, unusual, uncanny, occult",
+    "pinyin": "qí"
+  },
+  {
+    "simplified": "怪",
+    "english": "strange, unusual, peculiar",
+    "pinyin": "guài"
+  },
+  {
+    "simplified": "紧",
+    "english": "tense, tight, taut; firm, secure",
+    "pinyin": "jǐn"
+  },
+  {
+    "simplified": "难过",
+    "english": "difficult, arduous, hard; unable | pass, pass through, go across",
+    "pinyin": "nán guò"
+  },
+  {
+    "simplified": "地",
+    "english": "earth; soil, ground; region",
+    "pinyin": "de dì"
+  },
+  {
+    "simplified": "想",
+    "english": "think, speculate, plan, consider",
+    "pinyin": "xiǎng"
+  },
+  {
+    "simplified": "求",
+    "english": "seek; demand, request; beseech",
+    "pinyin": "qiú"
+  },
+  {
+    "simplified": "教",
+    "english": "teach, class",
+    "pinyin": "jiào"
+  },
+  {
+    "simplified": "班",
+    "english": "class, group, grade; squad; job",
+    "pinyin": "bān"
+  },
+  {
+    "simplified": "校长",
+    "english": "school; military field officer | long; length; excel in; leader",
+    "pinyin": "xiào zhǎng"
+  },
+  {
+    "simplified": "要求",
+    "english": "necessary, essential; necessity | seek; demand, request; beseech",
+    "pinyin": "yào qiú"
+  },
+  {
+    "simplified": "食堂",
+    "english": "eat; meal; food; KangXi radical number 184 | hall; government office",
+    "pinyin": "shí táng"
+  },
+  {
+    "simplified": "食",
+    "english": "eat; meal; food; KangXi radical number 184",
+    "pinyin": "shí"
+  },
+  {
+    "simplified": "堂",
+    "english": "hall; government office",
+    "pinyin": "táng"
+  },
+  {
+    "simplified": "必须",
+    "english": "surely, most certainly; must | must, have to, necessary",
+    "pinyin": "bì xū"
+  },
+  {
+    "simplified": "完成",
+    "english": "complete, finish, settle; whole | completed, finished, fixed",
+    "pinyin": "wán chéng"
+  },
+  {
+    "simplified": "化",
+    "english": "change, convert, reform; -ize",
+    "pinyin": "huà"
+  },
+  {
+    "simplified": "算",
+    "english": "count, calculate, figure; plan",
+    "pinyin": "suàn"
+  },
+  {
+    "simplified": "搬",
+    "english": "transfer, move, remove, shift",
+    "pinyin": "bān"
+  },
+  {
+    "simplified": "变",
+    "english": "change, transform, alter; rebel",
+    "pinyin": "biàn"
+  },
+  {
+    "simplified": "打算",
+    "english": "strike, hit, beat; fight; attack | count, calculate, figure; plan",
+    "pinyin": "dǎ suàn"
+  },
+  {
+    "simplified": "变化",
+    "english": "change, transform, alter; rebel | change, convert, reform; -ize",
+    "pinyin": "biàn huà"
+  },
+  {
+    "simplified": "机会",
+    "english": "desk; machine; moment | assemble, meet together; meeting",
+    "pinyin": "jī huì"
+  },
+  {
+    "simplified": "留学",
+    "english": "stop, halt; stay, detain, keep | learning, knowledge; school",
+    "pinyin": "liú xué"
+  },
+  {
+    "simplified": "国家",
+    "english": "nation, country, nation-state | house, home, residence; family",
+    "pinyin": "guó jiā"
+  },
+  {
+    "simplified": "选择",
+    "english": "choose, select; elect; election | select, choose, pick out",
+    "pinyin": "xuǎn zé"
+  },
+  {
+    "simplified": "境",
+    "english": "boundary, frontier; area, region",
+    "pinyin": "jìng"
+  },
+  {
+    "simplified": "环",
+    "english": "jade ring or bracelet; ring",
+    "pinyin": "huán"
+  },
+  {
+    "simplified": "层",
+    "english": "storey, layer, floor, stratum",
+    "pinyin": "céng"
+  },
+  {
+    "simplified": "方便",
+    "english": "a square, rectangle; a region; local | convenience, ease; expedient",
+    "pinyin": "fāng biàn"
+  },
+  {
+    "simplified": "环境",
+    "english": "jade ring or bracelet; ring | boundary, frontier; area, region",
+    "pinyin": "huán jìng"
+  },
+  {
+    "simplified": "花",
+    "english": "flower; blossoms",
+    "pinyin": "huā"
+  },
+  {
+    "simplified": "草",
+    "english": "grass, straw, thatch, herbs",
+    "pinyin": "cǎo"
+  },
+  {
+    "simplified": "太阳",
+    "english": "very, too, much; big; extreme | 'male' principle; light; sun",
+    "pinyin": "tài yáng"
+  },
+  {
+    "simplified": "星星",
+    "english": "a star, planet; any point of light | a star, planet; any point of light",
+    "pinyin": "xīng xīng"
+  },
+  {
+    "simplified": "阳",
+    "english": "'male' principle; light; sun",
+    "pinyin": "yáng"
+  },
+  {
+    "simplified": "先生",
+    "english": "first, former, previous | life, living, lifetime; birth",
+    "pinyin": "xiān shēng"
+  },
+  {
+    "simplified": "小姐",
+    "english": "small, tiny, insignificant | elder sister, young lady",
+    "pinyin": "xiǎo jiě"
+  },
+  {
+    "simplified": "经理",
+    "english": "classic works; pass through | reason, logic; manage",
+    "pinyin": "jīng lǐ"
+  },
+  {
+    "simplified": "同事",
+    "english": "same, similar; together with | affair, matter, business; to serve; accident, incident",
+    "pinyin": "tóng shì"
+  },
+  {
+    "simplified": "突然",
+    "english": "suddenly, abruptly, unexpectedly | yes, certainly; pledge, promise",
+    "pinyin": "tū rán"
+  },
+  {
+    "simplified": "重要",
+    "english": "heavy, weighty; double | necessary, essential; necessity",
+    "pinyin": "zhòng yào"
+  },
+  {
+    "simplified": "会议",
+    "english": "assemble, meet together; meeting | consult, talk over, discuss",
+    "pinyin": "huì yì"
+  },
+  {
+    "simplified": "突",
+    "english": "suddenly, abruptly, unexpectedly",
+    "pinyin": "tū"
+  },
+  {
+    "simplified": "重",
+    "english": "heavy, weighty; double",
+    "pinyin": "zhòng"
+  },
+  {
+    "simplified": "议",
+    "english": "consult, talk over, discuss",
+    "pinyin": "yì"
+  },
+  {
+    "simplified": "界",
+    "english": "boundary, limit; domain; society; the world",
+    "pinyin": "jiè"
+  },
+  {
+    "simplified": "河",
+    "english": "river; stream; yellow river",
+    "pinyin": "hé"
+  },
+  {
+    "simplified": "世",
+    "english": "generation; world; era",
+    "pinyin": "shì"
+  },
+  {
+    "simplified": "黄河",
+    "english": "yellow; surname | river; stream; yellow river",
+    "pinyin": "huáng hé"
+  },
+  {
+    "simplified": "动物",
+    "english": "move, happen; movement, action | thing, substance, creature",
+    "pinyin": "dòng wù"
+  },
+  {
+    "simplified": "有名",
+    "english": "have, own, possess; exist | name, rank, title, position",
+    "pinyin": "yǒu míng"
+  },
+  {
+    "simplified": "世界",
+    "english": "generation; world; era | boundary, limit; domain; society; the world",
+    "pinyin": "shì jiè"
+  },
+  {
+    "simplified": "长江",
+    "english": "long; length; excel in; leader | large river; yangzi; surname",
+    "pinyin": "zhǎng jiāng"
+  },
+  {
+    "simplified": "江",
+    "english": "large river; yangzi; surname",
+    "pinyin": "jiāng"
+  },
+  {
+    "simplified": "多么",
+    "english": "much, many; more than, over | interrogative particle; repetition of a tune small; tender",
+    "pinyin": "duō me"
+  },
+  {
+    "simplified": "山",
+    "english": "mountain, hill, peak",
+    "pinyin": "shān"
+  },
+  {
+    "simplified": "者",
+    "english": "that which; he who; those who",
+    "pinyin": "zhě"
+  },
+  {
+    "simplified": "爬",
+    "english": "crawl, creep; climb; scramble",
+    "pinyin": "pá"
+  },
+  {
+    "simplified": "或",
+    "english": "or, either, else; perhaps, maybe",
+    "pinyin": "huò"
+  },
+  {
+    "simplified": "自行车",
+    "english": "self, private, personal; from | go; walk; move, travel; circulate | cart, vehicle; carry in cart",
+    "pinyin": "zì xíng chē"
+  },
+  {
+    "simplified": "或者",
+    "english": "or, either, else; perhaps, maybe | that which; he who; those who",
+    "pinyin": "huò zhě"
+  },
+  {
+    "simplified": "爬山",
+    "english": "crawl, creep; climb; scramble | mountain, hill, peak",
+    "pinyin": "pá shān"
+  },
+  {
+    "simplified": "功夫",
+    "english": "achievement, merit, good result | man, male adult, husband; those",
+    "pinyin": "gōng fū"
+  },
+  {
+    "simplified": "功",
+    "english": "achievement, merit, good result",
+    "pinyin": "gōng"
+  },
+  {
+    "simplified": "对",
+    "english": "correct, right; facing, opposed",
+    "pinyin": "duì"
+  },
+  {
+    "simplified": "顾",
+    "english": "look back; look at; look after",
+    "pinyin": "gù"
+  },
+  {
+    "simplified": "死",
+    "english": "die; dead; death",
+    "pinyin": "sǐ"
+  },
+  {
+    "simplified": "闷",
+    "english": "gloomy, depressed, melancholy",
+    "pinyin": "mèn"
+  },
+  {
+    "simplified": "腿",
+    "english": "legs, thighs",
+    "pinyin": "tuǐ"
+  },
+  {
+    "simplified": "照",
+    "english": "shine, illumine, reflect",
+    "pinyin": "zhào"
+  },
+  {
+    "simplified": "照顾",
+    "english": "shine, illumine, reflect | look back; look at; look after",
+    "pinyin": "zhào gù"
+  },
+  {
+    "simplified": "公斤",
+    "english": "fair, equitable; public; duke | a catty (approximately 500 g); an axe; keen, shrewd; KangXi radical number 69",
+    "pinyin": "gōng jīn"
+  },
+  {
+    "simplified": "着急",
+    "english": "make move, take action | quick, quickly; urgent, pressing",
+    "pinyin": "zhe jí"
+  },
+  {
+    "simplified": "瘦",
+    "english": "thin, emaciated, lean; meager",
+    "pinyin": "shòu"
+  },
+  {
+    "simplified": "斤",
+    "english": "a catty (approximately 500 g); an axe; keen, shrewd; KangXi radical number 69",
+    "pinyin": "jīn"
+  },
+  {
+    "simplified": "际",
+    "english": "border, boundary, juncture",
+    "pinyin": "jì"
+  },
+  {
+    "simplified": "柜",
+    "english": "cabinet, cupboard; shop counter",
+    "pinyin": "guì"
+  },
+  {
+    "simplified": "转",
+    "english": "shift, move, turn",
+    "pinyin": "zhuǎn"
+  },
+  {
+    "simplified": "转机",
+    "english": "shift, move, turn | desk; machine; moment",
+    "pinyin": "zhuǎn jī"
+  },
+  {
+    "simplified": "柜台",
+    "english": "cabinet, cupboard; shop counter | platform; unit; term of address",
+    "pinyin": "guì tái"
+  },
+  {
+    "simplified": "国际",
+    "english": "nation, country, nation-state | border, boundary, juncture",
+    "pinyin": "guó jì"
+  },
+  {
+    "simplified": "换钱",
+    "english": "change | money, currency, coins",
+    "pinyin": "huàn qián"
+  },
+  {
+    "simplified": "银行",
+    "english": "silver; cash, money, wealth | go; walk; move, travel; circulate",
+    "pinyin": "yín xíng"
+  },
+  {
+    "simplified": "充电",
+    "english": "fill, be full, supply | electricity; electric; lightning",
+    "pinyin": "chōng diàn"
+  },
+  {
+    "simplified": "国内",
+    "english": "nation, country, nation-state | inside",
+    "pinyin": "guó nèi"
+  },
+  {
+    "simplified": "答",
+    "english": "answer, reply; return; assent to",
+    "pinyin": "dá"
+  },
+  {
+    "simplified": "句",
+    "english": "sentence",
+    "pinyin": "jù"
+  },
+  {
+    "simplified": "单",
+    "english": "single, individual, only; lone",
+    "pinyin": "dān"
+  },
+  {
+    "simplified": "简",
+    "english": "simple, terse, succinct, a letter",
+    "pinyin": "jiǎn"
+  },
+  {
+    "simplified": "简单",
+    "english": "simple, terse, succinct, a letter | single, individual, only; lone",
+    "pinyin": "jiǎn dān"
+  },
+  {
+    "simplified": "句子",
+    "english": "sentence | offspring, child; fruit, seed of; 1st terrestrial branch",
+    "pinyin": "jù zi"
+  },
+  {
+    "simplified": "回答",
+    "english": "return, turn around; a time | answer, reply; return; assent to",
+    "pinyin": "huí dá"
+  },
+  {
+    "simplified": "词典",
+    "english": "simplifieds; phrase, expression | law, canon; documentation; classic, scripture",
+    "pinyin": "cí diǎn"
+  },
+  {
+    "simplified": "应用",
+    "english": "should, ought to, must | use, employ, apply, operate; use",
+    "pinyin": "yīng yòng"
+  },
+  {
+    "simplified": "语法",
+    "english": "language, simplifieds; saying, expression | law, rule, regulation, statute; France, French",
+    "pinyin": "yǔ fǎ"
+  },
+  {
+    "simplified": "把",
+    "english": "hold, take; guard; regard as",
+    "pinyin": "bǎ"
+  },
+  {
+    "simplified": "灯",
+    "english": "lantern, lamp",
+    "pinyin": "dēng"
+  },
+  {
+    "simplified": "空调",
+    "english": "empty, hollow, bare, deserted | transfer, move, change; tune",
+    "pinyin": "kōng diào"
+  },
+  {
+    "simplified": "空",
+    "english": "empty, hollow, bare, deserted",
+    "pinyin": "kōng"
+  },
+  {
+    "simplified": "放",
+    "english": "put, release, free, liberate",
+    "pinyin": "fàng"
+  },
+  {
+    "simplified": "画",
+    "english": "a painting, picture, drawing; to draw",
+    "pinyin": "huà"
+  },
+  {
+    "simplified": "厨房",
+    "english": "kitchen; closet; cupboard | house, building; room",
+    "pinyin": "chú fáng"
+  },
+  {
+    "simplified": "客厅",
+    "english": "guest, traveller; customer | hall, central room",
+    "pinyin": "kè tīng"
+  },
+  {
+    "simplified": "厨",
+    "english": "kitchen; closet; cupboard",
+    "pinyin": "chú"
+  },
+  {
+    "simplified": "厅",
+    "english": "hall, central room",
+    "pinyin": "tīng"
+  },
+  {
+    "simplified": "寒",
+    "english": "cold, wintry, chilly",
+    "pinyin": "hán"
+  },
+  {
+    "simplified": "暑",
+    "english": "hot",
+    "pinyin": "shǔ"
+  },
+  {
+    "simplified": "复",
+    "english": "return; repeat; repeatedly",
+    "pinyin": "fù"
+  },
+  {
+    "simplified": "记得",
+    "english": "record; keep in mind, remember | obtain, get, gain, acquire",
+    "pinyin": "jì dé"
+  },
+  {
+    "simplified": "复习",
+    "english": "return; repeat; repeatedly | practice; flapping wings",
+    "pinyin": "fù xí"
+  },
+  {
+    "simplified": "数学",
+    "english": "number; several, count; fate | learning, knowledge; school",
+    "pinyin": "shù xué"
+  },
+  {
+    "simplified": "放假",
+    "english": "put, release, free, liberate | falsehood, deception; vacation",
+    "pinyin": "fàng jiǎ"
+  },
+  {
+    "simplified": "暑假",
+    "english": "hot | falsehood, deception; vacation",
+    "pinyin": "shǔ jiǎ"
+  },
+  {
+    "simplified": "寒假",
+    "english": "cold, wintry, chilly | falsehood, deception; vacation",
+    "pinyin": "hán jiǎ"
+  },
+  {
+    "simplified": "终于",
+    "english": "end; finally, in the end | in, on, at; go to; surname",
+    "pinyin": "zhōng yú"
+  },
+  {
+    "simplified": "景",
+    "english": "scenery, view; conditions",
+    "pinyin": "jǐng"
+  },
+  {
+    "simplified": "街",
+    "english": "street, road, thoroughfare",
+    "pinyin": "jiē"
+  },
+  {
+    "simplified": "地图",
+    "english": "earth; soil, ground; region | diagram; chart, map, picture",
+    "pinyin": "de dì tú"
+  },
+  {
+    "simplified": "拿",
+    "english": "take, hold, grasp; bring; with",
+    "pinyin": "ná"
+  },
+  {
+    "simplified": "出",
+    "english": "go out, send out; stand; produce",
+    "pinyin": "chū"
+  },
+  {
+    "simplified": "街道",
+    "english": "street, road, thoroughfare | path, road, street; method, way",
+    "pinyin": "jiē dào"
+  },
+  {
+    "simplified": "红绿灯",
+    "english": "red, vermillion; blush, flush | green; chlorine | lantern, lamp",
+    "pinyin": "hóng lǜ dēng"
+  },
+  {
+    "simplified": "风景",
+    "english": "wind; air; manners, atmosphere | scenery, view; conditions",
+    "pinyin": "fēng jǐng"
+  },
+  {
+    "simplified": "司机",
+    "english": "take charge of, control, manage; officer | desk; machine; moment",
+    "pinyin": "sī jī"
+  },
+  {
+    "simplified": "接",
+    "english": "receive; continue; catch; connect",
+    "pinyin": "jiē"
+  },
+  {
+    "simplified": "邮",
+    "english": "postal, mail; post office",
+    "pinyin": "yóu"
+  },
+  {
+    "simplified": "刚才",
+    "english": "hard, tough, rigid, strong | talent, ability; just, only",
+    "pinyin": "gāng cái"
+  },
+  {
+    "simplified": "电子邮件",
+    "english": "electricity; electric; lightning | offspring, child; fruit, seed of; 1st terrestrial branch | postal, mail; post office | numerary adjunct for article; matter",
+    "pinyin": "diàn zi yóu jiàn"
+  },
+  {
+    "simplified": "回",
+    "english": "return, turn around; a time",
+    "pinyin": "huí"
+  },
+  {
+    "simplified": "发",
+    "english": "issue, dispatch, send out; hair",
+    "pinyin": "fā"
+  },
+  {
+    "simplified": "主要",
+    "english": "master, chief owner; host; lord | necessary, essential; necessity",
+    "pinyin": "zhǔ yào"
+  },
+  {
+    "simplified": "短信",
+    "english": "short; brief; deficient, lacking | trust, believe; letter",
+    "pinyin": "duǎn xìn"
+  },
+  {
+    "simplified": "关于",
+    "english": "frontier pass; close; relation | in, on, at; go to; surname",
+    "pinyin": "guān yú"
+  },
+  {
+    "simplified": "主",
+    "english": "master, chief owner; host; lord",
+    "pinyin": "zhǔ"
+  },
+  {
+    "simplified": "登录",
+    "english": "rise, mount, board, climb | copy, write down, record",
+    "pinyin": "dēng lù"
+  },
+  {
+    "simplified": "同意",
+    "english": "same, similar; together with | thought, idea, opinion; think",
+    "pinyin": "tóng yì"
+  },
+  {
+    "simplified": "决定",
+    "english": "decide, determine, judge | decide, settle, fix",
+    "pinyin": "jué dìng"
+  },
+  {
+    "simplified": "根据",
+    "english": "root, base(d on); foundation | to occupy, take possession of; a base, position",
+    "pinyin": "gēn jù"
+  },
+  {
+    "simplified": "升职",
+    "english": "arise, go up; hoist; advance | duty, profession; office, post",
+    "pinyin": "shēng zhí"
+  },
+  {
+    "simplified": "定",
+    "english": "decide, settle, fix",
+    "pinyin": "dìng"
+  },
+  {
+    "simplified": "根",
+    "english": "root, base(d on); foundation",
+    "pinyin": "gēn"
+  },
+  {
+    "simplified": "据",
+    "english": "to occupy, take possession of; a base, position",
+    "pinyin": "jù"
+  },
+  {
+    "simplified": "升",
+    "english": "arise, go up; hoist; advance",
+    "pinyin": "shēng"
+  },
+  {
+    "simplified": "职",
+    "english": "duty, profession; office, post",
+    "pinyin": "zhí"
+  },
+  {
+    "simplified": "满意",
+    "english": "fill; full, satisfied | thought, idea, opinion; think",
+    "pinyin": "mǎn yì"
+  },
+  {
+    "simplified": "饼",
+    "english": "rice-cakes, biscuits",
+    "pinyin": "bǐng"
+  },
+  {
+    "simplified": "园",
+    "english": "garden; park, orchard",
+    "pinyin": "yuán"
+  },
+  {
+    "simplified": "月亮",
+    "english": "moon; month; KangXi radical 74 | bright, brilliant, radiant, light",
+    "pinyin": "yuè liàng"
+  },
+  {
+    "simplified": "月饼",
+    "english": "moon; month; KangXi radical 74 | rice-cakes, biscuits",
+    "pinyin": "yuè bǐng"
+  },
+  {
+    "simplified": "中秋节",
+    "english": "central; center, middle; in the midst of; hit (target); attain | autumn, fall; year | knot, node, joint; section",
+    "pinyin": "zhōng qiū jié"
+  },
+  {
+    "simplified": "圆",
+    "english": "circle; round, circular; complete",
+    "pinyin": "yuán"
+  },
+  {
+    "simplified": "恭喜",
+    "english": "respectful, polite, reverent | like, love, enjoy; joyful thing",
+    "pinyin": "gōng xǐ"
+  },
+  {
+    "simplified": "红包",
+    "english": "red, vermillion; blush, flush | wrap, pack, bundle; package",
+    "pinyin": "hóng bāo"
+  },
+  {
+    "simplified": "汤圆",
+    "english": "hot water; soup, gravy, broth | circle; round, circular; complete",
+    "pinyin": "tāng yuán"
+  },
+  {
+    "simplified": "聚会",
+    "english": "assemble, meet together, collect | assemble, meet together; meeting",
+    "pinyin": "jù huì"
+  },
+  {
+    "simplified": "珠",
+    "english": "precious stone, gem, jewel, pearl",
+    "pinyin": "zhū"
+  },
+  {
+    "simplified": "汤",
+    "english": "hot water; soup, gravy, broth",
+    "pinyin": "tāng"
+  },
+  {
+    "simplified": "酸",
+    "english": "tart, sour; acid; stiff; spoiled",
+    "pinyin": "suān"
+  },
+  {
+    "simplified": "珍",
+    "english": "precious, valuable, rare",
+    "pinyin": "zhēn"
+  },
+  {
+    "simplified": "珍珠奶茶",
+    "english": "precious, valuable, rare | precious stone, gem, jewel, pearl | milk; woman's breasts; nurse | tea",
+    "pinyin": "zhēn zhū nǎi chá"
+  },
+  {
+    "simplified": "酸辣汤",
+    "english": "tart, sour; acid; stiff; spoiled | peppery, pungent, hot; cruel | hot water; soup, gravy, broth",
+    "pinyin": "suān là tāng"
+  },
+  {
+    "simplified": "北京烤鸭",
+    "english": "north; northern; northward | capital city | bake, roast, toast, cook | duck; Anas species (various)",
+    "pinyin": "běi jīng kǎo yā"
+  },
+  {
+    "simplified": "春卷",
+    "english": "spring; wanton | scroll; curl; make a comeback",
+    "pinyin": "chūn juǎn"
+  },
+  {
+    "simplified": "豆花",
+    "english": "beans, peas; bean-shaped | flower; blossoms",
+    "pinyin": "dòu huā"
+  },
+  {
+    "simplified": "烤",
+    "english": "bake, roast, toast, cook",
+    "pinyin": "kǎo"
+  },
+  {
+    "simplified": "豪",
+    "english": "brave, heroic, chivalrous",
+    "pinyin": "háo"
+  },
+  {
+    "simplified": "宅",
+    "english": "residence, dwelling, home; grave",
+    "pinyin": "zhái"
+  },
+  {
+    "simplified": "土",
+    "english": "soil, earth; items made of earth",
+    "pinyin": "tǔ"
+  },
+  {
+    "simplified": "土豪",
+    "english": "soil, earth; items made of earth | brave, heroic, chivalrous",
+    "pinyin": "tǔ háo"
+  },
+  {
+    "simplified": "吃货",
+    "english": "eat; drink; suffer, endure, bear | goods, commodities, products",
+    "pinyin": "chī huò"
+  },
+  {
+    "simplified": "宅男",
+    "english": "residence, dwelling, home; grave | male, man; son; baron; surname",
+    "pinyin": "zhái nán"
+  },
+  {
+    "simplified": "菜鸟",
+    "english": "vegetables; dish, order; food | bird; KangXi radical 196",
+    "pinyin": "cài niǎo"
+  },
+  {
+    "simplified": "美图",
+    "english": "beautiful, pretty; pleasing | diagram; chart, map, picture",
+    "pinyin": "měi tú"
+  },
+  {
+    "simplified": "萌",
+    "english": "bud, sprout",
+    "pinyin": "méng"
+  },
+  {
+    "simplified": "自拍",
+    "english": "self, private, personal; from | clap, tap, beat; beat or rhythm",
+    "pinyin": "zì pāi"
+  },
+  {
+    "simplified": "销",
+    "english": "melt, fuse; market, sell",
+    "pinyin": "xiāo"
+  },
+  {
+    "simplified": "据",
+    "english": "to occupy, take possession of; a base, position",
+    "pinyin": "jù"
+  },
+  {
+    "simplified": "收据",
+    "english": "gather together, collect; harvest | to occupy, take possession of; a base, position",
+    "pinyin": "shōu jù"
+  },
+  {
+    "simplified": "报销",
+    "english": "report, tell, announce | melt, fuse; market, sell",
+    "pinyin": "bào xiāo"
+  },
+  {
+    "simplified": "费用",
+    "english": "expenses, expenditures, fee | use, employ, apply, operate; use",
+    "pinyin": "fèi yòng"
+  },
+  {
+    "simplified": "尽快",
+    "english": "exhaust, use up; deplete | rapid, quick, speedy, fast; soon",
+    "pinyin": "jǐn kuài"
+  },
+  {
+    "simplified": "回复",
+    "english": "return, turn around; a time | return; repeat; repeatedly",
+    "pinyin": "huí fù"
+  },
+  {
+    "simplified": "报告",
+    "english": "report, tell, announce | tell, announce, inform; accuse",
+    "pinyin": "bào gào"
+  },
+  {
+    "simplified": "协议",
+    "english": "be united; cooperate | consult, talk over, discuss",
+    "pinyin": "xié yì"
+  },
+  {
+    "simplified": "尽",
+    "english": "exhaust, use up; deplete",
+    "pinyin": "jǐn"
+  },
+  {
+    "simplified": "险",
+    "english": "narrow pass, strategic point",
+    "pinyin": "xiǎn"
+  },
+  {
+    "simplified": "投",
+    "english": "throw, cast, fling, pitch; jump",
+    "pinyin": "tóu"
+  },
+  {
+    "simplified": "保险",
+    "english": "protect, safeguard, defend, care | narrow pass, strategic point",
+    "pinyin": "bǎo xiǎn"
+  },
+  {
+    "simplified": "风险",
+    "english": "wind; air; manners, atmosphere | narrow pass, strategic point",
+    "pinyin": "fēng xiǎn"
+  },
+  {
+    "simplified": "投资",
+    "english": "throw, cast, fling, pitch; jump | property; wealth; capital",
+    "pinyin": "tóu zī"
+  },
+  {
+    "simplified": "律师",
+    "english": "statute, principle, regulation | teacher, master, specialist",
+    "pinyin": "lǜ shī"
+  },
+  {
+    "simplified": "版权",
+    "english": "printing blocks; edition | power, right, authority",
+    "pinyin": "bǎn quán"
+  },
+  {
+    "simplified": "咨询",
+    "english": "inquire, consult, discuss; plan | inquire into, ask about; consult",
+    "pinyin": "zī xún"
+  },
+  {
+    "simplified": "律",
+    "english": "statute, principle, regulation",
+    "pinyin": "lǜ"
+  },
+  {
+    "simplified": "版",
+    "english": "printing blocks; edition",
+    "pinyin": "bǎn"
+  },
+  {
+    "simplified": "伤",
+    "english": "wound, injury; fall ill from",
+    "pinyin": "shāng"
+  },
+  {
+    "simplified": "受",
+    "english": "receive, accept, get; bear, stand",
+    "pinyin": "shòu"
+  },
+  {
+    "simplified": "护",
+    "english": "protect, guard, defend, shelter",
+    "pinyin": "hù"
+  },
+  {
+    "simplified": "救",
+    "english": "save, rescue, relieve; help, aid",
+    "pinyin": "jiù"
+  },
+  {
+    "simplified": "警",
+    "english": "guard, watch; alert, alarm",
+    "pinyin": "jǐng"
+  },
+  {
+    "simplified": "报警",
+    "english": "report, tell, announce | guard, watch; alert, alarm",
+    "pinyin": "bào jǐng"
+  },
+  {
+    "simplified": "救护车",
+    "english": "save, rescue, relieve; help, aid | protect, guard, defend, shelter | cart, vehicle; carry in cart",
+    "pinyin": "jiù hù chē"
+  },
+  {
+    "simplified": "受伤",
+    "english": "receive, accept, get; bear, stand | wound, injury; fall ill from",
+    "pinyin": "shòu shāng"
+  },
+  {
+    "simplified": "救命",
+    "english": "save, rescue, relieve; help, aid | life; destiny, fate, luck; an order, instruction",
+    "pinyin": "jiù mìng"
+  },
+  {
+    "simplified": "发生",
+    "english": "issue, dispatch, send out; hair | life, living, lifetime; birth",
+    "pinyin": "fā shēng"
+  },
+  {
+    "simplified": "奖",
+    "english": "prize, reward; give award to",
+    "pinyin": "jiǎng"
+  },
+  {
+    "simplified": "工资",
+    "english": "labor, work; worker, laborer | property; wealth; capital",
+    "pinyin": "gōng zī"
+  },
+  {
+    "simplified": "加班",
+    "english": "add to, increase, augment | class, group, grade; squad; job",
+    "pinyin": "jiā bān"
+  },
+  {
+    "simplified": "奖金",
+    "english": "prize, reward; give award to | gold; metals in general; money",
+    "pinyin": "jiǎng jīn"
+  },
+  {
+    "simplified": "生意",
+    "english": "life, living, lifetime; birth | thought, idea, opinion; think",
+    "pinyin": "shēng yì"
+  },
+  {
+    "simplified": "压力",
+    "english": "press; oppress; crush; pressure | power, capability, influence",
+    "pinyin": "yā lì"
+  },
+  {
+    "simplified": "责任",
+    "english": "one's responsibility, duty | trust to, rely on, appoint; to bear, duty, office; allow",
+    "pinyin": "zé rèn"
+  },
+  {
+    "simplified": "商量",
+    "english": "commerce, business, trade | measure, quantity, capacity",
+    "pinyin": "shāng liàng"
+  },
+  {
+    "simplified": "意见",
+    "english": "thought, idea, opinion; think | see, observe, behold; perceive",
+    "pinyin": "yì jiàn"
+  },
+  {
+    "simplified": "压",
+    "english": "press; oppress; crush; pressure",
+    "pinyin": "yā"
+  },
+  {
+    "simplified": "干燥",
+    "english": "oppose, offend; invade; dried | dry, parched, arid; quick-tempered",
+    "pinyin": "gàn zào"
+  },
+  {
+    "simplified": "暖和",
+    "english": "warm, genial | harmony, peace; peaceful, calm",
+    "pinyin": "nuǎn hé"
+  },
+  {
+    "simplified": "凉快",
+    "english": "cool, cold; disheartened | rapid, quick, speedy, fast; soon",
+    "pinyin": "liáng kuài"
+  },
+  {
+    "simplified": "燥",
+    "english": "dry, parched, arid; quick-tempered",
+    "pinyin": "zào"
+  },
+  {
+    "simplified": "暖",
+    "english": "warm, genial",
+    "pinyin": "nuǎn"
+  },
+  {
+    "simplified": "和",
+    "english": "harmony, peace; peaceful, calm",
+    "pinyin": "hé"
+  },
+  {
+    "simplified": "凉",
+    "english": "cool, cold; disheartened",
+    "pinyin": "liáng"
+  },
+  {
+    "simplified": "温度",
+    "english": "lukewarm | degree, system; manner; to consider",
+    "pinyin": "wēn dù"
+  },
+  {
+    "simplified": "度",
+    "english": "degree, system; manner; to consider",
+    "pinyin": "dù"
+  },
+  {
+    "simplified": "大约",
+    "english": "big, great, vast, large, high | treaty, agreement, covenant",
+    "pinyin": "dà yuē"
+  },
+  {
+    "simplified": "鹰",
+    "english": "falcon; Accipiter species (various)",
+    "pinyin": "yīng"
+  },
+  {
+    "simplified": "毛",
+    "english": "hair, fur, feathers; coarse",
+    "pinyin": "máo"
+  },
+  {
+    "simplified": "羽",
+    "english": "feather, plume; wings; rad. 124",
+    "pinyin": "yǔ"
+  },
+  {
+    "simplified": "橙",
+    "english": "orange",
+    "pinyin": "chéng"
+  },
+  {
+    "simplified": "猫头鹰",
+    "english": "cat | head; top; chief, first; boss | falcon; Accipiter species (various)",
+    "pinyin": "māo tóu yīng"
+  },
+  {
+    "simplified": "羽毛",
+    "english": "feather, plume; wings; rad. 124 | hair, fur, feathers; coarse",
+    "pinyin": "yǔ máo"
+  },
+  {
+    "simplified": "多儿",
+    "english": "much, many; more than, over | son, child; KangXi radical 10",
+    "pinyin": "duō ér"
+  },
+  {
+    "simplified": "鼓励",
+    "english": "drum; beat, top, strike | strive; encourage",
+    "pinyin": "gǔ lì"
+  },
+  {
+    "simplified": "提醒",
+    "english": "hold in hand; lift in hand | wake up; sober up; startle",
+    "pinyin": "tí xǐng"
+  },
+  {
+    "simplified": "懒",
+    "english": "lazy, languid, listless",
+    "pinyin": "lǎn"
+  }
+]

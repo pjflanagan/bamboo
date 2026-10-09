@@ -1,0 +1,6 @@
+hanziconv==0.3.2
+pinyin==0.4.0
+Unidecode==1.4.0
+fpdf2==2.8.4
+google-cloud-translate==2.0.1
+dotenv==0.9.9

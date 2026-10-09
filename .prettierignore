@@ -1,0 +1,7 @@
+legacy/
+data/
+scripts/
+print/
+.next/
+package-lock.json
+*.md
