@@ -1,4 +1,4 @@
-export { getDictionary } from "./dictionary";
+export { getCompactDictionary, getDictionary } from "./dictionary";
 export {
   getFlashcardCatalog,
   getFlashcardSet,
@@ -22,3 +22,5 @@ export {
   type TaskGroup,
   type TaskRequirement,
 } from "./home";
+export { getSong, getSongs, type Song, type SongInfo, type SongLine } from "./songs";
+export { getZhuyinDrill } from "./zhuyin";

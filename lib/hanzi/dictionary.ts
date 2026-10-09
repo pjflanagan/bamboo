@@ -39,3 +39,27 @@ export function parseDictionary(csv: string): Dictionary {
   }
   return dictionary;
 }
+
+/**
+ * The dictionary as JSON, for the browser (the reading tool tokenizes what
+ * you type): character -> [trad, simp, pinyin, tone, zhuyin]. Tuples keep
+ * it about half the size of objects.
+ */
+export type CompactDictionary = Record<string, [string, string, string, Tone, string]>;
+
+export function compactDictionary(dictionary: Dictionary): CompactDictionary {
+  const compact: CompactDictionary = {};
+  for (const [char, { trad, simp, pinyin, tone, zhuyin }] of dictionary) {
+    compact[char] = [trad, simp, pinyin, tone, zhuyin];
+  }
+  return compact;
+}
+
+export function expandDictionary(compact: CompactDictionary): Dictionary {
+  return new Map(
+    Object.entries(compact).map(([char, [trad, simp, pinyin, tone, zhuyin]]) => [
+      char,
+      { trad, simp, pinyin, tone, zhuyin },
+    ]),
+  );
+}

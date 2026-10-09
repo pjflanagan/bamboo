@@ -1,0 +1,68 @@
+.songs {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The whole card is the link (stretched), with an arrow at the end. */
+.song {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  color: var(--text-muted);
+  transition: border-color var(--duration-fast) var(--ease);
+}
+
+.song:hover {
+  border-color: var(--control-selected-border);
+}
+
+.song:has(.songLink:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.songLink {
+  display: grid;
+  flex: 1;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.songLink:focus-visible {
+  outline: none;
+}
+
+.songLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.artist {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1);
+}

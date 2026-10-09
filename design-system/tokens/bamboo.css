@@ -20,11 +20,11 @@
   --stalk-stroke: #23833d66;
 
   /* surfaces */
-  --bg: #f5f2ee;
+  --bg: #f4ecdf;
   --bg-image: none;
-  --surface: #fbfaf8;
-  --surface-raised: #fff;
-  --surface-overlay: rgb(244 242 237 / 0.92);
+  --surface: #faf5ec;
+  --surface-raised: #fdfaf4;
+  --surface-overlay: rgb(244 236 223 / 0.92);
   --backdrop: rgb(30 40 30 / 0.35);
   --overlay-blur: 8px;
   --shadow: 0 6px 18px rgb(0 0 0 / 0.08);

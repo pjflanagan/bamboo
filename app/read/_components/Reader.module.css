@@ -1,0 +1,44 @@
+.reader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.output {
+  display: grid;
+  gap: var(--space-3);
+  min-height: 10rem;
+  overflow-x: auto;
+}
+
+/* An empty line in the text: a paragraph break. */
+.blank {
+  height: var(--space-2);
+}
+
+.note {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}

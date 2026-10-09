@@ -99,6 +99,20 @@
     0 0 16px var(--bg);
 }
 
+/* Bamboo: on the green stalks, the text takes the cream surface color, haloed in stalk green. */
+:global([data-theme="bamboo"]) .intro {
+  color: var(--surface);
+  text-shadow:
+    0 1px 2px var(--stalk-dark),
+    0 0 10px var(--stalk-dark);
+}
+
+/* A green link would vanish on green: links keep the text color, underlined. */
+:global([data-theme="bamboo"]) .intro a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* daily tasks -------------------------------------------------------------- */
 
 .tally[data-met] {

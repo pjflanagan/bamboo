@@ -82,19 +82,19 @@
       {
         "glyph": "唱",
         "name": "唱歌",
-        "href": "https://flanny.app/study-mandarin/page/karaoke/",
+        "href": "/songs",
         "description": "Follow along with song lyrics in Chinese with toggleable pinyin and hover-to-reveal English translations. See more on [Google Docs](https://drive.google.com/drive/folders/1axMQBMYX7Rk4quZHPtHFPWvlqEIqbFyj?usp=share_link) or listen to [the Spotify playlist](https://open.spotify.com/playlist/7636wPWQfSQ2UXZ6Lj9Mn9?si=56c81ab3fd9b4c6f)."
       },
       {
         "glyph": "注",
         "name": "注音 Trainer",
-        "href": "https://flanny.app/study-mandarin/page/zhuyin-trainer/",
+        "href": "/zhuyin-trainer",
         "description": "Randomly pick a character and display only the zhuyin to practice reading. You can also study up with the [zhuyin chart](https://flanny.app/study-mandarin/page/zhuyin-chart/)."
       },
       {
         "glyph": "讀",
         "name": "讀 Tool",
-        "href": "https://flanny.app/study-mandarin/page/read/",
+        "href": "/read",
         "description": "Type or copy/paste text to see pinyin and zhuyin, reformats to traditional."
       }
     ]

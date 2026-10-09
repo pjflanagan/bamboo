@@ -6,3 +6,4 @@ export { SegmentedControl, type SegmentedOption } from "./SegmentedControl";
 export { Slider } from "./Slider";
 export { Table } from "./Table";
 export { TabPanel, Tabs, type TabOption } from "./Tabs";
+export { TextArea } from "./TextArea";

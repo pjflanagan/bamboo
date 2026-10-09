@@ -39,7 +39,7 @@ export const SCRIPT_LABELS: Record<Script, string> = {
 /** Page background per theme, for the browser UI (<meta name="theme-color">). */
 export const THEME_COLORS: Record<Theme, string> = {
   neon: "#1c1c1c",
-  bamboo: "#f5f2ee",
+  bamboo: "#f4ecdf",
 };
 
 /** Each theme's own hanzi font, until the user picks another for it. */
