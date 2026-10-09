@@ -53,7 +53,7 @@
 
 .progress {
   display: grid;
-  grid-template-columns: auto minmax(8rem, 12rem) auto 4ch;
+  grid-template-columns: auto minmax(8rem, 12rem) auto auto 4ch;
   align-items: center;
   gap: var(--space-1);
 }
@@ -63,6 +63,12 @@
   font-variant-numeric: tabular-nums;
   text-align: end;
   color: var(--text-muted);
+}
+
+/* Known: green once the card is known (it's disabled then, but stays visible). */
+.table tr[data-known] .known {
+  color: var(--primary);
+  opacity: 1;
 }
 
 .table tr[data-known] .percent {
@@ -95,7 +101,7 @@
   }
 
   .progress {
-    grid-template-columns: auto minmax(0, 1fr) auto 4ch;
+    grid-template-columns: auto minmax(0, 1fr) auto auto 4ch;
   }
 }
 

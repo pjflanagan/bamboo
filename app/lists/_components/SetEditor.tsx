@@ -12,7 +12,7 @@ import {
   Table,
 } from "@/design-system/controls";
 import { AnnotationScope, Phrase } from "@/design-system/hanzi";
-import { MinusIcon, PlusIcon } from "@/design-system/icons";
+import { CheckIcon, MinusIcon, PlusIcon } from "@/design-system/icons";
 import { Modal } from "@/design-system/overlays";
 import { useChosenSet, useFlashcardSet, useProgress } from "@/hooks";
 import type { Flashcard, FlashcardCatalog } from "@/lib/data";
@@ -90,6 +90,17 @@ const Row = memo(function Row({ card, value, setProgress }: RowProps) {
             onClick={() => setProgress(card.text, value + PROGRESS_STEP)}
           >
             <PlusIcon size={16} />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            iconOnly
+            className={styles.known}
+            aria-label={`Known: ${card.text}`}
+            disabled={value >= 1}
+            onClick={() => setProgress(card.text, 1)}
+          >
+            <CheckIcon size={16} />
           </Button>
           <span className={styles.percent} aria-hidden>
             {percent}%

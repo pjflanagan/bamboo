@@ -10,7 +10,7 @@ import { Sign } from "@/design-system/motifs";
 import { useLocalStore } from "@/hooks";
 import type { Glossary, HomeContent, Task } from "@/lib/data";
 import { dailyTasksStore, today } from "@/lib/storage";
-import { dayStatus, groupStatus, type Requirement } from "@/lib/tasks";
+import { dayStatus } from "@/lib/tasks";
 import styles from "../home.module.css";
 
 function TaskLabel({ task, glossary }: { task: Task; glossary: Glossary }) {
@@ -21,13 +21,6 @@ function TaskLabel({ task, glossary }: { task: Task; glossary: Glossary }) {
   if (task.href) return <a href={task.href}>{label}</a>;
   return label;
 }
-
-/** What each group asks for, shown beside its title. */
-const REQUIREMENT_LABELS: Record<Requirement, string> = {
-  all: "All",
-  one: "Any one",
-  none: "Optional",
-};
 
 const noSubscribe = () => () => {};
 
@@ -76,38 +69,26 @@ export function DailyTasks({
         </span>
       </div>
       <div className={styles.taskColumns}>
-        {groups.map((group) => {
-          const status = groupStatus(group, done);
-          return (
-            <div key={group.title}>
-              <div className={styles.groupHeader}>
-                <Sign as="h3" variant="text" text={group.title} className={styles.groupTitle}>
-                  <Glossed text={group.title} glossary={glossary} />
-                </Sign>
-                <span
-                  className={styles.requirement}
-                  data-met={(group.require !== "none" && status.met) || undefined}
-                >
-                  {group.require !== "none" && status.met && <CheckIcon size={12} />}
-                  {REQUIREMENT_LABELS[group.require]}
-                </span>
-              </div>
-              <ul className={styles.checklist}>
-                {group.items.map((task) => (
-                  <li key={task.id}>
-                    <Checkbox
-                      strike
-                      checked={done.includes(task.id)}
-                      onChange={(checked) => toggle(task.id, checked)}
-                    >
-                      <TaskLabel task={task} glossary={glossary} />
-                    </Checkbox>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          );
-        })}
+        {groups.map((group) => (
+          <div key={group.title}>
+            <Sign as="h3" variant="text" text={group.title} className={styles.groupTitle}>
+              <Glossed text={group.title} glossary={glossary} />
+            </Sign>
+            <ul className={styles.checklist}>
+              {group.items.map((task) => (
+                <li key={task.id}>
+                  <Checkbox
+                    strike
+                    checked={done.includes(task.id)}
+                    onChange={(checked) => toggle(task.id, checked)}
+                  >
+                    <TaskLabel task={task} glossary={glossary} />
+                  </Checkbox>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </>
   );

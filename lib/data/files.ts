@@ -10,10 +10,18 @@ export const DATA_TAG = "data";
 
 /**
  * Where data/ comes from:
- *   remote (default)   the public repo on GitHub, read at runtime, so a push
- *                      to data/ goes live without a deploy
- *   DATA_SOURCE=local  ./data on disk, to see edits without pushing
+ *   local   ./data on disk: the default in development (`next dev`), so
+ *           edits show without pushing
+ *   remote  the public repo on GitHub, read at runtime: the default
+ *           everywhere else, so a push to data/ goes live without a deploy
+ * DATA_SOURCE=local|remote overrides the default.
  */
+export function isLocalData(): boolean {
+  const source = process.env.DATA_SOURCE;
+  if (source === "local" || source === "remote") return source === "local";
+  return process.env.NODE_ENV === "development";
+}
+
 function dataUrl(path: string): string {
   const repo = process.env.DATA_REPO ?? "pjflanagan/bamboo";
   const branch = process.env.DATA_BRANCH ?? "main";
@@ -31,7 +39,7 @@ export async function readDataFile(path: string): Promise<string> {
   cacheLife("data");
   cacheTag(DATA_TAG);
 
-  if (process.env.DATA_SOURCE === "local") {
+  if (isLocalData()) {
     return readFile(join(process.cwd(), "data", path), "utf-8");
   }
   const response = await fetch(dataUrl(path));

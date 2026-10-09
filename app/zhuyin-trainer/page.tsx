@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
+import { buttonClassName } from "@/design-system/controls";
 import { Page } from "@/design-system/layout";
 import { getZhuyinDrill } from "@/lib/data";
 import { ZhuyinTrainer } from "./_components/ZhuyinTrainer";
@@ -15,7 +17,14 @@ export default async function ZhuyinTrainerPage() {
 
   return (
     <>
-      <PageHeader title="注音 Trainer" />
+      <PageHeader
+        title="注音 Trainer"
+        actions={
+          <Link href="/zhuyin-chart" className={buttonClassName({ variant: "ghost", size: "sm" })}>
+            Chart
+          </Link>
+        }
+      />
       <Page>
         <ZhuyinTrainer drill={drill} />
       </Page>

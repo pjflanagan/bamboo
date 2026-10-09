@@ -33,6 +33,11 @@ export type HomeContent = {
     /** `glyph` is one character, shown large on the tool's card. */
     items: { glyph: string; name: string; href: string; description?: string }[];
   };
+  /**
+   * The heading over the resource cards. Optional: the page can deploy
+   * before the data that names it is pushed.
+   */
+  resourcesTitle?: string;
   resourceTitles: Record<"videos" | "podcasts" | "apps" | "other", string>;
   /** Chinese terms used on the page, by text; matched longest first. */
   glossary: Glossary;

@@ -120,70 +120,79 @@ export default async function Home() {
           </ul>
         </section>
 
-        <section className={styles.resources} aria-label="Resources">
-          <ResourceCard title={titles.videos} id="videos" glossary={glossary}>
-            {resources.videos.map((group) => (
-              <div key={group.category}>
-                <h4 className={styles.category}>
-                  <Glossed text={group.category} glossary={glossary} />
-                </h4>
-                <ul className={styles.list}>
-                  {group.items.map((video) => (
-                    <li key={video.url}>
-                      <ItemLink href={video.url}>{video.name}</ItemLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </ResourceCard>
-
-          <ResourceCard title={titles.podcasts} id="podcasts" glossary={glossary}>
-            <ul className={styles.list}>
-              {resources.podcasts.map((podcast) => (
-                <li key={podcast.url}>
-                  <ItemLink href={podcast.url}>{podcast.name}</ItemLink>
-                  {podcast.description && (
-                    <span className={styles.description}>{podcast.description}</span>
-                  )}
-                </li>
+        <section aria-labelledby={home.resourcesTitle ? "resources" : undefined}>
+          {home.resourcesTitle && (
+            <Sign as="h2" id="resources" text={home.resourcesTitle} className={styles.sectionTitle}>
+              <Glossed text={home.resourcesTitle} glossary={glossary} />
+            </Sign>
+          )}
+          <div className={styles.resources}>
+            <ResourceCard title={titles.videos} id="videos" glossary={glossary}>
+              {resources.videos.map((group) => (
+                <div key={group.category}>
+                  <h4 className={styles.category}>
+                    <Glossed text={group.category} glossary={glossary} />
+                  </h4>
+                  <ul className={styles.list}>
+                    {group.items.map((video) => (
+                      <li key={video.url}>
+                        <ItemLink href={video.url}>{video.name}</ItemLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
-          </ResourceCard>
+            </ResourceCard>
 
-          <ResourceCard title={titles.apps} glossary={glossary}>
-            <ul className={styles.list}>
-              {resources.apps.map((app) => (
-                <li key={app.name} className={app.strikethrough ? styles.struck : undefined}>
-                  {app.web ? (
-                    <AppLink app={{ web: app.web, ios: app.ios, android: app.android }}>
-                      {app.name}
-                    </AppLink>
-                  ) : (
-                    <span>{app.name}</span>
-                  )}
-                  {app.description && <span className={styles.description}>{app.description}</span>}
-                </li>
-              ))}
-            </ul>
-          </ResourceCard>
+            <ResourceCard title={titles.podcasts} id="podcasts" glossary={glossary}>
+              <ul className={styles.list}>
+                {resources.podcasts.map((podcast) => (
+                  <li key={podcast.url}>
+                    <ItemLink href={podcast.url}>{podcast.name}</ItemLink>
+                    {podcast.description && (
+                      <span className={styles.description}>{podcast.description}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </ResourceCard>
 
-          <ResourceCard title={titles.other} glossary={glossary}>
-            <ul className={styles.list}>
-              {resources.other.map((item) => (
-                <li key={item.name}>
-                  {item.url ? (
-                    <ItemLink href={item.url}>{item.name}</ItemLink>
-                  ) : (
-                    <span>{item.name}</span>
-                  )}
-                  {item.description && (
-                    <span className={styles.description}>{item.description}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </ResourceCard>
+            <ResourceCard title={titles.apps} glossary={glossary}>
+              <ul className={styles.list}>
+                {resources.apps.map((app) => (
+                  <li key={app.name} className={app.strikethrough ? styles.struck : undefined}>
+                    {app.web ? (
+                      <AppLink app={{ web: app.web, ios: app.ios, android: app.android }}>
+                        {app.name}
+                      </AppLink>
+                    ) : (
+                      <span>{app.name}</span>
+                    )}
+                    {app.description && (
+                      <span className={styles.description}>{app.description}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </ResourceCard>
+
+            <ResourceCard title={titles.other} glossary={glossary}>
+              <ul className={styles.list}>
+                {resources.other.map((item) => (
+                  <li key={item.name}>
+                    {item.url ? (
+                      <ItemLink href={item.url}>{item.name}</ItemLink>
+                    ) : (
+                      <span>{item.name}</span>
+                    )}
+                    {item.description && (
+                      <span className={styles.description}>{item.description}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </ResourceCard>
+          </div>
         </section>
 
         <Card className={styles.about}>

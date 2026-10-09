@@ -25,4 +25,4 @@ export {
   type TaskRequirement,
 } from "./home";
 export { getSong, getSongs, type Song, type SongInfo, type SongLine } from "./songs";
-export { getZhuyinDrill } from "./zhuyin";
+export { getZhuyinChart, getZhuyinDrill, type ZhuyinChart, type ZhuyinSymbol } from "./zhuyin";

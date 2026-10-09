@@ -2,7 +2,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import type { Syllable } from "@/design-system/hanzi";
 import { getDictionary } from "./dictionary";
 import { getFlashcardCatalog, getFlashcardSet } from "./flashcards";
-import { DATA_TAG } from "./files";
+import { DATA_TAG, readDataFile } from "./files";
 
 /** The common CJK block: leaves out the rare extension characters. */
 const COMMON = /^[一-鿿]$/;
@@ -45,4 +45,23 @@ export async function getZhuyinDrill(): Promise<Syllable[]> {
     if (COMMON.test(char) && char === entry.trad) add(entry);
   }
   return [...drill.values()];
+}
+
+/** One symbol in the zhuyin chart, with its pinyin spelling. */
+export type ZhuyinSymbol = { zhuyin: string; pinyin: string };
+
+/**
+ * data/zhuyin-chart.json: rows of nine cells, laid out like a classroom
+ * chart (initials, the medial, finals). An empty object is an empty slot.
+ */
+export type ZhuyinChart = (ZhuyinSymbol | null)[][];
+
+export async function getZhuyinChart(): Promise<ZhuyinChart> {
+  "use cache";
+  cacheLife("data");
+  cacheTag(DATA_TAG);
+  const rows = JSON.parse(await readDataFile("zhuyin-chart.json")) as { z?: string; e?: string }[][];
+  return rows.map((row) =>
+    row.map((cell) => (cell.z ? { zhuyin: cell.z, pinyin: cell.e ?? "" } : null)),
+  );
 }

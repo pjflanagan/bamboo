@@ -136,37 +136,9 @@
   margin-top: var(--space-5);
 }
 
-.groupHeader {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-1) var(--space-2);
-  margin-bottom: var(--space-2);
-}
-
 .groupTitle {
-  margin: 0;
+  margin: 0 0 var(--space-2);
   font-size: var(--text-md);
-}
-
-/* A small pill saying what the group asks for; it turns green once met. */
-.requirement {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 1px var(--space-2);
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.requirement[data-met] {
-  border-color: var(--control-selected-border);
-  background: var(--control-selected-bg);
-  color: var(--control-selected-text);
-  box-shadow: var(--control-selected-glow);
 }
 
 .checklist {

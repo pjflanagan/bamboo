@@ -1,3 +1,5 @@
+"use client";
+
 import { PREFERENCES_SCRIPT } from "@/lib/preferences";
 
 /**

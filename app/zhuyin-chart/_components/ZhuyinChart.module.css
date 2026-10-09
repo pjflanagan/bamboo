@@ -1,0 +1,124 @@
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 696px;
+  margin-inline: auto;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+/* Each kind's color, shared by the legend and the cells. */
+.chart [data-group="initial"] {
+  --group-bg: var(--card-blue);
+  --group-fg: var(--card-blue-text);
+}
+
+.chart [data-group="medial"] {
+  --group-bg: var(--card-purple);
+  --group-fg: var(--card-purple-text);
+}
+
+.chart [data-group="final"] {
+  --group-bg: var(--card-pink);
+  --group-fg: var(--card-pink-text);
+}
+
+.legend {
+  display: flex;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.legend li::before {
+  content: "";
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 3px;
+  background: var(--group-bg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: clamp(3px, 0.8vw, 6px);
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  aspect-ratio: 9 / 10;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: var(--group-bg);
+  color: var(--group-fg);
+  font: inherit;
+}
+
+button.cell {
+  cursor: pointer;
+  transition:
+    transform var(--duration-fast) var(--ease),
+    filter var(--duration-fast) var(--ease);
+}
+
+button.cell:hover {
+  filter: brightness(1.12);
+}
+
+button.cell:active {
+  transform: scale(0.95);
+}
+
+button.cell:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* An unused slot in its column's color, faded. */
+.cell[data-empty] {
+  opacity: 0.2;
+}
+
+.zhuyin {
+  font-family: var(--font-hanzi);
+  font-size: clamp(14px, 4.9vw, 36px);
+  line-height: 1;
+}
+
+.pinyin {
+  font-size: clamp(8px, 1.6vw, 12px);
+  opacity: 0.8;
+  visibility: hidden;
+}
+
+.grid[data-pinyin] .pinyin {
+  visibility: visible;
+}
+
+.attribution {
+  margin: var(--space-6) 0 0;
+  font-size: var(--text-xs);
+  text-align: center;
+  color: var(--text-muted);
+}

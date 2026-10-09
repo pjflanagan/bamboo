@@ -71,7 +71,7 @@
         "glyph": "卡",
         "name": "Flashcards",
         "href": "/flashcards",
-        "description": "A collection of sets I've curated and a few I've found online from other students. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/study-mandarin/tree/gh-pages/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf)."
+        "description": "A collection of sets I've curated and a few I've found online from other students. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/bamboo/tree/main/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf)."
       },
       {
         "glyph": "列",
@@ -89,7 +89,7 @@
         "glyph": "注",
         "name": "注音 Trainer",
         "href": "/zhuyin-trainer",
-        "description": "Randomly pick a character and display only the zhuyin to practice reading. You can also study up with the [zhuyin chart](https://flanny.app/study-mandarin/page/zhuyin-chart/)."
+        "description": "Randomly pick a character and display only the zhuyin to practice reading. You can also study up with the [zhuyin chart](/zhuyin-chart)."
       },
       {
         "glyph": "讀",
@@ -99,6 +99,7 @@
       }
     ]
   },
+  "resourcesTitle": "學習資源",
   "resourceTitles": {
     "videos": "影片",
     "podcasts": "Podcasts",
@@ -150,6 +151,7 @@
       "pinyin": "xiě zì",
       "english": "write characters"
     },
+    "學習資源": { "pinyin": "xuéxí zīyuán", "english": "study resources" },
     "學習工具": {
       "pinyin": "xuéxí gōngjù",
       "english": "study tools"
@@ -216,7 +218,7 @@
       },
       {
         "label": "Github Repository",
-        "href": "https://github.com/pjflanagan/study-mandarin"
+        "href": "https://github.com/pjflanagan/bamboo"
       }
     ]
   }
