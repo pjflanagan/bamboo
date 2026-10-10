@@ -19,10 +19,32 @@
   user-select: none;
 }
 
+.status {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.count {
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/*
+ * Five columns in both states, so the row never changes size:
+ *   hidden    [<] [ Reveal (spans 3) ] [>]
+ *   revealed  [<] [-] [ Next ] [+]     [>]
+ */
 .actions {
   display: grid;
-  grid-template-columns: 48px 1fr 48px;
+  grid-template-columns: 48px 48px 1fr 48px 48px;
   gap: var(--space-2);
+}
+
+.actions:not([data-revealed]) .primary {
+  grid-column: 2 / 5;
 }
 
 .actions > * {

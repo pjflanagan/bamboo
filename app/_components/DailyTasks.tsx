@@ -70,7 +70,7 @@ export function DailyTasks({
       </div>
       <div className={styles.taskColumns}>
         {groups.map((group) => (
-          <div key={group.title}>
+          <div key={group.title} className={styles.taskGroup}>
             <Sign as="h3" variant="text" text={group.title} className={styles.groupTitle}>
               <Glossed text={group.title} glossary={glossary} />
             </Sign>

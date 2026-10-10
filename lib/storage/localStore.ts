@@ -13,6 +13,8 @@ export type LocalStore<T> = {
   subscribe(listener: () => void): () => void;
   /** What prerendering and the first hydration render see. */
   readonly serverValue: T;
+  /** Validates an untrusted value (from storage or a backup file). */
+  readonly parse: (raw: unknown) => T;
 };
 
 export function createLocalStore<T>(
@@ -44,6 +46,7 @@ export function createLocalStore<T>(
 
   return {
     serverValue: fallback,
+    parse,
     get() {
       cached ??= { value: read() };
       return cached.value;

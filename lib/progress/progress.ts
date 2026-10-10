@@ -24,6 +24,18 @@ export function parseProgress(raw: unknown): ProgressMap {
   return map;
 }
 
+/** The zhuyin symbols in a syllable's spelling, each once: "ㄇㄚ" -> ["ㄇ", "ㄚ"]. */
+export function zhuyinSymbols(zhuyin: string): string[] {
+  return [...new Set(zhuyin)];
+}
+
+/** A syllable's progress: the average of its symbols' progress. */
+export function syllableProgress(zhuyin: string, progress: ProgressMap): number {
+  const symbols = zhuyinSymbols(zhuyin);
+  if (symbols.length === 0) return 0;
+  return symbols.reduce((sum, symbol) => sum + (progress[symbol] ?? 0), 0) / symbols.length;
+}
+
 /**
  * How likely a card is to come up next, relative to the others. New cards
  * weigh 1.05, half-known 0.3, known 0.05: known cards still come back, about

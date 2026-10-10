@@ -51,12 +51,18 @@ function pick<T extends string>(allowed: readonly T[], value: unknown, fallback:
 
 /** Parses the cookie value, dropping anything unknown. Never throws. */
 export function parsePreferences(raw: string | undefined | null): Preferences {
-  let data: Record<string, unknown> = {};
+  let data: unknown = {};
   try {
-    if (raw) data = JSON.parse(decodeURIComponent(raw)) ?? {};
+    if (raw) data = JSON.parse(decodeURIComponent(raw));
   } catch {
     // malformed cookie: fall back to defaults
   }
+  return normalizePreferences(data);
+}
+
+/** Preferences from an untrusted object, with defaults for anything unknown. */
+export function normalizePreferences(raw: unknown): Preferences {
+  const data = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
   const fonts = (data.fonts ?? {}) as Record<string, unknown>;
   return {
     theme: pick(THEME_PREFS, data.theme, DEFAULT_PREFERENCES.theme),

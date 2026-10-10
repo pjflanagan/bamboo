@@ -1,14 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { createLocalStore } from "@/lib/storage";
-
-/** The flashcard set last chosen, shared by the flashcards and sets pages. */
-const chosenSet = createLocalStore<string | null>(
-  "bamboo-flashcard-set",
-  (raw) => (typeof raw === "string" ? raw : null),
-  null,
-);
+import { chosenSetStore as chosenSet } from "@/lib/storage";
 
 /**
  * The chosen set's slug: undefined until hydrated (so a returning visitor

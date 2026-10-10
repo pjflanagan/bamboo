@@ -71,13 +71,8 @@
         "glyph": "卡",
         "name": "Flashcards",
         "href": "/flashcards",
-        "description": "A collection of sets I've curated and a few I've found online from other students. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/bamboo/tree/main/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf)."
-      },
-      {
-        "glyph": "列",
-        "name": "Lists",
-        "href": "/lists",
-        "description": "Every card in a set as one long list: see how well you know each one and adjust it."
+        "description": "A collection of sets I've curated and a few I've found online from other students. Some of these flashcards are also available in [PDF form](https://github.com/pjflanagan/bamboo/tree/main/print) and on a [Chrome Extension](https://chromewebstore.google.com/detail/fcmppkiemgfolnabclbilaodngmhfghf).",
+        "buttons": [{ "label": "Lists", "href": "/lists" }]
       },
       {
         "glyph": "唱",
@@ -89,7 +84,8 @@
         "glyph": "注",
         "name": "注音 Trainer",
         "href": "/zhuyin-trainer",
-        "description": "Randomly pick a character and display only the zhuyin to practice reading. You can also study up with the [zhuyin chart](/zhuyin-chart)."
+        "description": "Randomly pick a character and display only the zhuyin to practice reading.",
+        "buttons": [{ "label": "注音 Chart", "href": "/zhuyin-chart" }]
       },
       {
         "glyph": "讀",

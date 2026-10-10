@@ -4,6 +4,7 @@ export {
   getPreferences,
   setHanziFont,
   setPreference,
+  setPreferences,
   subscribe,
   SERVER_STATE,
   type PreferencesState,

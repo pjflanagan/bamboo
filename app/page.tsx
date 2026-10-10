@@ -103,17 +103,28 @@ export default async function Home() {
                       <RichText text={tool.description} glossary={glossary} />
                     </p>
                   )}
-                  <span className={styles.featureFooter} aria-hidden>
-                    {isInternal(tool.href) ? (
-                      <>
-                        Open <ArrowRightIcon size={14} />
-                      </>
-                    ) : (
-                      <>
-                        On study-mandarin <ExternalLinkIcon size={14} />
-                      </>
-                    )}
-                  </span>
+                  <div className={styles.featureFooter}>
+                    <span className={styles.featureOpen} aria-hidden>
+                      {isInternal(tool.href) ? (
+                        <>
+                          Open <ArrowRightIcon size={14} />
+                        </>
+                      ) : (
+                        <>
+                          On study-mandarin <ExternalLinkIcon size={14} />
+                        </>
+                      )}
+                    </span>
+                    {tool.buttons?.map((button) => (
+                      <ItemLink
+                        key={button.href}
+                        href={button.href}
+                        className={buttonClassName({ size: "sm", className: styles.featureButton })}
+                      >
+                        {linkText(button.label)}
+                      </ItemLink>
+                    ))}
+                  </div>
                 </Card>
               </li>
             ))}

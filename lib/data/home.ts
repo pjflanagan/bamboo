@@ -36,8 +36,17 @@ export type HomeContent = {
   tasks: { title: string; groups: TaskGroup[] };
   tools: {
     title: string;
-    /** `glyph` is one character, shown large on the tool's card. */
-    items: { glyph: string; name: string; href: string; description?: string }[];
+    /**
+     * `glyph` is one character, shown large on the tool's card. `buttons`
+     * link to related pages from the card's footer.
+     */
+    items: {
+      glyph: string;
+      name: string;
+      href: string;
+      description?: string;
+      buttons?: { label: string; href: string }[];
+    }[];
   };
   /**
    * The heading over the resource cards. Optional: the page can deploy

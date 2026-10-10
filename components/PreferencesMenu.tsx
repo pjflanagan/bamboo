@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import { SlidersIcon } from "@/design-system/icons";
+import { BackupControls } from "./BackupControls";
 import { PreferenceControls } from "./PreferenceControls";
 import styles from "./PreferencesMenu.module.css";
 
@@ -24,6 +25,7 @@ export function PreferencesMenu() {
       </button>
       <div id={id} popover="auto" className={styles.panel} aria-label="Display preferences">
         <PreferenceControls />
+        <BackupControls />
       </div>
     </>
   );

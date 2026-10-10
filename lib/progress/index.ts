@@ -3,7 +3,15 @@ export {
   clampProgress,
   parseProgress,
   pickNext,
+  syllableProgress,
   weightOf,
+  zhuyinSymbols,
   type ProgressMap,
 } from "./progress";
-export { progressStore, setCardProgress, setManyProgress } from "./store";
+export {
+  adjustZhuyinProgress,
+  progressStore,
+  setCardProgress,
+  setManyProgress,
+  zhuyinProgressStore,
+} from "./store";

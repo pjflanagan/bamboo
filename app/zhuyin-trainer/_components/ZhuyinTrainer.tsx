@@ -1,14 +1,24 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { Button, Card, SegmentedControl } from "@/design-system/controls";
+import { Button, Card, ProgressBar, SegmentedControl } from "@/design-system/controls";
 import {
   AnnotationScope,
   Character,
   type AnnotationConfig,
   type Syllable,
 } from "@/design-system/hanzi";
-import { ArrowLeftIcon, ArrowRightIcon } from "@/design-system/icons";
+import { ArrowLeftIcon, ArrowRightIcon, MinusIcon, PlusIcon } from "@/design-system/icons";
+import { useLocalStore } from "@/hooks";
+import {
+  PROGRESS_STEP,
+  adjustZhuyinProgress,
+  pickNext,
+  syllableProgress,
+  zhuyinProgressStore,
+  zhuyinSymbols,
+  type ProgressMap,
+} from "@/lib/progress";
 import styles from "./ZhuyinTrainer.module.css";
 
 type Mode = "zhuyin" | "pinyin";
@@ -29,13 +39,6 @@ const MODE_OPTIONS = (Object.keys(MODES) as Mode[]).map((value) => ({
   value,
   label: MODES[value].label,
 }));
-
-/** Any syllable but the current one. */
-function pickOther(count: number, current?: number): number {
-  if (count < 2) return 0;
-  const next = Math.floor(Math.random() * (count - 1));
-  return current !== undefined && next >= current ? next + 1 : next;
-}
 
 const noSubscribe = () => () => {};
 
@@ -68,13 +71,27 @@ export function ZhuyinTrainer({ drill }: { drill: Syllable[] }) {
   );
 }
 
+/** A syllable's next-pick weight input: how well its symbols are known. */
+const progressOf = (syllable: Syllable, progress: ProgressMap) =>
+  syllableProgress(syllable.zhuyin ?? "", progress);
+
 /**
  * One syllable at a time, picked at random from every zhuyin syllable and
- * tone. Space/Enter reveals, then moves on; the arrows walk the syllables
- * already seen.
+ * tone, weighted toward syllables whose symbols you know less well.
+ *
+ *   hidden:    [<] [ Reveal ] [>]
+ *   revealed:  [<] [-] [ Next ] [+] [>]
+ *
+ * - and + move every zhuyin symbol in the syllable (ㄌㄧㄠ: ㄌ, ㄧ, and ㄠ),
+ * then move on; the chart shows each symbol's progress. Keys: Space/Enter
+ * reveals, then moves on; arrows walk the syllables already seen; once
+ * revealed, - and + adjust.
  */
 function Drill({ drill, mode }: { drill: Syllable[]; mode: Mode }) {
-  const [history, setHistory] = useState(() => [pickOther(drill.length)]);
+  const progress = useLocalStore(zhuyinProgressStore);
+  const [history, setHistory] = useState(() => [
+    pickNext(drill.map((syllable) => progressOf(syllable, zhuyinProgressStore.get()))),
+  ]);
   const [position, setPosition] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [shownMode, setShownMode] = useState(mode);
@@ -83,7 +100,8 @@ function Drill({ drill, mode }: { drill: Syllable[]; mode: Mode }) {
     setRevealed(false);
   }
 
-  const syllable = drill[history[position]];
+  const index = history[position];
+  const syllable = drill[index];
 
   const reveal = () => setRevealed(true);
   const back = () => {
@@ -91,12 +109,18 @@ function Drill({ drill, mode }: { drill: Syllable[]; mode: Mode }) {
     setPosition(position - 1);
     setRevealed(false);
   };
-  const forward = () => {
+  /** The next syllable seen, or a new one. `updated` is progress just set. */
+  const forward = (updated: ProgressMap = progress) => {
     if (position === history.length - 1) {
-      setHistory([...history, pickOther(drill.length, history[position])]);
+      const weights = drill.map((s) => progressOf(s, updated));
+      setHistory([...history, pickNext(weights, index)]);
     }
     setPosition(position + 1);
     setRevealed(false);
+  };
+  const rate = (delta: number) => {
+    adjustZhuyinProgress(syllable.zhuyin ?? "", delta);
+    forward(zhuyinProgressStore.get());
   };
 
   useEffect(() => {
@@ -108,6 +132,8 @@ function Drill({ drill, mode }: { drill: Syllable[]; mode: Mode }) {
         else reveal();
       } else if (event.key === "ArrowRight") forward();
       else if (event.key === "ArrowLeft") back();
+      else if (revealed && event.key === "-") rate(-PROGRESS_STEP);
+      else if (revealed && (event.key === "+" || event.key === "=")) rate(PROGRESS_STEP);
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -115,21 +141,58 @@ function Drill({ drill, mode }: { drill: Syllable[]; mode: Mode }) {
 
   if (!syllable) return <p>No syllables to practice.</p>;
 
+  const symbols = [...new Set(drill.flatMap((s) => zhuyinSymbols(s.zhuyin ?? "")))];
+  const known = symbols.filter((symbol) => (progress[symbol] ?? 0) >= 1).length;
+  const average =
+    symbols.reduce((sum, symbol) => sum + (progress[symbol] ?? 0), 0) / symbols.length;
+
   return (
     <>
-      <Card className={styles.card} onClick={revealed ? forward : reveal}>
+      <div className={styles.status}>
+        <span className={styles.count}>
+          {known} / {symbols.length} symbols known
+        </span>
+        <ProgressBar value={average} label="Zhuyin progress" />
+      </div>
+      <Card className={styles.card} onClick={revealed ? () => forward() : reveal}>
         <AnnotationScope {...MODES[mode].layers} english="collapsed" revealed={revealed}>
           <Character syllable={syllable} />
         </AnnotationScope>
       </Card>
-      <div className={styles.actions}>
-        <Button iconOnly aria-label="Previous" disabled={position === 0} onClick={back}>
+      {/* One five-column grid for both states; the primary button keeps its key. */}
+      <div className={styles.actions} data-revealed={revealed || undefined}>
+        <Button key="back" iconOnly aria-label="Previous" disabled={position === 0} onClick={back}>
           <ArrowLeftIcon />
         </Button>
-        <Button variant="primary" className={styles.primary} onClick={revealed ? forward : reveal}>
+        {revealed && (
+          <Button
+            key="less"
+            iconOnly
+            aria-label="Less known, next syllable"
+            onClick={() => rate(-PROGRESS_STEP)}
+          >
+            <MinusIcon />
+          </Button>
+        )}
+        <Button
+          key="primary"
+          variant="primary"
+          className={styles.primary}
+          onClick={revealed ? () => forward() : reveal}
+        >
           {revealed ? "Next" : "Reveal"}
         </Button>
-        <Button iconOnly aria-label="Next" onClick={forward}>
+        {revealed && (
+          <Button
+            key="more"
+            iconOnly
+            aria-label="Better known, next syllable"
+            onClick={() => rate(PROGRESS_STEP)}
+          >
+            <PlusIcon />
+          </Button>
+        )}
+        <Button key="forward" iconOnly aria-label="Next" onClick={() => forward()}>
           <ArrowRightIcon />
         </Button>
       </div>

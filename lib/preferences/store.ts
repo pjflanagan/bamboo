@@ -70,7 +70,11 @@ export function getPreferences(): PreferencesState {
 
 export function setPreference<K extends keyof Preferences>(key: K, value: Preferences[K]): void {
   const { theme, fonts, script } = getPreferences();
-  const next: Preferences = { theme, fonts, script, [key]: value };
+  setPreferences({ theme, fonts, script, [key]: value });
+}
+
+/** Replaces every preference at once: restoring a backup. */
+export function setPreferences(next: Preferences): void {
   document.cookie = serializePreferencesCookie(next);
   update(resolve(next));
 }

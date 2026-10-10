@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { clampProgress, parseProgress, pickNext, weightOf } from "./progress";
+import {
+  clampProgress,
+  parseProgress,
+  pickNext,
+  syllableProgress,
+  weightOf,
+  zhuyinSymbols,
+} from "./progress";
 
 describe("clampProgress", () => {
   it("clamps to 0..1 and rounds away float drift", () => {
@@ -40,5 +47,18 @@ describe("pickNext", () => {
     const random = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
     for (let i = 0; i < 2000; i++) counts[pickNext([0, 1], undefined, random)]++;
     expect(counts[0]).toBeGreaterThan(counts[1] * 10);
+  });
+});
+
+describe("zhuyin progress", () => {
+  it("splits a syllable into its symbols, once each", () => {
+    expect(zhuyinSymbols("ㄌㄧㄠ")).toEqual(["ㄌ", "ㄧ", "ㄠ"]);
+    expect(zhuyinSymbols("ㄨㄨ")).toEqual(["ㄨ"]);
+  });
+
+  it("averages a syllable's symbols, unseen ones counting as 0", () => {
+    expect(syllableProgress("ㄇㄚ", { ㄇ: 1, ㄚ: 0.5 })).toBe(0.75);
+    expect(syllableProgress("ㄇㄚ", { ㄇ: 1 })).toBe(0.5);
+    expect(syllableProgress("", {})).toBe(0);
   });
 });
