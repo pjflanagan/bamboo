@@ -1,0 +1,51 @@
+import { describe, expect, it } from "vitest";
+import { TransferError, decodeTransfer, encodeTransfer, mergeProgress } from "./transfer";
+
+describe("transfer links", () => {
+  it("round-trips progress, leaving out zeros", async () => {
+    const fragment = await encodeTransfer({
+      progress: { 你好: 0.5, 再見: 0, 謝謝: 1 },
+      zhuyinProgress: { ㄇ: 0.3 },
+    });
+    expect(fragment).toMatch(/^v1\.[\w-]+$/);
+    expect(await decodeTransfer(`#${fragment}`)).toEqual({
+      progress: { 你好: 0.5, 謝謝: 1 },
+      zhuyinProgress: { ㄇ: 0.3 },
+    });
+  });
+
+  it("stays short enough to share for a large history", async () => {
+    const progress = Object.fromEntries(
+      Array.from({ length: 2000 }, (_, i) => [`詞${i}`, (i % 10) / 10 + 0.1]),
+    );
+    const fragment = await encodeTransfer({ progress, zhuyinProgress: {} });
+    expect(fragment.length).toBeLessThan(20_000);
+    expect((await decodeTransfer(fragment)).progress).toEqual(
+      Object.fromEntries(Object.entries(progress).map(([k, v]) => [k, Math.round(v * 100) / 100])),
+    );
+  });
+
+  it("rejects links without progress or with damaged data", async () => {
+    await expect(decodeTransfer("")).rejects.toThrow(TransferError);
+    await expect(decodeTransfer("#v2.abc")).rejects.toThrow(TransferError);
+    await expect(decodeTransfer("#v1.not-deflate")).rejects.toThrow(/damaged/);
+  });
+
+  it("cleans values like a storage read", async () => {
+    const fragment = await encodeTransfer({
+      progress: { 你好: 3 } as Record<string, number>,
+      zhuyinProgress: {},
+    });
+    expect((await decodeTransfer(fragment)).progress).toEqual({ 你好: 1 });
+  });
+});
+
+describe("mergeProgress", () => {
+  it("keeps the higher value and every item from both", () => {
+    expect(mergeProgress({ a: 0.8, b: 0.2 }, { b: 0.6, c: 0.4 })).toEqual({
+      a: 0.8,
+      b: 0.6,
+      c: 0.4,
+    });
+  });
+});

@@ -129,16 +129,19 @@
   color: var(--text-muted);
 }
 
+/*
+ * Each group as wide as its checklist needs, sharing what's left over;
+ * groups wrap onto new rows when they don't fit side by side.
+ */
 .taskColumns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
   margin-top: var(--space-4);
 }
 
-/* Sized by its column, so the checklist can split once the column is wide. */
 .taskGroup {
-  container-type: inline-size;
+  flex: 1 1 auto;
 }
 
 .groupTitle {
@@ -155,9 +158,10 @@
   line-height: var(--leading-tight);
 }
 
-@container (min-width: 18rem) {
-  .checklist {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Past two tasks, two sub-columns once the screen has room. */
+@media (min-width: 480px) {
+  .checklist:has(> :nth-child(3)) {
+    grid-template-columns: repeat(2, max-content);
   }
 }
 
