@@ -1,110 +1,133 @@
+/*
+ * The site's two themes (design-system/tokens/bamboo.css, neon.css), cut down
+ * to what the new tab page uses. theme.js sets data-theme on <html>.
+ */
+
+:root {
+  --swatch-red: #8e0202;
+  --swatch-dark-red: #5a0101;
+  --swatch-brown: #701f04;
+  --swatch-tan: #cea553;
+  --swatch-orange: #cf5c05;
+  --swatch-yellow: #d7c03e;
+  --swatch-lime: #619a0c;
+  --swatch-green: #228b06;
+  --swatch-teal: #29aa65;
+  --swatch-cyan: #1fa77e;
+  --swatch-light-blue: #0d99a9;
+  --swatch-blue: #096498;
+  --swatch-dark-blue: #163595;
+  --swatch-purple: #451695;
+  --swatch-pink: #b60144;
+  --swatch-hot-pink: #b60192;
+  --swatch-white: #ededed;
+  --swatch-light-grey: #b3b3b3;
+  --swatch-grey: #7f7f7f;
+  --swatch-dark-grey: #434343;
+  --swatch-black: #252525;
+
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+}
+
+/* Bamboo: paper background, bamboo greens */
+[data-theme="bamboo"] {
+  color-scheme: light;
+  --bg: #f4ecdf;
+  --bg-image: none;
+  --surface: #faf5ec;
+  --surface-raised: #fdfaf4;
+  --text: #111;
+  --text-secondary: rgb(0 0 0 / 0.75);
+  --text-muted: rgb(0 0 0 / 0.55);
+  --border: rgb(0 0 0 / 0.08);
+  --border-strong: rgb(0 0 0 / 0.2);
+  --primary: #23833d;
+  --primary-hover: #33a853;
+  --highlight: #daeedd;
+  --focus-ring: #33a853;
+  --control-bg: var(--surface);
+  --control-selected-bg: var(--primary);
+  --control-selected-border: var(--primary);
+  --control-selected-text: #fff;
+  --control-selected-glow: none;
+  --brand: var(--primary);
+  --font-latin: "Source Sans 3";
+  --font-hanzi: "LXGW WenKai TC", "Noto Sans TC", "Noto Sans SC";
+  /* colored cards: the swatch mixed into paper, dark text */
+  --card-mix: 50%;
+  --card-paper: #f5f2ee;
+  --card-text: #000;
+  --card-text-light: #000;
+}
+
+/* Neon: near-black background, glowing accents */
+[data-theme="neon"] {
+  color-scheme: dark;
+  --neon: hsl(190 72% 48%);
+  --bg: #1c1c1c;
+  --bg-image: linear-gradient(180deg, #080808 0%, #1c1c1c 100%);
+  --surface: #242424;
+  --surface-raised: #2c2c2c;
+  --text: #fff;
+  --text-secondary: #ccc;
+  --text-muted: #999;
+  --border: rgb(255 255 255 / 0.1);
+  --border-strong: rgb(255 255 255 / 0.2);
+  --primary: var(--neon);
+  --primary-hover: hsl(190 72% 58%);
+  --highlight: rgb(255 255 255 / 0.18);
+  --focus-ring: hsl(190 90% 62%);
+  --control-bg: rgb(255 255 255 / 0.04);
+  --control-selected-bg: hsl(190 72% 48% / 0.12);
+  --control-selected-border: var(--primary);
+  --control-selected-text: var(--primary-hover);
+  --control-selected-glow: 0 0 3px hsl(190 72% 48% / 0.6), 0 0 8px hsl(190 72% 48% / 0.3);
+  --brand: var(--primary);
+  --font-latin: "Noto Sans";
+  --font-hanzi: "Noto Sans TC", "Noto Sans SC";
+  /* colored cards: the original saturated swatches */
+  --card-mix: 100%;
+  --card-paper: #000;
+  --card-text: #fff;
+  --card-text-light: #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  color: #fff;
-  background: #1c1c1c;
+}
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Source Sans Pro", sans-serif;
+  color: var(--text);
+  background: var(--bg-image), var(--bg);
+  font-family: var(--font-latin), var(--font-hanzi), sans-serif;
+  transition:
+    background-color var(--duration-normal) var(--ease),
+    color var(--duration-normal) var(--ease);
+}
+
+button,
+select {
+  font: inherit;
 }
 
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
+  user-select: none;
 }
-
-/* SPLASH */
-
-#splash {
-  height: 100%;
-  width: 100%;
-  background: #000;
-  position: fixed;
-  pointer-events: none;
-  top: 0px;
-  left: 0px;
-  z-index: 20;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-#splash.hidden {
-  background: #fff0;
-  opacity: 0;
-}
-
-/* APP WRAPPER */
-
-#app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  width: 100%;
-  max-width: 700px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* CONTAINER (CARD) */
-
-#container {
-  text-align: center;
-  width: 100%;
-  max-width: 840px;
-  padding: 50px 30px;
-  border-radius: 12px;
-  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.45);
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-#container:hover {
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.55);
-}
-
-#character {
-  font-family: "Noto Sans TC", "Noto Sans SC", sans-serif;
-  font-size: 84px;
-  margin: 0;
-  line-height: 1.1;
-  font-weight: 500;
-}
-
-#pinyin {
-  font-size: 24px;
-  margin: 20px 0 8px 0;
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-#english {
-  font-size: 18px;
-  margin: 8px 0 0 0;
-  font-weight: 300;
-  opacity: 0.85;
-}
-
-#lesson {
-  font-size: 11px;
-  margin: 24px 0 0 0;
-  font-weight: 400;
-  opacity: 0.45;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* UTILS */
 
 .hidden {
   visibility: hidden !important;
@@ -112,219 +135,289 @@ body {
   pointer-events: none !important;
 }
 
-/* ACTIONS */
-
-#actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-}
-
-#actions .rate {
-  min-width: 0;
-  padding: 10px 18px;
-}
-
 .gone {
-  display: none;
+  display: none !important;
 }
 
-#actions a {
-  font-family: "Source Sans Pro", sans-serif;
+/* SPLASH: covers the page until the first card is ready */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: var(--bg);
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+#splash.hidden {
+  opacity: 0;
+}
+
+/* HEADER */
+
+#bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+#bar-start {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#brand {
+  display: flex;
+  font-size: 22px;
+  color: var(--brand);
+}
+
+#brand:hover {
+  color: var(--primary-hover);
+}
+
+/* The wordmark, drawn as a mask over currentColor (components/BambooLogo). */
+.logo {
+  display: inline-block;
+  height: 1em;
+  aspect-ratio: 598 / 141;
+  background: currentColor;
+  mask: url("./logo.png") center / contain no-repeat;
+}
+
+#dropdown {
+  max-width: 220px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
+  color: var(--text-muted);
+  background: transparent;
   cursor: pointer;
-  padding: 10px 24px;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgba(255, 255, 255, 0.03);
-  min-width: 84px;
+  outline: none;
+}
+
+#dropdown:hover,
+#dropdown:focus-visible {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+#dropdown option,
+#dropdown optgroup {
+  color: var(--text);
+  background: var(--surface);
+}
+
+/* THEME SWITCH: the site's SegmentedControl */
+
+#theme {
+  display: flex;
+  padding: 2px;
+  gap: 2px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--control-bg);
+}
+
+#theme button {
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+#theme button:hover {
+  color: var(--text);
+}
+
+#theme button[aria-checked="true"] {
+  color: var(--control-selected-text);
+  background: var(--control-selected-bg);
+  border-color: var(--control-selected-border);
+  box-shadow: var(--control-selected-glow);
+}
+
+/* APP */
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+}
+
+/* CARD: the site's Card */
+
+#container {
+  width: 100%;
+  padding: 50px 30px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   text-align: center;
+  color: var(--text);
+  background: var(--surface-raised);
+  box-shadow: 0 11px 23px rgb(0 0 0 / 0.15);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-normal) var(--ease),
+    box-shadow var(--duration-normal) var(--ease);
 }
 
-#actions a:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.08);
+#container:hover {
+  box-shadow: 0 16px 32px rgb(0 0 0 / 0.22);
 }
 
-#reveal-or-next-button {
-  color: #fff !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  font-weight: 600;
+/* main.js sets --swatch to the card's color, and data-light on pale ones. */
+#container[data-colored] {
+  border-color: transparent;
+  color: var(--card-text);
+  background: color-mix(in oklab, var(--swatch) var(--card-mix), var(--card-paper));
 }
 
-#reveal-or-next-button:hover {
-  background-color: rgba(255, 255, 255, 0.18) !important;
-  border-color: rgba(255, 255, 255, 0.6) !important;
+#container[data-colored][data-light] {
+  color: var(--card-text-light);
 }
 
-/* PROGRESS */
+#character {
+  margin: 0;
+  font-family: var(--font-hanzi), sans-serif;
+  font-size: 84px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+#pinyin {
+  margin: 20px 0 8px;
+  font-size: 24px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+#english {
+  margin: 8px 0 0;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+#lesson {
+  margin: 24px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
 
 #meter {
+  max-width: 240px;
   height: 4px;
   margin: 20px auto 0;
-  max-width: 240px;
   border-radius: 2px;
-  background: rgba(127, 127, 127, 0.3);
+  background: color-mix(in oklab, currentColor 20%, transparent);
   overflow: hidden;
 }
 
 #meter-fill {
-  height: 100%;
   width: 0;
+  height: 100%;
   background: currentColor;
   opacity: 0.7;
   transition: width 0.2s;
 }
 
+/* ACTIONS: the site's Button */
+
+#actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#actions button {
+  min-width: 44px;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--control-bg);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+#actions button:hover {
+  background: var(--highlight);
+}
+
+#actions button.primary {
+  min-width: 120px;
+  color: var(--control-selected-text);
+  background: var(--control-selected-bg);
+  border-color: var(--control-selected-border);
+  box-shadow: var(--control-selected-glow);
+}
+
+#actions button.primary:hover {
+  background: color-mix(in oklab, var(--control-selected-bg), var(--primary-hover) 30%);
+  border-color: var(--primary-hover);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
 /* LINKS */
 
-#google-translate,
-#site-link {
+#google-translate {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   text-decoration: none;
 }
 
-#google-translate:hover,
-#site-link:hover {
-  color: #fff;
-}
-
-#site-link {
-  position: absolute;
-  top: 28px;
-  right: 28px;
+#google-translate:hover {
+  color: var(--text);
 }
 
 #error {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
 }
 
-/* DROPDOWN */
+@media (max-width: 560px) {
+  #theme button {
+    padding: 4px 6px;
+  }
 
-#dropdown {
-  font-family: "Source Sans Pro", sans-serif;
-  display: block;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.4);
-  line-height: 1.3;
-  padding: 0.6em 1.4em 0.5em 0.8em;
-  width: 200px;
-  box-sizing: border-box;
-  margin: 0;
-  border: 0;
-  border-radius: 4px;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  outline: none;
-  z-index: 10;
+  #character {
+    font-size: 64px;
+  }
 }
 
-#dropdown:hover {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-#dropdown option {
-  background-color: #1c1c1c;
-  color: #fff;
-}
-
-/* Color card classes from colors.css */
-.red {
-  background: #8e0202;
-  color: #fff;
-}
-.dark-red {
-  background: #5a0101;
-  color: #fff;
-}
-.brown {
-  background: #701f04;
-  color: #fff;
-}
-.tan {
-  background: #cea553;
-  color: #000;
-}
-.orange {
-  background: #cf5c05;
-  color: #fff;
-}
-.yellow {
-  background: #d7c03e;
-  color: #000;
-}
-.lime {
-  background: #619a0c;
-  color: #fff;
-}
-.green {
-  background: #228b06;
-  color: #fff;
-}
-.teal {
-  background: #29aa65;
-  color: #fff;
-}
-.cyan {
-  background: #1fa77e;
-  color: #fff;
-}
-.light-blue {
-  background: #0d99a9;
-  color: #fff;
-}
-.blue {
-  background: #096498;
-  color: #fff;
-}
-.dark-blue {
-  background: #163595;
-  color: #fff;
-}
-.purple {
-  background: #451695;
-  color: #fff;
-}
-.pink {
-  background: #b60144;
-  color: #fff;
-}
-.hot-pink {
-  background: #b60192;
-  color: #fff;
-}
-.white {
-  background: #ededed;
-  color: #000;
-}
-.light-grey,
-.light-gray {
-  background: #b3b3b3;
-  color: #000;
-}
-.grey,
-.gray {
-  background: #7f7f7f;
-  color: #fff;
-}
-.dark-grey,
-.dark-gray {
-  background: #434343;
-  color: #fff;
-}
-.black {
-  background: #252525;
-  color: #fff;
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+  }
 }

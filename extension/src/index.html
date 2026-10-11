@@ -3,18 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <title>New Tab</title>
+    <link rel="icon" href="./icons/icon-32.png" />
+    <script src="./theme.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans:wght@400;600&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div id="splash"></div>
-    <select id="dropdown" aria-label="Flashcard set"></select>
-    <a id="site-link" href="https://bamboo.flanny.app/flashcards">Bamboo</a>
 
-    <div id="app">
+    <header id="bar">
+      <div id="bar-start">
+        <a id="brand" href="https://bamboo.flanny.app/flashcards" title="Open Bamboo">
+          <span class="logo" role="img" aria-label="Bamboo"></span>
+        </a>
+        <select id="dropdown" aria-label="Flashcard set"></select>
+      </div>
+      <div id="theme" role="radiogroup" aria-label="Theme">
+        <button type="button" role="radio" data-pref="bamboo">Bamboo</button>
+        <button type="button" role="radio" data-pref="neon">Neon</button>
+        <button type="button" role="radio" data-pref="system">System</button>
+      </div>
+    </header>
+
+    <main id="app">
       <div id="container" class="noselect">
         <h1 id="character"></h1>
         <h2 id="pinyin"></h2>
@@ -24,17 +40,17 @@
       </div>
 
       <div id="actions" class="noselect">
-        <a id="less" class="rate" title="Less known (-)">−</a>
-        <a id="reveal-or-next-button">Reveal</a>
-        <a id="more" class="rate" title="Better known (+)">+</a>
-        <a id="known" class="rate" title="Known (K)">Known</a>
+        <button type="button" id="less" class="rate" title="Less known (-)">−</button>
+        <button type="button" id="reveal-or-next-button" class="primary">Reveal</button>
+        <button type="button" id="more" class="rate" title="Better known (+)">+</button>
+        <button type="button" id="known" class="rate" title="Known (K)">Known</button>
       </div>
 
       <a id="google-translate" target="_blank" rel="noreferrer">Google Translate</a>
       <p id="error" class="hidden">
         Couldn't reach Bamboo. Check your connection and open a new tab.
       </p>
-    </div>
+    </main>
 
     <script src="./progress.js"></script>
     <script src="./main.js"></script>

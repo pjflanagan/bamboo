@@ -1,10 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "New Tab Chinese Characters",
+  "name": "Bamboo",
+  "short_name": "Bamboo",
   "version": "2.0",
-  "description": "Shows a word from your Bamboo flashcards on each new tab, and keeps track of how well you know it.",
+  "description": "Bamboo flashcards on every new tab: study Mandarin as you browse, with progress shared with bamboo.flanny.app.",
   "icons": {
-    "128": "icon.png"
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
   "chrome_url_overrides": {
     "newtab": "index.html"

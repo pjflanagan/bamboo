@@ -13,6 +13,9 @@
 
 const ALL = "all";
 
+/** Card colors pale enough to need dark text on Neon (design-system/tokens/neon.css). */
+const LIGHT_SWATCHES = new Set(["tan", "yellow", "white", "light-grey"]);
+
 let catalog = null;
 let cards = [];
 let setTitle = "";
@@ -115,7 +118,10 @@ function render() {
 
   $("google-translate").href =
     `https://translate.google.com/?sl=zh-TW&tl=en&op=translate&text=${encodeURIComponent(card.text)}`;
-  $("container").className = `noselect ${card.color ?? "gray"}`;
+  const container = $("container");
+  container.toggleAttribute("data-colored", Boolean(card.color));
+  container.toggleAttribute("data-light", LIGHT_SWATCHES.has(card.color));
+  container.style.setProperty("--swatch", card.color ? `var(--swatch-${card.color})` : null);
 
   for (const id of ["pinyin", "english", "lesson"]) $(id).classList.toggle("hidden", isHidden);
   for (const button of document.querySelectorAll(".rate")) {
@@ -169,6 +175,25 @@ function adjust(delta) {
   if (card) rate(progressOf(card) + delta);
 }
 
+/** The Bamboo / Neon / System switch (theme.js). */
+function buildThemeSwitch() {
+  const buttons = document.querySelectorAll("#theme button");
+  const mark = () => {
+    const pref = document.documentElement.dataset.themePref;
+    for (const button of buttons) {
+      button.setAttribute("aria-checked", String(button.dataset.pref === pref));
+    }
+  };
+  for (const button of buttons) {
+    button.onclick = () => {
+      setThemePref(button.dataset.pref);
+      mark();
+    };
+  }
+  window.addEventListener("storage", (event) => event.key === THEME_KEY && mark());
+  mark();
+}
+
 function buildDropdown(selected) {
   const dropdown = $("dropdown");
   dropdown.replaceChildren(new Option("All sets", ALL));
@@ -192,6 +217,7 @@ function buildDropdown(selected) {
 // ---------------------------------------------------------------------------
 
 (async function () {
+  buildThemeSwitch();
   try {
     const [loadedCatalog, { selectedSet }, loadedProgress, stored] = await Promise.all([
       loadCatalog(),
@@ -210,6 +236,7 @@ function buildDropdown(selected) {
     console.error(error);
     $("container").classList.add("hidden");
     $("actions").classList.add("hidden");
+    $("google-translate").classList.add("hidden");
     $("error").classList.remove("hidden");
   }
 
