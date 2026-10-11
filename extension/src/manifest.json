@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "New Tab Chinese Characters",
+  "version": "2.0",
+  "description": "Shows a word from your Bamboo flashcards on each new tab, and keeps track of how well you know it.",
+  "icons": {
+    "128": "icon.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://bamboo.flanny.app/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://bamboo.flanny.app/*"],
+      "js": ["progress.js", "sync.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

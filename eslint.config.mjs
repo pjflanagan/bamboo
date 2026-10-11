@@ -71,6 +71,7 @@ const eslintConfig = defineConfig([
     "data/**",
     "scripts/**",
     "print/**",
+    "extension/**",
   ]),
 ]);
 

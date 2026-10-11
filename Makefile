@@ -1,8 +1,9 @@
-.PHONY: help dev manifest refine print lyrics
+.PHONY: help dev manifest refine print lyrics extension
 
 help:
 	@echo "Usage:"
 	@echo "  make dev                            Start the Next.js dev server"
+	@echo "  make extension                      Zip the Chrome extension to extension/out/"
 	@echo "  make manifest                       Regenerate data/flashcard-sets.json"
 	@echo "  make lyrics file=<path>             Format a lyrics txt file to csv"
 	@echo "    e.g. make lyrics file=data/songs/lo_tayu_childhood.txt"
@@ -27,3 +28,8 @@ refine:
 
 print:
 	python3 scripts/print.py $(type) $(args)
+
+extension:
+	mkdir -p extension/out
+	rm -f extension/out/extension.zip
+	cd extension/src && zip -r ../out/extension.zip . -x '.*'

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>New Tab</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="splash"></div>
+    <select id="dropdown" aria-label="Flashcard set"></select>
+    <a id="site-link" href="https://bamboo.flanny.app/flashcards">Bamboo</a>
+
+    <div id="app">
+      <div id="container" class="noselect">
+        <h1 id="character"></h1>
+        <h2 id="pinyin"></h2>
+        <p id="english"></p>
+        <p id="lesson"></p>
+        <div id="meter"><div id="meter-fill"></div></div>
+      </div>
+
+      <div id="actions" class="noselect">
+        <a id="less" class="rate" title="Less known (-)">−</a>
+        <a id="reveal-or-next-button">Reveal</a>
+        <a id="more" class="rate" title="Better known (+)">+</a>
+        <a id="known" class="rate" title="Known (K)">Known</a>
+      </div>
+
+      <a id="google-translate" target="_blank" rel="noreferrer">Google Translate</a>
+      <p id="error" class="hidden">
+        Couldn't reach Bamboo. Check your connection and open a new tab.
+      </p>
+    </div>
+
+    <script src="./progress.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
