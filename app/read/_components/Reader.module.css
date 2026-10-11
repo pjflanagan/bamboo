@@ -25,11 +25,89 @@
   gap: var(--space-2);
 }
 
+/* The editor: the annotated text, with the caret and selection drawn on it. */
 .output {
+  --caret-color: var(--text);
+  position: relative;
   display: grid;
   gap: var(--space-3);
   min-height: 10rem;
   overflow-x: auto;
+  cursor: text;
+  user-select: none;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    box-shadow var(--duration-fast) var(--ease);
+}
+
+.output:focus-within {
+  border-color: var(--control-selected-border);
+  box-shadow: var(--control-selected-glow);
+}
+
+/* The caret only shows while you're typing. */
+.output:not(:focus-within) [data-caret]::after,
+.output:not(:focus-within) .caret {
+  visibility: hidden;
+}
+
+/*
+ * The real text field: invisible, one pixel wide, and moved to the caret so
+ * the IME's candidate window opens beside it. 16px keeps iOS from zooming.
+ */
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1em;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  resize: none;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* A blank line with the caret on it: as tall as a line of hanzi. */
+.caretLine {
+  display: flex;
+  align-items: center;
+  height: calc(1em + var(--track-pinyin, 0.36em));
+  padding-top: var(--track-pinyin, 0.36em);
+  font-size: var(--hanzi-size, 2.5rem);
+}
+
+.caret {
+  width: max(2px, 0.05em);
+  height: 1em;
+  margin-right: calc(max(2px, 0.05em) * -1);
+  border-radius: 1px;
+  background: var(--caret-color);
+  animation: caret-blink 1.6s infinite alternate;
+}
+
+@keyframes caret-blink {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
+
+.placeholder {
+  font-size: var(--text-md);
+  color: var(--text-muted);
 }
 
 /* An empty line in the text: a paragraph break. */

@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import { sizeValue, type HanziSize } from "./annotation";
 import { useUnitProps } from "./AnnotationScope";
-import type { Syllable, Token, Tone } from "./types";
+import type { PhraseCursor, Syllable, Token, Tone } from "./types";
 import styles from "./hanzi.module.css";
 
 /** Tone 1 is unmarked; the neutral-tone dot goes above the symbols, not beside. */
@@ -28,18 +28,29 @@ function Zhuyin({ zhuyin, tone }: Pick<Syllable, "zhuyin" | "tone">) {
   );
 }
 
-type CharacterProps = {
+/** How a token shows a PhraseCursor; `token` is its index, for hit-testing. */
+type CursorMarks = {
+  /** Highlight, e.g. the Read page's selection. */
+  selected?: boolean;
+  /** A blinking caret on this side of the glyph. */
+  caret?: "before" | "after";
+  token?: number;
+};
+
+function cursorProps({ selected, caret, token }: CursorMarks) {
+  return { "data-selected": selected || undefined, "data-caret": caret, "data-token": token };
+}
+
+type CharacterProps = CursorMarks & {
   syllable: Syllable;
   size?: HanziSize;
-  /** Highlight, e.g. the cursor position on the Read page. */
-  selected?: boolean;
 };
 
 /**
  * One hanzi with pinyin above and zhuyin to the right. Which of those show,
  * and how they're revealed, comes from the nearest AnnotationScope.
  */
-export function Character({ syllable, size, selected }: CharacterProps) {
+export function Character({ syllable, size, ...marks }: CharacterProps) {
   const unitProps = useUnitProps("character");
   const { trad, simp, pinyin, zhuyin, tone } = syllable;
 
@@ -48,7 +59,7 @@ export function Character({ syllable, size, selected }: CharacterProps) {
       className={styles.char}
       data-unit="character"
       data-tone={tone}
-      data-selected={selected || undefined}
+      {...cursorProps(marks)}
       lang="zh-Hant"
       style={sizeStyle(size)}
       {...unitProps}
@@ -74,19 +85,42 @@ export function Character({ syllable, size, selected }: CharacterProps) {
 }
 
 /** Punctuation or latin inside a word: same box as a character, no annotations. */
-function TextGlyph({ text }: { text: string }) {
+function TextGlyph({ text, ...marks }: CursorMarks & { text: string }) {
   return (
-    <span className={`${styles.char} ${styles.text}`}>
+    <span className={`${styles.char} ${styles.text}`} {...cursorProps(marks)}>
       <span className={styles.hanzi}>{text}</span>
     </span>
   );
 }
 
-export function TokenView({ token }: { token: Token }) {
+type TokenViewProps = {
+  token: Token;
+  /** The token's index in its phrase, and the phrase's token count. */
+  index?: number;
+  count?: number;
+  cursor?: PhraseCursor;
+};
+
+export function TokenView({ token, index = 0, count = 0, cursor }: TokenViewProps) {
+  const marks: CursorMarks = cursor
+    ? {
+        token: index,
+        selected:
+          cursor.selected !== undefined &&
+          index >= cursor.selected[0] &&
+          index < cursor.selected[1],
+        caret:
+          cursor.caret === index
+            ? "before"
+            : cursor.caret === count && index === count - 1
+              ? "after"
+              : undefined,
+      }
+    : {};
   return token.kind === "hanzi" ? (
-    <Character syllable={token.syllable} />
+    <Character syllable={token.syllable} {...marks} />
   ) : (
-    <TextGlyph text={token.text} />
+    <TextGlyph text={token.text} {...marks} />
   );
 }
 

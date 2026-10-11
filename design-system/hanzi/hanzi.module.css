@@ -52,6 +52,46 @@
   background: var(--highlight);
 }
 
+/* The Read page's caret: a bar beside the hanzi row, on the token's edge. */
+.char[data-caret] {
+  position: relative;
+}
+
+.char[data-caret]::after {
+  content: "";
+  position: absolute;
+  top: var(--track-pinyin, 0.36em);
+  width: max(2px, 0.05em);
+  height: 1em;
+  border-radius: 1px;
+  background: var(--caret-color, currentColor);
+  animation: caret-blink 1.6s infinite alternate;
+}
+
+.char[data-caret="before"]::after {
+  left: calc(max(2px, 0.05em) / -2);
+}
+
+.char[data-caret="after"]::after {
+  right: calc(max(2px, 0.05em) / -2);
+}
+
+@keyframes caret-blink {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char[data-caret]::after {
+    animation: none;
+  }
+}
+
 .pinyin {
   grid-area: pinyin;
   align-self: end;

@@ -84,9 +84,21 @@
   padding-block: var(--space-6) var(--space-2);
 }
 
+/* The logo: neon's glowing accent, or cream on bamboo's green stalks like the share card. */
 .title {
+  display: flex;
   margin: 0;
-  font-size: clamp(2rem, 7vw, 3rem);
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  color: var(--primary);
+  filter: drop-shadow(
+    0 0 6px
+      hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / calc(0.8 * var(--glow-strength)))
+  );
+}
+
+:global([data-theme="bamboo"]) .title {
+  color: var(--surface);
+  filter: drop-shadow(0 2px 0 var(--stalk-dark)) drop-shadow(0 0 10px var(--stalk-dark));
 }
 
 .intro {

@@ -14,6 +14,8 @@ export type SongInfo = {
   artist?: string;
   /** For the Spotify player. */
   spotifyTrack?: string;
+  /** The track's album art (300px square), from Spotify. */
+  artwork?: string;
 };
 
 /**
@@ -46,12 +48,35 @@ async function listSongs(): Promise<{ info: SongInfo; file: string }[]> {
   }));
 }
 
-/** Every song, in _songs.json order. */
+/**
+ * A track's album art URL, from Spotify's oEmbed endpoint (public, no key).
+ * Undefined if Spotify can't be reached: the song list just goes without.
+ */
+async function spotifyArtwork(track: string): Promise<string | undefined> {
+  "use cache";
+  cacheLife("weeks");
+  try {
+    const url = `https://open.spotify.com/oembed?url=https://open.spotify.com/track/${track}`;
+    const response = await fetch(url, { signal: AbortSignal.timeout(5000) });
+    if (!response.ok) return undefined;
+    const { thumbnail_url } = (await response.json()) as { thumbnail_url?: unknown };
+    return typeof thumbnail_url === "string" ? thumbnail_url : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Every song, in _songs.json order, with its album art. */
 export async function getSongs(): Promise<SongInfo[]> {
   "use cache";
   cacheLife("data");
   cacheTag(DATA_TAG);
-  return (await listSongs()).map((song) => song.info);
+  return Promise.all(
+    (await listSongs()).map(async ({ info }) => ({
+      ...info,
+      artwork: info.spotifyTrack && (await spotifyArtwork(info.spotifyTrack)),
+    })),
+  );
 }
 
 type Row = { phrase?: string; english?: string; pinyin?: string; color?: string };

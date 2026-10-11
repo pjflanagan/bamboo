@@ -1,6 +1,7 @@
 export {
   BackupError,
   backupFileName,
+  clearAllData,
   collectBackup,
   parseBackup,
   restoreBackup,

@@ -19,6 +19,13 @@ const nextConfig: NextConfig = {
       { path: "**", title: /Failed to find font override values for font `Iansui`/ },
     ],
   },
+  images: {
+    // Album art on the songs page (lib/data/songs.ts).
+    remotePatterns: [
+      new URL("https://*.spotifycdn.com/image/**"),
+      new URL("https://i.scdn.co/image/**"),
+    ],
+  },
   cacheComponents: true,
   partialPrefetching: true,
   cacheLife: {

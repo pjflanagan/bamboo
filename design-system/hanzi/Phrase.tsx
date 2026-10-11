@@ -3,7 +3,7 @@
 import type { HanziSize } from "./annotation";
 import { useUnitProps } from "./AnnotationScope";
 import { sizeStyle } from "./Character";
-import type { PhraseData } from "./types";
+import type { PhraseCursor, PhraseData } from "./types";
 import { Word } from "./Word";
 import styles from "./hanzi.module.css";
 
@@ -12,14 +12,19 @@ type PhraseProps = {
   size?: HanziSize;
   /** Center the words and the English line, for cards and titles. */
   align?: "start" | "center";
+  /** A caret and selection to draw; tokens also get data-token for hit-testing. */
+  cursor?: PhraseCursor;
 };
 
 /**
  * Words that wrap at word boundaries, never mid-word, with the phrase's
  * English line underneath.
  */
-export function Phrase({ phrase, size, align = "start" }: PhraseProps) {
+export function Phrase({ phrase, size, align = "start", cursor }: PhraseProps) {
   const unitProps = useUnitProps("phrase");
+  // Where each word's tokens start in the phrase, then the total.
+  const starts = [0];
+  for (const word of phrase.words) starts.push(starts[starts.length - 1] + word.tokens.length);
 
   return (
     <div
@@ -32,7 +37,13 @@ export function Phrase({ phrase, size, align = "start" }: PhraseProps) {
     >
       <div className={styles.words}>
         {phrase.words.map((word, i) => (
-          <Word key={i} word={word} />
+          <Word
+            key={i}
+            word={word}
+            firstToken={starts[i]}
+            tokenCount={starts[phrase.words.length]}
+            cursor={cursor}
+          />
         ))}
       </div>
       {phrase.english && (

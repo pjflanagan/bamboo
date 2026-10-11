@@ -138,3 +138,27 @@ export function tokenize(
 
   return { words: attachPunctuation(words), english };
 }
+
+/**
+ * Where each of a phrase's tokens sits in the text it was built from, as
+ * [start, end) offsets in UTF-16 code units, in token order across words.
+ * Whitespace isn't tokenized, and a hanzi token may show a different form
+ * (traditional for simplified input), so this walks the source text rather
+ * than searching for each token.
+ */
+export function tokenOffsets(text: string, phrase: PhraseData): [number, number][] {
+  const offsets: [number, number][] = [];
+  let pos = 0;
+  for (const word of phrase.words) {
+    for (const token of word.tokens) {
+      while (pos < text.length && /\s/.test(text[pos])) pos++;
+      const length =
+        token.kind === "text"
+          ? token.text.length
+          : String.fromCodePoint(text.codePointAt(pos) ?? 0).length;
+      offsets.push([pos, pos + length]);
+      pos += length;
+    }
+  }
+  return offsets;
+}

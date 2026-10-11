@@ -4,7 +4,11 @@
  * each saved value with the file's; values the file leaves out are kept.
  */
 
-import { normalizePreferences, type Preferences } from "@/lib/preferences/preferences";
+import {
+  DEFAULT_PREFERENCES,
+  normalizePreferences,
+  type Preferences,
+} from "@/lib/preferences/preferences";
 import { getPreferences, setPreferences } from "@/lib/preferences/store";
 import { progressStore, zhuyinProgressStore } from "@/lib/progress/store";
 import {
@@ -90,5 +94,13 @@ export function restoreBackup(data: Partial<BackupData>): void {
   if (data.preferences) setPreferences(data.preferences);
   for (const name of Object.keys(STORES) as StoreName[]) {
     if (name in data) (STORES[name] as LocalStore<unknown>).set(data[name]);
+  }
+}
+
+/** Erases everything saved on this device, back to a first visit. */
+export function clearAllData(): void {
+  setPreferences(DEFAULT_PREFERENCES);
+  for (const store of Object.values(STORES) as LocalStore<unknown>[]) {
+    store.set(store.serverValue);
   }
 }

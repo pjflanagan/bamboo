@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { Card, buttonClassName } from "@/design-system/controls";
@@ -24,19 +25,6 @@ export default async function SongsPage() {
       <PageHeader title="唱歌 Songs" />
       <Page>
         <div className={styles.songs}>
-          <ul className={styles.list}>
-            {songs.map((song) => (
-              <li key={song.slug}>
-                <Card className={styles.song}>
-                  <Link href={`/songs/${song.slug}`} className={styles.songLink}>
-                    <span className={styles.title}>{song.title}</span>
-                    {song.artist && <span className={styles.artist}>{song.artist}</span>}
-                  </Link>
-                  <ArrowRightIcon size={16} aria-hidden />
-                </Card>
-              </li>
-            ))}
-          </ul>
           <div className={styles.more}>
             <a
               href={PLAYLIST}
@@ -55,6 +43,30 @@ export default async function SongsPage() {
               More lyrics on Google Docs <ExternalLinkIcon size={14} />
             </a>
           </div>
+          <ul className={styles.list}>
+            {songs.map((song) => (
+              <li key={song.slug}>
+                <Card className={styles.song}>
+                  {song.artwork ? (
+                    <Image
+                      src={song.artwork}
+                      alt=""
+                      width={48}
+                      height={48}
+                      className={styles.art}
+                    />
+                  ) : (
+                    <span className={styles.art} aria-hidden />
+                  )}
+                  <Link href={`/songs/${song.slug}`} className={styles.songLink}>
+                    <span className={styles.title}>{song.title}</span>
+                    {song.artist && <span className={styles.artist}>{song.artist}</span>}
+                  </Link>
+                  <ArrowRightIcon size={16} aria-hidden />
+                </Card>
+              </li>
+            ))}
+          </ul>
         </div>
       </Page>
     </>

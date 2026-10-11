@@ -3,7 +3,7 @@
  * for the data attributes below. Any element may carry them; <html> carries
  * the user's preferences, and a subtree can override them.
  *
- *   data-theme        neon | bamboo          tokens/neon.css, tokens/bamboo.css
+ *   data-theme        bamboo | neon          tokens/bamboo.css, tokens/neon.css
  *   data-hanzi-font   sans | serif | ...     tokens/fonts.css
  *   data-script       trad | simp            hanzi/scope.css
  *
@@ -11,7 +11,7 @@
  * not the design system's: see lib/preferences and providers/.
  */
 
-export const THEMES = ["neon", "bamboo"] as const;
+export const THEMES = ["bamboo", "neon"] as const;
 export const HANZI_FONTS = ["sans", "serif", "wenkai", "iansui"] as const;
 export const SCRIPTS = ["trad", "simp"] as const;
 

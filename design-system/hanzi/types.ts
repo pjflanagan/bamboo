@@ -38,3 +38,14 @@ export type PhraseData = {
 /** The annotation layers a scope can show, hide, or reveal. */
 export const LAYERS = ["hanzi", "pinyin", "zhuyin", "english"] as const;
 export type Layer = (typeof LAYERS)[number];
+
+/**
+ * A text cursor drawn over a phrase (the Read page's), by token index across
+ * all its words.
+ */
+export type PhraseCursor = {
+  /** The caret sits before this token; the token count puts it after the last. */
+  caret?: number;
+  /** Tokens in [start, end) are highlighted. */
+  selected?: [number, number];
+};

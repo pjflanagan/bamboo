@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { parseDictionary } from "./dictionary";
 import { splitPinyin, splitPinyinWord } from "./pinyin";
-import { tokenize } from "./tokenize";
+import { tokenOffsets, tokenize } from "./tokenize";
 import type { PhraseData } from "@/design-system/hanzi/types";
 
 const dictionary = parseDictionary(readFileSync("data/dictionary.csv", "utf-8"));
@@ -120,5 +120,34 @@ describe("tokenize", () => {
 
   it("carries the phrase's english", () => {
     expect(tokenize("好", dictionary, { english: "good" }).english).toBe("good");
+  });
+});
+
+describe("tokenOffsets", () => {
+  it("maps tokens back to the source, skipping whitespace", () => {
+    const text = "你好 hello, 世界！";
+    const offsets = tokenOffsets(text, tokenize(text, dictionary));
+    expect(offsets.map(([start, end]) => text.slice(start, end))).toEqual([
+      "你",
+      "好",
+      "hello",
+      ",",
+      "世",
+      "界",
+      "！",
+    ]);
+  });
+
+  it("follows the source when the tokens show traditional forms", () => {
+    const text = "学习 「汉字」";
+    const offsets = tokenOffsets(text, tokenize(text, dictionary));
+    expect(offsets.map(([start, end]) => text.slice(start, end))).toEqual([
+      "学",
+      "习",
+      "「",
+      "汉",
+      "字",
+      "」",
+    ]);
   });
 });

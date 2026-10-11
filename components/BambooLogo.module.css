@@ -1,0 +1,8 @@
+.logo {
+  display: inline-block;
+  height: 1em;
+  /* The source image's proportions (598 × 141). */
+  aspect-ratio: 598 / 141;
+  background: currentColor;
+  mask: url("./bamboo-logo.png") center / contain no-repeat;
+}

@@ -21,10 +21,10 @@ const scriptOptions = SCRIPTS.map((value) => ({ value, label: SCRIPT_LABELS[valu
 
 /**
  * Theme, script, and hanzi font switchers, shown in the header's preferences
- * menu. The font belongs to the theme in use, so its label names the theme.
+ * menu. The font is remembered per theme (lib/preferences).
  */
 export function PreferenceControls() {
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { script, setScript } = useScript();
   const { font, setFont } = useHanziFont();
 
@@ -37,12 +37,7 @@ export function PreferenceControls() {
         value={script}
         onChange={setScript}
       />
-      <SegmentedControl
-        label={`Hanzi font · ${THEME_LABELS[resolvedTheme]}`}
-        options={fontOptions}
-        value={font}
-        onChange={setFont}
-      />
+      <SegmentedControl label="Hanzi font" options={fontOptions} value={font} onChange={setFont} />
     </div>
   );
 }

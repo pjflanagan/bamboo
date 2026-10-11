@@ -20,7 +20,7 @@ import {
 } from "@/design-system/attributes";
 
 /** "system" follows the OS light/dark setting: dark -> neon, light -> bamboo. */
-export const THEME_PREFS = ["system", ...THEMES] as const;
+export const THEME_PREFS = [...THEMES, "system"] as const;
 export type ThemePref = (typeof THEME_PREFS)[number];
 
 export type Preferences = {
@@ -33,14 +33,17 @@ export type Preferences = {
   script: Script;
 };
 
+/**
+ * Theme the static HTML is rendered with, before the inline script runs,
+ * and the theme until the user picks another.
+ */
+export const DEFAULT_THEME: Theme = "bamboo";
+
 export const DEFAULT_PREFERENCES: Preferences = {
-  theme: "system",
+  theme: DEFAULT_THEME,
   fonts: THEME_DEFAULT_FONTS,
   script: "trad",
 };
-
-/** Theme the static HTML is rendered with, before the inline script runs. */
-export const DEFAULT_THEME: Theme = "bamboo";
 
 export const PREFERENCES_COOKIE = "bamboo-prefs";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
@@ -109,7 +112,7 @@ export function ensureSignHue(root: HTMLElement): void {
 export const PREFERENCES_SCRIPT = `(function(){try{
 var d=document.documentElement,p={},m=document.cookie.match(/(?:^|; )${PREFERENCES_COOKIE}=([^;]*)/);
 if(m){p=JSON.parse(decodeURIComponent(m[1]))||{}}
-var t=p.theme;if(${JSON.stringify(THEMES)}.indexOf(t)<0){t=matchMedia("(prefers-color-scheme: dark)").matches?"neon":"bamboo"}
+var t=p.theme;if(${JSON.stringify(THEMES)}.indexOf(t)<0){t=t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches?"neon":${JSON.stringify(DEFAULT_THEME)}}
 d.setAttribute("data-theme",t);
 var f=p.fonts&&p.fonts[t];if(${JSON.stringify(HANZI_FONTS)}.indexOf(f)<0){f=${JSON.stringify(THEME_DEFAULT_FONTS)}[t]}
 d.setAttribute("data-hanzi-font",f);

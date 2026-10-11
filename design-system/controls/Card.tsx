@@ -1,4 +1,4 @@
-import type { CSSProperties, HTMLAttributes } from "react";
+import type { ComponentProps, CSSProperties } from "react";
 import styles from "./Card.module.css";
 
 /** The named swatches in tokens/swatches.css, as used in flashcard CSVs. */
@@ -32,7 +32,7 @@ export function isCardColor(value: unknown): value is CardColor {
   return (CARD_COLORS as readonly unknown[]).includes(value);
 }
 
-type CardProps = HTMLAttributes<HTMLDivElement> & {
+type CardProps = ComponentProps<"div"> & {
   /** A swatch name. Without one, the card is the theme's raised surface. */
   color?: CardColor;
 };

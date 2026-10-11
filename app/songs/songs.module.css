@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding-block: var(--space-3);
+  padding-block: var(--space-2);
   color: var(--text-muted);
   transition: border-color var(--duration-fast) var(--ease);
 }
@@ -49,6 +49,16 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
+}
+
+/* Album art, or an empty tile of the same size when there's none. */
+.art {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--highlight);
+  object-fit: cover;
 }
 
 .title {

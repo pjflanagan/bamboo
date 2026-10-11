@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { AppLink } from "@/components/AppLink";
+import { BambooLogo } from "@/components/BambooLogo";
 import { Glossed } from "@/components/Glossed";
 import { PageHeader } from "@/components/PageHeader";
 import { RichText } from "@/components/RichText";
@@ -71,9 +72,9 @@ export default async function Home() {
       <PageHeader />
       <Page width="wide" className={styles.home}>
         <header className={styles.hero}>
-          <Sign as="h1" variant="double" text={home.title} className={styles.title}>
-            <Glossed text={home.title} glossary={glossary} />
-          </Sign>
+          <h1 className={styles.title}>
+            <BambooLogo label={home.title} />
+          </h1>
           <p className={styles.intro}>
             <RichText text={home.intro} glossary={glossary} />
           </p>
