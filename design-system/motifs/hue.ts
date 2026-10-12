@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 /** FNV-1a: a small, stable string hash. */
 function hash(text: string): number {
   let h = 0x811c9dc5;
@@ -18,4 +20,13 @@ export function seededHues(seed: string): { hue: number; textHue: number } {
   const hue = h % 360;
   const textHue = (hue + 80 + ((h >>> 9) % 201)) % 360;
   return { hue, textHue };
+}
+
+/**
+ * Props that give an element its own neon color: the page's random hue
+ * turned by an offset derived from `seed`, like a sign's (tokens/neon.css).
+ * Spread onto the element; it does nothing in bamboo.
+ */
+export function hueScope(seed: string): { "data-hue": ""; style: CSSProperties } {
+  return { "data-hue": "", style: { "--hue-offset": seededHues(seed).hue } as CSSProperties };
 }

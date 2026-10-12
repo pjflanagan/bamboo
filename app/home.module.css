@@ -51,13 +51,14 @@
   backdrop-filter: blur(14px) saturate(1.5);
 }
 
-.cardHeader {
+/* A section's heading with something beside it: the daily tasks' tally. */
+.sectionHeader {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2) var(--space-4);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .cardTitle {
@@ -65,13 +66,21 @@
   font-size: var(--text-xl);
 }
 
-.cardHeader .cardTitle {
-  margin: 0;
-}
-
 .sectionTitle {
   margin: 0 0 var(--space-4);
   font-size: var(--text-xl);
+}
+
+.sectionHeader .sectionTitle {
+  margin: 0;
+}
+
+/* Bamboo: straight on the green stalks, so cream with a stalk-green halo, like the intro. */
+:global([data-theme="bamboo"]) :is(.sectionTitle, .sectionHeader .tally) {
+  color: var(--surface);
+  text-shadow:
+    0 1px 2px var(--stalk-dark),
+    0 0 10px var(--stalk-dark);
 }
 
 /* hero --------------------------------------------------------------------- */
@@ -149,7 +158,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
-  margin-top: var(--space-4);
 }
 
 .taskGroup {
@@ -301,11 +309,19 @@
 
 /* resources ---------------------------------------------------------------- */
 
+/*
+ * Masonry: as many 15rem-or-wider columns as fit, each card tucked under the
+ * one above it instead of waiting for the tallest in its row. Cards fill
+ * down the first column, then the next.
+ */
 .resources {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  align-items: start;
-  gap: var(--space-4);
+  columns: 15rem;
+  column-gap: var(--space-4);
+}
+
+.resource {
+  break-inside: avoid;
+  margin-bottom: var(--space-4);
 }
 
 /* #videos and #podcasts (linked from the tasks) land below the sticky header. */

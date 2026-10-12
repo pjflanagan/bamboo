@@ -83,10 +83,11 @@ export function serializePreferencesCookie(prefs: Preferences): string {
 }
 
 /**
- * A random base hue for the page's <Sign> headings, new on every load as in
- * study-mandarin. Each sign offsets it by an amount derived from its text,
- * so headings differ from each other and all change on reload. Nothing else
- * uses it: the rest of neon keeps its fixed accent.
+ * A random base hue for the page, new on every load as in study-mandarin.
+ * It's neon's accent (design-system/tokens/neon.css): the logo, links,
+ * controls, and glows. Each <Sign> heading, and each element given its own
+ * color (hueScope), offsets it by an amount derived from its text, so they
+ * differ from each other and all change on reload.
  */
 export function randomSignHue(random: () => number = Math.random): number {
   return Math.floor(random() * 360);

@@ -4,24 +4,55 @@
  *
  * Neon hues are parameters, not fixed colors: --neon-hue drives the primary
  * accent and --neon-hue-2 the secondary (kept >= 80deg apart, as in the
- * original). <Sign> headings turn --random-hue (set by the app on every
- * load) by an offset from their text, or use a seeded pair of their own.
+ * original). The primary is --random-hue, which the app sets on every load,
+ * so the logo, links, controls, and glows are a new color each visit (190,
+ * a blue, without it). <Sign> headings turn the same hue by an offset from
+ * their text, or use a seeded pair of their own.
+ *
+ * An element with data-hue is its own neon color: it turns the page's hue by
+ * its --hue-offset (hueScope in motifs/hue.ts sets both), and everything
+ * derived from the hue is worked out again for it and what's inside it.
  */
 
-[data-theme="neon"] {
-  color-scheme: dark;
-
-  --neon-hue: 190;
-  --neon-hue-2: 320;
-  --neon-sat: 72%;
-  --neon-light: 48%;
-  /* 1 = glow on, 0 = off. Motifs multiply their glow alphas by this. */
-  --glow-strength: 1;
+/* Everything that follows the hue: for the page, and again for each data-hue. */
+[data-theme="neon"],
+[data-theme="neon"] [data-hue] {
+  --neon-hue: calc(var(--random-hue, 190) + var(--hue-offset, 0));
+  --neon-hue-2: calc(var(--neon-hue) + 130);
 
   /* bamboo stalk motif, drawn as glowing outlines in neon */
   --stalk-light: hsl(var(--neon-hue) var(--neon-sat) 58%);
   --stalk-dark: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light));
   --stalk-stroke: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.4);
+
+  /* actions */
+  --primary: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light));
+  --primary-hover: hsl(var(--neon-hue) var(--neon-sat) 58%);
+  --secondary: hsl(var(--neon-hue-2) var(--neon-sat) var(--neon-light));
+  --secondary-hover: hsl(var(--neon-hue-2) var(--neon-sat) 58%);
+
+  /* links: white text, neon underline */
+  --link-hover: var(--primary-hover);
+  --link-underline: var(--primary);
+
+  --focus-ring: hsl(var(--neon-hue) 90% 62%);
+
+  /* controls: selected state is an outlined, glowing segment */
+  --control-selected-bg: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.12);
+  --control-selected-border: var(--primary);
+  --control-selected-text: var(--primary-hover);
+  --control-selected-glow:
+    0 0 3px hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.6),
+    0 0 8px hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.3);
+}
+
+[data-theme="neon"] {
+  color-scheme: dark;
+
+  --neon-sat: 72%;
+  --neon-light: 48%;
+  /* 1 = glow on, 0 = off. Motifs multiply their glow alphas by this. */
+  --glow-strength: 1;
 
   /* surfaces */
   --bg: #1c1c1c;
@@ -43,19 +74,12 @@
   --border-strong: rgb(255 255 255 / 0.2);
 
   /* actions */
-  --primary: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light));
-  --primary-hover: hsl(var(--neon-hue) var(--neon-sat) 58%);
   --on-primary: #000;
-  --secondary: hsl(var(--neon-hue-2) var(--neon-sat) var(--neon-light));
-  --secondary-hover: hsl(var(--neon-hue-2) var(--neon-sat) 58%);
   --on-secondary: #000;
   --danger: hsl(0 80% 56%);
   --info: hsl(205 80% 56%);
 
-  /* links: white text, neon underline */
   --link: var(--text);
-  --link-hover: var(--primary-hover);
-  --link-underline: var(--primary);
 
   /* <Sign>: glowing frame, neon text, no stalk */
   --sign-border-width: 3px;
@@ -65,17 +89,10 @@
   /* states */
   --highlight: rgb(255 255 255 / 0.18);
   --highlight-strong: rgb(255 255 255 / 0.3);
-  --focus-ring: hsl(var(--neon-hue) 90% 62%);
 
-  /* controls: selected state is an outlined, glowing segment */
+  /* controls */
   --control-bg: rgb(255 255 255 / 0.04);
   --control-border: var(--border-strong);
-  --control-selected-bg: hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.12);
-  --control-selected-border: var(--primary);
-  --control-selected-text: var(--primary-hover);
-  --control-selected-glow:
-    0 0 3px hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.6),
-    0 0 8px hsl(var(--neon-hue) var(--neon-sat) var(--neon-light) / 0.3);
 
   /* hanzi annotations (pinyin, zhuyin) */
   --annot-color: #999;

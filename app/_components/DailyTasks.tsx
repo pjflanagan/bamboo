@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { AppLink } from "@/components/AppLink";
 import { Glossed } from "@/components/Glossed";
-import { Checkbox } from "@/design-system/controls";
+import { Card, Checkbox } from "@/design-system/controls";
 import { CheckIcon } from "@/design-system/icons";
 import { Sign } from "@/design-system/motifs";
 import { useLocalStore } from "@/hooks";
@@ -32,7 +32,10 @@ function useToday(): string | null {
   return useSyncExternalStore(noSubscribe, today, () => null);
 }
 
-/** The daily checklist. Checks are kept on this device and clear each day. */
+/**
+ * The daily checklist: its heading and today's tally over the card of tasks.
+ * Checks are kept on this device and clear each day.
+ */
 export function DailyTasks({
   tasks: { title, groups },
   glossary,
@@ -53,9 +56,9 @@ export function DailyTasks({
   const overall = dayStatus(groups, done);
 
   return (
-    <>
-      <div className={styles.cardHeader}>
-        <Sign as="h2" text={title} className={styles.cardTitle}>
+    <section aria-labelledby="tasks">
+      <div className={styles.sectionHeader}>
+        <Sign as="h2" id="tasks" text={title} className={styles.sectionTitle}>
           <Glossed text={title} glossary={glossary} />
         </Sign>
         <span className={styles.tally} data-met={overall.met || undefined}>
@@ -68,7 +71,7 @@ export function DailyTasks({
           )}
         </span>
       </div>
-      <div className={styles.taskColumns}>
+      <Card className={`${styles.tasks} ${styles.taskColumns}`}>
         {groups.map((group) => (
           <div key={group.title} className={styles.taskGroup}>
             <Sign as="h3" variant="text" text={group.title} className={styles.groupTitle}>
@@ -89,7 +92,7 @@ export function DailyTasks({
             </ul>
           </div>
         ))}
-      </div>
-    </>
+      </Card>
+    </section>
   );
 }

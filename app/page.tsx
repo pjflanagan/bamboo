@@ -8,7 +8,7 @@ import { RichText } from "@/components/RichText";
 import { Card, buttonClassName } from "@/design-system/controls";
 import { ArrowRightIcon, ExternalLinkIcon } from "@/design-system/icons";
 import { Page } from "@/design-system/layout";
-import { Sign } from "@/design-system/motifs";
+import { Sign, hueScope } from "@/design-system/motifs";
 import { getHomeContent, getResources, type Glossary } from "@/lib/data";
 import { DailyTasks } from "./_components/DailyTasks";
 import { HomeBackground } from "./_components/HomeBackground";
@@ -72,7 +72,7 @@ export default async function Home() {
       <PageHeader />
       <Page width="wide" className={styles.home}>
         <header className={styles.hero}>
-          <h1 className={styles.title}>
+          <h1 className={styles.title} {...hueScope(home.title)}>
             <BambooLogo label={home.title} />
           </h1>
           <p className={styles.intro}>
@@ -80,9 +80,7 @@ export default async function Home() {
           </p>
         </header>
 
-        <Card className={styles.tasks}>
-          <DailyTasks tasks={home.tasks} glossary={glossary} />
-        </Card>
+        <DailyTasks tasks={home.tasks} glossary={glossary} />
 
         <section aria-labelledby="tools">
           <Sign as="h2" id="tools" text={home.tools.title} className={styles.sectionTitle}>
@@ -91,7 +89,8 @@ export default async function Home() {
           <ul className={styles.features}>
             {home.tools.items.map((tool) => (
               <li key={tool.name}>
-                <Card className={styles.feature}>
+                {/* Each card its own neon color: icon, glow, and links. */}
+                <Card className={styles.feature} {...hueScope(tool.name)}>
                   {/* Stretched over the whole card; tooltips and description links sit above it. */}
                   <ItemLink href={tool.href} className={styles.featureLink}>
                     <span className={styles.glyph} lang="zh-Hant">
@@ -147,7 +146,7 @@ export default async function Home() {
                   </h4>
                   <ul className={styles.list}>
                     {group.items.map((video) => (
-                      <li key={video.url}>
+                      <li key={video.url} {...hueScope(video.name)}>
                         <ItemLink href={video.url}>{video.name}</ItemLink>
                       </li>
                     ))}
@@ -159,7 +158,7 @@ export default async function Home() {
             <ResourceCard title={titles.podcasts} id="podcasts" glossary={glossary}>
               <ul className={styles.list}>
                 {resources.podcasts.map((podcast) => (
-                  <li key={podcast.url}>
+                  <li key={podcast.url} {...hueScope(podcast.name)}>
                     <ItemLink href={podcast.url}>{podcast.name}</ItemLink>
                     {podcast.description && (
                       <span className={styles.description}>{podcast.description}</span>
@@ -172,7 +171,11 @@ export default async function Home() {
             <ResourceCard title={titles.apps} glossary={glossary}>
               <ul className={styles.list}>
                 {resources.apps.map((app) => (
-                  <li key={app.name} className={app.strikethrough ? styles.struck : undefined}>
+                  <li
+                    key={app.name}
+                    className={app.strikethrough ? styles.struck : undefined}
+                    {...hueScope(app.name)}
+                  >
                     {app.web ? (
                       <AppLink app={{ web: app.web, ios: app.ios, android: app.android }}>
                         {app.name}
@@ -191,7 +194,7 @@ export default async function Home() {
             <ResourceCard title={titles.other} glossary={glossary}>
               <ul className={styles.list}>
                 {resources.other.map((item) => (
-                  <li key={item.name}>
+                  <li key={item.name} {...hueScope(item.name)}>
                     {item.url ? (
                       <ItemLink href={item.url}>{item.name}</ItemLink>
                     ) : (
@@ -207,32 +210,34 @@ export default async function Home() {
           </div>
         </section>
 
-        <Card className={styles.about}>
-          <Sign as="h2" variant="text" text={home.about.title} className={styles.cardTitle}>
+        <section aria-labelledby="about">
+          <Sign as="h2" id="about" text={home.about.title} className={styles.sectionTitle}>
             <Glossed text={home.about.title} glossary={glossary} />
           </Sign>
-          {home.about.paragraphs.map((paragraph, i) => (
-            <p key={i}>
-              <RichText text={paragraph} glossary={glossary} />
-            </p>
-          ))}
-          {home.about.disclaimer && (
-            <p className={styles.disclaimer}>
-              <RichText text={home.about.disclaimer} glossary={glossary} />
-            </p>
-          )}
-          <div className={styles.links}>
-            {home.about.links.map((link) => (
-              <ItemLink
-                key={link.href}
-                href={link.href}
-                className={buttonClassName({ variant: "ghost", size: "sm" })}
-              >
-                {link.label}
-              </ItemLink>
+          <Card className={styles.about}>
+            {home.about.paragraphs.map((paragraph, i) => (
+              <p key={i}>
+                <RichText text={paragraph} glossary={glossary} />
+              </p>
             ))}
-          </div>
-        </Card>
+            {home.about.disclaimer && (
+              <p className={styles.disclaimer}>
+                <RichText text={home.about.disclaimer} glossary={glossary} />
+              </p>
+            )}
+            <div className={styles.links}>
+              {home.about.links.map((link) => (
+                <ItemLink
+                  key={link.href}
+                  href={link.href}
+                  className={buttonClassName({ variant: "ghost", size: "sm" })}
+                >
+                  {link.label}
+                </ItemLink>
+              ))}
+            </div>
+          </Card>
+        </section>
       </Page>
     </>
   );
