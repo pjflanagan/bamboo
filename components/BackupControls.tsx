@@ -194,7 +194,7 @@ export function BackupControls() {
     <div ref={root} className={styles.root}>
       <DataSection
         title="Transfer progress"
-        hint="Add this device's progress to another one. Nothing there goes backward: each card keeps whichever is further along. Links open in the browser; for the installed app, use a code."
+        hint="Add this device's progress to another one. Each card keeps whichever is further along. Either open a link in the browser or paste the code here."
       >
         <div className={styles.actions}>
           <Button size="sm" onClick={() => send("link")}>
@@ -242,7 +242,7 @@ export function BackupControls() {
 
       <DataSection
         title="Backup"
-        hint="Everything on this device as a file: progress, preferences, and saved text. Importing one replaces what's here."
+        hint="Save everything on this device as a file: progress, preferences, and saved text. Importing one replaces what's here."
       >
         <div className={styles.actions}>
           <Button size="sm" onClick={exportData}>
