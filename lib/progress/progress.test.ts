@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import {
   clampProgress,
   parseProgress,
+  parseStars,
   pickNext,
+  pickWeighted,
   syllableProgress,
   weightOf,
   zhuyinSymbols,
@@ -47,6 +49,27 @@ describe("pickNext", () => {
     const random = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
     for (let i = 0; i < 2000; i++) counts[pickNext([0, 1], undefined, random)]++;
     expect(counts[0]).toBeGreaterThan(counts[1] * 10);
+  });
+});
+
+describe("stars", () => {
+  it("keeps strings, each once, and drops everything else", () => {
+    expect(parseStars(["你好", 3, "你好", null, "謝謝"])).toEqual(["你好", "謝謝"]);
+    expect(parseStars({ 你好: true })).toEqual([]);
+  });
+
+  it("weighs a starred card more, at any progress", () => {
+    for (const p of [0, 0.5, 1]) expect(weightOf(p, true)).toBeGreaterThan(weightOf(p));
+    expect(weightOf(0)).toBeGreaterThan(weightOf(1, true));
+  });
+
+  it("picks a starred card more often than its unstarred equal", () => {
+    const counts = [0, 0];
+    let seed = 1;
+    const random = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+    const weights = [weightOf(0.5, true), weightOf(0.5)];
+    for (let i = 0; i < 2000; i++) counts[pickWeighted(weights, undefined, random)]++;
+    expect(counts[0]).toBeGreaterThan(counts[1] * 2);
   });
 });
 

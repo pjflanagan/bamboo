@@ -1,20 +1,27 @@
 /*
  * Moving study progress to another device as a link. The progress rides in
  * the URL's #fragment, which browsers never send to a server: the link is
- * the only copy. Only progress travels (cards and zhuyin symbols), not
- * preferences or what's in the reader, and it merges into what's there:
- * each item keeps whichever value is higher, so nothing goes backward.
+ * the only copy. Only progress travels (cards, zhuyin symbols, and starred
+ * cards), not preferences or what's in the reader, and it merges into what's
+ * there: each item keeps whichever value is higher, so nothing goes backward,
+ * and a card starred on either device is starred.
  *
- *   /transfer#v1.<base64url of deflated JSON {p: cards, z: zhuyin symbols}>
+ *   /transfer#v1.<base64url of deflated JSON {p: cards, z: zhuyin symbols, s: stars}>
+ *
+ * Links made before stars have no `s`, and read as no stars.
  */
 
-import { parseProgress, type ProgressMap } from "@/lib/progress/progress";
-import { progressStore, zhuyinProgressStore } from "@/lib/progress/store";
+import { parseProgress, parseStars, type ProgressMap } from "@/lib/progress/progress";
+import { progressStore, starStore, zhuyinProgressStore } from "@/lib/progress/store";
 
 export const TRANSFER_PATH = "/transfer";
 const PREFIX = "v1.";
 
-export type TransferData = { progress: ProgressMap; zhuyinProgress: ProgressMap };
+export type TransferData = {
+  progress: ProgressMap;
+  zhuyinProgress: ProgressMap;
+  stars: readonly string[];
+};
 
 /** A link that can't be read, with a message to show as is. */
 export class TransferError extends Error {}
@@ -48,6 +55,7 @@ export async function encodeTransfer(data: TransferData): Promise<string> {
   const json = JSON.stringify({
     p: withoutZeros(data.progress),
     z: withoutZeros(data.zhuyinProgress),
+    s: data.stars,
   });
   const compressed = await pipe(
     new TextEncoder().encode(json),
@@ -73,7 +81,11 @@ export async function decodeTransfer(fragment: string): Promise<TransferData> {
     throw new TransferError("This link is incomplete or damaged. Try copying it again.");
   }
   const data = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
-  return { progress: parseProgress(data.p), zhuyinProgress: parseProgress(data.z) };
+  return {
+    progress: parseProgress(data.p),
+    zhuyinProgress: parseProgress(data.z),
+    stars: parseStars(data.s),
+  };
 }
 
 /** Both maps' items, each at whichever value is higher. */
@@ -85,12 +97,22 @@ export function mergeProgress(current: ProgressMap, incoming: ProgressMap): Prog
   return merged;
 }
 
+/** Every card starred in either list. */
+export function mergeStars(current: readonly string[], incoming: readonly string[]): string[] {
+  return [...new Set([...current, ...incoming])];
+}
+
 export function collectTransfer(): TransferData {
-  return { progress: progressStore.get(), zhuyinProgress: zhuyinProgressStore.get() };
+  return {
+    progress: progressStore.get(),
+    zhuyinProgress: zhuyinProgressStore.get(),
+    stars: starStore.get(),
+  };
 }
 
 /** Merges a decoded link's progress into this device's. */
 export function applyTransfer(data: TransferData): void {
   progressStore.set(mergeProgress(progressStore.get(), data.progress));
   zhuyinProgressStore.set(mergeProgress(zhuyinProgressStore.get(), data.zhuyinProgress));
+  starStore.set(mergeStars(starStore.get(), data.stars));
 }

@@ -24,6 +24,15 @@ export function parseProgress(raw: unknown): ProgressMap {
   return map;
 }
 
+/** How many times more often a starred card comes up than it otherwise would. */
+export const STAR_BOOST = 3;
+
+/** Starred cards, by the same key as progress. Keeps only strings, each once. */
+export function parseStars(raw: unknown): readonly string[] {
+  if (!Array.isArray(raw)) return [];
+  return [...new Set(raw.filter((key): key is string => typeof key === "string"))];
+}
+
 /** The zhuyin symbols in a syllable's spelling, each once: "ㄇㄚ" -> ["ㄇ", "ㄚ"]. */
 export function zhuyinSymbols(zhuyin: string): string[] {
   return [...new Set(zhuyin)];
@@ -39,10 +48,10 @@ export function syllableProgress(zhuyin: string, progress: ProgressMap): number 
 /**
  * How likely a card is to come up next, relative to the others. New cards
  * weigh 1.05, half-known 0.3, known 0.05: known cards still come back, about
- * one-twentieth as often as new ones.
+ * one-twentieth as often as new ones. A star multiplies whatever that is.
  */
-export function weightOf(progress: number): number {
-  return 0.05 + (1 - clampProgress(progress)) ** 2;
+export function weightOf(progress: number, starred = false): number {
+  return (0.05 + (1 - clampProgress(progress)) ** 2) * (starred ? STAR_BOOST : 1);
 }
 
 /**
@@ -54,8 +63,21 @@ export function pickNext(
   current?: number,
   random: () => number = Math.random,
 ): number {
-  if (progress.length <= 1) return 0;
-  const weights = progress.map((p, i) => (i === current ? 0 : weightOf(p)));
+  return pickWeighted(
+    progress.map((p) => weightOf(p)),
+    current,
+    random,
+  );
+}
+
+/** pickNext for weights worked out by the caller: cards that can be starred. */
+export function pickWeighted(
+  cardWeights: readonly number[],
+  current?: number,
+  random: () => number = Math.random,
+): number {
+  if (cardWeights.length <= 1) return 0;
+  const weights = cardWeights.map((w, i) => (i === current ? 0 : w));
   const total = weights.reduce((sum, w) => sum + w, 0);
   let target = random() * total;
   for (let i = 0; i < weights.length; i++) {

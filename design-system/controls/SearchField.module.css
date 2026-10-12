@@ -1,0 +1,25 @@
+.field {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-md);
+  background: var(--control-bg);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-md);
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    box-shadow var(--duration-fast) var(--ease);
+}
+
+.field::placeholder {
+  color: var(--text-muted);
+}
+
+.field:focus-visible {
+  outline: none;
+  border-color: var(--control-selected-border);
+  box-shadow: var(--control-selected-glow);
+}

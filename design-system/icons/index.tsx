@@ -34,6 +34,14 @@ export function ArrowLeftIcon(props: IconProps) {
   );
 }
 
+export function ArrowUpIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </Icon>
+  );
+}
+
 export function SlidersIcon(props: IconProps) {
   return (
     <Icon {...props}>
@@ -105,6 +113,15 @@ export function CheckIcon(props: IconProps) {
   return (
     <Icon {...props}>
       <path d="M20 6 9 17l-5-5" />
+    </Icon>
+  );
+}
+
+/** Pass fill="currentColor" for a solid star. */
+export function StarIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
     </Icon>
   );
 }

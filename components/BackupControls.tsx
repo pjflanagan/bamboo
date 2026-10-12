@@ -24,8 +24,8 @@ type Section = "transfer" | "backup" | "clear";
  * The preferences menu's Data tab. Transfer copies a link that adds this
  * device's progress to another one (lib/transfer). Export downloads
  * everything saved on this device as a file, and import loads one back:
- * card and zhuyin progress, preferences, the chosen set, and the reader's
- * text. Clear erases all of it.
+ * card and zhuyin progress, starred cards, preferences, the chosen set, and
+ * the reader's text. Clear erases all of it.
  */
 export function BackupControls() {
   const root = useRef<HTMLDivElement>(null);

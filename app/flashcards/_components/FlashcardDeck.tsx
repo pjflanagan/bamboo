@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Button, Card, ProgressBar, Slider, buttonClassName } from "@/design-system/controls";
 import { AnnotationScope, Phrase, type AnnotationConfig } from "@/design-system/hanzi";
 import {
@@ -10,10 +10,11 @@ import {
   ExternalLinkIcon,
   MinusIcon,
   PlusIcon,
+  StarIcon,
 } from "@/design-system/icons";
-import { useProgress } from "@/hooks";
+import { useProgress, useStars } from "@/hooks";
 import type { Flashcard } from "@/lib/data";
-import { PROGRESS_STEP, pickNext } from "@/lib/progress";
+import { PROGRESS_STEP, pickWeighted, weightOf } from "@/lib/progress";
 import styles from "./FlashcardDeck.module.css";
 
 /*
@@ -62,6 +63,7 @@ function translateUrl(text: string) {
  * One card at a time, chosen at random and weighted toward cards you know
  * less well (lib/progress). Each card's progress runs from 0 to 1:
  *
+ *   on the card, top left: a star, which makes the card come up more often
  *   hidden:    [<] [ Reveal ] [>]
  *   revealed:  [<] [-] [ Next ] [+] [Known] [>]
  *   always:    a slider showing the card's progress, settable anywhere
@@ -70,14 +72,18 @@ function translateUrl(text: string) {
  * the cards already seen; going forward past the newest picks a new one.
  *
  * Keys: Space/Enter reveals, then moves on; arrows go back and forward;
- * once revealed, - and + adjust and K marks known (each then moves on).
+ * once revealed, - and + adjust and K marks known (each then moves on);
+ * S stars or unstars the card.
  */
 export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode }) {
   const { progress, setProgress } = useProgress();
+  const { starred, toggleStar } = useStars();
   const progressOf = (card: Flashcard) => progress[card.text] ?? 0;
+  const weigh = (card: Flashcard, value = progressOf(card)) =>
+    weightOf(value, starred.has(card.text));
 
   // Cards seen so far (indices into `cards`), and which one is showing.
-  const [history, setHistory] = useState(() => [pickNext(cards.map(progressOf))]);
+  const [history, setHistory] = useState(() => [pickWeighted(cards.map((c) => weigh(c)))]);
   const [position, setPosition] = useState(0);
   const [revealed, setRevealed] = useState(false);
   // A new mode starts the card over, hidden.
@@ -102,10 +108,8 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
     if (position < history.length - 1) {
       setPosition(position + 1);
     } else {
-      const weights = cards.map((c, i) =>
-        i === index && updated !== undefined ? updated : progressOf(c),
-      );
-      setHistory([...history, pickNext(weights, index)]);
+      const weights = cards.map((c, i) => weigh(c, i === index ? updated : undefined));
+      setHistory([...history, pickWeighted(weights, index)]);
       setPosition(position + 1);
     }
     setRevealed(false);
@@ -126,6 +130,7 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
         else reveal();
       } else if (event.key === "ArrowRight") forward();
       else if (event.key === "ArrowLeft") back();
+      else if (event.key.toLowerCase() === "s") toggleStar(card.text);
       else if (revealed && event.key === "-") rate(value - PROGRESS_STEP);
       else if (revealed && (event.key === "+" || event.key === "=")) rate(value + PROGRESS_STEP);
       else if (revealed && event.key.toLowerCase() === "k") rate(1);
@@ -139,6 +144,7 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
   const known = cards.filter((c) => progressOf(c) >= 1).length;
   const average = cards.reduce((sum, c) => sum + progressOf(c), 0) / cards.length;
   const percent = Math.round(value * 100);
+  const isStarred = starred.has(card.text);
 
   return (
     <div className={styles.deck}>
@@ -149,17 +155,42 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
         <ProgressBar value={average} label="Set progress" />
       </div>
 
-      {/* Clicking the card is a shortcut for Reveal, then Next. */}
-      <Card
-        color={card.color}
-        className={styles.card}
-        data-length={lengthOf(card.text)}
-        onClick={revealed ? () => forward() : reveal}
+      {/*
+       * The star sits over the card's corner rather than inside it, so it
+       * stays put when a long phrase scrolls and doesn't flip the card.
+       */}
+      <div
+        className={styles.frame}
+        style={
+          card.color
+            ? ({ "--star-color": `var(--card-${card.color}-text)` } as CSSProperties)
+            : undefined
+        }
       >
-        <AnnotationScope {...MODES[mode].layers} revealed={revealed}>
-          <Phrase phrase={card.phrase} align="center" />
-        </AnnotationScope>
-      </Card>
+        {/* Clicking the card is a shortcut for Reveal, then Next. */}
+        <Card
+          color={card.color}
+          className={styles.card}
+          data-length={lengthOf(card.text)}
+          onClick={revealed ? () => forward() : reveal}
+        >
+          <AnnotationScope {...MODES[mode].layers} revealed={revealed}>
+            <Phrase phrase={card.phrase} align="center" />
+          </AnnotationScope>
+        </Card>
+        <Button
+          variant="ghost"
+          size="sm"
+          iconOnly
+          className={styles.star}
+          aria-pressed={isStarred}
+          aria-label="Star: show this card more often"
+          title={isStarred ? "Starred: shown more often (S)" : "Star to show more often (S)"}
+          onClick={() => toggleStar(card.text)}
+        >
+          <StarIcon size={18} fill={isStarred ? "currentColor" : "none"} />
+        </Button>
+      </div>
 
       {/*
        * One six-column grid for both states, arrows always at the ends. The

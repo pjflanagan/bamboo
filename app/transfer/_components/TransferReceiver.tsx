@@ -81,6 +81,7 @@ function Review({ decoded, onAdded }: { decoded: Promise<Decoded>; onAdded: () =
 
   const cards = Object.keys(result.data.progress).length;
   const symbols = Object.keys(result.data.zhuyinProgress).length;
+  const stars = result.data.stars.length;
 
   const add = () => {
     applyTransfer(result.data);
@@ -99,9 +100,15 @@ function Review({ decoded, onAdded }: { decoded: Promise<Decoded>; onAdded: () =
         <li>
           {symbols} zhuyin {symbols === 1 ? "symbol" : "symbols"}
         </li>
+        {stars > 0 && (
+          <li>
+            {stars} starred {stars === 1 ? "card" : "cards"}
+          </li>
+        )}
       </ul>
       <p className={styles.note}>
-        Progress already on this device is kept: each card ends up at whichever is further along.
+        Progress already on this device is kept: each card ends up at whichever is further along,
+        and keeps its star.
       </p>
       <div className={styles.actions}>
         <Button variant="primary" onClick={add}>

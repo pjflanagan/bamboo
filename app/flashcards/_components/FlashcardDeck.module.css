@@ -17,6 +17,32 @@
   color: var(--text-muted);
 }
 
+.frame {
+  position: relative;
+}
+
+/* Takes the card's text color, so it reads on every swatch. */
+.frame button.star {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  min-width: 36px;
+  min-height: 36px;
+  color: var(--star-color, var(--text));
+  opacity: 0.45;
+}
+
+.frame button.star:hover,
+.frame button.star:focus-visible,
+.frame button.star[aria-pressed="true"] {
+  color: var(--star-color, var(--text));
+  opacity: 1;
+}
+
+.frame button.star:hover {
+  background: color-mix(in oklab, currentColor 12%, transparent);
+}
+
 /*
  * A fixed height, so the buttons below never move from card to card. Short
  * phrases sit centered; a phrase taller than the card scrolls inside it

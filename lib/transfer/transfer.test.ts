@@ -1,16 +1,34 @@
 import { describe, expect, it } from "vitest";
-import { TransferError, decodeTransfer, encodeTransfer, mergeProgress } from "./transfer";
+import {
+  TransferError,
+  decodeTransfer,
+  encodeTransfer,
+  mergeProgress,
+  mergeStars,
+} from "./transfer";
 
 describe("transfer links", () => {
-  it("round-trips progress, leaving out zeros", async () => {
+  it("round-trips progress and stars, leaving out zeros", async () => {
     const fragment = await encodeTransfer({
       progress: { 你好: 0.5, 再見: 0, 謝謝: 1 },
       zhuyinProgress: { ㄇ: 0.3 },
+      stars: ["再見", "謝謝"],
     });
     expect(fragment).toMatch(/^v1\.[\w-]+$/);
     expect(await decodeTransfer(`#${fragment}`)).toEqual({
       progress: { 你好: 0.5, 謝謝: 1 },
       zhuyinProgress: { ㄇ: 0.3 },
+      stars: ["再見", "謝謝"],
+    });
+  });
+
+  it("reads a link made before stars as having none", async () => {
+    // deflate-raw of {"p":{"a":0.5},"z":{}}
+    const fragment = "v1.q1YqULKqVkpUsjLQM63VUapSsqqurQUA";
+    expect(await decodeTransfer(fragment)).toEqual({
+      progress: { a: 0.5 },
+      zhuyinProgress: {},
+      stars: [],
     });
   });
 
@@ -18,7 +36,8 @@ describe("transfer links", () => {
     const progress = Object.fromEntries(
       Array.from({ length: 2000 }, (_, i) => [`詞${i}`, (i % 10) / 10 + 0.1]),
     );
-    const fragment = await encodeTransfer({ progress, zhuyinProgress: {} });
+    const stars = Object.keys(progress).filter((_, i) => i % 5 === 0);
+    const fragment = await encodeTransfer({ progress, zhuyinProgress: {}, stars });
     expect(fragment.length).toBeLessThan(20_000);
     expect((await decodeTransfer(fragment)).progress).toEqual(
       Object.fromEntries(Object.entries(progress).map(([k, v]) => [k, Math.round(v * 100) / 100])),
@@ -35,6 +54,7 @@ describe("transfer links", () => {
     const fragment = await encodeTransfer({
       progress: { 你好: 3 } as Record<string, number>,
       zhuyinProgress: {},
+      stars: [],
     });
     expect((await decodeTransfer(fragment)).progress).toEqual({ 你好: 1 });
   });
@@ -47,5 +67,11 @@ describe("mergeProgress", () => {
       b: 0.6,
       c: 0.4,
     });
+  });
+});
+
+describe("mergeStars", () => {
+  it("keeps every star from both, once each", () => {
+    expect(mergeStars(["a", "b"], ["b", "c"])).toEqual(["a", "b", "c"]);
   });
 });

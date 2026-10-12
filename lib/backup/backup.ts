@@ -10,7 +10,7 @@ import {
   type Preferences,
 } from "@/lib/preferences/preferences";
 import { getPreferences, setPreferences } from "@/lib/preferences/store";
-import { progressStore, zhuyinProgressStore } from "@/lib/progress/store";
+import { progressStore, starStore, zhuyinProgressStore } from "@/lib/progress/store";
 import {
   chosenSetStore,
   dailyTasksStore,
@@ -26,6 +26,7 @@ const VERSION = 1;
 const STORES = {
   progress: progressStore,
   zhuyinProgress: zhuyinProgressStore,
+  stars: starStore,
   chosenSet: chosenSetStore,
   readerText: readerTextStore,
   dailyTasks: dailyTasksStore,

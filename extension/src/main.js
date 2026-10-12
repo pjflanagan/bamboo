@@ -2,7 +2,8 @@
  * The new tab page: one flashcard from a Bamboo set, chosen at random and
  * weighted toward cards you know less well, like the site's flashcards page.
  * Sets come from the site's API (app/api/flashcards); progress is kept in
- * step with the site by sync.js (see progress.js).
+ * step with the site by sync.js (see progress.js). Cards starred on the site
+ * come up more often here too.
  *
  *   hidden:    [Reveal]
  *   revealed:  [-] [Next] [+] [Known]
@@ -20,6 +21,7 @@ let catalog = null;
 let cards = [];
 let setTitle = "";
 let progress = {};
+let stars = new Set();
 let script = "trad";
 let index = -1;
 let isHidden = true;
@@ -144,7 +146,10 @@ function renderProgress() {
 function nextCard(updated) {
   if (cards.length === 0) return;
   const weights = cards.map((card, i) =>
-    i === index && updated !== undefined ? updated : progressOf(card),
+    weightOf(
+      i === index && updated !== undefined ? updated : progressOf(card),
+      stars.has(card.text),
+    ),
   );
   index = pickNext(weights, index < 0 ? undefined : index);
   isHidden = true;
@@ -219,14 +224,18 @@ function buildDropdown(selected) {
 (async function () {
   buildThemeSwitch();
   try {
-    const [loadedCatalog, { selectedSet }, loadedProgress, stored] = await Promise.all([
-      loadCatalog(),
-      chrome.storage.sync.get("selectedSet"),
-      loadProgress(),
-      chrome.storage.local.get("script"),
-    ]);
+    const [loadedCatalog, { selectedSet }, loadedProgress, loadedStars, stored] = await Promise.all(
+      [
+        loadCatalog(),
+        chrome.storage.sync.get("selectedSet"),
+        loadProgress(),
+        loadStars(),
+        chrome.storage.local.get("script"),
+      ],
+    );
     catalog = loadedCatalog;
     progress = loadedProgress;
+    stars = loadedStars;
     if (stored.script === "simp") script = "simp";
 
     buildDropdown(selectedSet ?? ALL);
@@ -263,6 +272,7 @@ function buildDropdown(selected) {
       progress = await loadProgress();
       renderProgress();
     }
+    if (changes.siteStars) stars = await loadStars();
     if (changes.script) {
       script = changes.script.newValue === "simp" ? "simp" : "trad";
       render();

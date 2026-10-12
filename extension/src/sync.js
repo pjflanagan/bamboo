@@ -6,7 +6,8 @@
  *                      localStorage now, and again whenever more come in
  *                      while the tab is open
  *   site -> extension  the site's progress is copied to siteProgress now,
- *                      and whenever it changes while the tab is open
+ *                      and whenever it changes while the tab is open; its
+ *                      starred cards are copied to siteStars the same way
  *
  * Also copies the site's script preference (traditional or simplified), so
  * the new tab page writes hanzi the same way.
@@ -31,6 +32,7 @@
   }
 
   let lastSeen = null;
+  let lastStars = null;
   let lastScript = null;
 
   /** Copies the site's progress to the extension, if it changed. */
@@ -39,6 +41,20 @@
     if (raw === lastSeen) return;
     lastSeen = raw;
     store({ siteProgress: readSite() });
+  }
+
+  /** Copies the site's starred cards to the extension, if they changed. */
+  function pushStars() {
+    const raw = localStorage.getItem(SITE_STARS_KEY);
+    if (raw === lastStars) return;
+    lastStars = raw;
+    let stars = [];
+    try {
+      stars = parseStars(JSON.parse(raw ?? "[]"));
+    } catch {
+      // malformed: the site reads it as no stars too
+    }
+    store({ siteStars: stars });
   }
 
   /** Writes the extension's pending changes into the site's localStorage. */
@@ -74,6 +90,7 @@
   }
 
   applyPending().finally(pushSite);
+  pushStars();
   pushScript();
 
   chrome.storage.onChanged.addListener((changes, area) => {
@@ -83,8 +100,14 @@
   // The site's own writes don't fire `storage` events in its own tab, so look.
   setInterval(() => {
     pushSite();
+    pushStars();
     pushScript();
   }, 2000);
-  document.addEventListener("visibilitychange", pushSite);
-  window.addEventListener("pagehide", pushSite);
+  for (const [target, type] of [
+    [document, "visibilitychange"],
+    [window, "pagehide"],
+  ]) {
+    target.addEventListener(type, pushSite);
+    target.addEventListener(type, pushStars);
+  }
 })();

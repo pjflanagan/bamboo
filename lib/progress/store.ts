@@ -1,5 +1,11 @@
 import { createLocalStore } from "@/lib/storage";
-import { clampProgress, parseProgress, zhuyinSymbols, type ProgressMap } from "./progress";
+import {
+  clampProgress,
+  parseProgress,
+  parseStars,
+  zhuyinSymbols,
+  type ProgressMap,
+} from "./progress";
 
 /** Every card's progress on this device. */
 export const progressStore = createLocalStore<ProgressMap>("bamboo-progress", parseProgress, {});
@@ -13,6 +19,14 @@ export function setManyProgress(values: Readonly<Record<string, number>>): void 
   const next = { ...progressStore.get() };
   for (const [key, value] of Object.entries(values)) next[key] = clampProgress(value);
   progressStore.set(next);
+}
+
+/** The cards starred on this device, to come up more often. */
+export const starStore = createLocalStore<readonly string[]>("bamboo-stars", parseStars, []);
+
+export function toggleStar(key: string): void {
+  const stars = starStore.get();
+  starStore.set(stars.includes(key) ? stars.filter((star) => star !== key) : [...stars, key]);
 }
 
 /**

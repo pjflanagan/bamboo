@@ -11,6 +11,7 @@ describe("parseBackup", () => {
       preferences: { ...DEFAULT_PREFERENCES, theme: "neon" },
       progress: { 你好: 0.5 },
       zhuyinProgress: { ㄇ: 0.3 },
+      stars: ["你好"],
       chosenSet: "class-verbs-1",
       readerText: "我喜歡讀書",
       dailyTasks: { day: "2026-10-10", tasks: ["flashcards"] },
