@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { RichText } from "@/components/RichText";
 import { Card, buttonClassName } from "@/design-system/controls";
 import { ArrowRightIcon, ExternalLinkIcon } from "@/design-system/icons";
-import { Page } from "@/design-system/layout";
+import { Masonry, Page } from "@/design-system/layout";
 import { Sign, hueScope } from "@/design-system/motifs";
 import { getHomeContent, getResources, type Glossary } from "@/lib/data";
 import { DailyTasks } from "./_components/DailyTasks";
@@ -137,7 +137,7 @@ export default async function Home() {
               <Glossed text={home.resourcesTitle} glossary={glossary} />
             </Sign>
           )}
-          <div className={styles.resources}>
+          <Masonry>
             <ResourceCard title={titles.videos} id="videos" glossary={glossary}>
               {resources.videos.map((group) => (
                 <div key={group.category}>
@@ -207,7 +207,7 @@ export default async function Home() {
                 ))}
               </ul>
             </ResourceCard>
-          </div>
+          </Masonry>
         </section>
 
         <section aria-labelledby="about">

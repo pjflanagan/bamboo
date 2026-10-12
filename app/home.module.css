@@ -309,21 +309,6 @@
 
 /* resources ---------------------------------------------------------------- */
 
-/*
- * Masonry: as many 15rem-or-wider columns as fit, each card tucked under the
- * one above it instead of waiting for the tallest in its row. Cards fill
- * down the first column, then the next.
- */
-.resources {
-  columns: 15rem;
-  column-gap: var(--space-4);
-}
-
-.resource {
-  break-inside: avoid;
-  margin-bottom: var(--space-4);
-}
-
 /* #videos and #podcasts (linked from the tasks) land below the sticky header. */
 .resource .cardTitle {
   scroll-margin-top: calc(var(--header-height) + var(--space-6));

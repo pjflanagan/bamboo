@@ -88,3 +88,19 @@
   font-weight: var(--weight-bold);
   text-align: center;
 }
+
+/* masonry ------------------------------------------------------------------ */
+
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-width), 1fr));
+  align-items: start;
+  gap: var(--gap);
+}
+
+.masonryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-width: 0;
+}
