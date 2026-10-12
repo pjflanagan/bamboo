@@ -5,6 +5,7 @@ import {
   encodeTransfer,
   mergeProgress,
   mergeStars,
+  transferFragment,
 } from "./transfer";
 
 describe("transfer links", () => {
@@ -57,6 +58,14 @@ describe("transfer links", () => {
       stars: [],
     });
     expect((await decodeTransfer(fragment)).progress).toEqual({ 你好: 1 });
+  });
+});
+
+describe("transferFragment", () => {
+  it("reads a code, a whole link, or a code wrapped across lines", () => {
+    expect(transferFragment("  v1.abc-_ \n")).toBe("v1.abc-_");
+    expect(transferFragment("https://bamboo.flanny.app/transfer#v1.abc")).toBe("v1.abc");
+    expect(transferFragment("v1.ab\ncd\r\n ef")).toBe("v1.abcdef");
   });
 });
 

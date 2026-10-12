@@ -7,5 +7,6 @@ export {
   encodeTransfer,
   mergeProgress,
   mergeStars,
+  transferFragment,
   type TransferData,
 } from "./transfer";

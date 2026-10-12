@@ -63,8 +63,8 @@ export function TransferReceiver() {
   if (!fragment) {
     return (
       <Message title="No progress in this link">
-        On the device with your progress, open the preferences menu (top right) and choose Transfer
-        progress. Then open the copied link here.
+        On the device with your progress, open the preferences menu (top right), go to Data, and
+        choose Copy link. Then open the copied link here.
       </Message>
     );
   }
