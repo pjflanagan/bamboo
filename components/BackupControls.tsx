@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "react";
-import { Button } from "@/design-system/controls";
+import { Button, TextArea } from "@/design-system/controls";
 import { Modal } from "@/design-system/overlays";
 import {
   BackupError,
@@ -11,41 +11,69 @@ import {
   parseBackup,
   restoreBackup,
 } from "@/lib/backup";
-import { TRANSFER_PATH, collectTransfer, encodeTransfer } from "@/lib/transfer";
+import {
+  TRANSFER_PATH,
+  TransferError,
+  applyTransfer,
+  collectTransfer,
+  decodeTransfer,
+  encodeTransfer,
+  transferFragment,
+  type TransferData,
+} from "@/lib/transfer";
 import styles from "./BackupControls.module.css";
 
-async function buildTransferUrl(): Promise<string> {
-  return `${location.origin}${TRANSFER_PATH}#${await encodeTransfer(collectTransfer())}`;
+const transferUrl = (code: string) => `${location.origin}${TRANSFER_PATH}#${code}`;
+
+function plural(count: number, one: string, many = `${one}s`) {
+  return `${count} ${count === 1 ? one : many}`;
 }
 
-type Section = "transfer" | "backup" | "clear";
+/** "12 cards, 3 zhuyin symbols, and 2 starred cards" */
+function describeTransfer(data: TransferData): string {
+  const parts = [
+    plural(Object.keys(data.progress).length, "card"),
+    plural(Object.keys(data.zhuyinProgress).length, "zhuyin symbol"),
+  ];
+  if (data.stars.length > 0) parts.push(plural(data.stars.length, "starred card"));
+  return parts.length === 2 ? parts.join(" and ") : `${parts[0]}, ${parts[1]}, and ${parts[2]}`;
+}
+
+type Section = "transfer" | "receive" | "backup" | "clear";
 
 /**
- * The preferences menu's Data tab. Transfer copies a link that adds this
- * device's progress to another one (lib/transfer). Export downloads
- * everything saved on this device as a file, and import loads one back:
- * card and zhuyin progress, starred cards, preferences, the chosen set, and
- * the reader's text. Clear erases all of it.
+ * The preferences menu's Data tab, in three parts:
+ *
+ * - Transfer: sends this device's progress to another as a link or a code
+ *   (lib/transfer), and adds progress from a pasted code or link. It merges,
+ *   and only moves progress. Links open in the browser, so an installed app
+ *   can only take a code.
+ * - Backup: export downloads everything saved on this device as a file, and
+ *   import replaces it all with one: card and zhuyin progress, starred
+ *   cards, preferences, the chosen set, and the reader's text.
+ * - Clear erases all of it.
  */
 export function BackupControls() {
   const root = useRef<HTMLDivElement>(null);
   const fileInput = useRef<HTMLInputElement>(null);
   // The last action's result, shown under the section it came from.
   const [status, setStatus] = useState<{ section: Section; text: string } | null>(null);
-  // Shown to copy by hand when the clipboard isn't available.
-  const [link, setLink] = useState("");
+  // A link or code to copy by hand when the clipboard isn't available.
+  const [manualCopy, setManualCopy] = useState<{ label: string; value: string } | null>(null);
+  const [pasted, setPasted] = useState("");
+  const [incoming, setIncoming] = useState<TransferData | null>(null);
   const [confirmingClear, setConfirmingClear] = useState(false);
   /*
-   * The transfer link, built when this tab shows and each time the menu
+   * The transfer code, built when this tab shows and each time the menu
    * opens. Safari only allows the clipboard and share sheet straight from a
-   * click, with nothing awaited first, and compressing the link is async.
+   * click, with nothing awaited first, and compressing the code is async.
    */
-  const transferUrl = useRef<string | null>(null);
+  const transferCode = useRef<string | null>(null);
 
   useEffect(() => {
     const build = () => {
-      transferUrl.current = null;
-      void buildTransferUrl().then((url) => (transferUrl.current = url));
+      transferCode.current = null;
+      void encodeTransfer(collectTransfer()).then((code) => (transferCode.current = code));
     };
     const menu = root.current?.closest("[popover]");
     const onToggle = (event: Event) => {
@@ -60,13 +88,16 @@ export function BackupControls() {
     setStatus(text ? { section, text } : null);
   }
 
-  async function transfer() {
-    setLink("");
-    const url = transferUrl.current ?? (await buildTransferUrl());
-    // Phones: the share sheet (AirDrop, messages) is how a link gets to a computer.
+  async function send(kind: "link" | "code") {
+    setManualCopy(null);
+    const code = transferCode.current ?? (await encodeTransfer(collectTransfer()));
+    const value = kind === "link" ? transferUrl(code) : code;
+    // Phones: the share sheet (AirDrop, messages) is how it gets to another device.
     if (navigator.share && matchMedia("(pointer: coarse)").matches) {
       try {
-        await navigator.share({ title: "Bamboo progress", url });
+        await navigator.share(
+          kind === "link" ? { title: "Bamboo progress", url: value } : { text: value },
+        );
         show("transfer", "");
         return;
       } catch (error) {
@@ -74,12 +105,45 @@ export function BackupControls() {
       }
     }
     try {
-      await navigator.clipboard.writeText(url);
-      show("transfer", "Link copied. Open it on your other device to add this progress there.");
+      await navigator.clipboard.writeText(value);
+      show(
+        "transfer",
+        kind === "link"
+          ? "Link copied. Open it on your other device to add this progress there."
+          : "Code copied. Paste it under Add progress on your other device.",
+      );
     } catch {
-      setLink(url);
-      show("transfer", "Copy this link and open it on your other device:");
+      setManualCopy({ label: kind === "link" ? "Transfer link" : "Transfer code", value });
+      show(
+        "transfer",
+        kind === "link"
+          ? "Copy this link and open it on your other device:"
+          : "Copy this code and paste it on your other device:",
+      );
     }
+  }
+
+  async function receive() {
+    setManualCopy(null);
+    try {
+      setIncoming(await decodeTransfer(transferFragment(pasted)));
+      show("receive", "");
+    } catch (error) {
+      show(
+        "receive",
+        error instanceof TransferError
+          ? error.message
+          : "That couldn't be read. Try copying it again.",
+      );
+    }
+  }
+
+  function addIncoming() {
+    if (!incoming) return;
+    applyTransfer(incoming);
+    show("receive", `Added ${describeTransfer(incoming)}.`);
+    setIncoming(null);
+    setPasted("");
   }
 
   function exportData() {
@@ -93,7 +157,7 @@ export function BackupControls() {
     link.click();
     URL.revokeObjectURL(url);
     show("backup", "");
-    setLink("");
+    setManualCopy(null);
   }
 
   async function importData(event: ChangeEvent<HTMLInputElement>) {
@@ -101,7 +165,7 @@ export function BackupControls() {
     // Cleared so picking the same file again still fires a change.
     event.target.value = "";
     if (!file) return;
-    setLink("");
+    setManualCopy(null);
     try {
       const data = parseBackup(await file.text());
       if (!confirm("Replace this device's progress and preferences with the backup's?")) return;
@@ -115,7 +179,7 @@ export function BackupControls() {
   function clearData() {
     clearAllData();
     setConfirmingClear(false);
-    setLink("");
+    setManualCopy(null);
     show("clear", "All data cleared.");
   }
 
@@ -128,31 +192,64 @@ export function BackupControls() {
 
   return (
     <div ref={root} className={styles.root}>
-      <DataSection hint="Send your progress to another device with a link. Opening it there adds this device's progress to it.">
+      <DataSection
+        title="Transfer progress"
+        hint="Add this device's progress to another one. Each card keeps whichever is further along. Either open a link in the browser or paste the code here."
+      >
         <div className={styles.actions}>
-          <Button size="sm" onClick={transfer}>
-            Transfer progress
+          <Button size="sm" onClick={() => send("link")}>
+            Copy link
+          </Button>
+          <Button size="sm" onClick={() => send("code")}>
+            Copy code
           </Button>
         </div>
         {statusFor("transfer")}
-        {link && (
+        {manualCopy && (
           <input
             className={styles.link}
             readOnly
-            value={link}
-            aria-label="Transfer link"
+            value={manualCopy.value}
+            aria-label={manualCopy.label}
             onFocus={(event) => event.target.select()}
           />
         )}
+
+        <form
+          className={styles.receive}
+          onSubmit={(event) => {
+            event.preventDefault();
+            void receive();
+          }}
+        >
+          <h4 className={styles.subheading}>Add progress</h4>
+          <TextArea
+            className={styles.code}
+            label="Code or link from another device"
+            placeholder="Paste a code or link from another device"
+            rows={2}
+            value={pasted}
+            onChange={setPasted}
+          />
+          <div className={styles.actions}>
+            <Button size="sm" type="submit" disabled={!pasted.trim()}>
+              Add progress
+            </Button>
+          </div>
+          {statusFor("receive")}
+        </form>
       </DataSection>
 
-      <DataSection hint="Or download your data as a file, then upload it to restore it here or on another device.">
+      <DataSection
+        title="Backup"
+        hint="Save everything on this device as a file: progress, preferences, and saved text. Importing one replaces what's here."
+      >
         <div className={styles.actions}>
           <Button size="sm" onClick={exportData}>
-            Export
+            Export file
           </Button>
           <Button size="sm" onClick={() => fileInput.current?.click()}>
-            Import
+            Import file
           </Button>
           <input
             ref={fileInput}
@@ -165,7 +262,10 @@ export function BackupControls() {
         {statusFor("backup")}
       </DataSection>
 
-      <DataSection hint="Erase all progress, preferences, and saved text on this device and start fresh.">
+      <DataSection
+        title="Clear data"
+        hint="Erase all progress, preferences, and saved text on this device and start fresh."
+      >
         <div className={styles.actions}>
           <Button size="sm" onClick={() => setConfirmingClear(true)}>
             Clear data
@@ -173,6 +273,27 @@ export function BackupControls() {
         </div>
         {statusFor("clear")}
       </DataSection>
+
+      <Modal
+        open={incoming !== null}
+        onClose={() => setIncoming(null)}
+        title="Add progress from another device?"
+        description={
+          incoming &&
+          `${describeTransfer(incoming)}. Progress already here is kept: each card ends up at whichever is further along, and keeps its star.`
+        }
+        size="sm"
+        footer={
+          <>
+            <Button size="sm" onClick={() => setIncoming(null)}>
+              Cancel
+            </Button>
+            <Button size="sm" variant="primary" onClick={addIncoming}>
+              Add progress
+            </Button>
+          </>
+        }
+      />
 
       <Modal
         open={confirmingClear}
@@ -195,9 +316,18 @@ export function BackupControls() {
   );
 }
 
-function DataSection({ hint, children }: { hint: string; children: ReactNode }) {
+function DataSection({
+  title,
+  hint,
+  children,
+}: {
+  title: string;
+  hint: string;
+  children: ReactNode;
+}) {
   return (
     <section className={styles.section}>
+      <h3 className={styles.heading}>{title}</h3>
       <p className={styles.hint}>{hint}</p>
       {children}
     </section>

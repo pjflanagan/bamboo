@@ -9,6 +9,10 @@
  *   /transfer#v1.<base64url of deflated JSON {p: cards, z: zhuyin symbols, s: stars}>
  *
  * Links made before stars have no `s`, and read as no stars.
+ *
+ * The same fragment also travels on its own as a code to paste: an installed
+ * app (PWA) keeps its own storage apart from the browser's, and a link always
+ * opens in the browser, so a code is the only way into the app.
  */
 
 import { parseProgress, parseStars, type ProgressMap } from "@/lib/progress/progress";
@@ -64,11 +68,21 @@ export async function encodeTransfer(data: TransferData): Promise<string> {
   return PREFIX + toBase64Url(compressed);
 }
 
-/** Reads a link's fragment ("#" optional), checking every value like storage reads. */
+/**
+ * The fragment in pasted text: a code, or a whole link. Whitespace is
+ * dropped, since messaging apps wrap a long code across lines.
+ */
+export function transferFragment(text: string): string {
+  const compact = text.replace(/\s+/g, "");
+  const hash = compact.lastIndexOf("#");
+  return hash === -1 ? compact : compact.slice(hash + 1);
+}
+
+/** Reads a link's fragment or a code ("#" optional), checking every value like storage reads. */
 export async function decodeTransfer(fragment: string): Promise<TransferData> {
   const payload = fragment.replace(/^#/, "");
   if (!payload.startsWith(PREFIX)) {
-    throw new TransferError("This link doesn't hold any progress. Try copying it again.");
+    throw new TransferError("This doesn't hold any progress. Try copying it again.");
   }
   let raw: unknown;
   try {
@@ -78,7 +92,7 @@ export async function decodeTransfer(fragment: string): Promise<TransferData> {
     );
     raw = JSON.parse(new TextDecoder().decode(bytes));
   } catch {
-    throw new TransferError("This link is incomplete or damaged. Try copying it again.");
+    throw new TransferError("This is incomplete or damaged. Try copying it again.");
   }
   const data = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
   return {
