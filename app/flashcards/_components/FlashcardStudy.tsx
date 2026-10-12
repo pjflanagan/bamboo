@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { SetChooser, findSet } from "@/components/flashcards";
-import { Card, SegmentedControl } from "@/design-system/controls";
+import { Card } from "@/design-system/controls";
 import { useChosenSet, useFlashcardSet } from "@/hooks";
 import type { FlashcardCatalog } from "@/lib/data";
-import { FlashcardDeck, MODE_OPTIONS, type Mode } from "./FlashcardDeck";
+import { FlashcardDeck, type Mode } from "./FlashcardDeck";
+import { ModeButton } from "./ModeButton";
 import styles from "./FlashcardStudy.module.css";
 
 /**
@@ -24,14 +25,7 @@ export function FlashcardStudy({ catalog }: { catalog: FlashcardCatalog }) {
     <div className={styles.study}>
       <div className={styles.bar}>
         <SetChooser catalog={catalog} slug={slug} onSelect={choose} />
-        <SegmentedControl
-          label="Mode"
-          hideLabel
-          size="sm"
-          options={MODE_OPTIONS}
-          value={mode}
-          onChange={setMode}
-        />
+        <ModeButton mode={mode} onChange={setMode} />
       </div>
 
       {state.status === "ready" ? (

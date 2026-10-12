@@ -107,3 +107,15 @@
   font-size: var(--text-xs);
   font-variant-numeric: tabular-nums;
 }
+
+/* Touch: taller rows and number buttons. */
+@media (pointer: coarse) {
+  .set {
+    padding-block: var(--space-2);
+  }
+
+  .number {
+    min-width: 36px;
+    min-height: 32px;
+  }
+}

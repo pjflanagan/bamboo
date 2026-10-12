@@ -81,3 +81,13 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+@media (pointer: coarse) {
+  .text {
+    padding-block: 10px;
+  }
+
+  [data-size="sm"] .text {
+    padding-block: var(--space-2);
+  }
+}

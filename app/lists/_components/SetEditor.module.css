@@ -152,7 +152,10 @@
   opacity: 1;
 }
 
-/* Phones: each row stacks, the card above its progress. */
+/*
+ * Phones: each card is a block, the star beside the phrase and the progress
+ * controls across the full width below.
+ */
 @media (max-width: 559px) {
   .table thead,
   .table tr,
@@ -160,7 +163,6 @@
     display: block;
   }
 
-  /* The star beside the card, progress below both. */
   .table tbody tr {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -169,13 +171,16 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .table .starHead,
-  .table .starCell {
-    width: auto;
+  .table tbody td {
+    padding: var(--space-1);
+    border-bottom: 0;
   }
 
-  .cardHeadCell {
-    flex: 1;
+  .table .starHead,
+  .table .starCell,
+  .progressHead,
+  .progressCell {
+    width: auto;
   }
 
   .progressCell,
@@ -183,33 +188,58 @@
     grid-column: 1 / -1;
   }
 
-  /* The header becomes a bar: layers on the left, the sort on the right. */
+  .progress {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+  }
+
+  /*
+   * The header becomes a toolbar: the star sort and layers on the left, the
+   * progress sort and filter on the right, wrapping to a second line on
+   * screens too narrow for both.
+   */
   .table thead tr {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
     box-shadow: inset 0 -1px 0 var(--border-strong);
   }
 
   .table thead th {
+    padding: 0 var(--space-1);
     box-shadow: none;
   }
 
+  .cardHeadCell {
+    flex: 1;
+  }
+
   .progressHead {
-    width: auto;
+    margin-inline-start: auto;
   }
 
-  .table td {
-    padding-block: var(--space-1);
-    border-bottom: 0;
+  /* No columns to name here, so no "Card" label. */
+  .cardHead > span {
+    display: none;
   }
 
-  .progressCell {
-    width: auto;
+  .cardHead,
+  .headControls {
+    gap: var(--space-3);
   }
 
-  .progress {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+  /* Tap targets. */
+  .sort,
+  .table thead label {
+    min-height: 36px;
+  }
+
+  .sort {
+    padding-inline: var(--space-1);
+  }
+
+  .table thead input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
   }
 }
 

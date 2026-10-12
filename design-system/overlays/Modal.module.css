@@ -136,6 +136,13 @@
     color var(--duration-fast) var(--ease);
 }
 
+@media (pointer: coarse) {
+  .close {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 .close:hover {
   background: var(--highlight);
   color: var(--text);

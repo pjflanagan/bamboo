@@ -73,8 +73,28 @@
   color: var(--text-secondary);
 }
 
-.secondary:hover:not(:disabled),
-.ghost:hover:not(:disabled) {
+/* Only where hovering exists: on touch, a hover style sticks after the tap. */
+@media (hover: hover) {
+  .secondary:hover:not(:disabled),
+  .ghost:hover:not(:disabled) {
+    background: var(--highlight);
+    color: var(--text);
+  }
+}
+
+.secondary:active:not(:disabled),
+.ghost:active:not(:disabled) {
   background: var(--highlight);
   color: var(--text);
+}
+
+/* Touch: bigger targets. */
+@media (pointer: coarse) {
+  .md {
+    min-height: 44px;
+  }
+
+  .sm {
+    min-height: 36px;
+  }
 }

@@ -15,3 +15,10 @@
   --annot-color: color-mix(in oklab, var(--card-fg) 72%, transparent);
   border-color: transparent;
 }
+
+/* Phones: less padding, more card. */
+@media (max-width: 479px) {
+  .card {
+    padding: var(--space-4);
+  }
+}

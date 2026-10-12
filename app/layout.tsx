@@ -24,7 +24,13 @@ export const metadata: Metadata = {
   },
 };
 
+// An app-like page: fixed at device scale, so neither a pinch nor focusing a
+// field zooms it. iOS ignores userScalable; reset.css's touch-action covers it.
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: THEME_COLORS[DEFAULT_THEME],
 };
 

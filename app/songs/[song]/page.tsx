@@ -29,7 +29,7 @@ export default async function SongPage({ params }: PageProps<"/songs/[song]">) {
   return (
     <>
       <PageHeader
-        title={song.title}
+        title="唱歌 Songs"
         actions={
           <Link href="/songs" className={buttonClassName({ variant: "ghost", size: "sm" })}>
             Songs

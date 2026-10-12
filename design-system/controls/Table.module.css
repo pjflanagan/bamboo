@@ -24,6 +24,9 @@
   transition: background-color var(--duration-fast) var(--ease);
 }
 
-.table tbody tr:hover {
-  background: color-mix(in oklab, var(--highlight) 55%, transparent);
+/* Only where hovering exists: on touch, the highlight would stick to the last row tapped. */
+@media (hover: hover) {
+  .table tbody tr:hover {
+    background: color-mix(in oklab, var(--highlight) 55%, transparent);
+  }
 }

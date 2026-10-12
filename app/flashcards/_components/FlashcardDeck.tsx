@@ -26,7 +26,7 @@ export type Mode = "hanzi" | "reading" | "english";
 
 const MODES: Record<Mode, { label: string; layers: AnnotationConfig }> = {
   hanzi: {
-    label: "漢字 → English",
+    label: "漢字 → English + 拼音",
     layers: { hanzi: "shown", pinyin: "hidden", zhuyin: "hidden", english: "hidden" },
   },
   reading: {
@@ -34,15 +34,15 @@ const MODES: Record<Mode, { label: string; layers: AnnotationConfig }> = {
     layers: { hanzi: "shown", pinyin: "shown", zhuyin: "hidden", english: "hidden" },
   },
   english: {
-    label: "English → 漢字",
+    label: "漢字 + 拼音 ← English",
     layers: { hanzi: "hidden", pinyin: "hidden", zhuyin: "hidden", english: "shown" },
   },
 };
 
-export const MODE_OPTIONS = (Object.keys(MODES) as Mode[]).map((value) => ({
-  value,
-  label: MODES[value].label,
-}));
+/** In the order the mode button cycles through them. */
+export const MODE_ORDER = Object.keys(MODES) as Mode[];
+
+export const modeLabel = (mode: Mode) => MODES[mode].label;
 
 const HAN = /\p{Script=Han}/gu;
 
@@ -64,11 +64,11 @@ function translateUrl(text: string) {
  * less well (lib/progress). Each card's progress runs from 0 to 1:
  *
  *   on the card, top left: a star, which makes the card come up more often
- *   hidden:    [<] [ Reveal ] [>]
- *   revealed:  [<] [-] [ Next ] [+] [Known] [>]
- *   always:    a slider showing the card's progress, settable anywhere
+ *   [<] [ Reveal / Next ] [>]
+ *   [-] slider 40% [+] [Known]
  *
- * -, +, and Known change the card's progress, then move on. The arrows walk
+ * The slider shows the card's progress and sets it at any time. Once the card
+ * is revealed, -, +, and Known change its progress, then move on. The arrows walk
  * the cards already seen; going forward past the newest picks a new one.
  *
  * Keys: Space/Enter reveals, then moves on; arrows go back and forward;
@@ -192,11 +192,8 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
         </Button>
       </div>
 
-      {/*
-       * One six-column grid for both states, arrows always at the ends. The
-       * primary button keeps its key, so focus stays on it from Reveal to Next.
-       */}
-      <div className={styles.actions} data-revealed={revealed || undefined}>
+      {/* The primary button keeps its key, so focus stays on it from Reveal to Next. */}
+      <div className={styles.actions}>
         <Button
           key="back"
           iconOnly
@@ -206,16 +203,6 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
         >
           <ArrowLeftIcon />
         </Button>
-        {revealed && (
-          <Button
-            key="less"
-            iconOnly
-            aria-label="Less known, next card"
-            onClick={() => rate(value - PROGRESS_STEP)}
-          >
-            <MinusIcon />
-          </Button>
-        )}
         <Button
           key="primary"
           variant="primary"
@@ -224,28 +211,21 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
         >
           {revealed ? "Next" : "Reveal"}
         </Button>
-        {revealed && (
-          <>
-            <Button
-              key="more"
-              iconOnly
-              aria-label="Better known, next card"
-              onClick={() => rate(value + PROGRESS_STEP)}
-            >
-              <PlusIcon />
-            </Button>
-            <Button key="known" aria-label="Known, next card" onClick={() => rate(1)}>
-              <CheckIcon size={16} />
-              <span className={styles.knownLabel}>Known</span>
-            </Button>
-          </>
-        )}
         <Button key="forward" iconOnly aria-label="Next card" onClick={() => forward()}>
           <ArrowRightIcon />
         </Button>
       </div>
 
+      {/* Always here, so revealing moves nothing; the buttons wait for the reveal. */}
       <div className={styles.progress}>
+        <Button
+          iconOnly
+          aria-label="Less known, next card"
+          disabled={!revealed}
+          onClick={() => rate(value - PROGRESS_STEP)}
+        >
+          <MinusIcon />
+        </Button>
         <Slider
           label="How well you know this card"
           value={value}
@@ -255,6 +235,18 @@ export function FlashcardDeck({ cards, mode }: { cards: Flashcard[]; mode: Mode 
         <span className={styles.percent} aria-hidden>
           {percent}%
         </span>
+        <Button
+          iconOnly
+          aria-label="Better known, next card"
+          disabled={!revealed}
+          onClick={() => rate(value + PROGRESS_STEP)}
+        >
+          <PlusIcon />
+        </Button>
+        <Button aria-label="Known, next card" disabled={!revealed} onClick={() => rate(1)}>
+          <CheckIcon size={16} />
+          <span className={styles.knownLabel}>Known</span>
+        </Button>
       </div>
 
       <a

@@ -6,8 +6,15 @@
   box-sizing: border-box;
 }
 
+/*
+ * Panning only: no pinch or double-tap zoom (iOS ignores the viewport's
+ * user-scalable=no), and taps fire without the double-tap delay.
+ */
 html {
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  touch-action: pan-x pan-y;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {

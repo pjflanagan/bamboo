@@ -19,6 +19,14 @@
   appearance: none;
 }
 
+/* Touch: a thumb big enough to grab. */
+@media (pointer: coarse) {
+  .slider {
+    --thumb: 22px;
+    height: 36px;
+  }
+}
+
 .slider::-webkit-slider-runnable-track {
   height: var(--track);
   border-radius: calc(var(--track) / 2);

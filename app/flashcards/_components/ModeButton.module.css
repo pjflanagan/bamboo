@@ -1,0 +1,42 @@
+/* The pieces space themselves, so a collapsed slot leaves no gap behind. */
+.mode {
+  --mode-duration: calc(var(--duration-normal) * 1.4);
+  gap: 0;
+}
+
+/*
+ * 拼音 has a slot on each side of the arrow; one is open at a time. A slot
+ * closes by its grid track going to zero, so its text slides out rather than
+ * squashing, and as one closes while the other opens the button keeps its width.
+ */
+.slot {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-columns var(--mode-duration) var(--ease),
+    opacity var(--mode-duration) var(--ease);
+}
+
+.slot > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: pre;
+}
+
+.mode[data-mode="hanzi"] .slot[data-side="back"],
+.mode:not([data-mode="hanzi"]) .slot[data-side="front"] {
+  grid-template-columns: 1fr;
+  opacity: 1;
+}
+
+.arrow {
+  display: inline-flex;
+  margin-inline: 0.45em;
+  transition: transform var(--mode-duration) var(--ease);
+}
+
+/* English first: the arrow points back at the hanzi. */
+.mode[data-mode="english"] .arrow {
+  transform: rotate(-180deg);
+}

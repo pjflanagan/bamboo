@@ -52,3 +52,9 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: -2px;
 }
+
+@media (pointer: coarse) {
+  .tab {
+    padding-block: var(--space-3);
+  }
+}
