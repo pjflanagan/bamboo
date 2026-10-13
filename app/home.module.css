@@ -51,6 +51,36 @@
   backdrop-filter: blur(14px) saturate(1.5);
 }
 
+/*
+ * Bamboo colors the cards by what they hold: the daily tasks are solid dark
+ * green with light text, the site's own tools and the about card are paper
+ * tan, and the resource cards (links to other sites) keep the white glass.
+ */
+:global([data-theme="bamboo"]) .home :is(.feature, .about) {
+  background: var(--bg);
+}
+
+:global([data-theme="bamboo"]) .home .tasks {
+  --card-fg: var(--on-primary);
+  --text-secondary: color-mix(in oklab, var(--on-primary) 88%, transparent);
+  --text-muted: color-mix(in oklab, var(--on-primary) 70%, transparent);
+  --link: var(--on-primary);
+  --link-hover: var(--highlight-strong);
+  --focus-ring: var(--highlight-strong);
+  /* Checked boxes: cream, since green wouldn't show on green. */
+  --primary: var(--surface);
+  border-color: rgb(255 255 255 / 0.25);
+  background: linear-gradient(
+    150deg,
+    var(--stalk-dark),
+    color-mix(in oklab, var(--stalk-dark) 82%, #000)
+  );
+}
+
+:global([data-theme="bamboo"]) .tasks .groupTitle {
+  color: inherit;
+}
+
 /* A section's heading with something beside it: the daily tasks' tally. */
 .sectionHeader {
   display: flex;
