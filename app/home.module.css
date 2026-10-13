@@ -81,6 +81,31 @@
   color: inherit;
 }
 
+/*
+ * Neon does the same in the dark: the daily tasks and the about card are
+ * black, the tools are faintly tinted with their own neon color (each card
+ * has a data-hue), and the resource cards keep the grey glass.
+ */
+:global([data-theme="neon"]) .home :is(.tasks, .about) {
+  background: #000;
+}
+
+:global([data-theme="neon"]) .home .feature {
+  background: linear-gradient(
+    150deg,
+    color-mix(
+      in oklab,
+      var(--primary) 12%,
+      color-mix(in oklab, var(--surface-raised) 72%, transparent)
+    ),
+    color-mix(
+      in oklab,
+      var(--primary) 6%,
+      color-mix(in oklab, var(--surface-raised) 52%, transparent)
+    )
+  );
+}
+
 /* A section's heading with something beside it: the daily tasks' tally. */
 .sectionHeader {
   display: flex;

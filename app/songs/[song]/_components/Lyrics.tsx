@@ -31,7 +31,13 @@ export function Lyrics({ lines }: { lines: SongLine[] }) {
           English
         </Checkbox>
       </div>
+      {/*
+       * Keyed on the visibility-only toggles: Safari doesn't repaint the lines
+       * when just the scope's custom properties change (it waits for a layout
+       * change, like the zhuyin column), so those remount the lyrics instead.
+       */}
       <AnnotationScope
+        key={`${showPinyin}-${showEnglish}`}
         hanzi="shown"
         pinyin={showPinyin ? "shown" : "hover"}
         zhuyin={showZhuyin ? "shown" : "collapsed"}
