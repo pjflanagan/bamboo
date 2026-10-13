@@ -171,17 +171,32 @@
 
 .checklist {
   display: grid;
-  gap: var(--space-1) var(--space-4);
+  gap: var(--space-1);
   margin: 0;
   padding: 0;
   list-style: none;
   line-height: var(--leading-tight);
 }
 
-/* Past two tasks, two sub-columns once the screen has room. */
-@media (min-width: 480px) {
-  .checklist:has(> :nth-child(3)) {
-    grid-template-columns: repeat(2, max-content);
+/* Only phones fold groups away, so only phones have the button. */
+.seeMore {
+  display: none;
+}
+
+/* Phones: the groups stack, and those past the first two wait behind "See more". */
+@media (max-width: 479px) {
+  .taskColumns {
+    flex-direction: column;
+  }
+
+  .taskGroup[data-extra] {
+    display: none;
+  }
+
+  .seeMore {
+    display: inline-flex;
+    align-self: flex-start;
+    margin: calc(-1 * var(--space-2)) 0 calc(-1 * var(--space-2)) calc(-1 * var(--space-3));
   }
 }
 

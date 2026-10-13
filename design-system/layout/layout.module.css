@@ -1,9 +1,14 @@
 /* page --------------------------------------------------------------------- */
 
+/*
+ * Generous room at the bottom: a phone browser's floating toolbar covers the
+ * end of the page, and the last card shouldn't end up under it.
+ */
 .page {
   width: 100%;
   margin: 0 auto;
-  padding: var(--space-5) var(--space-4) var(--space-12);
+  padding: var(--space-5) var(--space-4)
+    calc(2 * var(--space-12) + env(safe-area-inset-bottom, 0px));
 }
 
 .page[data-width="default"] {

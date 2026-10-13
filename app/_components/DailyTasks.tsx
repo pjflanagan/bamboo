@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { AppLink } from "@/components/AppLink";
 import { Glossed } from "@/components/Glossed";
-import { Card, Checkbox } from "@/design-system/controls";
+import { Button, Card, Checkbox } from "@/design-system/controls";
 import { CheckIcon } from "@/design-system/icons";
 import { Sign } from "@/design-system/motifs";
 import { useLocalStore } from "@/hooks";
@@ -22,6 +22,9 @@ function TaskLabel({ task, glossary }: { task: Task; glossary: Glossary }) {
   return label;
 }
 
+/** Phones show this many groups; the rest wait behind "See more". */
+const GROUPS_SHOWN = 2;
+
 const noSubscribe = () => () => {};
 
 /**
@@ -34,7 +37,9 @@ function useToday(): string | null {
 
 /**
  * The daily checklist: its heading and today's tally over the card of tasks.
- * Checks are kept on this device and clear each day.
+ * Checks are kept on this device and clear each day. On phones, groups past
+ * the first two are folded away until "See more" (the CSS decides; wider
+ * screens always show them all).
  */
 export function DailyTasks({
   tasks: { title, groups },
@@ -45,6 +50,7 @@ export function DailyTasks({
 }) {
   const stored = useLocalStore(dailyTasksStore);
   const day = useToday();
+  const [expanded, setExpanded] = useState(false);
   const done = day && stored.day === day ? stored.tasks : [];
 
   const toggle = (id: string, checked: boolean) =>
@@ -72,8 +78,12 @@ export function DailyTasks({
         </span>
       </div>
       <Card className={`${styles.tasks} ${styles.taskColumns}`}>
-        {groups.map((group) => (
-          <div key={group.title} className={styles.taskGroup}>
+        {groups.map((group, i) => (
+          <div
+            key={group.title}
+            className={styles.taskGroup}
+            data-extra={(i >= GROUPS_SHOWN && !expanded) || undefined}
+          >
             <Sign as="h3" variant="text" text={group.title} className={styles.groupTitle}>
               <Glossed text={group.title} glossary={glossary} />
             </Sign>
@@ -92,6 +102,17 @@ export function DailyTasks({
             </ul>
           </div>
         ))}
+        {groups.length > GROUPS_SHOWN && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className={styles.seeMore}
+            aria-expanded={expanded}
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? "See less" : "See more"}
+          </Button>
+        )}
       </Card>
     </section>
   );
