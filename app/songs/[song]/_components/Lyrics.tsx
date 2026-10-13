@@ -20,10 +20,10 @@ import styles from "./Lyrics.module.css";
  * the previous or next line without revealing anything, then P toggles that
  * line's pinyin, E its English, and Space or Enter both at once.
  *
- * The scope keeps pinyin and English hidden, and Lyrics.module.css reveals
- * them with plain selectors on the attributes set here. Safari doesn't
- * repaint the lines when only the scope's custom properties change (a
- * checkbox, a hover), so those reveals don't go through the scope.
+ * Which layers a line shows is decided here, in React, and the line's phrase
+ * is remounted when that changes (see Line). Safari doesn't repaint text
+ * whose visibility flips in place, by custom property or by plain selector:
+ * the change only showed up once something else repainted the line.
  */
 const USES_KEYS =
   'textarea, select, input:not([type="checkbox"]), [contenteditable], [role="menu"], [role="listbox"], dialog';
@@ -118,45 +118,78 @@ export function Lyrics({ title, artist, lines, children }: LyricsProps) {
         </div>
       </header>
       {children}
-      <AnnotationScope
-        hanzi="shown"
-        pinyin="hidden"
-        zhuyin={showZhuyin ? "shown" : "collapsed"}
-        english="hidden"
-        size={30}
-      >
-        <div
-          ref={lyrics}
-          className={styles.lyrics}
-          data-pinyin={showPinyin || undefined}
-          data-english={showEnglish || undefined}
-        >
+      <AnnotationScope hanzi="shown" zhuyin={showZhuyin ? "shown" : "collapsed"} size={30}>
+        <div ref={lyrics} className={styles.lyrics}>
           {lines.map((line) =>
             line.kind === "section" ? (
               <h2 key={line.id} className={styles.section}>
                 {line.title}
               </h2>
             ) : (
-              <div
+              <Line
                 key={line.id}
-                className={styles.line}
-                tabIndex={0}
-                data-line={line.id}
-                data-open={english.has(line.id) || undefined}
-                data-pinyin={pinyin.has(line.id) || undefined}
-                onClick={() => setEnglish((lines) => toggled(lines, line.id))}
-                style={
-                  line.color
-                    ? ({ "--line-color": `var(--swatch-${line.color})` } as CSSProperties)
-                    : undefined
-                }
-              >
-                <Phrase phrase={line.phrase} />
-              </div>
+                line={line}
+                pinyin={pinyin.has(line.id)}
+                english={english.has(line.id)}
+                showPinyin={showPinyin}
+                showEnglish={showEnglish}
+                onClick={() => {
+                  setEnglish((lines) => toggled(lines, line.id));
+                  // No hover to peek at pinyin with: a tap brings it along.
+                  if (matchMedia("(hover: none)").matches) {
+                    setPinyin((lines) => withLine(lines, line.id, !english.has(line.id)));
+                  }
+                }}
+              />
             ),
           )}
         </div>
       </AnnotationScope>
     </>
+  );
+}
+
+type LineProps = {
+  line: Extract<SongLine, { kind: "line" }>;
+  /** Held open on this line: pinyin by P, English by a click or E. */
+  pinyin: boolean;
+  english: boolean;
+  /** The checkboxes. */
+  showPinyin: boolean;
+  showEnglish: boolean;
+  onClick(): void;
+};
+
+function Line({ line, pinyin, english, showPinyin, showEnglish, onClick }: LineProps) {
+  const [hovered, setHovered] = useState(false);
+  const pinyinMode = showPinyin || pinyin || hovered ? "shown" : "hidden";
+  const englishMode = showEnglish || english ? "shown" : "hidden";
+
+  return (
+    <div
+      className={styles.line}
+      tabIndex={0}
+      data-line={line.id}
+      data-open={english || undefined}
+      data-pinyin={pinyin || undefined}
+      onClick={onClick}
+      // Mouse only: a touch's pointerenter has no matching leave until the next tap.
+      onPointerEnter={(event) => event.pointerType === "mouse" && setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
+      style={
+        line.color
+          ? ({ "--line-color": `var(--swatch-${line.color})` } as CSSProperties)
+          : undefined
+      }
+    >
+      {/* Keyed on what it shows, so a change remounts the phrase: see Lyrics. */}
+      <AnnotationScope
+        key={`${pinyinMode}-${englishMode}`}
+        pinyin={pinyinMode}
+        english={englishMode}
+      >
+        <Phrase phrase={line.phrase} />
+      </AnnotationScope>
+    </div>
   );
 }

@@ -64,9 +64,7 @@ export function Character({ syllable, size, ...marks }: CharacterProps) {
       style={sizeStyle(size)}
       {...unitProps}
     >
-      <span className={styles.pinyin} data-layer="pinyin">
-        {pinyin}
-      </span>
+      <span className={styles.pinyin}>{pinyin}</span>
       <span className={styles.hanzi}>
         {trad === simp ? (
           trad
@@ -79,7 +77,7 @@ export function Character({ syllable, size, ...marks }: CharacterProps) {
           </>
         )}
       </span>
-      <span className={styles.zhuyin} data-layer="zhuyin">
+      <span className={styles.zhuyin}>
         <Zhuyin zhuyin={zhuyin} tone={tone} />
       </span>
     </span>

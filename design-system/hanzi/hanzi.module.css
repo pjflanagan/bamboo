@@ -9,9 +9,6 @@
  *
  *   hovered character > hovered word > hovered phrase > clicked unit
  *     > revealed by parent > the layer's resting mode > visible
- *
- * The annotation slots also carry data-layer (pinyin, zhuyin, english), a
- * stable hook for a page that drives visibility with its own selectors.
  */
 
 .char,

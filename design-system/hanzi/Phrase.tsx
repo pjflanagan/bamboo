@@ -47,7 +47,7 @@ export function Phrase({ phrase, size, align = "start", cursor }: PhraseProps) {
         ))}
       </div>
       {phrase.english && (
-        <div className={styles.phraseEnglish} data-layer="english" lang="en">
+        <div className={styles.phraseEnglish} lang="en">
           {phrase.english}
         </div>
       )}

@@ -58,30 +58,6 @@
   padding-top: var(--space-1);
 }
 
-/*
- * Reveals. The scope hides pinyin and English everywhere; these show them
- * again: a checkbox on every line, a click on that line (English, and pinyin
- * too where there's no hover), a hover or the P key on that line (pinyin).
- */
-.lyrics[data-pinyin] :global([data-layer="pinyin"]),
-.line[data-pinyin] :global([data-layer="pinyin"]),
-.lyrics[data-english] :global([data-layer="english"]),
-.line[data-open] :global([data-layer="english"]) {
-  visibility: visible;
-}
-
-@media (hover: hover) {
-  .line:hover :global([data-layer="pinyin"]) {
-    visibility: visible;
-  }
-}
-
-@media (hover: none) {
-  .line[data-open] :global([data-layer="pinyin"]) {
-    visibility: visible;
-  }
-}
-
 .section {
   margin: var(--space-4) 0 0;
   font-size: var(--text-xs);
