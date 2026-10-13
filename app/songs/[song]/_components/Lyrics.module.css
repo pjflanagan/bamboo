@@ -1,3 +1,38 @@
+/*
+ * Title and checkboxes, stuck under the global header. It bleeds into the
+ * page's side padding so lyrics scrolling under it are covered edge to edge
+ * on a phone.
+ */
+.bar {
+  position: sticky;
+  top: var(--header-height);
+  z-index: calc(var(--z-header) - 1);
+  display: grid;
+  gap: var(--space-2);
+  margin-inline: calc(-1 * var(--space-4));
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-overlay);
+  backdrop-filter: blur(var(--overlay-blur));
+  -webkit-backdrop-filter: blur(var(--overlay-blur));
+  border-bottom: 1px solid var(--border);
+}
+
+/* One line: the title, then the artist, cut short if they don't fit. */
+.title {
+  margin: 0;
+  overflow: hidden;
+  font-size: var(--text-lg);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.artist {
+  margin-left: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
 .toggles {
   display: flex;
   flex-wrap: wrap;
@@ -14,10 +49,37 @@
 /* A duet singer's color, softened toward the text color so it reads on both themes. */
 .line {
   color: color-mix(in oklab, var(--line-color, var(--text)) 70%, var(--text));
+  cursor: pointer;
+  /* Room for the sticky header and bar when the arrow keys scroll to a line. */
+  scroll-margin: calc(var(--header-height) + 6rem) 0 var(--space-12);
 }
 
 .line + .line {
   padding-top: var(--space-1);
+}
+
+/*
+ * Reveals. The scope hides pinyin and English everywhere; these show them
+ * again: a checkbox on every line, a click on that line (English, and pinyin
+ * too where there's no hover), a hover or the P key on that line (pinyin).
+ */
+.lyrics[data-pinyin] :global([data-layer="pinyin"]),
+.line[data-pinyin] :global([data-layer="pinyin"]),
+.lyrics[data-english] :global([data-layer="english"]),
+.line[data-open] :global([data-layer="english"]) {
+  visibility: visible;
+}
+
+@media (hover: hover) {
+  .line:hover :global([data-layer="pinyin"]) {
+    visibility: visible;
+  }
+}
+
+@media (hover: none) {
+  .line[data-open] :global([data-layer="pinyin"]) {
+    visibility: visible;
+  }
 }
 
 .section {

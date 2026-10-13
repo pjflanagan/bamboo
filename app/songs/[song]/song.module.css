@@ -6,21 +6,6 @@
   margin-inline: auto;
 }
 
-.header {
-  display: grid;
-  gap: var(--space-1);
-}
-
-.title {
-  margin: 0;
-  font-size: var(--text-xl);
-}
-
-.artist {
-  margin: 0;
-  color: var(--text-muted);
-}
-
 .player {
   width: 100%;
   border: 0;

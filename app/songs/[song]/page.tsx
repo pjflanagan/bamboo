@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { PageHeader } from "@/components/PageHeader";
 import { buttonClassName } from "@/design-system/controls";
 import { Page } from "@/design-system/layout";
@@ -22,10 +23,11 @@ export async function generateMetadata({ params }: PageProps<"/songs/[song]">): 
   };
 }
 
-export default async function SongPage({ params }: PageProps<"/songs/[song]">) {
-  const song = await getSong((await params).song);
-  if (!song) notFound();
-
+/**
+ * The header and page frame don't depend on which song this is, so they are
+ * the shell every song link shares; only the song itself waits on the URL.
+ */
+export default function SongPage({ params }: PageProps<"/songs/[song]">) {
   return (
     <>
       <PageHeader
@@ -37,24 +39,32 @@ export default async function SongPage({ params }: PageProps<"/songs/[song]">) {
         }
       />
       <Page>
-        <div className={styles.song}>
-          <header className={styles.header}>
-            <h1 className={styles.title}>{song.title}</h1>
-            {song.artist && <p className={styles.artist}>{song.artist}</p>}
-          </header>
-          {song.spotifyTrack && (
-            <iframe
-              className={styles.player}
-              title={`${song.title} on Spotify`}
-              src={`https://open.spotify.com/embed/track/${song.spotifyTrack}?utm_source=generator`}
-              height="80"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            />
-          )}
-          <Lyrics lines={song.lines} />
-        </div>
+        <Suspense fallback={null}>
+          <Song params={params} />
+        </Suspense>
       </Page>
     </>
+  );
+}
+
+async function Song({ params }: Pick<PageProps<"/songs/[song]">, "params">) {
+  const song = await getSong((await params).song);
+  if (!song) notFound();
+
+  return (
+    <div className={styles.song}>
+      <Lyrics title={song.title} artist={song.artist} lines={song.lines}>
+        {song.spotifyTrack && (
+          <iframe
+            className={styles.player}
+            title={`${song.title} on Spotify`}
+            src={`https://open.spotify.com/embed/track/${song.spotifyTrack}?utm_source=generator`}
+            height="80"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        )}
+      </Lyrics>
+    </div>
   );
 }

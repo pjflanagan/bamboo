@@ -58,7 +58,7 @@ export default async function SongsPage() {
                   ) : (
                     <span className={styles.art} aria-hidden />
                   )}
-                  <Link href={`/songs/${song.slug}`} className={styles.songLink}>
+                  <Link href={`/songs/${song.slug}`} prefetch className={styles.songLink}>
                     <span className={styles.title}>{song.title}</span>
                     {song.artist && <span className={styles.artist}>{song.artist}</span>}
                   </Link>

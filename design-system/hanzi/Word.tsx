@@ -39,7 +39,7 @@ export function Word({ word, size, firstToken = 0, tokenCount, cursor }: WordPro
         ))}
       </span>
       {word.english && (
-        <span className={styles.english} lang="en">
+        <span className={styles.english} data-layer="english" lang="en">
           {word.english}
         </span>
       )}

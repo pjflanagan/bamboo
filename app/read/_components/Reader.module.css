@@ -75,8 +75,8 @@
 .caretLine {
   display: flex;
   align-items: center;
-  height: calc(1em + var(--track-pinyin, 0.36em));
-  padding-top: var(--track-pinyin, 0.36em);
+  height: calc(1em + var(--track-pinyin, 0.4em));
+  padding-top: var(--track-pinyin, 0.4em);
   font-size: var(--hanzi-size, 2.5rem);
 }
 

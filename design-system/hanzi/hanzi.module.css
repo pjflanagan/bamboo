@@ -9,6 +9,9 @@
  *
  *   hovered character > hovered word > hovered phrase > clicked unit
  *     > revealed by parent > the layer's resting mode > visible
+ *
+ * The annotation slots also carry data-layer (pinyin, zhuyin, english), a
+ * stable hook for a page that drives visibility with its own selectors.
  */
 
 .char,
@@ -23,7 +26,7 @@
   --unit-tone: currentColor;
   display: inline-grid;
   grid-template-columns: minmax(1em, auto) var(--track-zhuyin, 0.46em);
-  grid-template-rows: var(--track-pinyin, 0.36em) 1em;
+  grid-template-rows: var(--track-pinyin, 0.4em) 1em;
   grid-template-areas:
     "pinyin zhuyin"
     "hanzi  zhuyin";
@@ -60,7 +63,7 @@
 .char[data-caret]::after {
   content: "";
   position: absolute;
-  top: var(--track-pinyin, 0.36em);
+  top: var(--track-pinyin, 0.4em);
   width: max(2px, 0.05em);
   height: 1em;
   border-radius: 1px;
@@ -98,7 +101,7 @@
   justify-self: center;
   padding-bottom: 0.04em;
   font-family: var(--font-latin), sans-serif;
-  font-size: 0.26em;
+  font-size: 0.3em;
   line-height: 1.2;
   white-space: nowrap;
   color: color-mix(in oklab, var(--unit-tone) var(--tone-mix, 0%), var(--annot-color));
