@@ -26,6 +26,19 @@ const nextConfig: NextConfig = {
       new URL("https://i.scdn.co/image/**"),
     ],
   },
+  async headers() {
+    return [
+      {
+        // The service worker (public/sw.js) must always be revalidated, so a
+        // new version reaches installed apps on their next launch.
+        source: "/sw.js",
+        headers: [
+          { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+        ],
+      },
+    ];
+  },
   cacheComponents: true,
   partialPrefetching: true,
   cacheLife: {

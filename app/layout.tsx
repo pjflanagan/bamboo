@@ -22,6 +22,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  // Home-screen install on iOS (the manifest is app/manifest.ts; the
+  // offline cache is public/sw.js).
+  appleWebApp: {
+    capable: true,
+    title: "方昕中文",
+    statusBarStyle: "default",
+  },
 };
 
 // An app-like page: fixed at device scale, so neither a pinch nor focusing a

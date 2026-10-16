@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { HanziFontProvider } from "./HanziFontProvider";
 import { PreferencesSync } from "./PreferencesSync";
 import { ScriptProvider } from "./ScriptProvider";
+import { ServiceWorker } from "./ServiceWorker";
 import { ThemeProvider } from "./ThemeProvider";
 
 /**
@@ -17,6 +18,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       <ScriptProvider>
         <HanziFontProvider>
           <PreferencesSync />
+          <ServiceWorker />
           {children}
         </HanziFontProvider>
       </ScriptProvider>
